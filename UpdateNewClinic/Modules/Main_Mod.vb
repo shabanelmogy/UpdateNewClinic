@@ -14,6 +14,7 @@ Module Main_Mod
     Public cur As CurrencyManager
 
     'Public newdir As String = System.Windows.Forms.Application.StartupPath
+    'Public newdir As String = System.Windows.Forms.Application.StartupPath
     Public con As New SqlConnection("Server=.;DataBase=Clinic;Integrated Security=True")
     'Public con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\DataBase\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
     'Public con1 As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & newdir & "\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
