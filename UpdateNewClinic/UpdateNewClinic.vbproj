@@ -133,11 +133,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\dtpCell.vb" />
-    <Compile Include="Classes\dtpColumn.vb" />
-    <Compile Include="Classes\dtpEditingControl.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ClinicDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
