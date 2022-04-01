@@ -59,4 +59,12 @@ Public Class Home
         Next
         frm.Show()
     End Sub
+
+    Private Sub PatientDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PatientDataToolStripMenuItem.Click
+        openFormInTab(DailyPays)
+    End Sub
+
+    Private Sub PatientVisitsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PatientVisitsToolStripMenuItem.Click
+        openFormInTab(PatientVists)
+    End Sub
 End Class

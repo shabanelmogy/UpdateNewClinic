@@ -13,13 +13,14 @@ Module Main_Mod
     Public dv, dv1 As New DataView
     Public cur As CurrencyManager
 
+
     'Public newdir As String = System.Windows.Forms.Application.StartupPath
-    'Public newdir As String = System.Windows.Forms.Application.StartupPath
-    Public con As New SqlConnection("Server=.;DataBase=Clinic;Integrated Security=True")
+    'Public con As New SqlConnection("Server=.;DataBase=Clinic;Integrated Security=True")
     'Public con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\DataBase\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
     'Public con1 As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & newdir & "\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
     'Public con As New SqlConnection("Data Source=.\SQLEXPRESS;AttachDbFilename=" & newdir & "\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
-    'Public con As New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("con").ConnectionString)
+    Public con As New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("con").ConnectionString)
+
 
     Function GetMaxId(MaxColumn As String, TableName As String)
         Dim Maxid As Integer
@@ -206,5 +207,22 @@ Module Main_Mod
         Else
             cmb.DataSource = Nothing
         End If
+    End Sub
+
+
+    Public Sub FilterRecordsRecord(SQL As String, SL As SortedList)
+        Try
+            cmd = New SqlCommand(SQL, con)
+            For i As Integer = 0 To SL.Count - 1
+                cmd.Parameters.AddWithValue(SL.GetKey(i).ToString, SL.GetByIndex(i).ToString)
+            Next
+            con.Open()
+            cmd.ExecuteNonQuery()
+
+        Catch ex As SqlException
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation, "Error")
+        Finally
+            If con.State = 1 Then con.Close()
+        End Try
     End Sub
 End Module
