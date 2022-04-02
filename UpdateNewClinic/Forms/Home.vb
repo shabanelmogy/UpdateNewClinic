@@ -61,10 +61,10 @@ Public Class Home
     End Sub
 
     Private Sub PatientDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PatientDataToolStripMenuItem.Click
-        openFormInTab(DailyPays)
+        openFormInTab(Btn_ShowReport)
     End Sub
 
     Private Sub PatientVisitsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PatientVisitsToolStripMenuItem.Click
-        openFormInTab(PatientVists)
+        openFormInTab(DailyTotals)
     End Sub
 End Class

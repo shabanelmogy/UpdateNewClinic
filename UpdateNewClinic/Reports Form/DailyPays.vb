@@ -1,34 +1,12 @@
 ﻿Imports System.Data.SqlClient
 Imports Microsoft.Reporting.WinForms
 
-Public Class DailyPays
+Public Class Btn_ShowReport
 
     Dim Con As New SqlConnection("Server=.;DataBase=Clinic;Integrated Security=True")
     Dim SQL As String = ""
     Dim ParaDateFrom As New ReportParameter
     Dim ParaDateTo As New ReportParameter
-
-    'Private Sub ReportPatientDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    '    Dim SQL As String = "SELECT ClinicDays.VisitDate, ClinicDays.PatientID, ClinicDays.PatientName, ClinicDays.VisitCost, ClinicDays.NewWeight, ClinicDays.NewWaist, ClinicDays.PlanOfTreatment, ClinicDays.EatingHabits, ClinicDays.Notes, 
-    '                     VisitsTypes.VisitKind FROM ClinicDays INNER JOIN VisitsTypes ON ClinicDays.VisitType = VisitsTypes.Num"
-
-    '    Dim Con As New SqlConnection("Server=.;DataBase=Clinic;Integrated Security=True")
-    '    Dim ds As New DataSet
-    '    Dim da As New SqlDataAdapter(SQL, Con)
-    '    da.Fill(ds, 0)
-
-    '    'Second Method
-    '    Dim Rd As New ReportDataSource("DataSet1", ds.Tables(0))
-    '    ReportViewer1.LocalReport.DataSources.Clear()
-    '    ReportViewer1.LocalReport.DataSources.Add(Rd)
-
-    '    ReportViewer1.LocalReport.ReportEmbeddedResource = "UpdateNewClinic.PatientData.rdlc"
-
-
-    '    Me.ReportViewer1.RefreshReport()
-
-    'End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
@@ -71,6 +49,7 @@ Public Class DailyPays
         ReportViewer1.LocalReport.DataSources.Add(Rd)
 
         ReportViewer1.LocalReport.ReportEmbeddedResource = "UpdateNewClinic.DailyPays.rdlc"
+
         ReportViewer1.LocalReport.SetParameters(ParaDateFrom)
         ReportViewer1.LocalReport.SetParameters(ParaDateTo)
 
@@ -81,4 +60,6 @@ Public Class DailyPays
         DateFrom.Value = Today.ToString("dd/MM/yyyy")
         DateTo.Value = Today.ToString("dd/MM/yyyy")
     End Sub
+
+
 End Class

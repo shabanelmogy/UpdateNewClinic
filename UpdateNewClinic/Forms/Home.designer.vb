@@ -151,14 +151,14 @@ Partial Class Home
         'PatientDataToolStripMenuItem
         '
         Me.PatientDataToolStripMenuItem.Name = "PatientDataToolStripMenuItem"
-        Me.PatientDataToolStripMenuItem.Size = New System.Drawing.Size(185, 28)
-        Me.PatientDataToolStripMenuItem.Text = "Daily Visits"
+        Me.PatientDataToolStripMenuItem.Size = New System.Drawing.Size(240, 28)
+        Me.PatientDataToolStripMenuItem.Text = "Daily Visits Detailed"
         '
         'PatientVisitsToolStripMenuItem
         '
         Me.PatientVisitsToolStripMenuItem.Name = "PatientVisitsToolStripMenuItem"
-        Me.PatientVisitsToolStripMenuItem.Size = New System.Drawing.Size(185, 28)
-        Me.PatientVisitsToolStripMenuItem.Text = "Patient Visits"
+        Me.PatientVisitsToolStripMenuItem.Size = New System.Drawing.Size(240, 28)
+        Me.PatientVisitsToolStripMenuItem.Text = "Daily Visits Totals"
         '
         'OpenFileDialog1
         '

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class DailyPays
+Partial Class Btn_ShowReport
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -115,7 +115,7 @@ Partial Class DailyPays
         Me.Panel1.Size = New System.Drawing.Size(198, 615)
         Me.Panel1.TabIndex = 4
         '
-        'DailyPays
+        'Btn_ShowReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -124,7 +124,7 @@ Partial Class DailyPays
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ReportViewer1)
         Me.KeyPreview = True
-        Me.Name = "DailyPays"
+        Me.Name = "Btn_ShowReport"
         Me.Text = "ReportPatientDetails"
         Me.Panel1.ResumeLayout(False)
         CType(Me.DateTimeChartRangeControlClient1, System.ComponentModel.ISupportInitialize).EndInit()

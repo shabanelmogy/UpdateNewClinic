@@ -19,7 +19,7 @@ Public Class Frm_EditPatients
             Dgv_EditPatient.Columns("Occupation").Width = 250
             Dgv_EditPatient.Columns("PhoneNumber").Width = 140
             Dgv_EditPatient.Columns("FirstDate").Width = 130
-            Dgv_EditPatient.Columns("Height").Width = 90
+            Dgv_EditPatient.Columns("Height").Width = 85
             Dgv_EditPatient.Columns("StartWeight").Width = 100
             Dgv_EditPatient.Columns(8).DefaultCellStyle.Format = "dd/MM/yyyy"
         Catch ex As Exception
