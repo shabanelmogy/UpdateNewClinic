@@ -440,6 +440,7 @@
                       </Textbox>
                     </CellContents>
                   </TablixHeader>
+                  <KeepWithGroup>Before</KeepWithGroup>
                   <RepeatOnNewPage>true</RepeatOnNewPage>
                 </TablixMember>
               </TablixMembers>
@@ -484,10 +485,10 @@
                   </Textbox>
                 </CellContents>
               </TablixHeader>
-              <KeepWithGroup>Before</KeepWithGroup>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <RepeatColumnHeaders>true</RepeatColumnHeaders>
         <DataSetName>DataSet2</DataSetName>
         <Top>0.42016cm</Top>
         <Left>0.37488cm</Left>

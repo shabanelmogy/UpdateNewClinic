@@ -22,12 +22,19 @@ Partial Class Frm_PatientVisit
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_PatientVisit))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Dgv_VisitDetail = New System.Windows.Forms.DataGridView()
+        Me.VisitDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NewWeight = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NewWaist = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PlanOfTreatment = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EatingHabits = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Notes = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Txt_PatientName = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -66,7 +73,7 @@ Partial Class Frm_PatientVisit
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.BtnStrip_Save = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.BtnStrp_Delete = New System.Windows.Forms.ToolStripButton()
         Me.Pnl_PatientDetail = New System.Windows.Forms.Panel()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -80,14 +87,6 @@ Partial Class Frm_PatientVisit
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VisitDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VisitType = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NewWeight = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NewWaist = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PlanOfTreatment = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EatingHabits = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Notes = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         CType(Me.Dgv_VisitDetail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Pnl_VisitDetails.SuspendLayout()
@@ -112,33 +111,33 @@ Partial Class Frm_PatientVisit
         Me.Dgv_VisitDetail.AllowUserToDeleteRows = False
         Me.Dgv_VisitDetail.AllowUserToResizeColumns = False
         Me.Dgv_VisitDetail.AllowUserToResizeRows = False
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.AliceBlue
-        Me.Dgv_VisitDetail.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue
+        Me.Dgv_VisitDetail.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.Dgv_VisitDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Dgv_VisitDetail.BackgroundColor = System.Drawing.Color.White
         Me.Dgv_VisitDetail.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_VisitDetail.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_VisitDetail.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.Dgv_VisitDetail.ColumnHeadersHeight = 30
         Me.Dgv_VisitDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.Dgv_VisitDetail.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VisitDate, Me.VisitType, Me.VisitCost, Me.NewWeight, Me.NewWaist, Me.PlanOfTreatment, Me.EatingHabits, Me.Notes})
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle9.NullValue = Nothing
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Snow
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Dgv_VisitDetail.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.NullValue = Nothing
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Snow
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_VisitDetail.DefaultCellStyle = DataGridViewCellStyle3
         Me.Dgv_VisitDetail.EnableHeadersVisualStyles = False
         Me.Dgv_VisitDetail.GridColor = System.Drawing.Color.Gainsboro
         Me.Dgv_VisitDetail.Location = New System.Drawing.Point(0, 0)
@@ -148,6 +147,54 @@ Partial Class Frm_PatientVisit
         Me.Dgv_VisitDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.Dgv_VisitDetail.Size = New System.Drawing.Size(1322, 360)
         Me.Dgv_VisitDetail.TabIndex = 0
+        '
+        'VisitDate
+        '
+        Me.VisitDate.DataPropertyName = "VisitDate"
+        Me.VisitDate.HeaderText = "VisitDate"
+        Me.VisitDate.Name = "VisitDate"
+        '
+        'VisitType
+        '
+        Me.VisitType.DataPropertyName = "VisitType"
+        Me.VisitType.HeaderText = "Visit Type"
+        Me.VisitType.Name = "VisitType"
+        '
+        'VisitCost
+        '
+        Me.VisitCost.DataPropertyName = "VisitCost"
+        Me.VisitCost.HeaderText = "Visit Cost"
+        Me.VisitCost.Name = "VisitCost"
+        '
+        'NewWeight
+        '
+        Me.NewWeight.DataPropertyName = "NewWeight"
+        Me.NewWeight.HeaderText = "New Weight"
+        Me.NewWeight.Name = "NewWeight"
+        '
+        'NewWaist
+        '
+        Me.NewWaist.DataPropertyName = "NewWaist"
+        Me.NewWaist.HeaderText = "New Waist"
+        Me.NewWaist.Name = "NewWaist"
+        '
+        'PlanOfTreatment
+        '
+        Me.PlanOfTreatment.DataPropertyName = "PlanOfTreatment"
+        Me.PlanOfTreatment.HeaderText = "Plan Of Treatment"
+        Me.PlanOfTreatment.Name = "PlanOfTreatment"
+        '
+        'EatingHabits
+        '
+        Me.EatingHabits.DataPropertyName = "EatingHabits"
+        Me.EatingHabits.HeaderText = "Eating Habits"
+        Me.EatingHabits.Name = "EatingHabits"
+        '
+        'Notes
+        '
+        Me.Notes.DataPropertyName = "Notes"
+        Me.Notes.HeaderText = "Notes"
+        Me.Notes.Name = "Notes"
         '
         'Label4
         '
@@ -558,7 +605,7 @@ Partial Class Frm_PatientVisit
         '
         Me.ToolStrip1.AutoSize = False
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.BtnStrip_Save, Me.ToolStripButton2})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.BtnStrip_Save, Me.BtnStrp_Delete})
         Me.ToolStrip1.Location = New System.Drawing.Point(644, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(680, 36)
@@ -585,14 +632,14 @@ Partial Class Frm_PatientVisit
         Me.BtnStrip_Save.Size = New System.Drawing.Size(36, 33)
         Me.BtnStrip_Save.Text = "ToolStripButton1"
         '
-        'ToolStripButton2
+        'BtnStrp_Delete
         '
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(23, 33)
-        Me.ToolStripButton2.Text = "ToolStripButton2"
+        Me.BtnStrp_Delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BtnStrp_Delete.Image = Global.UpdateNewClinic.My.Resources.Resources.Delete
+        Me.BtnStrp_Delete.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BtnStrp_Delete.Name = "BtnStrp_Delete"
+        Me.BtnStrp_Delete.Size = New System.Drawing.Size(23, 33)
+        Me.BtnStrp_Delete.Text = "ToolStripButton2"
         '
         'Pnl_PatientDetail
         '
@@ -706,54 +753,6 @@ Partial Class Frm_PatientVisit
         Me.DataGridViewTextBoxColumn10.HeaderText = "Notes"
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
         '
-        'VisitDate
-        '
-        Me.VisitDate.DataPropertyName = "VisitDate"
-        Me.VisitDate.HeaderText = "VisitDate"
-        Me.VisitDate.Name = "VisitDate"
-        '
-        'VisitType
-        '
-        Me.VisitType.DataPropertyName = "VisitType"
-        Me.VisitType.HeaderText = "Visit Type"
-        Me.VisitType.Name = "VisitType"
-        '
-        'VisitCost
-        '
-        Me.VisitCost.DataPropertyName = "VisitCost"
-        Me.VisitCost.HeaderText = "Visit Cost"
-        Me.VisitCost.Name = "VisitCost"
-        '
-        'NewWeight
-        '
-        Me.NewWeight.DataPropertyName = "NewWeight"
-        Me.NewWeight.HeaderText = "New Weight"
-        Me.NewWeight.Name = "NewWeight"
-        '
-        'NewWaist
-        '
-        Me.NewWaist.DataPropertyName = "NewWaist"
-        Me.NewWaist.HeaderText = "New Waist"
-        Me.NewWaist.Name = "NewWaist"
-        '
-        'PlanOfTreatment
-        '
-        Me.PlanOfTreatment.DataPropertyName = "PlanOfTreatment"
-        Me.PlanOfTreatment.HeaderText = "Plan Of Treatment"
-        Me.PlanOfTreatment.Name = "PlanOfTreatment"
-        '
-        'EatingHabits
-        '
-        Me.EatingHabits.DataPropertyName = "EatingHabits"
-        Me.EatingHabits.HeaderText = "Eating Habits"
-        Me.EatingHabits.Name = "EatingHabits"
-        '
-        'Notes
-        '
-        Me.Notes.DataPropertyName = "Notes"
-        Me.Notes.HeaderText = "Notes"
-        Me.Notes.Name = "Notes"
-        '
         'Frm_PatientVisit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -831,7 +830,7 @@ Partial Class Frm_PatientVisit
     Friend WithEvents Label8 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents ToolStripButton1 As ToolStripButton
-    Friend WithEvents ToolStripButton2 As ToolStripButton
+    Friend WithEvents BtnStrp_Delete As ToolStripButton
     Friend WithEvents Dtp_VisitDate As DateTimePicker
     Friend WithEvents VisitDate As DataGridViewTextBoxColumn
     Friend WithEvents VisitType As DataGridViewTextBoxColumn

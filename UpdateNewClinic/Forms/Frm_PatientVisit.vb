@@ -254,8 +254,26 @@ Public Class Frm_PatientVisit
         Dtp_VisitDate.Focus()
     End Sub
 
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
-        ResetControls(Pnl_VisitDetails)
+    Private Sub BtnStrp_Delete_Click(sender As Object, e As EventArgs) Handles BtnStrp_Delete.Click
+        Try
+            If MsgBox("Do You Want To Delete This Record ?", MsgBoxStyle.Information + vbYesNo + MsgBoxStyle.DefaultButton2, "Attention") = vbYes Then
+
+                cmd = New SqlCommand("Delete From ClinicDays Where PatientID=@PatientID And VisitDate=@VisitDate", con)
+                cmd.Parameters.AddWithValue("@PatientID", Val(Txt_PatientNum.Text))
+                cmd.Parameters.AddWithValue("@VisitDate", Dtp_VisitDate.Value)
+
+                con.Open()
+                cmd.ExecuteNonQuery()
+
+                FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes From ClinicDays 
+                                 Inner Join VisitsTypes On ClinicDays.VisitType = VisitsTypes.Num Where PatientID=" & Val(Txt_PatientNum.Text))
+
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Information, "Delete")
+        Finally
+            If con.State = 1 Then con.Close()
+        End Try
     End Sub
 
     Private Sub Dtp_VisitDate_KeyDown(sender As Object, e As KeyEventArgs) Handles Dtp_VisitDate.KeyDown
