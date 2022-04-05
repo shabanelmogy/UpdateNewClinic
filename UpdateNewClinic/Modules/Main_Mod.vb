@@ -153,6 +153,7 @@ Module Main_Mod
         End Using
     End Sub
 
+
     Sub openFormInTab(F As Form)
 
         Dim frm As Form = TryCast(F, Form)
@@ -209,6 +210,30 @@ Module Main_Mod
         End If
     End Sub
 
+    Sub openFormInTab2(F As Form)
+
+        Dim frm As Form = TryCast(F, Form)
+        frm.TopLevel = False
+        For Each tab As XtraTabPage In Home.XtraTabControl1.TabPages
+            'لمنع فتح الفورم أكثر من مرة
+            If tab.Name = frm.Name Then
+                Exit Sub
+            End If
+        Next
+        Home.XtraTabControl1.TabPages.Add(New XtraTabPage With {.Text = frm.Text, .Name = frm.Name})
+        For Each tab As XtraTabPage In Home.XtraTabControl1.TabPages
+            If tab.Name = frm.Name Then
+                tab.ImageOptions.Image = frm.Icon.ToBitmap
+
+                tab.Controls.Add(frm)
+                tab.BackgroundImage = My.Resources.Health
+                frm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+                frm.StartPosition = Windows.Forms.FormStartPosition.CenterScreen
+                Home.XtraTabControl1.SelectedTabPage = tab
+                frm.Show()
+            End If
+        Next
+    End Sub
 
     Public Sub FilterRecordsRecord(SQL As String, SL As SortedList)
         Try

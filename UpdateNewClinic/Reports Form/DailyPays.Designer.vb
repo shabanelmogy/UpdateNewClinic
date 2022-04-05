@@ -43,46 +43,48 @@ Partial Class Btn_ShowReport
         Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.ReportViewer1.Name = "ReportViewer1"
         Me.ReportViewer1.ServerReport.BearerToken = Nothing
-        Me.ReportViewer1.Size = New System.Drawing.Size(817, 615)
+        Me.ReportViewer1.Size = New System.Drawing.Size(797, 615)
         Me.ReportViewer1.TabIndex = 0
         '
         'DateFrom
         '
         Me.DateFrom.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DateFrom.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.DateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateFrom.Location = New System.Drawing.Point(60, 9)
+        Me.DateFrom.Location = New System.Drawing.Point(80, 9)
         Me.DateFrom.Name = "DateFrom"
-        Me.DateFrom.Size = New System.Drawing.Size(130, 20)
+        Me.DateFrom.Size = New System.Drawing.Size(130, 27)
         Me.DateFrom.TabIndex = 1
         Me.DateFrom.Value = New Date(2022, 3, 31, 0, 0, 0, 0)
         '
         'DateTo
         '
         Me.DateTo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DateTo.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.DateTo.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTo.Location = New System.Drawing.Point(60, 35)
+        Me.DateTo.Location = New System.Drawing.Point(80, 49)
         Me.DateTo.Name = "DateTo"
-        Me.DateTo.Size = New System.Drawing.Size(130, 20)
+        Me.DateTo.Size = New System.Drawing.Size(130, 27)
         Me.DateTo.TabIndex = 1
         Me.DateTo.Value = New Date(2022, 3, 31, 0, 0, 0, 0)
         '
         'Label1
         '
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(7, 10)
+        Me.Label1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label1.Location = New System.Drawing.Point(8, 14)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 20)
+        Me.Label1.Size = New System.Drawing.Size(66, 20)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "From"
         '
         'Label2
         '
         Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label2.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(7, 37)
+        Me.Label2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.Location = New System.Drawing.Point(8, 55)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(29, 20)
+        Me.Label2.Size = New System.Drawing.Size(49, 20)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "To"
         '
@@ -95,11 +97,13 @@ Partial Class Btn_ShowReport
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(60, 76)
+        Me.Button1.Image = Global.UpdateNewClinic.My.Resources.Resources.ShowReport2
+        Me.Button1.Location = New System.Drawing.Point(15, 97)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(130, 29)
+        Me.Button1.Size = New System.Drawing.Size(195, 48)
         Me.Button1.TabIndex = 3
         Me.Button1.Text = "Show Report"
+        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Panel1
@@ -110,9 +114,9 @@ Partial Class Btn_ShowReport
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.DateTo)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(823, 0)
+        Me.Panel1.Location = New System.Drawing.Point(803, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(198, 615)
+        Me.Panel1.Size = New System.Drawing.Size(218, 615)
         Me.Panel1.TabIndex = 4
         '
         'Btn_ShowReport

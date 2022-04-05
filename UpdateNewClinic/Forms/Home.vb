@@ -67,4 +67,8 @@ Public Class Home
     Private Sub PatientVisitsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PatientVisitsToolStripMenuItem.Click
         openFormInTab(DailyTotals)
     End Sub
+
+    Private Sub ReservationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReservationToolStripMenuItem.Click
+        openFormInTab(Frm_Reservation)
+    End Sub
 End Class

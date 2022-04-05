@@ -83,16 +83,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.24865cm</Width>
+                  <Width>1.87823cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.79948cm</Width>
+                  <Width>5.52949cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.32756cm</Width>
+                  <Width>4.29568cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.80969cm</Width>
+                  <Width>3.09531cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -648,7 +648,7 @@
             <Top>0.0762cm</Top>
             <Left>0.86995cm</Left>
             <Height>2.27625cm</Height>
-            <Width>18.18538cm</Width>
+            <Width>14.79872cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -663,10 +663,10 @@
                   <Width>2.24865cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.53102cm</Width>
+                  <Width>1.8431cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.44167cm</Width>
+                  <Width>1.30938cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -761,7 +761,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1043,7 +1042,7 @@
             <Top>4.50646cm</Top>
             <Left>0.86995cm</Left>
             <Height>1.2cm</Height>
-            <Width>6.22134cm</Width>
+            <Width>5.40113cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1093,7 +1092,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>7.65835in</Width>
+      <Width>6.67918in</Width>
       <Page>
         <PageHeader>
           <Height>2.87224cm</Height>
@@ -1122,9 +1121,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>0.34078cm</Top>
-              <Left>6.52794cm</Left>
+              <Left>5.89294cm</Left>
               <Height>0.93486cm</Height>
-              <Width>7.44771cm</Width>
+              <Width>6.945cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1156,9 +1155,9 @@
               </Paragraphs>
               <rd:DefaultName>DateFrom</rd:DefaultName>
               <Top>1.63724cm</Top>
-              <Left>7.88141cm</Left>
+              <Left>7.24641cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.5cm</Width>
+              <Width>2.23542cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -1190,9 +1189,9 @@
               </Paragraphs>
               <rd:DefaultName>DateTo</rd:DefaultName>
               <Top>1.63724cm</Top>
-              <Left>11.58558cm</Left>
+              <Left>10.63308cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.39007cm</Width>
+              <Width>2.20486cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -1224,7 +1223,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox60</rd:DefaultName>
               <Top>1.63724cm</Top>
-              <Left>10.73481cm</Left>
+              <Left>9.78231cm</Left>
               <Height>0.6cm</Height>
               <Width>0.70083cm</Width>
               <ZIndex>3</ZIndex>
@@ -1258,7 +1257,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox60</rd:DefaultName>
               <Top>1.63724cm</Top>
-              <Left>6.60731cm</Left>
+              <Left>5.97231cm</Left>
               <Height>0.6cm</Height>
               <Width>1.09771cm</Width>
               <ZIndex>4</ZIndex>
@@ -1281,6 +1280,7 @@
                     <TextRun>
                       <Value>="Page   " &amp; "" &amp; Globals!PageNumber &amp; "  Of  " &amp; Globals!TotalPages</Value>
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -1292,7 +1292,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox20</rd:DefaultName>
               <Top>0.34078cm</Top>
-              <Left>15.62929cm</Left>
+              <Left>13.0893cm</Left>
               <Height>0.6cm</Height>
               <Width>3.42604cm</Width>
               <ZIndex>5</ZIndex>
@@ -1310,7 +1310,7 @@
               <Top>2.37835cm</Top>
               <Left>0.86995cm</Left>
               <Height>0cm</Height>
-              <Width>18.18538cm</Width>
+              <Width>15.64539cm</Width>
               <ZIndex>6</ZIndex>
               <Style>
                 <Border>
@@ -1327,6 +1327,7 @@
                     <TextRun>
                       <Value>=Globals!ExecutionTime</Value>
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <Format> dddd   dd/MM/yyyy   hh:mm  tt</Format>
                       </Style>
@@ -1341,7 +1342,7 @@
               <Top>0.34078cm</Top>
               <Left>0.3855cm</Left>
               <Height>0.6cm</Height>
-              <Width>5.78084cm</Width>
+              <Width>5.26412cm</Width>
               <ZIndex>7</ZIndex>
               <Style>
                 <Border>

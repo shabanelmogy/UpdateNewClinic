@@ -37,8 +37,20 @@ Public Class DailyTotals
         ReportViewer1.LocalReport.DataSources.Clear()
         ReportViewer1.LocalReport.DataSources.Add(Rd)
 
+        'ضبط هوامش التقرير الافتراضية
+        Dim newPageSettings As New System.Drawing.Printing.PageSettings
+        newPageSettings.Margins = New System.Drawing.Printing.Margins(15, 15, 15, 15)
+
+        ReportViewer1.SetPageSettings(newPageSettings)
+
+
         ReportViewer1.LocalReport.ReportEmbeddedResource = "UpdateNewClinic.DailyTotals.rdlc"
 
         Me.ReportViewer1.RefreshReport()
+    End Sub
+
+    Private Sub DailyTotals_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        DateFrom.Value = Today.ToString("dd/MM/yyyy")
+        DateTo.Value = Today.ToString("dd/MM/yyyy")
     End Sub
 End Class

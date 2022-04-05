@@ -40,6 +40,7 @@ Partial Class Home
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage1 = New DevExpress.XtraTab.XtraTabPage()
+        Me.ReservationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel2.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,7 +93,7 @@ Partial Class Home
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.AutoSize = False
-        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnStrp_VisitTypes})
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnStrp_VisitTypes, Me.ReservationToolStripMenuItem})
         Me.ToolStripMenuItem1.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripMenuItem1.Image = Global.UpdateNewClinic.My.Resources.Resources.Visit
         Me.ToolStripMenuItem1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
@@ -106,7 +107,7 @@ Partial Class Home
         'BtnStrp_VisitTypes
         '
         Me.BtnStrp_VisitTypes.Name = "BtnStrp_VisitTypes"
-        Me.BtnStrp_VisitTypes.Size = New System.Drawing.Size(173, 28)
+        Me.BtnStrp_VisitTypes.Size = New System.Drawing.Size(180, 28)
         Me.BtnStrp_VisitTypes.Text = "Visits Types"
         '
         'BtnStrp_PatientDetail
@@ -209,6 +210,12 @@ Partial Class Home
         Me.XtraTabPage1.Size = New System.Drawing.Size(1275, 530)
         Me.XtraTabPage1.Text = "Home"
         '
+        'ReservationToolStripMenuItem
+        '
+        Me.ReservationToolStripMenuItem.Name = "ReservationToolStripMenuItem"
+        Me.ReservationToolStripMenuItem.Size = New System.Drawing.Size(180, 28)
+        Me.ReservationToolStripMenuItem.Text = "Reservation"
+        '
         'Home
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -253,4 +260,5 @@ Partial Class Home
     Friend WithEvents ReportsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PatientDataToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PatientVisitsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReservationToolStripMenuItem As ToolStripMenuItem
 End Class

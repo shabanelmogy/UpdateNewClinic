@@ -48,6 +48,10 @@ Public Class Btn_ShowReport
         ReportViewer1.LocalReport.DataSources.Clear()
         ReportViewer1.LocalReport.DataSources.Add(Rd)
 
+        Dim newPageSettings As New System.Drawing.Printing.PageSettings
+        newPageSettings.Margins = New System.Drawing.Printing.Margins(15, 15, 15, 15)
+        ReportViewer1.SetPageSettings(newPageSettings)
+
         ReportViewer1.LocalReport.ReportEmbeddedResource = "UpdateNewClinic.DailyPays.rdlc"
 
         ReportViewer1.LocalReport.SetParameters(ParaDateFrom)

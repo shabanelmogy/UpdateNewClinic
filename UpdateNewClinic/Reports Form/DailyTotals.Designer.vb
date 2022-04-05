@@ -28,11 +28,11 @@ Partial Class DailyTotals
         Me.DataSet2 = New UpdateNewClinic.DataSet2()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Btn_ShowReport = New System.Windows.Forms.Button()
         Me.DateFrom = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DateTo = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Btn_ShowReport = New System.Windows.Forms.Button()
         CType(Me.DataTable1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -60,7 +60,7 @@ Partial Class DailyTotals
         Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.ReportViewer1.Name = "ReportViewer1"
         Me.ReportViewer1.ServerReport.BearerToken = Nothing
-        Me.ReportViewer1.Size = New System.Drawing.Size(783, 553)
+        Me.ReportViewer1.Size = New System.Drawing.Size(759, 553)
         Me.ReportViewer1.TabIndex = 0
         '
         'Panel1
@@ -72,10 +72,52 @@ Partial Class DailyTotals
         Me.Panel1.Controls.Add(Me.DateTo)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel1.Location = New System.Drawing.Point(778, 0)
+        Me.Panel1.Location = New System.Drawing.Point(765, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(202, 553)
+        Me.Panel1.Size = New System.Drawing.Size(215, 553)
         Me.Panel1.TabIndex = 5
+        '
+        'DateFrom
+        '
+        Me.DateFrom.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DateFrom.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.DateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DateFrom.Location = New System.Drawing.Point(77, 9)
+        Me.DateFrom.Name = "DateFrom"
+        Me.DateFrom.Size = New System.Drawing.Size(130, 27)
+        Me.DateFrom.TabIndex = 1
+        Me.DateFrom.Value = New Date(2022, 3, 31, 0, 0, 0, 0)
+        '
+        'Label2
+        '
+        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.Location = New System.Drawing.Point(8, 55)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(39, 20)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "To"
+        '
+        'DateTo
+        '
+        Me.DateTo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DateTo.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.DateTo.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTo.Location = New System.Drawing.Point(77, 51)
+        Me.DateTo.Name = "DateTo"
+        Me.DateTo.Size = New System.Drawing.Size(130, 27)
+        Me.DateTo.TabIndex = 1
+        Me.DateTo.Value = New Date(2022, 3, 31, 0, 0, 0, 0)
+        '
+        'Label1
+        '
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label1.Location = New System.Drawing.Point(8, 10)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(63, 20)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "From"
         '
         'Btn_ShowReport
         '
@@ -86,52 +128,14 @@ Partial Class DailyTotals
         Me.Btn_ShowReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_ShowReport.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_ShowReport.ForeColor = System.Drawing.Color.White
-        Me.Btn_ShowReport.Location = New System.Drawing.Point(64, 76)
+        Me.Btn_ShowReport.Image = Global.UpdateNewClinic.My.Resources.Resources.ShowReport2
+        Me.Btn_ShowReport.Location = New System.Drawing.Point(12, 99)
         Me.Btn_ShowReport.Name = "Btn_ShowReport"
-        Me.Btn_ShowReport.Size = New System.Drawing.Size(130, 29)
+        Me.Btn_ShowReport.Size = New System.Drawing.Size(195, 48)
         Me.Btn_ShowReport.TabIndex = 3
         Me.Btn_ShowReport.Text = "Show Report"
+        Me.Btn_ShowReport.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_ShowReport.UseVisualStyleBackColor = False
-        '
-        'DateFrom
-        '
-        Me.DateFrom.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateFrom.Location = New System.Drawing.Point(64, 9)
-        Me.DateFrom.Name = "DateFrom"
-        Me.DateFrom.Size = New System.Drawing.Size(130, 20)
-        Me.DateFrom.TabIndex = 1
-        Me.DateFrom.Value = New Date(2022, 3, 31, 0, 0, 0, 0)
-        '
-        'Label2
-        '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label2.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(11, 37)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(29, 20)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "To"
-        '
-        'DateTo
-        '
-        Me.DateTo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DateTo.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTo.Location = New System.Drawing.Point(64, 35)
-        Me.DateTo.Name = "DateTo"
-        Me.DateTo.Size = New System.Drawing.Size(130, 20)
-        Me.DateTo.TabIndex = 1
-        Me.DateTo.Value = New Date(2022, 3, 31, 0, 0, 0, 0)
-        '
-        'Label1
-        '
-        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(11, 10)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 20)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "From"
         '
         'DailyTotals
         '

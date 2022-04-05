@@ -171,6 +171,12 @@
     <Compile Include="Forms\Frm_EditPatient.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Frm_Reservation.designer.vb">
+      <DependentUpon>Frm_Reservation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_Reservation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Frm_VisitTypes.designer.vb">
       <DependentUpon>Frm_VisitTypes.vb</DependentUpon>
     </Compile>
@@ -222,6 +228,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\Frm_EditPatient.resx">
       <DependentUpon>Frm_EditPatient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_Reservation.resx">
+      <DependentUpon>Frm_Reservation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_VisitTypes.resx">
       <DependentUpon>Frm_VisitTypes.vb</DependentUpon>
@@ -651,6 +660,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Reporting.png" />
+    <None Include="Resources\36378_last_next_prev_icon.png" />
+    <None Include="Resources\60192_left_navigate_icon.png" />
+    <None Include="Resources\Prev_16x162.png" />
+    <None Include="Resources\Prev_20x20.png" />
+    <None Include="Resources\search1.png" />
+    <None Include="Resources\searching.png" />
+    <None Include="Resources\SortAscending 24.png" />
+    <None Include="Resources\SortDesc 24.png" />
+    <None Include="Resources\Delete_24x242.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\Exit2.png" />
+    <None Include="Resources\Delete_24x243.png" />
+    <None Include="Resources\New1.png" />
+    <None Include="Resources\ShowReport.png" />
+    <None Include="Resources\ShowReport2.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
