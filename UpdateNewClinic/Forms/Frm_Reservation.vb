@@ -217,11 +217,11 @@ Public Class Frm_Reservation
 
         Select Case columntext
             Case "PatientNum"
-                Intcolumn = dv.Find(Txt_Search.Text)
+                Intcolumn = dv.Find(Txt_SearchValue.Text)
             Case "PatientName"
-                Intcolumn = dv.Find(Txt_Search.Text)
+                Intcolumn = dv.Find(Txt_SearchValue.Text)
             Case "PhoneNumber"
-                Intcolumn = dv.Find(Txt_Search.Text)
+                Intcolumn = dv.Find(Txt_SearchValue.Text)
         End Select
 
         If Intcolumn = -1 Then
@@ -232,7 +232,7 @@ Public Class Frm_Reservation
     End Sub
 
     Private Sub Cbo_SortAndSearch_TextChanged(sender As Object, e As EventArgs) Handles Cbo_SortAndSearch.TextChanged
-        Txt_Search.Text = ""
+        Txt_SearchValue.Text = ""
     End Sub
 
     Private Sub Frm_NewClient_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp

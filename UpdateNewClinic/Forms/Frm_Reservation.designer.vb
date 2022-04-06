@@ -29,28 +29,28 @@ Partial Class Frm_Reservation
         Me.Dtp_PatientFirstDate = New System.Windows.Forms.DateTimePicker()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Btn_SortAsec = New System.Windows.Forms.Button()
+        Me.Btn_SortDesc = New System.Windows.Forms.Button()
         Me.Cbo_SortAndSearch = New System.Windows.Forms.ComboBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Cbo_ReserveType = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Btn_Search = New System.Windows.Forms.Button()
-        Me.Txt_Search = New System.Windows.Forms.TextBox()
+        Me.Txt_SearchValue = New System.Windows.Forms.TextBox()
         Me.Btn_SaveNewPatient = New System.Windows.Forms.Button()
-        Me.Btn_SortDesc = New System.Windows.Forms.Button()
         Me.Btn_DeletePatient = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.SeparatorControl1 = New DevExpress.XtraEditors.SeparatorControl()
-        Me.SeparatorControl2 = New DevExpress.XtraEditors.SeparatorControl()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.SeparatorControl2 = New DevExpress.XtraEditors.SeparatorControl()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.SeparatorControl1 = New DevExpress.XtraEditors.SeparatorControl()
         Me.Panel1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
-        CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SeparatorControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SeparatorControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label2
@@ -113,6 +113,21 @@ Partial Class Frm_Reservation
         Me.Btn_SortAsec.TabIndex = 30
         Me.ToolTip1.SetToolTip(Me.Btn_SortAsec, "Sort Asc")
         Me.Btn_SortAsec.UseVisualStyleBackColor = False
+        '
+        'Btn_SortDesc
+        '
+        Me.Btn_SortDesc.BackColor = System.Drawing.Color.White
+        Me.Btn_SortDesc.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_SortDesc.FlatAppearance.BorderSize = 0
+        Me.Btn_SortDesc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaShell
+        Me.Btn_SortDesc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_SortDesc.Image = Global.UpdateNewClinic.My.Resources.Resources.SortDesc_24
+        Me.Btn_SortDesc.Location = New System.Drawing.Point(507, 8)
+        Me.Btn_SortDesc.Name = "Btn_SortDesc"
+        Me.Btn_SortDesc.Size = New System.Drawing.Size(57, 27)
+        Me.Btn_SortDesc.TabIndex = 31
+        Me.ToolTip1.SetToolTip(Me.Btn_SortDesc, "Sort Desc")
+        Me.Btn_SortDesc.UseVisualStyleBackColor = False
         '
         'Cbo_SortAndSearch
         '
@@ -189,13 +204,13 @@ Partial Class Frm_Reservation
         Me.Btn_Search.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_Search.UseVisualStyleBackColor = False
         '
-        'Txt_Search
+        'Txt_SearchValue
         '
-        Me.Txt_Search.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.Txt_Search.Location = New System.Drawing.Point(158, 66)
-        Me.Txt_Search.Name = "Txt_Search"
-        Me.Txt_Search.Size = New System.Drawing.Size(235, 27)
-        Me.Txt_Search.TabIndex = 36
+        Me.Txt_SearchValue.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.Txt_SearchValue.Location = New System.Drawing.Point(158, 66)
+        Me.Txt_SearchValue.Name = "Txt_SearchValue"
+        Me.Txt_SearchValue.Size = New System.Drawing.Size(235, 27)
+        Me.Txt_SearchValue.TabIndex = 36
         '
         'Btn_SaveNewPatient
         '
@@ -215,21 +230,6 @@ Partial Class Frm_Reservation
         Me.Btn_SaveNewPatient.Text = "Save"
         Me.Btn_SaveNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_SaveNewPatient.UseVisualStyleBackColor = False
-        '
-        'Btn_SortDesc
-        '
-        Me.Btn_SortDesc.BackColor = System.Drawing.Color.White
-        Me.Btn_SortDesc.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_SortDesc.FlatAppearance.BorderSize = 0
-        Me.Btn_SortDesc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaShell
-        Me.Btn_SortDesc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_SortDesc.Image = Global.UpdateNewClinic.My.Resources.Resources.SortDesc_24
-        Me.Btn_SortDesc.Location = New System.Drawing.Point(507, 8)
-        Me.Btn_SortDesc.Name = "Btn_SortDesc"
-        Me.Btn_SortDesc.Size = New System.Drawing.Size(57, 27)
-        Me.Btn_SortDesc.TabIndex = 31
-        Me.ToolTip1.SetToolTip(Me.Btn_SortDesc, "Sort Desc")
-        Me.Btn_SortDesc.UseVisualStyleBackColor = False
         '
         'Btn_DeletePatient
         '
@@ -268,33 +268,18 @@ Partial Class Frm_Reservation
         Me.Panel1.Size = New System.Drawing.Size(742, 683)
         Me.Panel1.TabIndex = 38
         '
-        'Panel2
+        'DataGridView2
         '
-        Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.DataGridView2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel2.Controls.Add(Me.DataGridView1)
-        Me.Panel2.Controls.Add(Me.SeparatorControl1)
-        Me.Panel2.Controls.Add(Me.Label15)
-        Me.Panel2.Controls.Add(Me.Btn_SortAsec)
-        Me.Panel2.Controls.Add(Me.Txt_Search)
-        Me.Panel2.Controls.Add(Me.Btn_Search)
-        Me.Panel2.Controls.Add(Me.Btn_SortDesc)
-        Me.Panel2.Controls.Add(Me.Cbo_SortAndSearch)
-        Me.Panel2.Controls.Add(Me.Label16)
-        Me.Panel2.Location = New System.Drawing.Point(0, 1)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(577, 683)
-        Me.Panel2.TabIndex = 39
-        '
-        'SeparatorControl1
-        '
-        Me.SeparatorControl1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SeparatorControl1.LineColor = System.Drawing.Color.Maroon
-        Me.SeparatorControl1.Location = New System.Drawing.Point(10, 99)
-        Me.SeparatorControl1.Name = "SeparatorControl1"
-        Me.SeparatorControl1.Size = New System.Drawing.Size(560, 23)
-        Me.SeparatorControl1.TabIndex = 38
+        Me.DataGridView2.BackgroundColor = System.Drawing.Color.White
+        Me.DataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Location = New System.Drawing.Point(-2, 128)
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.Size = New System.Drawing.Size(742, 548)
+        Me.DataGridView2.TabIndex = 40
         '
         'SeparatorControl2
         '
@@ -304,6 +289,25 @@ Partial Class Frm_Reservation
         Me.SeparatorControl2.Name = "SeparatorControl2"
         Me.SeparatorControl2.Size = New System.Drawing.Size(728, 23)
         Me.SeparatorControl2.TabIndex = 39
+        '
+        'Panel2
+        '
+        Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Controls.Add(Me.DataGridView1)
+        Me.Panel2.Controls.Add(Me.SeparatorControl1)
+        Me.Panel2.Controls.Add(Me.Label15)
+        Me.Panel2.Controls.Add(Me.Btn_SortAsec)
+        Me.Panel2.Controls.Add(Me.Txt_SearchValue)
+        Me.Panel2.Controls.Add(Me.Btn_Search)
+        Me.Panel2.Controls.Add(Me.Btn_SortDesc)
+        Me.Panel2.Controls.Add(Me.Cbo_SortAndSearch)
+        Me.Panel2.Controls.Add(Me.Label16)
+        Me.Panel2.Location = New System.Drawing.Point(0, 1)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(577, 683)
+        Me.Panel2.TabIndex = 39
         '
         'DataGridView1
         '
@@ -318,18 +322,14 @@ Partial Class Frm_Reservation
         Me.DataGridView1.Size = New System.Drawing.Size(567, 548)
         Me.DataGridView1.TabIndex = 39
         '
-        'DataGridView2
+        'SeparatorControl1
         '
-        Me.DataGridView2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataGridView2.BackgroundColor = System.Drawing.Color.White
-        Me.DataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(-2, 128)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(742, 548)
-        Me.DataGridView2.TabIndex = 40
+        Me.SeparatorControl1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SeparatorControl1.LineColor = System.Drawing.Color.Maroon
+        Me.SeparatorControl1.Location = New System.Drawing.Point(10, 99)
+        Me.SeparatorControl1.Name = "SeparatorControl1"
+        Me.SeparatorControl1.Size = New System.Drawing.Size(560, 23)
+        Me.SeparatorControl1.TabIndex = 38
         '
         'Frm_Reservation
         '
@@ -346,12 +346,12 @@ Partial Class Frm_Reservation
         Me.Text = "New Reserve"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SeparatorControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SeparatorControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -367,7 +367,7 @@ Partial Class Frm_Reservation
     Friend WithEvents Cbo_ReserveType As ComboBox
     Friend WithEvents Label16 As Label
     Friend WithEvents Btn_Search As Button
-    Friend WithEvents Txt_Search As TextBox
+    Friend WithEvents Txt_SearchValue As TextBox
     Friend WithEvents Btn_SaveNewPatient As Button
     Friend WithEvents Btn_SortDesc As Button
     Friend WithEvents Btn_DeletePatient As Button
