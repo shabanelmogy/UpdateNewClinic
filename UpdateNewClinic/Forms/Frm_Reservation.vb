@@ -9,11 +9,30 @@ Public Class Frm_Reservation
     Dim dt As New DataTable
     Dim da As New SqlDataAdapter
 
+    Sub FormatDatagridview()
+
+        Dgv_Search.Columns(0).Width = 100
+        Dgv_Search.Columns(1).Width = 250
+        Dgv_Search.Columns(2).Width = 150
+
+        'store Len of datagridview columns
+        Dim countgridcolumn As Integer = Dgv_Search.Columns.Count
+        Dim DgvBtnReserve As New DataGridViewButtonColumn
+
+        'عند اضافة الزر يكون رقمه صفر حتى لو ظهر فى الاخر
+        DgvBtnReserve.Width = 90
+        DgvBtnReserve.Name = "checkboxcol1"
+        DgvBtnReserve.HeaderText = "Reserve"
+        Dgv_Search.Columns.Insert(countgridcolumn, DgvBtnReserve)
+
+
+    End Sub
+
     Private Sub Frm_NewClient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            'BindingData()
-            'ShowPosition()
             FillCmb(Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
+            Cbo_SortAndSearch.SelectedIndex = 0
+            GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information)
@@ -117,41 +136,17 @@ Public Class Frm_Reservation
     '    End Try
     'End Sub
 
-    Sub GetAllPatient()
+    Sub GetAllPatient(Query As String)
         Try
-            Dim cmd As New SqlCommand("Select PatientNum,PatientName,Code,Birthdate,Occupation,PhoneNumber,TheFirstDate,Height,StartWeight,
-                                                            StartBmi,StartFat,StartWaist,StartHip From PatientsDetail", con)
+            Dim cmd As New SqlCommand(Query, con)
 
             dt = New DataTable
             da = New SqlDataAdapter(cmd)
             da.Fill(dt)
-            dv = New DataView(dt)
-            cur = CType(Me.BindingContext(dv), CurrencyManager)
-        Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information)
-        End Try
-    End Sub
 
-    Sub BindingData()
+            Dgv_Search.DataSource = dt
+            FormatDatagridview()
 
-        Try
-
-            Txt_PatientName.DataBindings.Clear()
-            Dtp_PatientFirstDate.DataBindings.Clear()
-
-            Txt_PatientName.DataBindings.Add("text", dv, "PatientName")
-            Dtp_PatientFirstDate.DataBindings.Add("text", dv, "TheFirstDate")
-
-        Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information)
-        End Try
-
-    End Sub
-
-    Sub ClearBindingData()
-        Try
-            Txt_PatientName.DataBindings.Clear()
-            Dtp_PatientFirstDate.DataBindings.Clear()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information)
         End Try
@@ -200,35 +195,17 @@ Public Class Frm_Reservation
         End Try
     End Sub
 
-    Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles Btn_Search.Click
+    Private Sub Btn_Search_Click(sender As Object, e As EventArgs)
 
-        Dim columntext As String = ""
-        Dim Intcolumn As Integer = -1
+        'GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail Where PatientName Like '" & Txt_SearchValue.Text & "%'")
+        'Dgv_Search.DataSource = dt
 
-        Select Case Cbo_SortAndSearch.Text
-            Case "PatientNumber"
-                columntext = "PatientNum"
-            Case "PatientName"
-                columntext = "PatientName"
-            Case "Phone"
-                columntext = "PhoneNumber"
-        End Select
-        dv.Sort = columntext
-
-        Select Case columntext
-            Case "PatientNum"
-                Intcolumn = dv.Find(Txt_SearchValue.Text)
-            Case "PatientName"
-                Intcolumn = dv.Find(Txt_SearchValue.Text)
-            Case "PhoneNumber"
-                Intcolumn = dv.Find(Txt_SearchValue.Text)
-        End Select
-
-        If Intcolumn = -1 Then
-            MsgBox("لا توجد نتائج للبحث", MsgBoxStyle.Information, "Error")
-        Else
-            cur.Position = Intcolumn
-        End If
+        'dv = dt.DefaultView
+        'If Cbo_SortAndSearch.Text = "PatientName" Then
+        '    dv.RowFilter = "PatientName like '" & Txt_SearchValue.Text & "%'"
+        'ElseIf Cbo_SortAndSearch.Text = "PhoneNumber" Then
+        '    dv.RowFilter = "PhoneNumber = '" & Txt_SearchValue.Text & "'"
+        'End If
     End Sub
 
     Private Sub Cbo_SortAndSearch_TextChanged(sender As Object, e As EventArgs) Handles Cbo_SortAndSearch.TextChanged
@@ -241,8 +218,42 @@ Public Class Frm_Reservation
                 Btn_SaveNewPatient.PerformClick()
             Case Keys.Delete
                 Btn_DeletePatient.PerformClick()
-
         End Select
     End Sub
 
+    Private Sub Txt_SearchValue_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_SearchValue.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            dv = dt.DefaultView
+            If Cbo_SortAndSearch.Text = "PatientName" Then
+                dv.RowFilter = "PatientName like '" & Txt_SearchValue.Text & "%'"
+            ElseIf Cbo_SortAndSearch.Text = "PhoneNumber" Then
+                dv.RowFilter = "PhoneNumber = '" & Txt_SearchValue.Text & "'"
+            End If
+        End If
+    End Sub
+
+    Private Sub Dgv_Search_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles Dgv_Search.CellPainting
+
+        If e.ColumnIndex = 0 AndAlso e.RowIndex >= 0 Then
+            e.Paint(e.CellBounds, DataGridViewPaintParts.All)
+            Dim img As Image = My.Resources.Open_16_16
+            e.Graphics.DrawImage(img, e.CellBounds.Left + 40, e.CellBounds.Top + 7, 10, 10)
+
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub Dgv_Search_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Search.CellContentClick
+
+        'استثناء الظغطات البعيدة عن الازرار
+        If e.RowIndex < 0 Then Return
+        Dim PatientNum As String = Dgv_Search.Rows(e.RowIndex).Cells(1).Value
+        Dim patientName As String = Dgv_Search.Rows(e.RowIndex).Cells(2).Value
+
+        If e.ColumnIndex = Dgv_Search.Columns(0).Index Then
+            Txt_PatientName.Text = patientName
+            Txt_Num.Text = PatientNum
+        End If
+
+    End Sub
 End Class

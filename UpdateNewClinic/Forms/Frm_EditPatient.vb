@@ -10,7 +10,7 @@ Public Class Frm_EditPatients
     Dim CurName As String
     Dim currow As Integer
 
-    Sub dgvColumnWidth()
+    Sub DgvColumnWidth()
         Try
             Dgv_EditPatient.Columns("PatientNum").Width = 100
             Dgv_EditPatient.Columns("PatientName").Width = 330
@@ -19,7 +19,7 @@ Public Class Frm_EditPatients
             Dgv_EditPatient.Columns("Occupation").Width = 250
             Dgv_EditPatient.Columns("PhoneNumber").Width = 140
             Dgv_EditPatient.Columns("FirstDate").Width = 130
-            Dgv_EditPatient.Columns("Height").Width = 85
+            Dgv_EditPatient.Columns("Height").Width = 90
             Dgv_EditPatient.Columns("StartWeight").Width = 100
             Dgv_EditPatient.Columns(8).DefaultCellStyle.Format = "dd/MM/yyyy"
         Catch ex As Exception
@@ -310,17 +310,6 @@ Public Class Frm_EditPatients
         End If
     End Sub
 
-    Private Sub Btn_ShowAllPatients_Enter(sender As Object, e As EventArgs) Handles Btn_ShowAllPatients.Enter
-        Try
-            FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
-            If Dgv_EditPatient.Rows.Count - 1 > 0 Then
-                Dgv_EditPatient.CurrentCell = Dgv_EditPatient.Rows(Dgv_EditPatient.Rows.Count - 1).Cells(1)
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
-        End Try
-    End Sub
-
     Private Sub Btn_DelPatient_Click(sender As Object, e As EventArgs) Handles Btn_DelPatient.Click
 
         Try
@@ -419,7 +408,7 @@ Public Class Frm_EditPatients
                 With cmd.Parameters
                     .AddWithValue("@PatientNum", row.Cells("PatientNum").Value).DbType = DbType.Int32
                     .AddWithValue("@PatientName", row.Cells("PatientName").Value).DbType = DbType.String
-                    .AddWithValue("@Code", row.Cells("Code").Value).DbType = DbType.Int16
+                    .AddWithValue("@Code", row.Cells("Code").Value).DbType = DbType.String
                     .AddWithValue("@Age", row.Cells("Age").Value).DbType = DbType.String
                     .AddWithValue("@Occupation", row.Cells("Occupation").Value).DbType = DbType.String
                     If Not String.IsNullOrWhiteSpace(row.Cells("PhoneNumber").Value) Then
@@ -428,8 +417,8 @@ Public Class Frm_EditPatients
                         .AddWithValue("@PhoneNumber", DBNull.Value)
                     End If
                     .AddWithValue("@FirstDate", row.Cells("FirstDate").Value).DbType = DbType.Date
-                    .AddWithValue("@Height", row.Cells("Height").Value).DbType = DbType.Int16
-                    .AddWithValue("@StartWeight", row.Cells("StartWeight").Value).DbType = DbType.Int32
+                    .AddWithValue("@Height", row.Cells("Height").Value).DbType = DbType.String
+                    .AddWithValue("@StartWeight", row.Cells("StartWeight").Value).DbType = DbType.String
                 End With
 
                 con.Open()
@@ -450,10 +439,7 @@ Public Class Frm_EditPatients
             End If
 
         Catch ex As Exception
-            'لتجنب الخطأ عند الظغط على اخر خلية
-            If Err.Number = 5 Then
-            Else
-                MsgBox(ex.Message, MsgBoxStyle.Information)
+            If ex.Message = "Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function." Then
             End If
         Finally
             If con.State = 1 Then con.Close()
@@ -472,6 +458,17 @@ Public Class Frm_EditPatients
             Btn_AddNewPatient.Enabled = False
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information)
+        End Try
+    End Sub
+
+    Private Sub Btn_ShowAllPatients_Click(sender As Object, e As EventArgs) Handles Btn_ShowAllPatients.Click
+        Try
+            FillDataGRidview("Select * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
+            If Dgv_EditPatient.Rows.Count - 1 > 0 Then
+                Dgv_EditPatient.CurrentCell = Dgv_EditPatient.Rows(Dgv_EditPatient.Rows.Count - 1).Cells(1)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
         End Try
     End Sub
 End Class

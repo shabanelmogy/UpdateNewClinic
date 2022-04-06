@@ -22,9 +22,9 @@ Partial Class Frm_PatientVisit
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Dgv_VisitDetail = New System.Windows.Forms.DataGridView()
         Me.VisitDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -111,33 +111,33 @@ Partial Class Frm_PatientVisit
         Me.Dgv_VisitDetail.AllowUserToDeleteRows = False
         Me.Dgv_VisitDetail.AllowUserToResizeColumns = False
         Me.Dgv_VisitDetail.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue
-        Me.Dgv_VisitDetail.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.AliceBlue
+        Me.Dgv_VisitDetail.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
         Me.Dgv_VisitDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Dgv_VisitDetail.BackgroundColor = System.Drawing.Color.White
+        Me.Dgv_VisitDetail.BackgroundColor = System.Drawing.SystemColors.Control
         Me.Dgv_VisitDetail.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_VisitDetail.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_VisitDetail.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
         Me.Dgv_VisitDetail.ColumnHeadersHeight = 30
         Me.Dgv_VisitDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.Dgv_VisitDetail.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VisitDate, Me.VisitType, Me.VisitCost, Me.NewWeight, Me.NewWaist, Me.PlanOfTreatment, Me.EatingHabits, Me.Notes})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.NullValue = Nothing
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Snow
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Dgv_VisitDetail.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle15.NullValue = Nothing
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Snow
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_VisitDetail.DefaultCellStyle = DataGridViewCellStyle15
         Me.Dgv_VisitDetail.EnableHeadersVisualStyles = False
         Me.Dgv_VisitDetail.GridColor = System.Drawing.Color.Gainsboro
         Me.Dgv_VisitDetail.Location = New System.Drawing.Point(0, 0)
@@ -212,7 +212,7 @@ Partial Class Frm_PatientVisit
         '
         Me.Txt_PatientName.BackColor = System.Drawing.Color.White
         Me.Txt_PatientName.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_PatientName.Location = New System.Drawing.Point(110, 52)
+        Me.Txt_PatientName.Location = New System.Drawing.Point(106, 53)
         Me.Txt_PatientName.Name = "Txt_PatientName"
         Me.Txt_PatientName.ReadOnly = True
         Me.Txt_PatientName.Size = New System.Drawing.Size(507, 24)
@@ -245,7 +245,7 @@ Partial Class Frm_PatientVisit
         'Txt_PatientNum
         '
         Me.Txt_PatientNum.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_PatientNum.Location = New System.Drawing.Point(110, 8)
+        Me.Txt_PatientNum.Location = New System.Drawing.Point(107, 8)
         Me.Txt_PatientNum.Name = "Txt_PatientNum"
         Me.Txt_PatientNum.Size = New System.Drawing.Size(64, 24)
         Me.Txt_PatientNum.TabIndex = 26
@@ -266,7 +266,7 @@ Partial Class Frm_PatientVisit
         '
         Me.Txt_Phone1.BackColor = System.Drawing.Color.White
         Me.Txt_Phone1.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_Phone1.Location = New System.Drawing.Point(421, 142)
+        Me.Txt_Phone1.Location = New System.Drawing.Point(417, 142)
         Me.Txt_Phone1.Name = "Txt_Phone1"
         Me.Txt_Phone1.ReadOnly = True
         Me.Txt_Phone1.Size = New System.Drawing.Size(196, 24)
@@ -288,7 +288,7 @@ Partial Class Frm_PatientVisit
         '
         Me.Txt_StartWeight.BackColor = System.Drawing.Color.White
         Me.Txt_StartWeight.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_StartWeight.Location = New System.Drawing.Point(421, 187)
+        Me.Txt_StartWeight.Location = New System.Drawing.Point(417, 187)
         Me.Txt_StartWeight.Name = "Txt_StartWeight"
         Me.Txt_StartWeight.ReadOnly = True
         Me.Txt_StartWeight.Size = New System.Drawing.Size(196, 24)
@@ -310,7 +310,7 @@ Partial Class Frm_PatientVisit
         '
         Me.Txt_Height.BackColor = System.Drawing.Color.White
         Me.Txt_Height.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_Height.Location = New System.Drawing.Point(110, 188)
+        Me.Txt_Height.Location = New System.Drawing.Point(107, 188)
         Me.Txt_Height.Name = "Txt_Height"
         Me.Txt_Height.ReadOnly = True
         Me.Txt_Height.Size = New System.Drawing.Size(196, 24)
@@ -321,7 +321,7 @@ Partial Class Frm_PatientVisit
         Me.Txt_FirstVisit.AcceptsTab = True
         Me.Txt_FirstVisit.BackColor = System.Drawing.Color.White
         Me.Txt_FirstVisit.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_FirstVisit.Location = New System.Drawing.Point(421, 7)
+        Me.Txt_FirstVisit.Location = New System.Drawing.Point(417, 7)
         Me.Txt_FirstVisit.Name = "Txt_FirstVisit"
         Me.Txt_FirstVisit.ReadOnly = True
         Me.Txt_FirstVisit.Size = New System.Drawing.Size(196, 24)
@@ -355,7 +355,7 @@ Partial Class Frm_PatientVisit
         '
         Me.Txt_Occupation.BackColor = System.Drawing.Color.White
         Me.Txt_Occupation.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_Occupation.Location = New System.Drawing.Point(110, 143)
+        Me.Txt_Occupation.Location = New System.Drawing.Point(107, 143)
         Me.Txt_Occupation.Name = "Txt_Occupation"
         Me.Txt_Occupation.ReadOnly = True
         Me.Txt_Occupation.Size = New System.Drawing.Size(197, 24)
@@ -365,7 +365,7 @@ Partial Class Frm_PatientVisit
         '
         Me.Txt_Age.BackColor = System.Drawing.Color.White
         Me.Txt_Age.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_Age.Location = New System.Drawing.Point(421, 97)
+        Me.Txt_Age.Location = New System.Drawing.Point(417, 97)
         Me.Txt_Age.Name = "Txt_Age"
         Me.Txt_Age.ReadOnly = True
         Me.Txt_Age.Size = New System.Drawing.Size(196, 24)
@@ -375,7 +375,7 @@ Partial Class Frm_PatientVisit
         '
         Me.Txt_Code.BackColor = System.Drawing.Color.White
         Me.Txt_Code.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_Code.Location = New System.Drawing.Point(110, 98)
+        Me.Txt_Code.Location = New System.Drawing.Point(107, 98)
         Me.Txt_Code.Name = "Txt_Code"
         Me.Txt_Code.ReadOnly = True
         Me.Txt_Code.Size = New System.Drawing.Size(196, 24)
@@ -483,7 +483,7 @@ Partial Class Frm_PatientVisit
         Me.Cbo_VisitType.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Cbo_VisitType.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.Cbo_VisitType.FormattingEnabled = True
-        Me.Cbo_VisitType.Location = New System.Drawing.Point(532, 9)
+        Me.Cbo_VisitType.Location = New System.Drawing.Point(526, 9)
         Me.Cbo_VisitType.Name = "Cbo_VisitType"
         Me.Cbo_VisitType.Size = New System.Drawing.Size(136, 24)
         Me.Cbo_VisitType.TabIndex = 52
@@ -492,7 +492,7 @@ Partial Class Frm_PatientVisit
         '
         Me.Pnl_VisitDetails.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Pnl_VisitDetails.BackColor = System.Drawing.Color.White
+        Me.Pnl_VisitDetails.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.Pnl_VisitDetails.Controls.Add(Me.Dtp_VisitDate)
         Me.Pnl_VisitDetails.Controls.Add(Me.Txt_Notes)
         Me.Pnl_VisitDetails.Controls.Add(Me.Txt_EatingHabits)
@@ -518,7 +518,7 @@ Partial Class Frm_PatientVisit
         '
         Me.Dtp_VisitDate.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.Dtp_VisitDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.Dtp_VisitDate.Location = New System.Drawing.Point(139, 11)
+        Me.Dtp_VisitDate.Location = New System.Drawing.Point(135, 11)
         Me.Dtp_VisitDate.Name = "Dtp_VisitDate"
         Me.Dtp_VisitDate.Size = New System.Drawing.Size(116, 24)
         Me.Dtp_VisitDate.TabIndex = 58
@@ -529,7 +529,7 @@ Partial Class Frm_PatientVisit
         Me.Txt_Notes.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Txt_Notes.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_Notes.Location = New System.Drawing.Point(139, 159)
+        Me.Txt_Notes.Location = New System.Drawing.Point(135, 159)
         Me.Txt_Notes.Multiline = True
         Me.Txt_Notes.Name = "Txt_Notes"
         Me.Txt_Notes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -541,7 +541,7 @@ Partial Class Frm_PatientVisit
         Me.Txt_EatingHabits.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Txt_EatingHabits.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_EatingHabits.Location = New System.Drawing.Point(139, 119)
+        Me.Txt_EatingHabits.Location = New System.Drawing.Point(135, 119)
         Me.Txt_EatingHabits.Name = "Txt_EatingHabits"
         Me.Txt_EatingHabits.Size = New System.Drawing.Size(529, 24)
         Me.Txt_EatingHabits.TabIndex = 56
@@ -551,7 +551,7 @@ Partial Class Frm_PatientVisit
         Me.Txt_PlanOfTreatment.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Txt_PlanOfTreatment.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_PlanOfTreatment.Location = New System.Drawing.Point(139, 81)
+        Me.Txt_PlanOfTreatment.Location = New System.Drawing.Point(135, 81)
         Me.Txt_PlanOfTreatment.Name = "Txt_PlanOfTreatment"
         Me.Txt_PlanOfTreatment.Size = New System.Drawing.Size(529, 24)
         Me.Txt_PlanOfTreatment.TabIndex = 55
@@ -559,7 +559,7 @@ Partial Class Frm_PatientVisit
         'Txt_NewWeight
         '
         Me.Txt_NewWeight.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_NewWeight.Location = New System.Drawing.Point(139, 46)
+        Me.Txt_NewWeight.Location = New System.Drawing.Point(135, 46)
         Me.Txt_NewWeight.MaxLength = 3
         Me.Txt_NewWeight.Name = "Txt_NewWeight"
         Me.Txt_NewWeight.Size = New System.Drawing.Size(116, 24)
@@ -571,7 +571,7 @@ Partial Class Frm_PatientVisit
         Me.Txt_VisitCost.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Txt_VisitCost.BackColor = System.Drawing.Color.White
         Me.Txt_VisitCost.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_VisitCost.Location = New System.Drawing.Point(532, 46)
+        Me.Txt_VisitCost.Location = New System.Drawing.Point(526, 46)
         Me.Txt_VisitCost.Name = "Txt_VisitCost"
         Me.Txt_VisitCost.ReadOnly = True
         Me.Txt_VisitCost.Size = New System.Drawing.Size(136, 24)
@@ -594,7 +594,7 @@ Partial Class Frm_PatientVisit
         'Txt_NewWaist
         '
         Me.Txt_NewWaist.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_NewWaist.Location = New System.Drawing.Point(352, 46)
+        Me.Txt_NewWaist.Location = New System.Drawing.Point(346, 46)
         Me.Txt_NewWaist.MaxLength = 3
         Me.Txt_NewWaist.Name = "Txt_NewWaist"
         Me.Txt_NewWaist.Size = New System.Drawing.Size(90, 24)
@@ -643,7 +643,7 @@ Partial Class Frm_PatientVisit
         '
         'Pnl_PatientDetail
         '
-        Me.Pnl_PatientDetail.BackColor = System.Drawing.Color.White
+        Me.Pnl_PatientDetail.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.Pnl_PatientDetail.Controls.Add(Me.Lbl_Phone1)
         Me.Pnl_PatientDetail.Controls.Add(Me.Label4)
         Me.Pnl_PatientDetail.Controls.Add(Me.Txt_Phone1)
