@@ -48,6 +48,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
@@ -144,6 +147,7 @@
     <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -167,6 +171,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="ClinicDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -222,6 +227,12 @@
       <DependentUpon>Home.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Home.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegisterForm.designer.vb">
+      <DependentUpon>RegisterForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegisterForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modules\Main_Mod.vb" />
@@ -282,6 +293,9 @@
     <EmbeddedResource Include="Forms\Home.resx">
       <DependentUpon>Home.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegisterForm.resx">
+      <DependentUpon>RegisterForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -335,6 +349,9 @@
     </None>
     <None Include="DataSets\DataSet2.xss">
       <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\app.manifest">
+      <SubType>Designer</SubType>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

@@ -4,8 +4,34 @@ Imports System.Data.SqlClient
 Imports DevExpress.XtraTab
 Imports DevExpress.XtraTab.ViewInfo
 Imports System.Runtime.InteropServices
+Imports Microsoft.Win32
 
 Public Class Home
+
+    Private Sub Home_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Dim x As String
+        x = Check_Key()
+
+        If x = String.Empty Then
+            MsgBox("Need Active")
+            Me.Close()
+            RegisterForm.Show()
+        Else
+            MsgBox("مرحبا بك")
+        End If
+    End Sub
+
+    Public Function Check_Key() As String
+        Try
+            Dim checkkey As RegistryKey
+            Dim Ch_Key As String
+            checkkey = Registry.LocalMachine.OpenSubKey("SOFTWARE\Sys", True)
+            Ch_Key = checkkey.GetValue("System_Key")
+            Return Ch_Key
+        Catch ex As Exception
+            Return ""
+        End Try
+    End Function
 
     <DllImport("user32.DLL", EntryPoint:="ReleaseCapture")>
     Private Shared Sub ReleaseCapture()
@@ -101,7 +127,6 @@ Public Class Home
 
     Private Sub Btn_RestoreForm_Click(sender As Object, e As EventArgs) Handles Btn_RestoreForm.Click
         Me.WindowState = FormWindowState.Normal
-
         Btn_RestoreForm.Visible = False
         Btn_Maximize.Visible = True
     End Sub
@@ -109,4 +134,5 @@ Public Class Home
     Private Sub btnMinimizar_Click(sender As Object, e As EventArgs) Handles btnMinimizar.Click
         Me.WindowState = FormWindowState.Minimized
     End Sub
+
 End Class
