@@ -50,6 +50,20 @@ Public Class Frm_EditPatients
 
     Private Sub Dgv_EditPatient_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_EditPatient.CellEndEdit
         Try
+
+            If e.ColumnIndex = 1 Then
+                Cmd = New SqlCommand("Select PatientName From PatientsDetail Where PatientName=@PatientName", con)
+                Cmd.Parameters.AddWithValue("@PatientName", Dgv_EditPatient.CurrentRow.Cells(1).Value).Value.ToString()
+                Dim da As New SqlDataAdapter(Cmd)
+                Dim dt As New DataTable
+                da.Fill(dt)
+                If dt.Rows.Count > 0 Then
+                    MsgBox("إسم المريض مكرر")
+                    SendKeys.Send("{Left}")
+                    RemoveHandler Dgv_EditPatient.KeyDown, AddressOf Dgv_EditPatient_KeyDown
+                End If
+            End If
+
             SendKeys.Send("{right}")
             Me.Dgv_EditPatient.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect
             Me.Dgv_EditPatient.DefaultCellStyle.SelectionBackColor = Color.LightPink
@@ -422,6 +436,7 @@ Public Class Frm_EditPatients
                     Dgv_EditPatient.BeginEdit(False)
                     Exit Sub
                 End If
+                '==============================لاختبار اذا كان رقم المريض مكرر ==============================================
 
                 Cmd = New SqlCommand("Select PatientNum From PatientsDetail Where PatientNum=@PatientNum", con)
                 Cmd.Parameters.AddWithValue("@PatientNum", row.Cells("PatientNum").Value).DbType = DbType.Int32
@@ -530,5 +545,23 @@ Public Class Frm_EditPatients
         If (Char.IsControl(e.KeyChar) = False And Char.IsDigit(e.KeyChar) = False) Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub Dgv_EditPatient_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_EditPatient.CellLeave
+    End Sub
+
+    Private Sub Dgv_EditPatient_RowValidating(sender As Object, e As DataGridViewCellCancelEventArgs) Handles Dgv_EditPatient.RowValidating
+
+        If e.ColumnIndex = 1 Then
+            Cmd = New SqlCommand("Select PatientName From PatientsDetail Where PatientName=@PatientName", con)
+            Cmd.Parameters.AddWithValue("@PatientName", Dgv_EditPatient.CurrentRow.Cells(1).Value).Value.ToString()
+            Dim da As New SqlDataAdapter(Cmd)
+            Dim dt As New DataTable
+            da.Fill(dt)
+            If dt.Rows.Count > 0 Then
+                e.Cancel = False
+            End If
+        End If
+
     End Sub
 End Class

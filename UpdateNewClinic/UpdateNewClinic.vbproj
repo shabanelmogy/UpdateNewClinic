@@ -731,6 +731,10 @@
     <None Include="Resources\ShowReport.png" />
     <None Include="Resources\ShowReport2.png" />
     <None Include="Resources\Refresh1.png" />
+    <None Include="Resources\ExitMain.png" />
+    <None Include="Resources\Icono Maximizar.png" />
+    <None Include="Resources\Icono Restaurar.png" />
+    <None Include="Resources\Icono Minimizar.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

@@ -169,7 +169,7 @@ Partial Class Frm_EditPatients
         Me.Txt_SearchNum.Location = New System.Drawing.Point(536, 9)
         Me.Txt_SearchNum.Name = "Txt_SearchNum"
         Me.Txt_SearchNum.Size = New System.Drawing.Size(177, 24)
-        Me.Txt_SearchNum.TabIndex = 1
+        Me.Txt_SearchNum.TabIndex = 2
         '
         'Label1
         '
@@ -201,7 +201,7 @@ Partial Class Frm_EditPatients
         Me.Txt_SearchName.Location = New System.Drawing.Point(147, 9)
         Me.Txt_SearchName.Name = "Txt_SearchName"
         Me.Txt_SearchName.Size = New System.Drawing.Size(216, 24)
-        Me.Txt_SearchName.TabIndex = 3
+        Me.Txt_SearchName.TabIndex = 0
         '
         'Label3
         '
@@ -233,7 +233,7 @@ Partial Class Frm_EditPatients
         Me.Txt_Telephone.Location = New System.Drawing.Point(147, 45)
         Me.Txt_Telephone.Name = "Txt_Telephone"
         Me.Txt_Telephone.Size = New System.Drawing.Size(216, 24)
-        Me.Txt_Telephone.TabIndex = 5
+        Me.Txt_Telephone.TabIndex = 1
         '
         'Panel1
         '
@@ -258,7 +258,7 @@ Partial Class Frm_EditPatients
         Me.Panel2.Location = New System.Drawing.Point(0, 558)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1103, 59)
-        Me.Panel2.TabIndex = 22
+        Me.Panel2.TabIndex = 5
         '
         'Btn_ShowAllPatients
         '
@@ -274,7 +274,7 @@ Partial Class Frm_EditPatients
         Me.Btn_ShowAllPatients.Location = New System.Drawing.Point(3, 10)
         Me.Btn_ShowAllPatients.Name = "Btn_ShowAllPatients"
         Me.Btn_ShowAllPatients.Size = New System.Drawing.Size(154, 39)
-        Me.Btn_ShowAllPatients.TabIndex = 18
+        Me.Btn_ShowAllPatients.TabIndex = 0
         Me.Btn_ShowAllPatients.Text = "Show All       F2"
         Me.Btn_ShowAllPatients.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_ShowAllPatients.UseVisualStyleBackColor = False
@@ -293,7 +293,7 @@ Partial Class Frm_EditPatients
         Me.Btn_AddNewPatient.Location = New System.Drawing.Point(264, 10)
         Me.Btn_AddNewPatient.Name = "Btn_AddNewPatient"
         Me.Btn_AddNewPatient.Size = New System.Drawing.Size(126, 39)
-        Me.Btn_AddNewPatient.TabIndex = 14
+        Me.Btn_AddNewPatient.TabIndex = 1
         Me.Btn_AddNewPatient.Text = "New       F3"
         Me.Btn_AddNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_AddNewPatient.UseVisualStyleBackColor = False
@@ -312,7 +312,7 @@ Partial Class Frm_EditPatients
         Me.Btn_ExportExcel.Location = New System.Drawing.Point(728, 10)
         Me.Btn_ExportExcel.Name = "Btn_ExportExcel"
         Me.Btn_ExportExcel.Size = New System.Drawing.Size(126, 39)
-        Me.Btn_ExportExcel.TabIndex = 20
+        Me.Btn_ExportExcel.TabIndex = 4
         Me.Btn_ExportExcel.Text = "Export Excel"
         Me.Btn_ExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_ExportExcel.UseVisualStyleBackColor = False
@@ -331,7 +331,7 @@ Partial Class Frm_EditPatients
         Me.Btn_SavePatient.Location = New System.Drawing.Point(365, 10)
         Me.Btn_SavePatient.Name = "Btn_SavePatient"
         Me.Btn_SavePatient.Size = New System.Drawing.Size(126, 39)
-        Me.Btn_SavePatient.TabIndex = 14
+        Me.Btn_SavePatient.TabIndex = 2
         Me.Btn_SavePatient.Text = "Save        F4"
         Me.Btn_SavePatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_SavePatient.UseVisualStyleBackColor = False
@@ -350,7 +350,7 @@ Partial Class Frm_EditPatients
         Me.Btn_DelPatient.Location = New System.Drawing.Point(637, 10)
         Me.Btn_DelPatient.Name = "Btn_DelPatient"
         Me.Btn_DelPatient.Size = New System.Drawing.Size(126, 39)
-        Me.Btn_DelPatient.TabIndex = 15
+        Me.Btn_DelPatient.TabIndex = 3
         Me.Btn_DelPatient.Text = "Delete "
         Me.Btn_DelPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_DelPatient.UseVisualStyleBackColor = False
@@ -369,7 +369,7 @@ Partial Class Frm_EditPatients
         Me.Btn_Exit.Location = New System.Drawing.Point(970, 10)
         Me.Btn_Exit.Name = "Btn_Exit"
         Me.Btn_Exit.Size = New System.Drawing.Size(122, 39)
-        Me.Btn_Exit.TabIndex = 16
+        Me.Btn_Exit.TabIndex = 5
         Me.Btn_Exit.Text = "Exit"
         Me.Btn_Exit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_Exit.UseVisualStyleBackColor = False
@@ -381,7 +381,7 @@ Partial Class Frm_EditPatients
         Me.Dtp_SearchVisit.Location = New System.Drawing.Point(536, 45)
         Me.Dtp_SearchVisit.Name = "Dtp_SearchVisit"
         Me.Dtp_SearchVisit.Size = New System.Drawing.Size(177, 24)
-        Me.Dtp_SearchVisit.TabIndex = 23
+        Me.Dtp_SearchVisit.TabIndex = 3
         Me.Dtp_SearchVisit.Value = New Date(2001, 1, 1, 0, 0, 0, 0)
         '
         'Btn_Reset
@@ -397,7 +397,7 @@ Partial Class Frm_EditPatients
         Me.Btn_Reset.Location = New System.Drawing.Point(729, 9)
         Me.Btn_Reset.Name = "Btn_Reset"
         Me.Btn_Reset.Size = New System.Drawing.Size(108, 60)
-        Me.Btn_Reset.TabIndex = 17
+        Me.Btn_Reset.TabIndex = 4
         Me.Btn_Reset.Text = "Undo"
         Me.Btn_Reset.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_Reset.UseVisualStyleBackColor = False

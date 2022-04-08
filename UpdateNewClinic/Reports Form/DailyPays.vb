@@ -3,7 +3,6 @@ Imports Microsoft.Reporting.WinForms
 
 Public Class Btn_ShowReport
 
-    Dim Con As New SqlConnection("Server=.;DataBase=Clinic;Integrated Security=True")
     Dim SQL As String = ""
     Dim ParaDateFrom As New ReportParameter
     Dim ParaDateTo As New ReportParameter

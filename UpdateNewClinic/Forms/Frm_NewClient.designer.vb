@@ -43,8 +43,6 @@ Partial Class Frm_NewClient
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Txt_Occupation = New System.Windows.Forms.TextBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Btn_DeletePatient = New System.Windows.Forms.Button()
-        Me.Btn_EditPatient = New System.Windows.Forms.Button()
         Me.Btn_ExitNewPatient = New System.Windows.Forms.Button()
         Me.Btn_SaveNewPatient = New System.Windows.Forms.Button()
         Me.Btn_AddNewPatient = New System.Windows.Forms.Button()
@@ -111,9 +109,9 @@ Partial Class Frm_NewClient
         Me.Label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label6.Location = New System.Drawing.Point(287, 9)
+        Me.Label6.Location = New System.Drawing.Point(274, 9)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(104, 28)
+        Me.Label6.Size = New System.Drawing.Size(107, 28)
         Me.Label6.TabIndex = 4
         Me.Label6.Text = "Phone"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -124,9 +122,9 @@ Partial Class Frm_NewClient
         Me.Label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label7.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label7.Location = New System.Drawing.Point(287, 147)
+        Me.Label7.Location = New System.Drawing.Point(274, 147)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(104, 28)
+        Me.Label7.Size = New System.Drawing.Size(107, 28)
         Me.Label7.TabIndex = 4
         Me.Label7.Text = "TheFirstDate"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -147,7 +145,7 @@ Partial Class Frm_NewClient
         'Txt_PatientName
         '
         Me.Txt_PatientName.Font = New System.Drawing.Font("Tahoma", 13.0!)
-        Me.Txt_PatientName.Location = New System.Drawing.Point(118, 55)
+        Me.Txt_PatientName.Location = New System.Drawing.Point(117, 55)
         Me.Txt_PatientName.Name = "Txt_PatientName"
         Me.Txt_PatientName.Size = New System.Drawing.Size(411, 28)
         Me.Txt_PatientName.TabIndex = 3
@@ -165,10 +163,10 @@ Partial Class Frm_NewClient
         'Txt_PhoneNumber
         '
         Me.Txt_PhoneNumber.Font = New System.Drawing.Font("Tahoma", 13.0!)
-        Me.Txt_PhoneNumber.Location = New System.Drawing.Point(391, 9)
+        Me.Txt_PhoneNumber.Location = New System.Drawing.Point(378, 9)
         Me.Txt_PhoneNumber.MaxLength = 11
         Me.Txt_PhoneNumber.Name = "Txt_PhoneNumber"
-        Me.Txt_PhoneNumber.Size = New System.Drawing.Size(138, 28)
+        Me.Txt_PhoneNumber.Size = New System.Drawing.Size(150, 28)
         Me.Txt_PhoneNumber.TabIndex = 2
         Me.Txt_PhoneNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -194,9 +192,9 @@ Partial Class Frm_NewClient
         'Txt_StartWeight
         '
         Me.Txt_StartWeight.Font = New System.Drawing.Font("Tahoma", 13.0!)
-        Me.Txt_StartWeight.Location = New System.Drawing.Point(391, 193)
+        Me.Txt_StartWeight.Location = New System.Drawing.Point(378, 193)
         Me.Txt_StartWeight.Name = "Txt_StartWeight"
-        Me.Txt_StartWeight.Size = New System.Drawing.Size(138, 28)
+        Me.Txt_StartWeight.Size = New System.Drawing.Size(150, 28)
         Me.Txt_StartWeight.TabIndex = 9
         Me.Txt_StartWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -206,9 +204,9 @@ Partial Class Frm_NewClient
         Me.Label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label9.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label9.Location = New System.Drawing.Point(287, 193)
+        Me.Label9.Location = New System.Drawing.Point(274, 193)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(104, 28)
+        Me.Label9.Size = New System.Drawing.Size(107, 28)
         Me.Label9.TabIndex = 14
         Me.Label9.Text = "StartWeight"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -241,9 +239,9 @@ Partial Class Frm_NewClient
         Me.Dtp_PatientFirstDate.CustomFormat = "dd/MM/yyyy"
         Me.Dtp_PatientFirstDate.Font = New System.Drawing.Font("Tahoma", 13.0!)
         Me.Dtp_PatientFirstDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.Dtp_PatientFirstDate.Location = New System.Drawing.Point(391, 147)
+        Me.Dtp_PatientFirstDate.Location = New System.Drawing.Point(378, 147)
         Me.Dtp_PatientFirstDate.Name = "Dtp_PatientFirstDate"
-        Me.Dtp_PatientFirstDate.Size = New System.Drawing.Size(138, 28)
+        Me.Dtp_PatientFirstDate.Size = New System.Drawing.Size(150, 28)
         Me.Dtp_PatientFirstDate.TabIndex = 7
         Me.Dtp_PatientFirstDate.Value = New Date(2022, 4, 7, 0, 0, 0, 0)
         '
@@ -253,9 +251,9 @@ Partial Class Frm_NewClient
         Me.Label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label14.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label14.Location = New System.Drawing.Point(287, 101)
+        Me.Label14.Location = New System.Drawing.Point(274, 101)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(104, 28)
+        Me.Label14.Size = New System.Drawing.Size(107, 28)
         Me.Label14.TabIndex = 4
         Me.Label14.Text = "Occupation"
         Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -263,17 +261,15 @@ Partial Class Frm_NewClient
         'Txt_Occupation
         '
         Me.Txt_Occupation.Font = New System.Drawing.Font("Tahoma", 13.0!)
-        Me.Txt_Occupation.Location = New System.Drawing.Point(391, 101)
+        Me.Txt_Occupation.Location = New System.Drawing.Point(378, 101)
         Me.Txt_Occupation.Name = "Txt_Occupation"
-        Me.Txt_Occupation.Size = New System.Drawing.Size(138, 28)
+        Me.Txt_Occupation.Size = New System.Drawing.Size(150, 28)
         Me.Txt_Occupation.TabIndex = 5
         Me.Txt_Occupation.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.Panel3.Controls.Add(Me.Btn_DeletePatient)
-        Me.Panel3.Controls.Add(Me.Btn_EditPatient)
         Me.Panel3.Controls.Add(Me.Btn_ExitNewPatient)
         Me.Panel3.Controls.Add(Me.Btn_SaveNewPatient)
         Me.Panel3.Controls.Add(Me.Btn_AddNewPatient)
@@ -281,42 +277,6 @@ Partial Class Frm_NewClient
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(536, 66)
         Me.Panel3.TabIndex = 26
-        '
-        'Btn_DeletePatient
-        '
-        Me.Btn_DeletePatient.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_DeletePatient.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_DeletePatient.FlatAppearance.BorderSize = 0
-        Me.Btn_DeletePatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_DeletePatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_DeletePatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_DeletePatient.ForeColor = System.Drawing.Color.White
-        Me.Btn_DeletePatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Delete_24x24
-        Me.Btn_DeletePatient.Location = New System.Drawing.Point(327, 16)
-        Me.Btn_DeletePatient.Name = "Btn_DeletePatient"
-        Me.Btn_DeletePatient.Size = New System.Drawing.Size(95, 35)
-        Me.Btn_DeletePatient.TabIndex = 15
-        Me.Btn_DeletePatient.Text = "Delete"
-        Me.Btn_DeletePatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.Btn_DeletePatient.UseVisualStyleBackColor = False
-        '
-        'Btn_EditPatient
-        '
-        Me.Btn_EditPatient.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_EditPatient.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_EditPatient.FlatAppearance.BorderSize = 0
-        Me.Btn_EditPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_EditPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_EditPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_EditPatient.ForeColor = System.Drawing.Color.White
-        Me.Btn_EditPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.edit
-        Me.Btn_EditPatient.Location = New System.Drawing.Point(220, 16)
-        Me.Btn_EditPatient.Name = "Btn_EditPatient"
-        Me.Btn_EditPatient.Size = New System.Drawing.Size(95, 35)
-        Me.Btn_EditPatient.TabIndex = 14
-        Me.Btn_EditPatient.Text = "Edit"
-        Me.Btn_EditPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.Btn_EditPatient.UseVisualStyleBackColor = False
         '
         'Btn_ExitNewPatient
         '
@@ -328,9 +288,9 @@ Partial Class Frm_NewClient
         Me.Btn_ExitNewPatient.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_ExitNewPatient.ForeColor = System.Drawing.Color.White
         Me.Btn_ExitNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources._Exit
-        Me.Btn_ExitNewPatient.Location = New System.Drawing.Point(434, 16)
+        Me.Btn_ExitNewPatient.Location = New System.Drawing.Point(395, 16)
         Me.Btn_ExitNewPatient.Name = "Btn_ExitNewPatient"
-        Me.Btn_ExitNewPatient.Size = New System.Drawing.Size(90, 35)
+        Me.Btn_ExitNewPatient.Size = New System.Drawing.Size(132, 35)
         Me.Btn_ExitNewPatient.TabIndex = 13
         Me.Btn_ExitNewPatient.Text = "Exit"
         Me.Btn_ExitNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
@@ -346,9 +306,9 @@ Partial Class Frm_NewClient
         Me.Btn_SaveNewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_SaveNewPatient.ForeColor = System.Drawing.Color.White
         Me.Btn_SaveNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Save
-        Me.Btn_SaveNewPatient.Location = New System.Drawing.Point(113, 16)
+        Me.Btn_SaveNewPatient.Location = New System.Drawing.Point(203, 16)
         Me.Btn_SaveNewPatient.Name = "Btn_SaveNewPatient"
-        Me.Btn_SaveNewPatient.Size = New System.Drawing.Size(95, 35)
+        Me.Btn_SaveNewPatient.Size = New System.Drawing.Size(132, 35)
         Me.Btn_SaveNewPatient.TabIndex = 13
         Me.Btn_SaveNewPatient.Text = "Save"
         Me.Btn_SaveNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
@@ -364,9 +324,9 @@ Partial Class Frm_NewClient
         Me.Btn_AddNewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_AddNewPatient.ForeColor = System.Drawing.Color.White
         Me.Btn_AddNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources._New
-        Me.Btn_AddNewPatient.Location = New System.Drawing.Point(9, 16)
+        Me.Btn_AddNewPatient.Location = New System.Drawing.Point(11, 16)
         Me.Btn_AddNewPatient.Name = "Btn_AddNewPatient"
-        Me.Btn_AddNewPatient.Size = New System.Drawing.Size(92, 35)
+        Me.Btn_AddNewPatient.Size = New System.Drawing.Size(132, 35)
         Me.Btn_AddNewPatient.TabIndex = 13
         Me.Btn_AddNewPatient.Text = "New"
         Me.Btn_AddNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
@@ -386,7 +346,7 @@ Partial Class Frm_NewClient
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(537, 301)
+        Me.ClientSize = New System.Drawing.Size(538, 301)
         Me.Controls.Add(Me.Txt_Age)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.TextBox1)
@@ -442,7 +402,5 @@ Partial Class Frm_NewClient
     Friend WithEvents Txt_Occupation As TextBox
     Friend WithEvents Panel3 As Panel
     Friend WithEvents ToolTip1 As ToolTip
-    Friend WithEvents Btn_DeletePatient As Button
-    Friend WithEvents Btn_EditPatient As Button
     Friend WithEvents Txt_Age As TextBox
 End Class

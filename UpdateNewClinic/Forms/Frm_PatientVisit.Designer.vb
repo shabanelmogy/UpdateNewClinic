@@ -22,9 +22,9 @@ Partial Class Frm_PatientVisit
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Dgv_VisitDetail = New System.Windows.Forms.DataGridView()
         Me.VisitDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -111,33 +111,33 @@ Partial Class Frm_PatientVisit
         Me.Dgv_VisitDetail.AllowUserToDeleteRows = False
         Me.Dgv_VisitDetail.AllowUserToResizeColumns = False
         Me.Dgv_VisitDetail.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue
-        Me.Dgv_VisitDetail.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.AliceBlue
+        Me.Dgv_VisitDetail.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
         Me.Dgv_VisitDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Dgv_VisitDetail.BackgroundColor = System.Drawing.SystemColors.Control
         Me.Dgv_VisitDetail.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_VisitDetail.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_VisitDetail.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.Dgv_VisitDetail.ColumnHeadersHeight = 30
         Me.Dgv_VisitDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.Dgv_VisitDetail.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VisitDate, Me.VisitType, Me.VisitCost, Me.NewWeight, Me.NewWaist, Me.PlanOfTreatment, Me.EatingHabits, Me.Notes})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.NullValue = Nothing
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Snow
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Dgv_VisitDetail.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle9.NullValue = Nothing
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Snow
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_VisitDetail.DefaultCellStyle = DataGridViewCellStyle9
         Me.Dgv_VisitDetail.EnableHeadersVisualStyles = False
         Me.Dgv_VisitDetail.GridColor = System.Drawing.Color.Gainsboro
         Me.Dgv_VisitDetail.Location = New System.Drawing.Point(0, 0)
@@ -490,8 +490,7 @@ Partial Class Frm_PatientVisit
         '
         'Pnl_VisitDetails
         '
-        Me.Pnl_VisitDetails.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Pnl_VisitDetails.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Pnl_VisitDetails.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.Pnl_VisitDetails.Controls.Add(Me.Dtp_VisitDate)
         Me.Pnl_VisitDetails.Controls.Add(Me.Txt_Notes)
@@ -526,8 +525,7 @@ Partial Class Frm_PatientVisit
         '
         'Txt_Notes
         '
-        Me.Txt_Notes.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Txt_Notes.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Txt_Notes.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.Txt_Notes.Location = New System.Drawing.Point(135, 159)
         Me.Txt_Notes.Multiline = True
@@ -538,8 +536,7 @@ Partial Class Frm_PatientVisit
         '
         'Txt_EatingHabits
         '
-        Me.Txt_EatingHabits.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Txt_EatingHabits.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Txt_EatingHabits.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.Txt_EatingHabits.Location = New System.Drawing.Point(135, 119)
         Me.Txt_EatingHabits.Name = "Txt_EatingHabits"
@@ -548,8 +545,7 @@ Partial Class Frm_PatientVisit
         '
         'Txt_PlanOfTreatment
         '
-        Me.Txt_PlanOfTreatment.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Txt_PlanOfTreatment.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Txt_PlanOfTreatment.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.Txt_PlanOfTreatment.Location = New System.Drawing.Point(135, 81)
         Me.Txt_PlanOfTreatment.Name = "Txt_PlanOfTreatment"
@@ -603,6 +599,7 @@ Partial Class Frm_PatientVisit
         '
         'ToolStrip1
         '
+        Me.ToolStrip1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ToolStrip1.AutoSize = False
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.BtnStrip_Save, Me.BtnStrp_Delete})
@@ -681,8 +678,7 @@ Partial Class Frm_PatientVisit
         '
         'Label10
         '
-        Me.Label10.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label10.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label10.BackColor = System.Drawing.Color.SteelBlue
         Me.Label10.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Label10.ForeColor = System.Drawing.Color.White
@@ -757,6 +753,7 @@ Partial Class Frm_PatientVisit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1324, 636)
         Me.Controls.Add(Me.Label10)
@@ -765,8 +762,10 @@ Partial Class Frm_PatientVisit
         Me.Controls.Add(Me.Pnl_PatientDetail)
         Me.Controls.Add(Me.Pnl_VisitDetails)
         Me.Controls.Add(Me.Panel1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Frm_PatientVisit"
         Me.Text = "PatientVisit"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         CType(Me.Dgv_VisitDetail, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Pnl_VisitDetails.ResumeLayout(False)

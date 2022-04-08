@@ -9,11 +9,12 @@ Public Class Frm_NewClient
     Dim dt As New DataTable
     Dim da As New SqlDataAdapter
 
+
     Private Sub Btn_ExitNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_ExitNewPatient.Click
         Try
             Me.Close()
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information)
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
@@ -21,75 +22,65 @@ Public Class Frm_NewClient
         Try
             Txt_PhoneNumber.Select()
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information)
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
     Private Sub Btn_AddNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_AddNewPatient.Click
         Try
-
+            If con.State = 1 Then con.Close()
             Btn_SaveNewPatient.Enabled = True
-            Btn_EditPatient.Enabled = False
             ResetControls(Me)
             Txt_PatientNum.Text = GetMaxId("PatientNum", "PatientsDetail") + 1
             Txt_PhoneNumber.Select()
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information)
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        Finally
+            If con.State = 1 Then con.Close()
         End Try
     End Sub
 
     Sub InsertNewPatient()
 
+        If con.State = 1 Then con.Close()
         If Txt_PatientName.Text = vbNullString Or Txt_PhoneNumber.Text = vbNullString Then
             MsgBox("لم يتم إدخال إسم المريض أو رقم الهاتف ", MsgBoxStyle.Information, "تنبيه")
             Exit Sub
         End If
         Try
-            Dim cmdcheck As New SqlCommand("Select PatientName From PatientsDetail Where PatientName=@PatientName", con)
-            cmdcheck.Parameters.AddWithValue("@PatientName", Txt_PatientName.Text).Value.ToString()
-            Dim da As New SqlDataAdapter(cmdcheck)
-            Dim dt As New DataTable
-            da.Fill(dt)
-            If dt.Rows.Count > 0 Then
-                MsgBox("إسم المريض مكرر سبق ادخاله من قبل", MsgBoxStyle.Information, "تنبيه")
-                Exit Sub
-            Else
-                Dim cmd As New SqlCommand
-                With cmd
-                    .Connection = con
-                    .CommandType = CommandType.Text
-                    .CommandText = "Insert Into PatientsDetail(PatientNum,PatientName,Code,Age,Occupation,PhoneNumber,FirstDate,Height,StartWeight)
-                                          values(@PatientNum,@PatientName,@Code,@Age,@Occupation,@PhoneNumber,@FirstDate,@Height,@StartWeight)"
+            Dim cmd As New SqlCommand
+            With cmd
+                .Connection = con
+                .CommandType = CommandType.Text
+                .CommandText = "Insert Into PatientsDetail(PatientNum,PatientName,Code,Age,Occupation,PhoneNumber,FirstDate,Height,StartWeight)
+                                          Values(@PatientNum,@PatientName,@Code,@Age,@Occupation,@PhoneNumber,@FirstDate,@Height,@StartWeight)"
 
+                .Parameters.AddWithValue("@PatientNum", Txt_PatientNum.Text).DbType = DbType.Int32
+                .Parameters.AddWithValue("@PatientName", Txt_PatientName.Text).DbType = DbType.String
+                .Parameters.AddWithValue("@Code", Txt_Code.Text).DbType = DbType.String
+                .Parameters.AddWithValue("@Age", Txt_Age.Text).DbType = DbType.String
+                .Parameters.AddWithValue("@Occupation", Txt_Occupation.Text).DbType = DbType.String
+                If Not String.IsNullOrWhiteSpace(Txt_PhoneNumber.Text) Then
+                    .Parameters.AddWithValue("@PhoneNumber", Txt_PhoneNumber.Text).DbType = DbType.String
+                Else
+                    .Parameters.AddWithValue("@PhoneNumber", DBNull.Value)
+                End If
+                .Parameters.AddWithValue("@FirstDate", Dtp_PatientFirstDate.Value).DbType = DbType.Date
+                .Parameters.AddWithValue("@Height", Txt_Height.Text).DbType = DbType.String
+                .Parameters.AddWithValue("@StartWeight", Txt_StartWeight.Text).DbType = DbType.String
+            End With
 
-                    .Parameters.AddWithValue("@PatientNum", Txt_PatientNum.Text).DbType = DbType.Int32
-                    .Parameters.AddWithValue("@PatientName", Txt_PatientName.Text).DbType = DbType.String
-                    .Parameters.AddWithValue("@Code", Txt_Code.Text).DbType = DbType.String
-                    .Parameters.AddWithValue("@Age", Txt_Age.Text).DbType = DbType.String
-                    .Parameters.AddWithValue("@Occupation", Txt_Occupation.Text).DbType = DbType.String
-                    If Not String.IsNullOrWhiteSpace(Txt_PhoneNumber.Text) Then
-                        .Parameters.AddWithValue("@PhoneNumber", Txt_PhoneNumber.Text).DbType = DbType.String
-                    Else
-                        .Parameters.AddWithValue("@PhoneNumber", DBNull.Value)
-                    End If
-                    .Parameters.AddWithValue("@FirstDate", Dtp_PatientFirstDate.Value).DbType = DbType.Date
-                    .Parameters.AddWithValue("@Height", Txt_Height.Text).DbType = DbType.String
-                    .Parameters.AddWithValue("@StartWeight", Txt_StartWeight.Text).DbType = DbType.String
-                End With
+            If con.State = 1 Then con.Close()
+            con.Open()
+            cmd.ExecuteNonQuery()
 
-                If con.State = 1 Then con.Close()
-                con.Open()
-                cmd.ExecuteNonQuery()
-                con.Close()
-                cmd = Nothing
+            cmd.Dispose()
+            ResetControls(Me)
 
-                ResetControls(Me)
+            Btn_SaveNewPatient.Enabled = False
 
-                Btn_SaveNewPatient.Enabled = False
-                Btn_EditPatient.Enabled = True
-            End If
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information)
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         Finally
             If con.State = 1 Then con.Close()
         End Try
@@ -97,11 +88,10 @@ Public Class Frm_NewClient
 
     Sub DeletePatient()
         Try
-            Dim cmd As New SqlCommand("Delete From PatientsDetail Where PatientNum=@PatientNum", con)
-            cmd.Parameters.AddWithValue("@PatientNum", SqlDbType.Int).Value = Txt_PatientNum.Text
-
             If con.State = 1 Then con.Close()
             con.Open()
+            Dim cmd As New SqlCommand("Delete From PatientsDetail Where PatientNum=@PatientNum", con)
+            cmd.Parameters.AddWithValue("@PatientNum", SqlDbType.Int).Value = Txt_PatientNum.Text
             Dim CurNum As Integer = CInt(Txt_PatientNum.Text)
             Dim CurName As String = Txt_PatientName.Text
             If MsgBox("سيتم حذف بيانات المريض رقم " & Environment.NewLine & CurNum & "\" & CurName, MsgBoxStyle.Exclamation + vbYesNo, "Delete") = vbNo Then
@@ -110,12 +100,14 @@ Public Class Frm_NewClient
                 cmd.ExecuteNonQuery()
             End If
             cmd.ExecuteNonQuery()
-            con.Close()
+            cmd.Dispose()
 
             Frm_NewClient_Load(Nothing, Nothing)
 
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information)
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        Finally
+            If con.State = 1 Then con.Close()
         End Try
     End Sub
 
@@ -131,9 +123,14 @@ Public Class Frm_NewClient
     End Sub
 
     Private Sub Txt_PatientName_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_PatientName.KeyDown
+
         If e.KeyCode = Keys.Enter Then
-            Txt_Code.Select()
+            If CheckPatientName(Txt_PatientName.Text) = 1 Then
+                MsgBox("إسم المريض مكرر", MessageBoxIcon.Error, "Error")
+                Txt_PatientName.Select()
+            End If
         End If
+
     End Sub
 
     Private Sub Txt_Code_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_Code.KeyDown
@@ -166,21 +163,16 @@ Public Class Frm_NewClient
         End If
     End Sub
 
-    Private Sub Btn_DeletePatient_Click(sender As Object, e As EventArgs) Handles Btn_DeletePatient.Click
+    Private Sub Btn_DeletePatient_Click(sender As Object, e As EventArgs)
         DeletePatient()
     End Sub
 
     Private Sub Frm_NewClient_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp
-
         Select Case e.KeyCode
             Case Keys.F2
                 Btn_AddNewPatient.PerformClick()
             Case Keys.F3
                 Btn_SaveNewPatient.PerformClick()
-            Case Keys.F4
-                Btn_EditPatient.PerformClick()
-            Case Keys.Delete
-                Btn_DeletePatient.PerformClick()
         End Select
     End Sub
 
@@ -199,6 +191,14 @@ Public Class Frm_NewClient
     Private Sub Txt_PatientName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_PatientName.KeyPress
         If (Char.IsControl(e.KeyChar) = False And Char.IsLetter(e.KeyChar) = False) Then
             e.Handled = True
+        End If
+    End Sub
+
+    Private Sub Txt_StartWeight_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_StartWeight.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Btn_SaveNewPatient.PerformClick()
+            Txt_PatientNum.Text = GetMaxId("PatientNum", "PatientsDetail") + 1
+            Txt_PhoneNumber.Select()
         End If
     End Sub
 End Class
