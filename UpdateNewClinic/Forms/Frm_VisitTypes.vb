@@ -1,43 +1,44 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Data
 Imports System.IO
-Imports iTextSharp
-Imports iTextSharp.text
-Imports iTextSharp.text.pdf
 
 Public Class Frm_VisitTypes
 
+    Dim Dt_VisitType As DataTable
+
     Sub FillDgvVisits()
 
-        DgvVisits.Columns.Clear()
-        Fill_DataTableVisits("Select * From VisitsTypes", Me)
+        Dgv_VisitType.Columns.Clear()
+        Dt_VisitType = SelectWithDataTable("Select * From VisitsTypes", "VisitType")
 
-        With DgvVisits
+        With Dgv_VisitType
             .Columns.Add("Num", "Num")
             .Columns.Add("VisitKind", "VisitKind")
             .Columns.Add("Amount", "Amount")
         End With
 
-        DgvVisits.Columns(0).Width = 70
-        DgvVisits.Columns(1).Width = 245
-        DgvVisits.Columns(2).Width = 70
+        Dgv_VisitType.Columns(0).Width = 70
+        Dgv_VisitType.Columns(1).Width = 245
+        Dgv_VisitType.Columns(2).Width = 70
 
-        DgvVisits.Columns(0).ReadOnly = True
+        Dgv_VisitType.Columns(0).ReadOnly = True
 
-        For i As Integer = 0 To cur.Count - 1
-            DgvVisits.Rows.Add(New String() {cur.Current("Num"), cur.Current("VisitKind"), cur.Current("Amount")})
-            cur.Position += 1
+        For i As Integer = 0 To Dt_VisitType.Rows.Count - 1
+            Dgv_VisitType.Rows.Add()
+            Dgv_VisitType(0, i).Value = Dt_VisitType(i)(0)
+            Dgv_VisitType(1, i).Value = Dt_VisitType(i)(1)
+            Dgv_VisitType(2, i).Value = Dt_VisitType(i)(2)
         Next
 
     End Sub
 
     Private Sub Btn_AddNewVisit_Click(sender As Object, e As EventArgs) Handles Btn_AddNewVisit.Click
         Try
-            DgvVisits.Rows.Add(GetMaxId("Num", "VisitsTypes") + 1)
-            DgvVisits.CurrentCell = DgvVisits.Rows(DgvVisits.Rows.Count - 1).Cells(1)
+            Dgv_VisitType.Rows.Add(GetMaxId("Num", "VisitsTypes") + 1)
+            Dgv_VisitType.CurrentCell = Dgv_VisitType.Rows(Dgv_VisitType.Rows.Count - 1).Cells(1)
 
             'Cursor inside cell datagridview 
-            DgvVisits.BeginEdit(False)
+            Dgv_VisitType.BeginEdit(False)
             Btn_AddNewVisit.Enabled = False
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information)
@@ -46,7 +47,8 @@ Public Class Frm_VisitTypes
 
     Private Sub Frm_VisitTypes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FillDgvVisits()
-        DgvVisits.CurrentCell = DgvVisits.Rows(DgvVisits.Rows.Count - 1).Cells(0)
+        Dgv_VisitType.Sort(Dgv_VisitType.Columns("Num"), System.ComponentModel.ListSortDirection.Ascending)
+        Dgv_VisitType.CurrentCell = Dgv_VisitType.Rows(Dgv_VisitType.Rows.Count - 1).Cells(0)
     End Sub
 
     Private Sub Frm_VisitTypes_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
@@ -61,10 +63,10 @@ Public Class Frm_VisitTypes
     End Sub
 
     Private Sub Btn_ExportExcel_Click(sender As Object, e As EventArgs) Handles Btn_ExportExcel.Click
-        ExportExcel(dtVisitsType, "Details")
+        ExportExcel(Dt_VisitType, "VisitType")
     End Sub
 
-    Private Sub DgvVisits_KeyDown(sender As Object, e As KeyEventArgs) Handles DgvVisits.KeyDown
+    Private Sub DgvVisits_KeyDown(sender As Object, e As KeyEventArgs) Handles Dgv_VisitType.KeyDown
         Try
             If e.KeyCode = Keys.Enter Then
                 SendKeys.Send("{right}")
@@ -74,17 +76,17 @@ Public Class Frm_VisitTypes
         End Try
     End Sub
 
-    Private Sub DgvVisits_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DgvVisits.CellEndEdit
+    Private Sub DgvVisits_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_VisitType.CellEndEdit
         Try
             SendKeys.Send("{right}")
-            Me.DgvVisits.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect
-            Me.DgvVisits.DefaultCellStyle.SelectionBackColor = Color.LightPink
-            Me.DgvVisits.DefaultCellStyle.SelectionForeColor = Color.Black
+            Me.Dgv_VisitType.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect
+            Me.Dgv_VisitType.DefaultCellStyle.SelectionBackColor = Color.LightPink
+            Me.Dgv_VisitType.DefaultCellStyle.SelectionForeColor = Color.Black
 
             If e.ColumnIndex = 2 Then
                 Btn_SaveNewVisit.PerformClick()
-                Me.DgvVisits.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-                Me.DgvVisits.DefaultCellStyle.SelectionBackColor = Color.OldLace
+                Me.Dgv_VisitType.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+                Me.Dgv_VisitType.DefaultCellStyle.SelectionBackColor = Color.OldLace
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
@@ -95,17 +97,17 @@ Public Class Frm_VisitTypes
         Try
             If con.State = 1 Then con.Close()
 
-            For Each row As DataGridViewRow In DgvVisits.Rows
+            For Each row As DataGridViewRow In Dgv_VisitType.Rows
 
                 If String.IsNullOrWhiteSpace(row.Cells("VisitKind").Value) Then
                     MsgBox("You must Enter VisitKind", MsgBoxStyle.Information, "Stop")
-                    DgvVisits.CurrentCell = DgvVisits.Rows(DgvVisits.Rows.Count - 1).Cells("VisitKind")
-                    DgvVisits.BeginEdit(False)
+                    Dgv_VisitType.CurrentCell = Dgv_VisitType.Rows(Dgv_VisitType.Rows.Count - 1).Cells("VisitKind")
+                    Dgv_VisitType.BeginEdit(False)
                     Exit Sub
                 ElseIf String.IsNullOrWhiteSpace(row.Cells("Amount").Value) Then
                     MsgBox("You must Enter Amount", MsgBoxStyle.Information, "Stop")
-                    DgvVisits.CurrentCell = DgvVisits.Rows(DgvVisits.Rows.Count - 1).Cells("Amount")
-                    DgvVisits.BeginEdit(False)
+                    Dgv_VisitType.CurrentCell = Dgv_VisitType.Rows(Dgv_VisitType.Rows.Count - 1).Cells("Amount")
+                    Dgv_VisitType.BeginEdit(False)
                     Exit Sub
                 End If
 
@@ -140,6 +142,7 @@ Public Class Frm_VisitTypes
                 cmd.ExecuteNonQuery()
             Next
             Frm_VisitTypes_Load(Nothing, Nothing)
+            Dgv_VisitType.Sort(Dgv_VisitType.Columns("Num"), System.ComponentModel.ListSortDirection.Ascending)
             Btn_AddNewVisit.Enabled = True
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information)
@@ -154,15 +157,15 @@ Public Class Frm_VisitTypes
             If MsgBox("Do You Want To Delete This Record ?", MsgBoxStyle.Information + vbYesNo, "Attention") = vbYes Then
 
                 cmd = New SqlCommand("Delete From VisitsTypes Where Num=@Num", con)
-                cmd.Parameters.AddWithValue("Num", DgvVisits.CurrentRow.Cells(0).Value)
+                cmd.Parameters.AddWithValue("Num", Dgv_VisitType.CurrentRow.Cells(0).Value)
 
                 con.Open()
                 cmd.ExecuteNonQuery()
 
-                If DgvVisits.Rows.Count > 0 Then
-                    DgvVisits.CurrentCell = DgvVisits.Rows(DgvVisits.Rows.Count - 1).Cells(0)
-                    DgvVisits.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-                    DgvVisits.DefaultCellStyle.SelectionBackColor = Color.OldLace
+                If Dgv_VisitType.Rows.Count > 0 Then
+                    Dgv_VisitType.CurrentCell = Dgv_VisitType.Rows(Dgv_VisitType.Rows.Count - 1).Cells(0)
+                    Dgv_VisitType.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+                    Dgv_VisitType.DefaultCellStyle.SelectionBackColor = Color.OldLace
                 End If
 
                 Frm_VisitTypes_Load(Nothing, Nothing)
@@ -174,4 +177,5 @@ Public Class Frm_VisitTypes
         End Try
 
     End Sub
+
 End Class

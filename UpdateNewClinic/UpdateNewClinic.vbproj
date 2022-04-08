@@ -176,6 +176,12 @@
     <Compile Include="Forms\Frm_EditPatient.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Frm_NewClient.designer.vb">
+      <DependentUpon>Frm_NewClient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_NewClient.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Frm_Reservation.designer.vb">
       <DependentUpon>Frm_Reservation.vb</DependentUpon>
     </Compile>
@@ -233,6 +239,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\Frm_EditPatient.resx">
       <DependentUpon>Frm_EditPatient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_NewClient.resx">
+      <DependentUpon>Frm_NewClient.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Reservation.resx">
       <DependentUpon>Frm_Reservation.vb</DependentUpon>
@@ -691,6 +700,7 @@
     <None Include="Resources\New1.png" />
     <None Include="Resources\ShowReport.png" />
     <None Include="Resources\ShowReport2.png" />
+    <None Include="Resources\Refresh1.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

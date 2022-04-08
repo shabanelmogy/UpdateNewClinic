@@ -9,37 +9,13 @@ Public Class Frm_PatientVisit
     Dim DtVisits As New DataTable
 #End Region
 
-    Sub Fill_DataTableVisitDetails(Query As String, frm As Form)
-
-        cmd = New SqlCommand(Query, con)
-        da = New SqlDataAdapter(cmd)
-        dtvisitDetail = New DataTable("VisitDetails")
-        dtvisitDetail.Clear()
-        da.Fill(dtvisitDetail)
-
-        For Each row As DataRow In dtvisitDetail.Rows
-            For columnindex = 0 To dtvisitDetail.Columns.Count - 1
-                If row.IsNull(columnindex) Then
-                    Dim t = dtvisitDetail.Columns(columnindex).DataType
-                    row(columnindex) = If(t Is GetType(String), String.Empty, Activator.CreateInstance(t))
-                End If
-            Next
-        Next
-
-        dv = New DataView(dtvisitDetail)
-        cur = CType(frm.BindingContext(dv), CurrencyManager)
-
-    End Sub
-
     Sub LoadCost()
-
         cmd = New SqlCommand("Select Amount From VisitsTypes Where Num=" & Cbo_VisitType.SelectedValue, con)
         con.Open()
         Dim dr As SqlDataReader = cmd.ExecuteReader
         dr.Read()
         Txt_VisitCost.Text = dr(0)
         con.Close()
-
     End Sub
 
     Sub FillGrdVisitDetails(Query As String)
@@ -92,11 +68,11 @@ Public Class Frm_PatientVisit
                     Txt_FirstVisit.Text = CDate(dr("FirstDate").ToString).ToString("dd/MM/yyyy")
                     Txt_Height.Text = dr("Height").ToString
                     Txt_StartWeight.Text = dr("StartWeight").ToString
-
                 End While
                 dr.Close()
                 con.Close()
                 Dtp_VisitDate.Focus()
+
                 FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes from ClinicDays 
                                 inner join VisitsTypes on ClinicDays.VisitType = VisitsTypes.Num Where PatientID=" & Val(Txt_PatientNum.Text))
             Else

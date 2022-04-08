@@ -22,18 +22,18 @@ Partial Class Frm_VisitTypes
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Btn_ExportExcel = New System.Windows.Forms.Button()
         Me.Btn_DeletePatient = New System.Windows.Forms.Button()
         Me.Btn_ExitNewPatient = New System.Windows.Forms.Button()
         Me.Btn_SaveNewVisit = New System.Windows.Forms.Button()
         Me.Btn_AddNewVisit = New System.Windows.Forms.Button()
-        Me.DgvVisits = New System.Windows.Forms.DataGridView()
+        Me.Dgv_VisitType = New System.Windows.Forms.DataGridView()
         Me.Panel3.SuspendLayout()
-        CType(Me.DgvVisits, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Dgv_VisitType, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel3
@@ -46,9 +46,9 @@ Partial Class Frm_VisitTypes
         Me.Panel3.Controls.Add(Me.Btn_SaveNewVisit)
         Me.Panel3.Controls.Add(Me.Btn_AddNewVisit)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel3.Location = New System.Drawing.Point(0, 376)
+        Me.Panel3.Location = New System.Drawing.Point(0, 326)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(654, 66)
+        Me.Panel3.Size = New System.Drawing.Size(655, 66)
         Me.Panel3.TabIndex = 27
         '
         'Btn_ExportExcel
@@ -62,7 +62,7 @@ Partial Class Frm_VisitTypes
         Me.Btn_ExportExcel.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_ExportExcel.ForeColor = System.Drawing.Color.White
         Me.Btn_ExportExcel.Image = Global.UpdateNewClinic.My.Resources.Resources.ExportToExcel
-        Me.Btn_ExportExcel.Location = New System.Drawing.Point(403, 13)
+        Me.Btn_ExportExcel.Location = New System.Drawing.Point(404, 13)
         Me.Btn_ExportExcel.Name = "Btn_ExportExcel"
         Me.Btn_ExportExcel.Size = New System.Drawing.Size(112, 37)
         Me.Btn_ExportExcel.TabIndex = 21
@@ -142,48 +142,48 @@ Partial Class Frm_VisitTypes
         Me.Btn_AddNewVisit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_AddNewVisit.UseVisualStyleBackColor = False
         '
-        'DgvVisits
+        'Dgv_VisitType
         '
-        Me.DgvVisits.AllowUserToAddRows = False
-        Me.DgvVisits.AllowUserToDeleteRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.AliceBlue
-        Me.DgvVisits.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
-        Me.DgvVisits.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DgvVisits.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.DgvVisits.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvVisits.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
-        Me.DgvVisits.ColumnHeadersHeight = 27
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Snow
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvVisits.DefaultCellStyle = DataGridViewCellStyle15
-        Me.DgvVisits.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DgvVisits.EnableHeadersVisualStyles = False
-        Me.DgvVisits.Location = New System.Drawing.Point(0, 0)
-        Me.DgvVisits.Name = "DgvVisits"
-        Me.DgvVisits.RowHeadersVisible = False
-        Me.DgvVisits.RowTemplate.Height = 25
-        Me.DgvVisits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvVisits.Size = New System.Drawing.Size(654, 376)
-        Me.DgvVisits.TabIndex = 31
+        Me.Dgv_VisitType.AllowUserToAddRows = False
+        Me.Dgv_VisitType.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue
+        Me.Dgv_VisitType.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.Dgv_VisitType.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.Dgv_VisitType.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Dgv_VisitType.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_VisitType.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.Dgv_VisitType.ColumnHeadersHeight = 27
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Snow
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_VisitType.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Dgv_VisitType.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Dgv_VisitType.EnableHeadersVisualStyles = False
+        Me.Dgv_VisitType.Location = New System.Drawing.Point(0, 0)
+        Me.Dgv_VisitType.Name = "Dgv_VisitType"
+        Me.Dgv_VisitType.RowHeadersVisible = False
+        Me.Dgv_VisitType.RowTemplate.Height = 25
+        Me.Dgv_VisitType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.Dgv_VisitType.Size = New System.Drawing.Size(655, 326)
+        Me.Dgv_VisitType.TabIndex = 31
         '
         'Frm_VisitTypes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(654, 442)
-        Me.Controls.Add(Me.DgvVisits)
+        Me.ClientSize = New System.Drawing.Size(655, 392)
+        Me.Controls.Add(Me.Dgv_VisitType)
         Me.Controls.Add(Me.Panel3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.KeyPreview = True
@@ -192,7 +192,7 @@ Partial Class Frm_VisitTypes
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Visits Types"
         Me.Panel3.ResumeLayout(False)
-        CType(Me.DgvVisits, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Dgv_VisitType, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -202,6 +202,6 @@ Partial Class Frm_VisitTypes
     Friend WithEvents Btn_ExitNewPatient As Button
     Friend WithEvents Btn_SaveNewVisit As Button
     Friend WithEvents Btn_AddNewVisit As Button
-    Friend WithEvents DgvVisits As DataGridView
+    Friend WithEvents Dgv_VisitType As DataGridView
     Friend WithEvents Btn_ExportExcel As Button
 End Class

@@ -53,7 +53,7 @@ Module Main_Mod
         Next
     End Sub
 
-    Public Sub OpenForm(ByVal Form As Object, Pnl As Object)
+    Public Sub OpenFormInPanel(ByVal Form As Object, Pnl As Object)
         'لغلق أى شاشات أخرى تم فتحها من قبل
         'If pnl.Controls.Count > 0 Then pnl.Controls.RemoveAt(0)
 
@@ -65,7 +65,6 @@ Module Main_Mod
         'Pnl.Tag = fh
         fh.Show()
     End Sub
-
 
     Sub Fill_DataTablePatients(Query As String, frm As Form)
 
@@ -87,32 +86,6 @@ Module Main_Mod
         cur = CType(frm.BindingContext(dv), CurrencyManager)
     End Sub
 
-    Sub Fill_DataTableVisits(Query As String, frm As Form)
-        Try
-            cmd = New SqlCommand(Query, con)
-            da = New SqlDataAdapter(cmd)
-            dtVisitsType = New DataTable("Details")
-            dtVisitsType.Clear()
-            da.Fill(dtVisitsType)
-
-            For Each row As DataRow In dtVisitsType.Rows
-                For columnindex = 0 To dtVisitsType.Columns.Count - 1
-                    If row.IsNull(columnindex) Then
-                        Dim t = dtVisitsType.Columns(columnindex).DataType
-                        row(columnindex) = If(t Is GetType(String), String.Empty, Activator.CreateInstance(t))
-                    End If
-                Next
-            Next
-
-            dv = New DataView(dtVisitsType)
-            cur = CType(frm.BindingContext(dv), CurrencyManager)
-        Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information, "Info")
-        Finally
-            If con.State = 1 Then con.Close()
-        End Try
-    End Sub
-
     Sub Fill_DataTableVisitDetails(Query As String, frm As Form)
 
         cmd = New SqlCommand(Query, con)
@@ -130,9 +103,25 @@ Module Main_Mod
             Next
         Next
         dv = New DataView(dtvisitDetail)
-
         cur = CType(frm.BindingContext(dv), CurrencyManager)
     End Sub
+
+    Public Function SelectWithDataTable(Query As String, Sheet As String) As DataTable
+        Try
+            cmd = New SqlCommand(Query, con)
+            da = New SqlDataAdapter(cmd)
+            Dim dt As New DataTable
+            dt = New DataTable(Sheet)
+            dt.Clear()
+            da.Fill(dt)
+            Return dt
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Information, "Info")
+            Return Nothing
+        Finally
+            If con.State = 1 Then con.Close()
+        End Try
+    End Function
 
     Sub ExportExcel(Dt As DataTable, Sheet As String)
         Using sfd As SaveFileDialog = New SaveFileDialog() With {.Filter = "Excel Workbook|*.xlsx"}
@@ -152,7 +141,6 @@ Module Main_Mod
             End If
         End Using
     End Sub
-
 
     Sub openFormInTab(F As Form)
 
@@ -178,23 +166,6 @@ Module Main_Mod
         Next
     End Sub
 
-    Public Sub DelDgvRow(ByVal DGV As DataGridView, CellName As Integer, Tablename As String, FieldName As String)
-        Dim Position As Integer = DGV.CurrentRow.Index
-        Dim ID_Position As Integer = DGV.Rows(Position).Cells(CellName).Value
-        Dim Cmd As New SqlCommand
-        With Cmd
-            .Connection = con
-            .CommandType = CommandType.Text
-            .CommandText = "Delete  From " & Tablename & " Where " & FieldName & " = " & ID_Position
-        End With
-        If con.State = 1 Then con.Close()
-        con.Open()
-        Cmd.ExecuteNonQuery()
-        con.Close()
-        MsgBox("تم حذف بيانات السجل بنجاح.", MsgBoxStyle.Information, "حذف")
-        Cmd = Nothing
-    End Sub
-
     Public Sub FillCmb(ByVal cmb As ComboBox, TableName As String, Display As String, Value As Object)
         Dim DT As New DataTable
         Dim DA As New SqlDataAdapter
@@ -210,44 +181,4 @@ Module Main_Mod
         End If
     End Sub
 
-    Sub openFormInTab2(F As Form)
-
-        Dim frm As Form = TryCast(F, Form)
-        frm.TopLevel = False
-        For Each tab As XtraTabPage In Home.XtraTabControl1.TabPages
-            'لمنع فتح الفورم أكثر من مرة
-            If tab.Name = frm.Name Then
-                Exit Sub
-            End If
-        Next
-        Home.XtraTabControl1.TabPages.Add(New XtraTabPage With {.Text = frm.Text, .Name = frm.Name})
-        For Each tab As XtraTabPage In Home.XtraTabControl1.TabPages
-            If tab.Name = frm.Name Then
-                tab.ImageOptions.Image = frm.Icon.ToBitmap
-
-                tab.Controls.Add(frm)
-                tab.BackgroundImage = My.Resources.Health
-                frm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-                frm.StartPosition = Windows.Forms.FormStartPosition.CenterScreen
-                Home.XtraTabControl1.SelectedTabPage = tab
-                frm.Show()
-            End If
-        Next
-    End Sub
-
-    Public Sub FilterRecordsRecord(SQL As String, SL As SortedList)
-        Try
-            cmd = New SqlCommand(SQL, con)
-            For i As Integer = 0 To SL.Count - 1
-                cmd.Parameters.AddWithValue(SL.GetKey(i).ToString, SL.GetByIndex(i).ToString)
-            Next
-            con.Open()
-            cmd.ExecuteNonQuery()
-
-        Catch ex As SqlException
-            MsgBox(ex.Message, MsgBoxStyle.Exclamation, "Error")
-        Finally
-            If con.State = 1 Then con.Close()
-        End Try
-    End Sub
 End Module
