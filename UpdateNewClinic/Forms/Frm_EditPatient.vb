@@ -471,4 +471,22 @@ Public Class Frm_EditPatients
             MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
         End Try
     End Sub
+
+    Private Sub Txt_SearchNum_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_SearchNum.KeyPress
+        If (Char.IsControl(e.KeyChar) = False And Char.IsDigit(e.KeyChar) = False) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub Txt_SearchName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_SearchName.KeyPress
+        If (Char.IsControl(e.KeyChar) = False And Char.IsLetter(e.KeyChar) = False) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub Txt_Telephone_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_Telephone.KeyPress
+        If (Char.IsControl(e.KeyChar) = False And Char.IsDigit(e.KeyChar) = False) Then
+            e.Handled = True
+        End If
+    End Sub
 End Class

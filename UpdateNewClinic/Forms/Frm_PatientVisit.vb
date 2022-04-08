@@ -92,7 +92,6 @@ Public Class Frm_PatientVisit
     Private Sub Txt_PatientNum_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_PatientNum.KeyDown
         If e.KeyCode = Keys.Enter And Txt_PatientNum.TextLength > 0 Then
             Get_PatientDetail()
-
         Else
             Exit Sub
         End If
@@ -258,4 +257,9 @@ Public Class Frm_PatientVisit
         End If
     End Sub
 
+    Private Sub Txt_PatientNum_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_PatientNum.KeyPress
+        If (Char.IsControl(e.KeyChar) = False And Char.IsDigit(e.KeyChar) = False) Then
+            e.Handled = True
+        End If
+    End Sub
 End Class

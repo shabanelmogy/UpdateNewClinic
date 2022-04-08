@@ -170,6 +170,14 @@ Public Class Frm_Reservation
         GetAllReservation("Select PatientID,PatientName,ReserveDate,ReserveName From Reservation")
     End Sub
 
+    Private Sub Txt_SearchValue_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_SearchValue.KeyPress
+        If Cbo_SortAndSearch.Text = "PatientName" And Char.IsControl(e.KeyChar) = False And Char.IsLetter(e.KeyChar) = False Then
+            e.Handled = True
+        ElseIf Cbo_SortAndSearch.Text = "Phone" And Char.IsControl(e.KeyChar) = False And Char.IsDigit(e.KeyChar) = False Then
+            e.Handled = True
+        End If
+    End Sub
+
     Private Sub Btn_SortAsec_Click(sender As Object, e As EventArgs) Handles Btn_SortAsec.Click
         Dgv_Search.Sort(Dgv_Search.Columns(Cbo_SortAndSearch.Text), System.ComponentModel.ListSortDirection.Ascending)
     End Sub

@@ -45,6 +45,10 @@ Partial Class Frm_Reservation
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Txt_Num = New System.Windows.Forms.TextBox()
         Me.Dgv_Visits = New System.Windows.Forms.DataGridView()
+        Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReserveType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SeparatorControl2 = New DevExpress.XtraEditors.SeparatorControl()
         Me.Btn_SaveNewPatient = New System.Windows.Forms.Button()
         Me.Btn_DeletePatient = New System.Windows.Forms.Button()
@@ -56,10 +60,6 @@ Partial Class Frm_Reservation
         Me.ClinicDataSet = New UpdateNewClinic.ClinicDataSet()
         Me.PatientsDetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PatientsDetailTableAdapter = New UpdateNewClinic.ClinicDataSetTableAdapters.PatientsDetailTableAdapter()
-        Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReserveType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         CType(Me.Dgv_Visits, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SeparatorControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -282,6 +282,30 @@ Partial Class Frm_Reservation
         Me.Dgv_Visits.Size = New System.Drawing.Size(806, 548)
         Me.Dgv_Visits.TabIndex = 39
         '
+        'PatientNum
+        '
+        Me.PatientNum.HeaderText = "PatientNum"
+        Me.PatientNum.Name = "PatientNum"
+        Me.PatientNum.ReadOnly = True
+        '
+        'PatientName
+        '
+        Me.PatientName.HeaderText = "PatientName"
+        Me.PatientName.Name = "PatientName"
+        Me.PatientName.ReadOnly = True
+        '
+        'ReserveDate
+        '
+        Me.ReserveDate.HeaderText = "ReserveDate"
+        Me.ReserveDate.Name = "ReserveDate"
+        Me.ReserveDate.ReadOnly = True
+        '
+        'ReserveType
+        '
+        Me.ReserveType.HeaderText = "ReserveType"
+        Me.ReserveType.Name = "ReserveType"
+        Me.ReserveType.ReadOnly = True
+        '
         'SeparatorControl2
         '
         Me.SeparatorControl2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -442,30 +466,6 @@ Partial Class Frm_Reservation
         'PatientsDetailTableAdapter
         '
         Me.PatientsDetailTableAdapter.ClearBeforeFill = True
-        '
-        'PatientNum
-        '
-        Me.PatientNum.HeaderText = "PatientNum"
-        Me.PatientNum.Name = "PatientNum"
-        Me.PatientNum.ReadOnly = True
-        '
-        'PatientName
-        '
-        Me.PatientName.HeaderText = "PatientName"
-        Me.PatientName.Name = "PatientName"
-        Me.PatientName.ReadOnly = True
-        '
-        'ReserveDate
-        '
-        Me.ReserveDate.HeaderText = "ReserveDate"
-        Me.ReserveDate.Name = "ReserveDate"
-        Me.ReserveDate.ReadOnly = True
-        '
-        'ReserveType
-        '
-        Me.ReserveType.HeaderText = "ReserveType"
-        Me.ReserveType.Name = "ReserveType"
-        Me.ReserveType.ReadOnly = True
         '
         'Frm_Reservation
         '
