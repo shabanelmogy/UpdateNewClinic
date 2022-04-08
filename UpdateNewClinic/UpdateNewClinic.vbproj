@@ -116,6 +116,18 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\New folder (2)\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\New folder (2)\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\New folder (2)\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
@@ -170,6 +182,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmSplash.designer.vb">
+      <DependentUpon>frmSplash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSplash.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Frm_EditPatient.designer.vb">
       <DependentUpon>Frm_EditPatient.vb</DependentUpon>
     </Compile>
@@ -186,6 +204,12 @@
       <DependentUpon>Frm_Reservation.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Frm_Reservation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_Sql_Setting.designer.vb">
+      <DependentUpon>Frm_Sql_Setting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_Sql_Setting.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Frm_VisitTypes.designer.vb">
@@ -237,6 +261,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmSplash.resx">
+      <DependentUpon>frmSplash.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_EditPatient.resx">
       <DependentUpon>Frm_EditPatient.vb</DependentUpon>
     </EmbeddedResource>
@@ -245,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Reservation.resx">
       <DependentUpon>Frm_Reservation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_Sql_Setting.resx">
+      <DependentUpon>Frm_Sql_Setting.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_VisitTypes.resx">
       <DependentUpon>Frm_VisitTypes.vb</DependentUpon>

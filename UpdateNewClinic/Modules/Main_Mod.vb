@@ -5,19 +5,14 @@ Imports DevExpress.XtraTab.ViewInfo
 
 Module Main_Mod
 
-    Public cmd As New SqlCommand
-    Public query As String
-    Public da As New SqlDataAdapter
-    Public dr As SqlDataReader
-    Public dtEditPatient, dtVisitsType, dtvisitDetail As New DataTable
-    Public dv, dv1 As New DataView
-    Public cur As CurrencyManager
+    Public Cmd As New SqlCommand
+    Public Query As String
+    Public Da As New SqlDataAdapter
+    Public Dr As SqlDataReader
+    Public DtEditPatient, dtvisitDetail As New DataTable
+    Public Dv As New DataView
+    Public Cur As CurrencyManager
 
-
-    'Public newdir As String = System.Windows.Forms.Application.StartupPath
-    'Public con As New SqlConnection("Server=.;DataBase=Clinic;Integrated Security=True")
-    'Public con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\DataBase\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
-    'Public con1 As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & newdir & "\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
     'Public con As New SqlConnection("Data Source=.\SQLEXPRESS;AttachDbFilename=" & newdir & "\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
     Public con As New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("con").ConnectionString)
 
@@ -72,7 +67,10 @@ Module Main_Mod
         da = New SqlDataAdapter(cmd)
         dtEditPatient = New DataTable("Patients")
         dtEditPatient.Clear()
-        da.Fill(dtEditPatient)
+        Da.Fill(DtEditPatient)
+
+        DtEditPatient.Dispose()
+        da.Dispose()
 
         For Each row As DataRow In dtEditPatient.Rows
             For columnindex = 0 To dtEditPatient.Columns.Count - 1
@@ -93,6 +91,9 @@ Module Main_Mod
         dtvisitDetail = New DataTable("VisitDetails")
         dtvisitDetail.Clear()
         da.Fill(dtvisitDetail)
+
+        dtvisitDetail.Dispose()
+        da.Dispose()
 
         For Each row As DataRow In dtvisitDetail.Rows
             For columnindex = 0 To dtvisitDetail.Columns.Count - 1
@@ -115,8 +116,12 @@ Module Main_Mod
             dt.Clear()
             da.Fill(dt)
             Return dt
+
+            dt.Dispose()
+            da.Dispose()
+
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information, "Info")
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
             Return Nothing
         Finally
             If con.State = 1 Then con.Close()
@@ -136,7 +141,7 @@ Module Main_Mod
                         Process.Start(sfd.FileName)
                     End If
                 Catch ex As Exception
-                    MsgBox(ex.Message)
+                    MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
                 End Try
             End If
         End Using
@@ -144,41 +149,53 @@ Module Main_Mod
 
     Sub openFormInTab(F As Form)
 
-        Dim frm As Form = TryCast(F, Form)
-        frm.TopLevel = False
-        For Each tab As XtraTabPage In Home.XtraTabControl1.TabPages
-            'لمنع فتح الفورم أكثر من مرة
-            If tab.Name = frm.Name Then
-                Exit Sub
-            End If
-        Next
-        Home.XtraTabControl1.TabPages.Add(New XtraTabPage With {.Text = frm.Text, .Name = frm.Name})
-        For Each tab As XtraTabPage In Home.XtraTabControl1.TabPages
-            If tab.Name = frm.Name Then
-                tab.ImageOptions.Image = frm.Icon.ToBitmap
-                tab.Controls.Add(frm)
-                frm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-                frm.StartPosition = Windows.Forms.FormStartPosition.CenterScreen
-                frm.Dock = DockStyle.Fill
-                Home.XtraTabControl1.SelectedTabPage = tab
-                frm.Show()
-            End If
-        Next
+        Try
+            Dim frm As Form = TryCast(F, Form)
+            frm.TopLevel = False
+            For Each tab As XtraTabPage In Home.XtraTabControl1.TabPages
+                'لمنع فتح الفورم أكثر من مرة
+                If tab.Name = frm.Name Then
+                    Exit Sub
+                End If
+            Next
+            Home.XtraTabControl1.TabPages.Add(New XtraTabPage With {.Text = frm.Text, .Name = frm.Name})
+            For Each tab As XtraTabPage In Home.XtraTabControl1.TabPages
+                If tab.Name = frm.Name Then
+                    tab.ImageOptions.Image = frm.Icon.ToBitmap
+                    tab.Controls.Add(frm)
+                    frm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+                    frm.StartPosition = Windows.Forms.FormStartPosition.CenterScreen
+                    frm.Dock = DockStyle.Fill
+                    Home.XtraTabControl1.SelectedTabPage = tab
+                    frm.Show()
+                End If
+            Next
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        End Try
     End Sub
 
     Public Sub FillCmb(ByVal cmb As ComboBox, TableName As String, Display As String, Value As Object)
-        Dim DT As New DataTable
-        Dim DA As New SqlDataAdapter
-        DT.Clear()
-        DA = New SqlDataAdapter("Select * FROM " & TableName & " ", con)
-        DA.Fill(DT)
-        If DT.Rows.Count > 0 Then
-            cmb.DataSource = DT
-            cmb.DisplayMember = Display
-            cmb.ValueMember = Value
-        Else
-            cmb.DataSource = Nothing
-        End If
+        Try
+            Dim DT As New DataTable
+            Dim DA As New SqlDataAdapter
+            DT.Clear()
+            DA = New SqlDataAdapter("Select * FROM " & TableName & " ", con)
+            DA.Fill(DT)
+
+            DT.Dispose()
+            DA.Dispose()
+
+            If DT.Rows.Count > 0 Then
+                cmb.DataSource = DT
+                cmb.DisplayMember = Display
+                cmb.ValueMember = Value
+            Else
+                cmb.DataSource = Nothing
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        End Try
     End Sub
 
 End Module

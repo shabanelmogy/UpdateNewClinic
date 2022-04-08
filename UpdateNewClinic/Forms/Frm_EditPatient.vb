@@ -23,7 +23,7 @@ Public Class Frm_EditPatients
             Dgv_EditPatient.Columns("StartWeight").Width = 100
             Dgv_EditPatient.Columns(8).DefaultCellStyle.Format = "dd/MM/yyyy"
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Exclamation, "Info")
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
@@ -38,7 +38,7 @@ Public Class Frm_EditPatients
                 cur.Position += 1
             Next
         Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
@@ -61,7 +61,7 @@ Public Class Frm_EditPatients
                 Me.Dgv_EditPatient.DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
@@ -80,7 +80,7 @@ Public Class Frm_EditPatients
                     Btn_Exit.PerformClick()
             End Select
         Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
@@ -139,14 +139,14 @@ Public Class Frm_EditPatients
             End If
         End If
 
-        'Validate FirstDate
+        'Validate Height
         If e.ColumnIndex = 7 Then
             If e.FormattedValue.ToString <> String.Empty AndAlso Not Char.IsNumber(e.FormattedValue) Then
                 e.Cancel = True
             End If
         End If
 
-        'Validate FirstDate
+        'Validate StartWeight
         If e.ColumnIndex = 8 Then
             If e.FormattedValue.ToString <> String.Empty AndAlso Not Char.IsNumber(e.FormattedValue) Then
                 e.Cancel = True
@@ -161,7 +161,7 @@ Public Class Frm_EditPatients
             Home.XtraTabControl1.SelectedTabPage = Home.XtraTabControl1.TabPages(Home.XtraTabControl1.TabPages.Count - 1)
             Me.Close()
         Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
@@ -169,7 +169,7 @@ Public Class Frm_EditPatients
         Try
             dgvColumnWidth()
         Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
@@ -177,16 +177,22 @@ Public Class Frm_EditPatients
         Try
             ExportExcel(dtEditPatient, "Patients")
         Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
     Private Sub Btn_Reset_Click(sender As Object, e As EventArgs) Handles Btn_Reset.Click
-        Txt_SearchName.Text = ""
-        Txt_SearchNum.Text = ""
-        Txt_Telephone.Text = ""
-        Dtp_SearchVisit.Value = "2001-1-1"
-        FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
+        Try
+            Txt_SearchName.Text = ""
+            Txt_SearchNum.Text = ""
+            Txt_Telephone.Text = ""
+            Dtp_SearchVisit.Value = "2001-1-1"
+            FillDataGRidview("Select * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        Finally
+            If con.State = 1 Then con.Close()
+        End Try
     End Sub
 
     Private Sub Dgv_EditPatient_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles Dgv_EditPatient.CellPainting
@@ -275,44 +281,67 @@ Public Class Frm_EditPatients
     End Sub
 
     Private Sub Txt_Telephone_TextChanged(sender As Object, e As EventArgs) Handles Txt_Telephone.TextChanged
-        If Txt_Telephone.TextLength > 0 Then
-            FillDataGRidview("Select * From PatientsDetail Where PhoneNumber like '%" & Txt_Telephone.Text & "%'")
-        Else
-            FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
-        End If
-    End Sub
-
-    Private Sub Txt_SearchNum_TextChanged(sender As Object, e As EventArgs) Handles Txt_SearchNum.TextChanged
-        If Txt_SearchNum.TextLength > 0 Then
-            FillDataGRidview("Select * From PatientsDetail Where PatientNum =  " & CInt(Txt_SearchNum.Text) & "")
-        Else
-            FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
-        End If
-    End Sub
-
-    Private Sub Dtp_SearchVisit_KeyDown(sender As Object, e As KeyEventArgs) Handles Dtp_SearchVisit.KeyDown
-
-        If e.KeyCode = Keys.Enter And Dtp_SearchVisit.Value.Date <> "2001-1-1" Then
-            FillDataGRidview("Select * From PatientsDetail Where FirstDate='" & Format(Dtp_SearchVisit.Value, "yyyy-MM-dd") & "'")
-        ElseIf Dtp_SearchVisit.Value.Date = "2001-1-1" And e.KeyCode = Keys.Enter Then
-            FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
-        End If
-
-    End Sub
-
-    Private Sub Txt_SearchName_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_SearchName.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            If Txt_SearchName.TextLength > 0 Then
-                FillDataGRidview("Select * From PatientsDetail Where PatientName like '" & Txt_SearchName.Text & "%'")
+        Try
+            If Txt_Telephone.TextLength > 0 Then
+                FillDataGRidview("Select * From PatientsDetail Where PhoneNumber like '%" & Txt_Telephone.Text & "%'")
             Else
                 FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
             End If
-        End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        Finally
+            If con.State = 1 Then con.Close()
+        End Try
+    End Sub
+
+    Private Sub Txt_SearchNum_TextChanged(sender As Object, e As EventArgs) Handles Txt_SearchNum.TextChanged
+        Try
+            If Txt_SearchNum.TextLength > 0 Then
+                FillDataGRidview("Select * From PatientsDetail Where PatientNum =  " & CInt(Txt_SearchNum.Text) & "")
+            Else
+                FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        Finally
+            If con.State = 1 Then con.Close()
+        End Try
+    End Sub
+
+    Private Sub Dtp_SearchVisit_KeyDown(sender As Object, e As KeyEventArgs) Handles Dtp_SearchVisit.KeyDown
+        Try
+            If e.KeyCode = Keys.Enter And Dtp_SearchVisit.Value.Date <> "2001-1-1" Then
+                FillDataGRidview("Select * From PatientsDetail Where FirstDate='" & Format(Dtp_SearchVisit.Value, "yyyy-MM-dd") & "'")
+            ElseIf Dtp_SearchVisit.Value.Date = "2001-1-1" And e.KeyCode = Keys.Enter Then
+                FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        Finally
+            If con.State = 1 Then con.Close()
+        End Try
+    End Sub
+
+    Private Sub Txt_SearchName_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_SearchName.KeyDown
+        Try
+            If e.KeyCode = Keys.Enter Then
+                If Txt_SearchName.TextLength > 0 Then
+                    FillDataGRidview("Select * From PatientsDetail Where PatientName like '" & Txt_SearchName.Text & "%'")
+                Else
+                    FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        Finally
+            If con.State = 1 Then con.Close()
+        End Try
     End Sub
 
     Private Sub Btn_DelPatient_Click(sender As Object, e As EventArgs) Handles Btn_DelPatient.Click
-
         Try
+            If con.State = 1 Then con.Close()
+
             If Dgv_EditPatient.Rows.Count > 0 Then
                 CurNum = Dgv_EditPatient.CurrentRow.Cells(0).Value
                 CurName = Dgv_EditPatient.CurrentRow.Cells(1).Value
@@ -322,11 +351,11 @@ Public Class Frm_EditPatients
             If MsgBox("Do You Want To Delete This Record ?" & Environment.NewLine & CurNum & " \ " & CurName, MsgBoxStyle.Information + vbYesNo +
                           MsgBoxStyle.DefaultButton2, "Attention") = vbYes Then
 
-                cmd = New SqlCommand("Delete From PatientsDetail Where PatientNum=@PatientNum", con)
-                cmd.Parameters.AddWithValue("PatientNum", Dgv_EditPatient.CurrentRow.Cells(0).Value)
+                Cmd = New SqlCommand("Delete From PatientsDetail Where PatientNum=@PatientNum", con)
+                Cmd.Parameters.AddWithValue("PatientNum", Dgv_EditPatient.CurrentRow.Cells(0).Value)
 
                 con.Open()
-                cmd.ExecuteNonQuery()
+                Cmd.ExecuteNonQuery()
 
                 FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
 
@@ -340,7 +369,7 @@ Public Class Frm_EditPatients
                 End If
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information, "Delete")
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         Finally
             If con.State = 1 Then con.Close()
         End Try
@@ -348,6 +377,9 @@ Public Class Frm_EditPatients
 
     Private Sub Btn_SavePatient_Click(sender As Object, e As EventArgs) Handles Btn_SavePatient.Click
         Try
+
+            If con.State = 1 Then con.Close()
+
             For Each row As DataGridViewRow In Dgv_EditPatient.Rows
 
                 currow = Dgv_EditPatient.CurrentRow.Index
@@ -391,21 +423,24 @@ Public Class Frm_EditPatients
                     Exit Sub
                 End If
 
-                cmd = New SqlCommand("Select PatientNum From PatientsDetail Where PatientNum=@PatientNum", con)
-                cmd.Parameters.AddWithValue("@PatientNum", row.Cells("PatientNum").Value).DbType = DbType.Int32
-                da = New SqlDataAdapter(cmd)
-                dtEditPatient = New DataTable
-                da.Fill(dtEditPatient)
+                Cmd = New SqlCommand("Select PatientNum From PatientsDetail Where PatientNum=@PatientNum", con)
+                Cmd.Parameters.AddWithValue("@PatientNum", row.Cells("PatientNum").Value).DbType = DbType.Int32
+                Da = New SqlDataAdapter(Cmd)
+                DtEditPatient = New DataTable
+                Da.Fill(DtEditPatient)
 
-                If dtEditPatient.Rows.Count = 0 Then
-                    cmd = New SqlCommand("Insert Into PatientsDetail(PatientNum,PatientName,Code,Age,Occupation,PhoneNumber,FirstDate,Height,StartWeight)
+                DtEditPatient.Dispose()
+                Da.Dispose()
+
+                If DtEditPatient.Rows.Count = 0 Then
+                    Cmd = New SqlCommand("Insert Into PatientsDetail(PatientNum,PatientName,Code,Age,Occupation,PhoneNumber,FirstDate,Height,StartWeight)
                                           values(@PatientNum,@PatientName,@Code,@Age,@Occupation,@PhoneNumber,@FirstDate,@Height,@StartWeight)", con)
                 Else
-                    cmd = New SqlCommand("Update PatientsDetail Set PatientName=@PatientName,Code=@Code,Age=@Age,Occupation=@Occupation,PhoneNumber=@PhoneNumber,
+                    Cmd = New SqlCommand("Update PatientsDetail Set PatientName=@PatientName,Code=@Code,Age=@Age,Occupation=@Occupation,PhoneNumber=@PhoneNumber,
                                          FirstDate=@FirstDate,Height=@Height,StartWeight=@StartWeight where Patientnum=@PatientNum", con)
                 End If
 
-                With cmd.Parameters
+                With Cmd.Parameters
                     .AddWithValue("@PatientNum", row.Cells("PatientNum").Value).DbType = DbType.Int32
                     .AddWithValue("@PatientName", row.Cells("PatientName").Value).DbType = DbType.String
                     .AddWithValue("@Code", row.Cells("Code").Value).DbType = DbType.String
@@ -422,7 +457,7 @@ Public Class Frm_EditPatients
                 End With
 
                 con.Open()
-                cmd.ExecuteNonQuery()
+                Cmd.ExecuteNonQuery()
             Next
             'FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
 
@@ -448,6 +483,8 @@ Public Class Frm_EditPatients
 
     Private Sub Btn_AddNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_AddNewPatient.Click
         Try
+            If con.State = 1 Then con.Close()
+
             Btn_ShowAllPatients.Enabled = False
             Dgv_EditPatient.Rows.Add(GetMaxId("PatientNum", "PatientsDetail") + 1)
             Dgv_EditPatient.Rows(Dgv_EditPatient.Rows.Count - 1).Cells("FirstDate").Value = Date.Now.ToString("dd/MM/yyyy")
@@ -457,18 +494,23 @@ Public Class Frm_EditPatients
             Dgv_EditPatient.BeginEdit(False)
             Btn_AddNewPatient.Enabled = False
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information)
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        Finally
+            If con.State = 1 Then con.Close()
         End Try
     End Sub
 
     Private Sub Btn_ShowAllPatients_Click(sender As Object, e As EventArgs) Handles Btn_ShowAllPatients.Click
         Try
+            If con.State = 1 Then con.Close()
             FillDataGRidview("Select * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
             If Dgv_EditPatient.Rows.Count - 1 > 0 Then
                 Dgv_EditPatient.CurrentCell = Dgv_EditPatient.Rows(Dgv_EditPatient.Rows.Count - 1).Cells(1)
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
+        Finally
+            If con.State = 1 Then con.Close()
         End Try
     End Sub
 

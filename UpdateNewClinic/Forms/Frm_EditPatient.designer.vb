@@ -22,10 +22,9 @@ Partial Class Frm_EditPatients
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_EditPatients))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Dgv_EditPatient = New System.Windows.Forms.DataGridView()
         Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -44,8 +43,6 @@ Partial Class Frm_EditPatients
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Txt_Telephone = New System.Windows.Forms.TextBox()
-        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Btn_ShowAllPatients = New System.Windows.Forms.Button()
@@ -77,33 +74,33 @@ Partial Class Frm_EditPatients
         Me.Dgv_EditPatient.AllowUserToDeleteRows = False
         Me.Dgv_EditPatient.AllowUserToResizeColumns = False
         Me.Dgv_EditPatient.AllowUserToResizeRows = False
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.AliceBlue
-        Me.Dgv_EditPatient.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue
+        Me.Dgv_EditPatient.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.Dgv_EditPatient.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Dgv_EditPatient.BackgroundColor = System.Drawing.Color.White
         Me.Dgv_EditPatient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_EditPatient.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_EditPatient.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.Dgv_EditPatient.ColumnHeadersHeight = 30
         Me.Dgv_EditPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.Dgv_EditPatient.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientNum, Me.PatientName, Me.Code, Me.Age, Me.Occupation, Me.PhoneNumber, Me.FirstDate, Me.Height, Me.StartWeight, Me.Open})
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle9.NullValue = Nothing
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Snow
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Dgv_EditPatient.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.NullValue = Nothing
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Snow
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_EditPatient.DefaultCellStyle = DataGridViewCellStyle3
         Me.Dgv_EditPatient.EnableHeadersVisualStyles = False
         Me.Dgv_EditPatient.GridColor = System.Drawing.Color.Gainsboro
         Me.Dgv_EditPatient.Location = New System.Drawing.Point(3, 0)
@@ -237,16 +234,6 @@ Partial Class Frm_EditPatients
         Me.Txt_Telephone.Name = "Txt_Telephone"
         Me.Txt_Telephone.Size = New System.Drawing.Size(216, 24)
         Me.Txt_Telephone.TabIndex = 5
-        '
-        'PrintPreviewDialog1
-        '
-        Me.PrintPreviewDialog1.AutoScrollMargin = New System.Drawing.Size(0, 0)
-        Me.PrintPreviewDialog1.AutoScrollMinSize = New System.Drawing.Size(0, 0)
-        Me.PrintPreviewDialog1.ClientSize = New System.Drawing.Size(400, 300)
-        Me.PrintPreviewDialog1.Enabled = True
-        Me.PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), System.Drawing.Icon)
-        Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
-        Me.PrintPreviewDialog1.Visible = False
         '
         'Panel1
         '
@@ -512,8 +499,6 @@ Partial Class Frm_EditPatients
     Friend WithEvents Btn_Exit As Button
     Friend WithEvents Btn_ShowAllPatients As Button
     Friend WithEvents Btn_ExportExcel As Button
-    Friend WithEvents PrintDocument1 As Printing.PrintDocument
-    Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Dtp_SearchVisit As DateTimePicker

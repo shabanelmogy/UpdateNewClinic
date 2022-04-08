@@ -7,29 +7,32 @@ Public Class Frm_VisitTypes
     Dim Dt_VisitType As DataTable
 
     Sub FillDgvVisits()
+        Try
+            Dgv_VisitType.Columns.Clear()
+            Dt_VisitType = SelectWithDataTable("Select * From VisitsTypes", "VisitType")
 
-        Dgv_VisitType.Columns.Clear()
-        Dt_VisitType = SelectWithDataTable("Select * From VisitsTypes", "VisitType")
+            With Dgv_VisitType
+                .Columns.Add("Num", "Num")
+                .Columns.Add("VisitKind", "VisitKind")
+                .Columns.Add("Amount", "Amount")
+            End With
 
-        With Dgv_VisitType
-            .Columns.Add("Num", "Num")
-            .Columns.Add("VisitKind", "VisitKind")
-            .Columns.Add("Amount", "Amount")
-        End With
+            Dgv_VisitType.Columns(0).Width = 70
+            Dgv_VisitType.Columns(1).Width = 245
+            Dgv_VisitType.Columns(2).Width = 70
 
-        Dgv_VisitType.Columns(0).Width = 70
-        Dgv_VisitType.Columns(1).Width = 245
-        Dgv_VisitType.Columns(2).Width = 70
+            Dgv_VisitType.Columns(0).ReadOnly = True
 
-        Dgv_VisitType.Columns(0).ReadOnly = True
+            For i As Integer = 0 To Dt_VisitType.Rows.Count - 1
+                Dgv_VisitType.Rows.Add()
+                Dgv_VisitType(0, i).Value = Dt_VisitType(i)(0)
+                Dgv_VisitType(1, i).Value = Dt_VisitType(i)(1)
+                Dgv_VisitType(2, i).Value = Dt_VisitType(i)(2)
+            Next
 
-        For i As Integer = 0 To Dt_VisitType.Rows.Count - 1
-            Dgv_VisitType.Rows.Add()
-            Dgv_VisitType(0, i).Value = Dt_VisitType(i)(0)
-            Dgv_VisitType(1, i).Value = Dt_VisitType(i)(1)
-            Dgv_VisitType(2, i).Value = Dt_VisitType(i)(2)
-        Next
-
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        End Try
     End Sub
 
     Private Sub Btn_AddNewVisit_Click(sender As Object, e As EventArgs) Handles Btn_AddNewVisit.Click
@@ -41,14 +44,18 @@ Public Class Frm_VisitTypes
             Dgv_VisitType.BeginEdit(False)
             Btn_AddNewVisit.Enabled = False
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information)
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
     Private Sub Frm_VisitTypes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FillDgvVisits()
-        Dgv_VisitType.Sort(Dgv_VisitType.Columns("Num"), System.ComponentModel.ListSortDirection.Ascending)
-        Dgv_VisitType.CurrentCell = Dgv_VisitType.Rows(Dgv_VisitType.Rows.Count - 1).Cells(0)
+
+        If Dgv_VisitType.Rows.Count > 0 Then
+            Dgv_VisitType.Sort(Dgv_VisitType.Columns("Num"), System.ComponentModel.ListSortDirection.Ascending)
+            Dgv_VisitType.CurrentCell = Dgv_VisitType.Rows(Dgv_VisitType.Rows.Count - 1).Cells(0)
+        End If
+
     End Sub
 
     Private Sub Frm_VisitTypes_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
@@ -63,7 +70,11 @@ Public Class Frm_VisitTypes
     End Sub
 
     Private Sub Btn_ExportExcel_Click(sender As Object, e As EventArgs) Handles Btn_ExportExcel.Click
-        ExportExcel(Dt_VisitType, "VisitType")
+        Try
+            ExportExcel(Dt_VisitType, "VisitType")
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        End Try
     End Sub
 
     Private Sub DgvVisits_KeyDown(sender As Object, e As KeyEventArgs) Handles Dgv_VisitType.KeyDown
@@ -72,7 +83,7 @@ Public Class Frm_VisitTypes
                 SendKeys.Send("{right}")
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
@@ -89,7 +100,7 @@ Public Class Frm_VisitTypes
                 Me.Dgv_VisitType.DefaultCellStyle.SelectionBackColor = Color.OldLace
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Exclamation, "Attention")
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
@@ -145,7 +156,7 @@ Public Class Frm_VisitTypes
             Dgv_VisitType.Sort(Dgv_VisitType.Columns("Num"), System.ComponentModel.ListSortDirection.Ascending)
             Btn_AddNewVisit.Enabled = True
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information)
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         Finally
             If con.State = 1 Then con.Close()
         End Try
@@ -154,15 +165,18 @@ Public Class Frm_VisitTypes
     Private Sub Btn_DeletePatient_Click(sender As Object, e As EventArgs) Handles Btn_DeletePatient.Click
         Try
             If con.State = 1 Then con.Close()
-            If MsgBox("Do You Want To Delete This Record ?", MsgBoxStyle.Information + vbYesNo, "Attention") = vbYes Then
 
-                cmd = New SqlCommand("Delete From VisitsTypes Where Num=@Num", con)
-                cmd.Parameters.AddWithValue("Num", Dgv_VisitType.CurrentRow.Cells(0).Value)
+            If Dgv_VisitType.Rows.Count > 0 Then
 
-                con.Open()
-                cmd.ExecuteNonQuery()
+                If MsgBox("Do You Want To Delete This Record ?", MsgBoxStyle.Information + vbYesNo, "Attention") = vbYes Then
 
-                If Dgv_VisitType.Rows.Count > 0 Then
+                    cmd = New SqlCommand("Delete From VisitsTypes Where Num=@Num", con)
+                    cmd.Parameters.AddWithValue("Num", Dgv_VisitType.CurrentRow.Cells(0).Value)
+
+                    con.Open()
+                    cmd.ExecuteNonQuery()
+
+
                     Dgv_VisitType.CurrentCell = Dgv_VisitType.Rows(Dgv_VisitType.Rows.Count - 1).Cells(0)
                     Dgv_VisitType.SelectionMode = DataGridViewSelectionMode.FullRowSelect
                     Dgv_VisitType.DefaultCellStyle.SelectionBackColor = Color.OldLace
@@ -175,7 +189,6 @@ Public Class Frm_VisitTypes
         Finally
             If con.State = 1 Then con.Close()
         End Try
-
     End Sub
 
 End Class

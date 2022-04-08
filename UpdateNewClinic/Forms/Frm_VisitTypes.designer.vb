@@ -22,9 +22,9 @@ Partial Class Frm_VisitTypes
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Btn_ExportExcel = New System.Windows.Forms.Button()
         Me.Btn_DeletePatient = New System.Windows.Forms.Button()
@@ -48,7 +48,7 @@ Partial Class Frm_VisitTypes
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel3.Location = New System.Drawing.Point(0, 326)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(655, 66)
+        Me.Panel3.Size = New System.Drawing.Size(457, 66)
         Me.Panel3.TabIndex = 27
         '
         'Btn_ExportExcel
@@ -62,11 +62,10 @@ Partial Class Frm_VisitTypes
         Me.Btn_ExportExcel.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_ExportExcel.ForeColor = System.Drawing.Color.White
         Me.Btn_ExportExcel.Image = Global.UpdateNewClinic.My.Resources.Resources.ExportToExcel
-        Me.Btn_ExportExcel.Location = New System.Drawing.Point(404, 13)
+        Me.Btn_ExportExcel.Location = New System.Drawing.Point(282, 13)
         Me.Btn_ExportExcel.Name = "Btn_ExportExcel"
-        Me.Btn_ExportExcel.Size = New System.Drawing.Size(112, 37)
+        Me.Btn_ExportExcel.Size = New System.Drawing.Size(71, 37)
         Me.Btn_ExportExcel.TabIndex = 21
-        Me.Btn_ExportExcel.Text = "Export Excel"
         Me.Btn_ExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_ExportExcel.UseVisualStyleBackColor = False
         '
@@ -80,11 +79,10 @@ Partial Class Frm_VisitTypes
         Me.Btn_DeletePatient.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_DeletePatient.ForeColor = System.Drawing.Color.White
         Me.Btn_DeletePatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Delete
-        Me.Btn_DeletePatient.Location = New System.Drawing.Point(276, 13)
+        Me.Btn_DeletePatient.Location = New System.Drawing.Point(191, 13)
         Me.Btn_DeletePatient.Name = "Btn_DeletePatient"
-        Me.Btn_DeletePatient.Size = New System.Drawing.Size(102, 37)
+        Me.Btn_DeletePatient.Size = New System.Drawing.Size(71, 37)
         Me.Btn_DeletePatient.TabIndex = 15
-        Me.Btn_DeletePatient.Text = "Del"
         Me.Btn_DeletePatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_DeletePatient.UseVisualStyleBackColor = False
         '
@@ -98,11 +96,10 @@ Partial Class Frm_VisitTypes
         Me.Btn_ExitNewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_ExitNewPatient.ForeColor = System.Drawing.Color.White
         Me.Btn_ExitNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.ExitFrm
-        Me.Btn_ExitNewPatient.Location = New System.Drawing.Point(540, 13)
+        Me.Btn_ExitNewPatient.Location = New System.Drawing.Point(373, 13)
         Me.Btn_ExitNewPatient.Name = "Btn_ExitNewPatient"
-        Me.Btn_ExitNewPatient.Size = New System.Drawing.Size(99, 37)
+        Me.Btn_ExitNewPatient.Size = New System.Drawing.Size(71, 37)
         Me.Btn_ExitNewPatient.TabIndex = 13
-        Me.Btn_ExitNewPatient.Text = "Exit"
         Me.Btn_ExitNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_ExitNewPatient.UseVisualStyleBackColor = False
         '
@@ -116,11 +113,10 @@ Partial Class Frm_VisitTypes
         Me.Btn_SaveNewVisit.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_SaveNewVisit.ForeColor = System.Drawing.Color.White
         Me.Btn_SaveNewVisit.Image = Global.UpdateNewClinic.My.Resources.Resources.Save
-        Me.Btn_SaveNewVisit.Location = New System.Drawing.Point(144, 13)
+        Me.Btn_SaveNewVisit.Location = New System.Drawing.Point(100, 13)
         Me.Btn_SaveNewVisit.Name = "Btn_SaveNewVisit"
-        Me.Btn_SaveNewVisit.Size = New System.Drawing.Size(107, 37)
+        Me.Btn_SaveNewVisit.Size = New System.Drawing.Size(71, 37)
         Me.Btn_SaveNewVisit.TabIndex = 13
-        Me.Btn_SaveNewVisit.Text = "Save"
         Me.Btn_SaveNewVisit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_SaveNewVisit.UseVisualStyleBackColor = False
         '
@@ -136,9 +132,8 @@ Partial Class Frm_VisitTypes
         Me.Btn_AddNewVisit.Image = Global.UpdateNewClinic.My.Resources.Resources.AddNew
         Me.Btn_AddNewVisit.Location = New System.Drawing.Point(9, 13)
         Me.Btn_AddNewVisit.Name = "Btn_AddNewVisit"
-        Me.Btn_AddNewVisit.Size = New System.Drawing.Size(110, 37)
+        Me.Btn_AddNewVisit.Size = New System.Drawing.Size(71, 37)
         Me.Btn_AddNewVisit.TabIndex = 13
-        Me.Btn_AddNewVisit.Text = "New"
         Me.Btn_AddNewVisit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_AddNewVisit.UseVisualStyleBackColor = False
         '
@@ -146,28 +141,28 @@ Partial Class Frm_VisitTypes
         '
         Me.Dgv_VisitType.AllowUserToAddRows = False
         Me.Dgv_VisitType.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue
-        Me.Dgv_VisitType.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.AliceBlue
+        Me.Dgv_VisitType.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.Dgv_VisitType.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.Dgv_VisitType.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.Dgv_VisitType.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_VisitType.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_VisitType.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.Dgv_VisitType.ColumnHeadersHeight = 27
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Snow
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Dgv_VisitType.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Snow
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_VisitType.DefaultCellStyle = DataGridViewCellStyle6
         Me.Dgv_VisitType.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Dgv_VisitType.EnableHeadersVisualStyles = False
         Me.Dgv_VisitType.Location = New System.Drawing.Point(0, 0)
@@ -175,14 +170,14 @@ Partial Class Frm_VisitTypes
         Me.Dgv_VisitType.RowHeadersVisible = False
         Me.Dgv_VisitType.RowTemplate.Height = 25
         Me.Dgv_VisitType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Dgv_VisitType.Size = New System.Drawing.Size(655, 326)
+        Me.Dgv_VisitType.Size = New System.Drawing.Size(457, 326)
         Me.Dgv_VisitType.TabIndex = 31
         '
         'Frm_VisitTypes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(655, 392)
+        Me.ClientSize = New System.Drawing.Size(457, 392)
         Me.Controls.Add(Me.Dgv_VisitType)
         Me.Controls.Add(Me.Panel3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
