@@ -117,7 +117,7 @@ Partial Class RegisterForm
         Me.Btn_Validate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_Validate.Font = New System.Drawing.Font("Tahoma", 14.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_Validate.ForeColor = System.Drawing.Color.White
-        Me.Btn_Validate.Location = New System.Drawing.Point(12, 231)
+        Me.Btn_Validate.Location = New System.Drawing.Point(12, 190)
         Me.Btn_Validate.Name = "Btn_Validate"
         Me.Btn_Validate.Size = New System.Drawing.Size(321, 37)
         Me.Btn_Validate.TabIndex = 8
@@ -129,7 +129,7 @@ Partial Class RegisterForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(476, 280)
+        Me.ClientSize = New System.Drawing.Size(476, 238)
         Me.Controls.Add(Me.Btn_Validate)
         Me.Controls.Add(Me.Txt_CheckKey)
         Me.Controls.Add(Me.Txt_Validate)
