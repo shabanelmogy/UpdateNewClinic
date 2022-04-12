@@ -9,6 +9,8 @@ Public Class Frm_EditPatients
     Dim CurNum As Integer
     Dim CurName As String
     Dim currow As Integer
+    Dim rdr As SqlDataReader
+    Dim pname() As String
 
     Sub DgvColumnWidth()
         Try
@@ -489,6 +491,7 @@ Public Class Frm_EditPatients
             End If
 
         Catch ex As Exception
+            'لتجنب ظهور خطأ عند الضغط على حواف الخلية
             If ex.Message = "Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function." Then
             End If
         Finally
@@ -518,7 +521,7 @@ Public Class Frm_EditPatients
     Private Sub Btn_ShowAllPatients_Click(sender As Object, e As EventArgs) Handles Btn_ShowAllPatients.Click
         Try
             If con.State = 1 Then con.Close()
-            FillDataGRidview("Select * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
+            FillDataGRidview("Select * From PatientsDetail Where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
             If Dgv_EditPatient.Rows.Count - 1 > 0 Then
                 Dgv_EditPatient.CurrentCell = Dgv_EditPatient.Rows(Dgv_EditPatient.Rows.Count - 1).Cells(1)
             End If
@@ -547,21 +550,4 @@ Public Class Frm_EditPatients
         End If
     End Sub
 
-    Private Sub Dgv_EditPatient_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_EditPatient.CellLeave
-    End Sub
-
-    Private Sub Dgv_EditPatient_RowValidating(sender As Object, e As DataGridViewCellCancelEventArgs) Handles Dgv_EditPatient.RowValidating
-
-        If e.ColumnIndex = 1 Then
-            Cmd = New SqlCommand("Select PatientName From PatientsDetail Where PatientName=@PatientName", con)
-            Cmd.Parameters.AddWithValue("@PatientName", Dgv_EditPatient.CurrentRow.Cells(1).Value).Value.ToString()
-            Dim da As New SqlDataAdapter(Cmd)
-            Dim dt As New DataTable
-            da.Fill(dt)
-            If dt.Rows.Count > 0 Then
-                e.Cancel = False
-            End If
-        End If
-
-    End Sub
 End Class

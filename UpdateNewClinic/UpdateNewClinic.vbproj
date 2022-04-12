@@ -74,10 +74,13 @@
     <ManifestKeyFile>UpdateNewClinic_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -344,7 +347,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\UpdateNewClinic.Config" />
+    <None Include="bin\Debug\UpdateNewClinic.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClinicDataSet.xsc">
       <DependentUpon>ClinicDataSet.xsd</DependentUpon>
     </None>
@@ -781,6 +786,10 @@
     <None Include="Resources\Icono Maximizar.png" />
     <None Include="Resources\Icono Restaurar.png" />
     <None Include="Resources\Icono Minimizar.png" />
+    <None Include="Resources\Report 32.png" />
+    <None Include="Resources\Patient 32.png" />
+    <None Include="Resources\Visits 32.png" />
+    <None Include="Resources\File 32.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

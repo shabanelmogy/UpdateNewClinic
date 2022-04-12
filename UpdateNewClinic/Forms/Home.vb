@@ -8,6 +8,15 @@ Imports Microsoft.Win32
 
 Public Class Home
 
+    Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        AdjustFormSize(0, 40, Me)
+
+    End Sub
+
     Private Sub Home_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim x As String
         x = Check_Key()
@@ -16,9 +25,20 @@ Public Class Home
             MsgBox("Need Active")
             Me.Close()
             RegisterForm.Show()
-        Else
-            MsgBox("مرحبا بك")
         End If
+
+        LblComputerName.Text = My.Computer.Name
+        lblsystem.Text = My.Computer.Info.OSFullName
+
+        If My.Computer.Network.IsAvailable Then
+            LBLnetavailable.Text = "Connected"
+            LBLnetavailable.ForeColor = Color.GreenYellow
+        Else
+            LBLnetavailable.Text = "Disconnected"
+            LBLnetavailable.ForeColor = Color.Gray
+        End If
+
+        Timer1.Start()
     End Sub
 
     Public Function Check_Key() As String
@@ -120,19 +140,28 @@ Public Class Home
     End Sub
 
     Private Sub Btn_Maximize_Click(sender As Object, e As EventArgs) Handles Btn_Maximize.Click
+
         Btn_Maximize.Visible = False
-        Btn_RestoreForm.Visible = True
-        Me.WindowState = FormWindowState.Maximized
+        Btn_MinimizeForm.Visible = True
+
+        AdjustFormSize(0, 40, Me)
+
     End Sub
 
-    Private Sub Btn_RestoreForm_Click(sender As Object, e As EventArgs) Handles Btn_RestoreForm.Click
-        Me.WindowState = FormWindowState.Normal
-        Btn_RestoreForm.Visible = False
+    Private Sub Btn_MinimizeForm_Click(sender As Object, e As EventArgs) Handles Btn_MinimizeForm.Click
+
+        Btn_MinimizeForm.Visible = False
         Btn_Maximize.Visible = True
+
+        AdjustFormSize(200, 200, Me)
     End Sub
 
-    Private Sub btnMinimizar_Click(sender As Object, e As EventArgs) Handles btnMinimizar.Click
+    Private Sub Btn_FormInTaskBar_Click(sender As Object, e As EventArgs) Handles Btn_FormInTaskBar.Click
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        lbl_Date.Text = Now.Date.ToString("dddd d/MMMM/yyyy")
+        lbl_Time.Text = TimeOfDay.ToString("T")
+    End Sub
 End Class

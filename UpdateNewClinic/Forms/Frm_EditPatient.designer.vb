@@ -197,6 +197,7 @@ Partial Class Frm_EditPatients
         '
         'Txt_SearchName
         '
+        Me.Txt_SearchName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.Txt_SearchName.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.Txt_SearchName.Location = New System.Drawing.Point(147, 9)
         Me.Txt_SearchName.Name = "Txt_SearchName"

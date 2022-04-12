@@ -125,12 +125,27 @@ Public Class Frm_NewClient
     Private Sub Txt_PatientName_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_PatientName.KeyDown
 
         If e.KeyCode = Keys.Enter Then
-            If CheckPatientName(Txt_PatientName.Text) = 1 Then
-                MsgBox("إسم المريض مكرر", MessageBoxIcon.Error, "Error")
-                Txt_PatientName.Select()
-            End If
+            Try
+                'التأكد من أن إسم المريض غير مكرر
+                cmd = New SqlCommand("Select PatientName From PatientsDetail Where PatientName=@PatientName", con)
+                cmd.Parameters.AddWithValue("@PatientName", Txt_PatientName.Text).Value.ToString()
+                Dim da As New SqlDataAdapter(cmd)
+                Dim dt As New DataTable
+                da.Fill(dt)
+                If dt.Rows.Count > 0 Then
+                    MsgBox("إسم المريض مكرر")
+                Else
+                    Txt_Code.Select()
+                End If
+                cmd.Dispose()
+                dt.Dispose()
+                da.Dispose()
+            Catch ex As Exception
+                MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+            Finally
+                con.Close()
+            End Try
         End If
-
     End Sub
 
     Private Sub Txt_Code_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_Code.KeyDown

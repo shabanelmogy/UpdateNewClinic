@@ -198,21 +198,12 @@ Module Main_Mod
         End Try
     End Sub
 
-    Public Function CheckPatientName(Value As Object) As Integer
-        Try
-            Cmd = New SqlCommand("Select PatientName From PatientsDetail Where PatientName=@PatientName", con)
-            Cmd.Parameters.AddWithValue("@PatientName", Value).Value.ToString()
-            Dim da As New SqlDataAdapter(Cmd)
-            Dim dt As New DataTable
-            da.Fill(dt)
-            Cmd.Dispose()
-            dt.Dispose()
-            da.Dispose()
-            Return 1
-        Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
-        End Try
-        Return Nothing
-    End Function
+    'إظهار شريط المهام عندما تكون الشاشة بدون إطار 
+    Public Sub AdjustFormSize(W As Integer, H As Integer, f As Form)
+        f.Width = Screen.PrimaryScreen.Bounds.Width - W
+        f.Height = Screen.PrimaryScreen.Bounds.Height - H
+        f.Location = New Point()
+        f.StartPosition = FormStartPosition.CenterScreen
+    End Sub
 
 End Module
