@@ -22,9 +22,9 @@ Partial Class Frm_EditPatients
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Dgv_EditPatient = New System.Windows.Forms.DataGridView()
         Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -45,14 +45,7 @@ Partial Class Frm_EditPatients
         Me.Txt_Telephone = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Btn_ShowAllPatients = New System.Windows.Forms.Button()
-        Me.Btn_AddNewPatient = New System.Windows.Forms.Button()
-        Me.Btn_ExportExcel = New System.Windows.Forms.Button()
-        Me.Btn_SavePatient = New System.Windows.Forms.Button()
-        Me.Btn_DelPatient = New System.Windows.Forms.Button()
-        Me.Btn_Exit = New System.Windows.Forms.Button()
         Me.Dtp_SearchVisit = New System.Windows.Forms.DateTimePicker()
-        Me.Btn_Reset = New System.Windows.Forms.Button()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -63,6 +56,13 @@ Partial Class Frm_EditPatients
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Btn_ShowAllPatients = New System.Windows.Forms.Button()
+        Me.Btn_AddNewPatient = New System.Windows.Forms.Button()
+        Me.Btn_ExportExcel = New System.Windows.Forms.Button()
+        Me.Btn_SavePatient = New System.Windows.Forms.Button()
+        Me.Btn_DelPatient = New System.Windows.Forms.Button()
+        Me.Btn_Exit = New System.Windows.Forms.Button()
+        Me.Btn_Reset = New System.Windows.Forms.Button()
         CType(Me.Dgv_EditPatient, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -74,33 +74,33 @@ Partial Class Frm_EditPatients
         Me.Dgv_EditPatient.AllowUserToDeleteRows = False
         Me.Dgv_EditPatient.AllowUserToResizeColumns = False
         Me.Dgv_EditPatient.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue
-        Me.Dgv_EditPatient.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.AliceBlue
+        Me.Dgv_EditPatient.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
         Me.Dgv_EditPatient.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Dgv_EditPatient.BackgroundColor = System.Drawing.Color.White
         Me.Dgv_EditPatient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_EditPatient.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_EditPatient.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.Dgv_EditPatient.ColumnHeadersHeight = 30
         Me.Dgv_EditPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.Dgv_EditPatient.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientNum, Me.PatientName, Me.Code, Me.Age, Me.Occupation, Me.PhoneNumber, Me.FirstDate, Me.Height, Me.StartWeight, Me.Open})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.NullValue = Nothing
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Snow
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Dgv_EditPatient.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle9.NullValue = Nothing
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Snow
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_EditPatient.DefaultCellStyle = DataGridViewCellStyle9
         Me.Dgv_EditPatient.EnableHeadersVisualStyles = False
         Me.Dgv_EditPatient.GridColor = System.Drawing.Color.Gainsboro
         Me.Dgv_EditPatient.Location = New System.Drawing.Point(3, 0)
@@ -166,7 +166,7 @@ Partial Class Frm_EditPatients
         'Txt_SearchNum
         '
         Me.Txt_SearchNum.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_SearchNum.Location = New System.Drawing.Point(536, 9)
+        Me.Txt_SearchNum.Location = New System.Drawing.Point(523, 9)
         Me.Txt_SearchNum.Name = "Txt_SearchNum"
         Me.Txt_SearchNum.Size = New System.Drawing.Size(177, 24)
         Me.Txt_SearchNum.TabIndex = 2
@@ -199,7 +199,7 @@ Partial Class Frm_EditPatients
         '
         Me.Txt_SearchName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.Txt_SearchName.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_SearchName.Location = New System.Drawing.Point(147, 9)
+        Me.Txt_SearchName.Location = New System.Drawing.Point(135, 9)
         Me.Txt_SearchName.Name = "Txt_SearchName"
         Me.Txt_SearchName.Size = New System.Drawing.Size(216, 24)
         Me.Txt_SearchName.TabIndex = 0
@@ -231,7 +231,7 @@ Partial Class Frm_EditPatients
         'Txt_Telephone
         '
         Me.Txt_Telephone.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_Telephone.Location = New System.Drawing.Point(147, 45)
+        Me.Txt_Telephone.Location = New System.Drawing.Point(135, 45)
         Me.Txt_Telephone.Name = "Txt_Telephone"
         Me.Txt_Telephone.Size = New System.Drawing.Size(216, 24)
         Me.Txt_Telephone.TabIndex = 1
@@ -261,6 +261,68 @@ Partial Class Frm_EditPatients
         Me.Panel2.Size = New System.Drawing.Size(1103, 59)
         Me.Panel2.TabIndex = 5
         '
+        'Dtp_SearchVisit
+        '
+        Me.Dtp_SearchVisit.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.Dtp_SearchVisit.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.Dtp_SearchVisit.Location = New System.Drawing.Point(523, 45)
+        Me.Dtp_SearchVisit.Name = "Dtp_SearchVisit"
+        Me.Dtp_SearchVisit.Size = New System.Drawing.Size(177, 24)
+        Me.Dtp_SearchVisit.TabIndex = 3
+        Me.Dtp_SearchVisit.Value = New Date(2001, 1, 1, 0, 0, 0, 0)
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "PatientNum"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "PatientNum"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.HeaderText = "PatientName"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Code"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Age"
+        Me.DataGridViewTextBoxColumn4.MaxInputLength = 100
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Occupation"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.HeaderText = "PhoneNumber1"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.HeaderText = "PhoneNumber2"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.HeaderText = "FirstDate"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Height"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.HeaderText = "StartWeight"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        '
         'Btn_ShowAllPatients
         '
         Me.Btn_ShowAllPatients.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -274,9 +336,9 @@ Partial Class Frm_EditPatients
         Me.Btn_ShowAllPatients.Image = Global.UpdateNewClinic.My.Resources.Resources.ShowAll
         Me.Btn_ShowAllPatients.Location = New System.Drawing.Point(3, 10)
         Me.Btn_ShowAllPatients.Name = "Btn_ShowAllPatients"
-        Me.Btn_ShowAllPatients.Size = New System.Drawing.Size(154, 39)
+        Me.Btn_ShowAllPatients.Size = New System.Drawing.Size(176, 39)
         Me.Btn_ShowAllPatients.TabIndex = 0
-        Me.Btn_ShowAllPatients.Text = "Show All       F2"
+        Me.Btn_ShowAllPatients.Text = "Show Today   F2"
         Me.Btn_ShowAllPatients.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_ShowAllPatients.UseVisualStyleBackColor = False
         '
@@ -375,16 +437,6 @@ Partial Class Frm_EditPatients
         Me.Btn_Exit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_Exit.UseVisualStyleBackColor = False
         '
-        'Dtp_SearchVisit
-        '
-        Me.Dtp_SearchVisit.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Dtp_SearchVisit.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.Dtp_SearchVisit.Location = New System.Drawing.Point(536, 45)
-        Me.Dtp_SearchVisit.Name = "Dtp_SearchVisit"
-        Me.Dtp_SearchVisit.Size = New System.Drawing.Size(177, 24)
-        Me.Dtp_SearchVisit.TabIndex = 3
-        Me.Dtp_SearchVisit.Value = New Date(2001, 1, 1, 0, 0, 0, 0)
-        '
         'Btn_Reset
         '
         Me.Btn_Reset.BackColor = System.Drawing.Color.SteelBlue
@@ -402,58 +454,6 @@ Partial Class Frm_EditPatients
         Me.Btn_Reset.Text = "Undo"
         Me.Btn_Reset.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_Reset.UseVisualStyleBackColor = False
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "PatientNum"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "PatientNum"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.HeaderText = "PatientName"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Code"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Age"
-        Me.DataGridViewTextBoxColumn4.MaxInputLength = 100
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Occupation"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.HeaderText = "PhoneNumber1"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.HeaderText = "PhoneNumber2"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.HeaderText = "FirstDate"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Height"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.HeaderText = "StartWeight"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
         '
         'Frm_EditPatients
         '
