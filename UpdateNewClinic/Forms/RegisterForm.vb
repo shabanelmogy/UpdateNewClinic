@@ -72,7 +72,7 @@ Public Class RegisterForm
     Private Sub Btn_Validate_Click(sender As Object, e As EventArgs) Handles Btn_Validate.Click
 
         If Txt_Validate.Text = Txt_CheckKey.Text Then
-            Dim x As String = Txt_CheckKey.Text
+            Dim x As String = Txt_Validate.Text
             Dim Activekey As RegistryKey
             Activekey = Registry.LocalMachine.OpenSubKey("SOFTWARE", True)
             Activekey = Registry.LocalMachine.OpenSubKey("SOFTWARE\Sys", True)
