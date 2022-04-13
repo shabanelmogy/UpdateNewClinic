@@ -7,9 +7,11 @@ Public Class Frm_Reservation
     Dim cmd As New SqlCommand
     Dim dv As New DataView
     Dim cur As CurrencyManager
-    Dim Dt_Search, Dt_Visits As New DataTable
+    Dim Dt_Search, Dt_Visits, dt As New DataTable
     Dim da As New SqlDataAdapter
     Dim rdr As SqlDataReader
+    Dim Query As String
+
 #End Region
 
     Sub FormatDgv_Search()
@@ -23,8 +25,9 @@ Public Class Frm_Reservation
         Dgv_Visits.Columns(1).Width = 300
         Dgv_Visits.Columns(2).Width = 100
         Dgv_Visits.Columns(3).Width = 100
-        Dgv_Visits.Columns(3).HeaderText = "ReserveType"
-        Dgv_Visits.Columns(0).HeaderText = "PatientNum"
+        Dgv_Visits.Columns(4).Width = 100
+        'Dgv_Visits.Columns(3).HeaderText = "ReserveType"
+        'Dgv_Visits.Columns(0).HeaderText = "PatientNum"
     End Sub
 
     Private Sub Frm_Reservation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -32,11 +35,11 @@ Public Class Frm_Reservation
             FillCmb(Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
             Cbo_SortAndSearch.SelectedIndex = 0
             GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
-            GetAllReservation("Select PatientID,PatientName,ReserveDate,ReserveName From Reservation")
+            GetAllReservation()
             TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType)
             Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information)
+        MsgBox(ex.Message, MsgBoxStyle.Information)
         End Try
     End Sub
 
@@ -57,44 +60,70 @@ Public Class Frm_Reservation
         End Try
     End Sub
 
-    Sub GetAllReservation(Query As String)
+    Sub GetAllReservation()
         Try
             Dgv_Visits.Rows.Clear()
             If con.State = 1 Then con.Close()
             con.Open()
-            Dim cmd As New SqlCommand(Query, con)
+            Dim cmd As New SqlCommand("Select PatientID,PatientName,ReserveDate,ReserveName,ReserveValue From Reservation", con)
             rdr = cmd.ExecuteReader
             While rdr.Read
-                Dgv_Visits.Rows.Add(rdr("PatientID"), rdr("PatientName"), Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("ReserveName"))
+                Dgv_Visits.Rows.Add(rdr("PatientID"), rdr("PatientName"), Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("ReserveName"), rdr("ReserveValue"))
             End While
             rdr.Close()
             con.Close()
             FormatDgv_Visits()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information)
+        Finally
+            If con.State = 1 Then con.Close()
         End Try
     End Sub
 
     Public Sub Insert_Reservation()
 
-        cmd = New SqlCommand
-        With cmd
-            .Connection = con
-            .CommandType = CommandType.Text
-            .CommandText = "Insert Into Reservation (PatientID,PatientName,ReserveDate,ReserveType,ReserveName)
-                             Values(@PatientID,@PatientName,@ReserveDate,@ReserveType,@ReserveName)"
-            .Parameters.Clear()
-            .Parameters.AddWithValue("@PatientID", SqlDbType.Int).Value = Txt_Num.Text
-            .Parameters.AddWithValue("@PatientName", SqlDbType.VarChar).Value = Txt_PatientName.Text
-            .Parameters.AddWithValue("@ReserveDate", SqlDbType.Date).Value = Dtp_ReserveDate.Value.ToString("yyyy-MM-dd")
-            .Parameters.AddWithValue("@ReserveType", SqlDbType.VarChar).Value = Cbo_ReserveType.SelectedValue
-            .Parameters.AddWithValue("@ReserveName", SqlDbType.VarChar).Value = Cbo_ReserveType.Text
-        End With
-        If con.State = 1 Then con.Close()
-        con.Open()
-        cmd.ExecuteNonQuery()
-        con.Close()
-        cmd = Nothing
+        cmd = New SqlCommand("Select PatientID,ReserveDate From Reservation Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
+        cmd.Parameters.AddWithValue("@PatientID", SqlDbType.Int).Value = Txt_Num.Text
+        cmd.Parameters.AddWithValue("@ReserveDate", SqlDbType.Date).Value = Dtp_ReserveDate.Value.ToString("yyyy-MM-dd")
+
+        da = New SqlDataAdapter(cmd)
+        dt = New DataTable
+        da.Fill(dt)
+        If dt.Rows.Count = 0 Then
+
+            cmd = New SqlCommand("Insert Into Reservation (PatientID,PatientName,ReserveDate,ReserveType,ReserveName,ReserveValue)
+                             Values(@PatientID,@PatientName,@ReserveDate,@ReserveType,@ReserveName,@ReserveValue)", con)
+            With cmd
+                .Parameters.Clear()
+                .Parameters.AddWithValue("@PatientID", SqlDbType.Int).Value = Txt_Num.Text
+                .Parameters.AddWithValue("@PatientName", SqlDbType.VarChar).Value = Txt_PatientName.Text
+                .Parameters.AddWithValue("@ReserveDate", SqlDbType.Date).Value = Dtp_ReserveDate.Value.ToString("yyyy-MM-dd")
+                .Parameters.AddWithValue("@ReserveType", SqlDbType.VarChar).Value = Cbo_ReserveType.SelectedValue
+                .Parameters.AddWithValue("@ReserveName", SqlDbType.VarChar).Value = Cbo_ReserveType.Text
+                .Parameters.AddWithValue("@ReserveValue", SqlDbType.VarChar).Value = Txt_VisitCost.Text
+            End With
+
+        Else
+            cmd = New SqlCommand("Update Reservation Set PatientName=@PatientName,ReserveType=@ReserveType,ReserveName=@ReserveName,
+                                  ReserveValue=@ReserveValue Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
+
+            With cmd
+                .Parameters.Clear()
+                .Parameters.AddWithValue("@PatientID", SqlDbType.Int).Value = Txt_Num.Text
+                .Parameters.AddWithValue("@PatientName", SqlDbType.VarChar).Value = Txt_PatientName.Text
+                .Parameters.AddWithValue("@ReserveDate", SqlDbType.Date).Value = Dtp_ReserveDate.Value.ToString("yyyy-MM-dd")
+                .Parameters.AddWithValue("@ReserveType", SqlDbType.VarChar).Value = Cbo_ReserveType.SelectedValue
+                .Parameters.AddWithValue("@ReserveName", SqlDbType.VarChar).Value = Cbo_ReserveType.Text
+                .Parameters.AddWithValue("@ReserveValue", SqlDbType.VarChar).Value = Txt_VisitCost.Text
+            End With
+
+            If con.State = 1 Then con.Close()
+            con.Open()
+            cmd.ExecuteNonQuery()
+            con.Close()
+            cmd = Nothing
+
+        End If
     End Sub
 
     Private Sub Cbo_SortAndSearch_TextChanged(sender As Object, e As EventArgs) Handles Cbo_SortAndSearch.TextChanged
@@ -168,7 +197,7 @@ Public Class Frm_Reservation
 
     Private Sub Btn_SaveNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_SaveNewPatient.Click
         Insert_Reservation()
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,ReserveName From Reservation")
+        GetAllReservation()
     End Sub
 
     Private Sub Txt_SearchValue_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_SearchValue.KeyPress
