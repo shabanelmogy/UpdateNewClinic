@@ -221,6 +221,10 @@ Public Class Frm_Reservation
         Txt_SearchValue.Text = ""
     End Sub
 
+    Private Sub Cbo_ReserveType_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles Cbo_ReserveType.SelectionChangeCommitted
+        TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType)
+    End Sub
+
 #End Region
 
 #Region "Forms"

@@ -5,6 +5,8 @@ Imports DevExpress.XtraTab.ViewInfo
 
 Module Main_Mod
 
+#Region "Declare Variables"
+
     Public Cmd As New SqlCommand
     Public Query As String
     Public Da As New SqlDataAdapter
@@ -12,10 +14,12 @@ Module Main_Mod
     Public DtEditPatient, dtvisitDetail As New DataTable
     Public Dv As New DataView
     Public Cur As CurrencyManager
-
     'Public con As New SqlConnection("Data Source=.\SQLEXPRESS;AttachDbFilename=" & newdir & "\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
     Public con As New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("con").ConnectionString)
 
+#End Region
+
+#Region "General Function And Subs"
 
     Function GetMaxId(MaxColumn As String, TableName As String)
         Dim Maxid As Integer
@@ -35,6 +39,9 @@ Module Main_Mod
         End Try
         Return Maxid
     End Function
+#End Region
+
+#Region "General Subs"
 
     Sub ResetControls(f As Object)
         For Each obj As Control In f.Controls
@@ -61,72 +68,29 @@ Module Main_Mod
         fh.Show()
     End Sub
 
-    Sub Fill_DataTablePatients(Query As String, frm As Form)
+    Sub TextBoxDepndOnCombobox(txt As TextBox, cbo As ComboBox)
 
-        cmd = New SqlCommand(Query, con)
-        da = New SqlDataAdapter(cmd)
-        dtEditPatient = New DataTable("Patients")
-        dtEditPatient.Clear()
-        Da.Fill(DtEditPatient)
+        If cbo.SelectedValue > 0 Then
+            Cmd = New SqlCommand("Select Amount From VisitsTypes Where Num =" & cbo.SelectedValue, con)
+            con.Open()
+            Dim dr As SqlDataReader = Cmd.ExecuteReader
 
-        DtEditPatient.Dispose()
-        da.Dispose()
+            If dr.HasRows Then
+                dr.Read()
+                txt.Text = dr(0)
+            End If
+            con.Close()
+        End If
 
-        For Each row As DataRow In dtEditPatient.Rows
-            For columnindex = 0 To dtEditPatient.Columns.Count - 1
-                If row.IsNull(columnindex) Then
-                    Dim t = dtEditPatient.Columns(columnindex).DataType
-                    row(columnindex) = If(t Is GetType(String), String.Empty, Activator.CreateInstance(t))
-                End If
-            Next
-        Next
-        dv = New DataView(dtEditPatient)
-        cur = CType(frm.BindingContext(dv), CurrencyManager)
     End Sub
 
-    Sub Fill_DataTableVisitDetails(Query As String, frm As Form)
-
-        cmd = New SqlCommand(Query, con)
-        da = New SqlDataAdapter(cmd)
-        dtvisitDetail = New DataTable("VisitDetails")
-        dtvisitDetail.Clear()
-        da.Fill(dtvisitDetail)
-
-        dtvisitDetail.Dispose()
-        da.Dispose()
-
-        For Each row As DataRow In dtvisitDetail.Rows
-            For columnindex = 0 To dtvisitDetail.Columns.Count - 1
-                If row.IsNull(columnindex) Then
-                    Dim t = dtvisitDetail.Columns(columnindex).DataType
-                    row(columnindex) = If(t Is GetType(String), String.Empty, Activator.CreateInstance(t))
-                End If
-            Next
-        Next
-        dv = New DataView(dtvisitDetail)
-        cur = CType(frm.BindingContext(dv), CurrencyManager)
+    'إظهار شريط المهام عندما تكون الشاشة بدون إطار 
+    Public Sub AdjustFormSize(W As Integer, H As Integer, f As Form)
+        f.Width = Screen.PrimaryScreen.Bounds.Width - W
+        f.Height = Screen.PrimaryScreen.Bounds.Height - H
+        f.Location = New Point()
+        f.StartPosition = FormStartPosition.CenterScreen
     End Sub
-
-    Public Function SelectWithDataTable(Query As String, Sheet As String) As DataTable
-        Try
-            cmd = New SqlCommand(Query, con)
-            da = New SqlDataAdapter(cmd)
-            Dim dt As New DataTable
-            dt = New DataTable(Sheet)
-            dt.Clear()
-            da.Fill(dt)
-            Return dt
-
-            dt.Dispose()
-            da.Dispose()
-
-        Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
-            Return Nothing
-        Finally
-            If con.State = 1 Then con.Close()
-        End Try
-    End Function
 
     Sub ExportExcel(Dt As DataTable, Sheet As String)
         Using sfd As SaveFileDialog = New SaveFileDialog() With {.Filter = "Excel Workbook|*.xlsx"}
@@ -175,6 +139,77 @@ Module Main_Mod
         End Try
     End Sub
 
+#End Region
+
+#Region "Fill Functions And Subs"
+
+    Sub Fill_DataTablePatients(Query As String, frm As Form)
+
+        Cmd = New SqlCommand(Query, con)
+        Da = New SqlDataAdapter(Cmd)
+        DtEditPatient = New DataTable("Patients")
+        DtEditPatient.Clear()
+        Da.Fill(DtEditPatient)
+
+        DtEditPatient.Dispose()
+        Da.Dispose()
+
+        For Each row As DataRow In DtEditPatient.Rows
+            For columnindex = 0 To DtEditPatient.Columns.Count - 1
+                If row.IsNull(columnindex) Then
+                    Dim t = DtEditPatient.Columns(columnindex).DataType
+                    row(columnindex) = If(t Is GetType(String), String.Empty, Activator.CreateInstance(t))
+                End If
+            Next
+        Next
+        Dv = New DataView(DtEditPatient)
+        Cur = CType(frm.BindingContext(Dv), CurrencyManager)
+    End Sub
+
+    Sub Fill_DataTableVisitDetails(Query As String, frm As Form)
+
+        Cmd = New SqlCommand(Query, con)
+        Da = New SqlDataAdapter(Cmd)
+        dtvisitDetail = New DataTable("VisitDetails")
+        dtvisitDetail.Clear()
+        Da.Fill(dtvisitDetail)
+
+        dtvisitDetail.Dispose()
+        Da.Dispose()
+
+        For Each row As DataRow In dtvisitDetail.Rows
+            For columnindex = 0 To dtvisitDetail.Columns.Count - 1
+                If row.IsNull(columnindex) Then
+                    Dim t = dtvisitDetail.Columns(columnindex).DataType
+                    row(columnindex) = If(t Is GetType(String), String.Empty, Activator.CreateInstance(t))
+                End If
+            Next
+        Next
+        Dv = New DataView(dtvisitDetail)
+        Cur = CType(frm.BindingContext(Dv), CurrencyManager)
+    End Sub
+
+    Public Function SelectWithDataTable(Query As String, Sheet As String) As DataTable
+        Try
+            Cmd = New SqlCommand(Query, con)
+            Da = New SqlDataAdapter(Cmd)
+            Dim dt As New DataTable
+            dt = New DataTable(Sheet)
+            dt.Clear()
+            Da.Fill(dt)
+            Return dt
+
+            dt.Dispose()
+            Da.Dispose()
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+            Return Nothing
+        Finally
+            If con.State = 1 Then con.Close()
+        End Try
+    End Function
+
     Public Sub FillCmb(ByVal cmb As ComboBox, TableName As String, Display As String, Value As Object)
         Try
             Dim DT As New DataTable
@@ -197,29 +232,6 @@ Module Main_Mod
             MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
-
-    'إظهار شريط المهام عندما تكون الشاشة بدون إطار 
-    Public Sub AdjustFormSize(W As Integer, H As Integer, f As Form)
-        f.Width = Screen.PrimaryScreen.Bounds.Width - W
-        f.Height = Screen.PrimaryScreen.Bounds.Height - H
-        f.Location = New Point()
-        f.StartPosition = FormStartPosition.CenterScreen
-    End Sub
-
-    Sub TextBoxDepndOnCombobox(txt As TextBox, cbo As ComboBox)
-
-        If cbo.SelectedValue > 0 Then
-            Cmd = New SqlCommand("Select Amount From VisitsTypes Where Num =" & cbo.SelectedValue, con)
-            con.Open()
-            Dim dr As SqlDataReader = Cmd.ExecuteReader
-
-            If dr.HasRows Then
-                dr.Read()
-                txt.Text = dr(0)
-            End If
-            con.Close()
-        End If
-
-    End Sub
+#End Region
 
 End Module
