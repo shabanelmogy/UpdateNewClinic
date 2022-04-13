@@ -85,7 +85,7 @@ Public Class Frm_Reservation
             .Parameters.Clear()
             .Parameters.AddWithValue("@PatientID", SqlDbType.Int).Value = Txt_Num.Text
             .Parameters.AddWithValue("@PatientName", SqlDbType.VarChar).Value = Txt_PatientName.Text
-            .Parameters.AddWithValue("@ReserveDate", SqlDbType.Date).Value = Dtp_ReserveDate.Value.ToString("dd/MM/yyyy")
+            .Parameters.AddWithValue("@ReserveDate", SqlDbType.Date).Value = Dtp_ReserveDate.Value.ToString("yyyy-MM-dd")
             .Parameters.AddWithValue("@ReserveType", SqlDbType.VarChar).Value = Cbo_ReserveType.SelectedValue
             .Parameters.AddWithValue("@ReserveName", SqlDbType.VarChar).Value = Cbo_ReserveType.Text
         End With

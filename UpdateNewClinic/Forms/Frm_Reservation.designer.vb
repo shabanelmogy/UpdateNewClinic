@@ -45,10 +45,6 @@ Partial Class Frm_Reservation
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Txt_Num = New System.Windows.Forms.TextBox()
         Me.Dgv_Visits = New System.Windows.Forms.DataGridView()
-        Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReserveType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SeparatorControl2 = New DevExpress.XtraEditors.SeparatorControl()
         Me.Btn_SaveNewPatient = New System.Windows.Forms.Button()
         Me.Btn_DeletePatient = New System.Windows.Forms.Button()
@@ -60,6 +56,13 @@ Partial Class Frm_Reservation
         Me.ClinicDataSet = New UpdateNewClinic.ClinicDataSet()
         Me.PatientsDetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PatientsDetailTableAdapter = New UpdateNewClinic.ClinicDataSetTableAdapters.PatientsDetailTableAdapter()
+        Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReserveType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Txt_VisitCost = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         CType(Me.Dgv_Visits, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SeparatorControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,7 +106,7 @@ Partial Class Frm_Reservation
         Me.Txt_PatientName.Location = New System.Drawing.Point(127, 9)
         Me.Txt_PatientName.Name = "Txt_PatientName"
         Me.Txt_PatientName.ReadOnly = True
-        Me.Txt_PatientName.Size = New System.Drawing.Size(416, 27)
+        Me.Txt_PatientName.Size = New System.Drawing.Size(375, 27)
         Me.Txt_PatientName.TabIndex = 4
         Me.Txt_PatientName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -126,7 +129,7 @@ Partial Class Frm_Reservation
         Me.Btn_SortAsec.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaShell
         Me.Btn_SortAsec.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_SortAsec.Image = Global.UpdateNewClinic.My.Resources.Resources.SortAscending_24
-        Me.Btn_SortAsec.Location = New System.Drawing.Point(382, 8)
+        Me.Btn_SortAsec.Location = New System.Drawing.Point(350, 8)
         Me.Btn_SortAsec.Name = "Btn_SortAsec"
         Me.Btn_SortAsec.Size = New System.Drawing.Size(60, 27)
         Me.Btn_SortAsec.TabIndex = 30
@@ -141,7 +144,7 @@ Partial Class Frm_Reservation
         Me.Btn_SortDesc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaShell
         Me.Btn_SortDesc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_SortDesc.Image = Global.UpdateNewClinic.My.Resources.Resources.SortDesc_24
-        Me.Btn_SortDesc.Location = New System.Drawing.Point(453, 8)
+        Me.Btn_SortDesc.Location = New System.Drawing.Point(421, 8)
         Me.Btn_SortDesc.Name = "Btn_SortDesc"
         Me.Btn_SortDesc.Size = New System.Drawing.Size(57, 27)
         Me.Btn_SortDesc.TabIndex = 31
@@ -153,7 +156,7 @@ Partial Class Frm_Reservation
         Me.Cbo_SortAndSearch.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.Cbo_SortAndSearch.FormattingEnabled = True
         Me.Cbo_SortAndSearch.Items.AddRange(New Object() {"PatientName", "Phone"})
-        Me.Cbo_SortAndSearch.Location = New System.Drawing.Point(158, 8)
+        Me.Cbo_SortAndSearch.Location = New System.Drawing.Point(132, 8)
         Me.Cbo_SortAndSearch.Name = "Cbo_SortAndSearch"
         Me.Cbo_SortAndSearch.Size = New System.Drawing.Size(212, 27)
         Me.Cbo_SortAndSearch.TabIndex = 32
@@ -166,7 +169,7 @@ Partial Class Frm_Reservation
         Me.Label15.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label15.Location = New System.Drawing.Point(19, 8)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(139, 27)
+        Me.Label15.Size = New System.Drawing.Size(113, 27)
         Me.Label15.TabIndex = 8
         Me.Label15.Text = "Sort / Search By"
         Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -177,9 +180,9 @@ Partial Class Frm_Reservation
         Me.Label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label4.Location = New System.Drawing.Point(285, 65)
+        Me.Label4.Location = New System.Drawing.Point(264, 65)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(116, 27)
+        Me.Label4.Size = New System.Drawing.Size(114, 27)
         Me.Label4.TabIndex = 36
         Me.Label4.Text = "Reserve Type"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -188,9 +191,9 @@ Partial Class Frm_Reservation
         '
         Me.Cbo_ReserveType.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.Cbo_ReserveType.FormattingEnabled = True
-        Me.Cbo_ReserveType.Location = New System.Drawing.Point(400, 65)
+        Me.Cbo_ReserveType.Location = New System.Drawing.Point(378, 65)
         Me.Cbo_ReserveType.Name = "Cbo_ReserveType"
-        Me.Cbo_ReserveType.Size = New System.Drawing.Size(144, 27)
+        Me.Cbo_ReserveType.Size = New System.Drawing.Size(124, 27)
         Me.Cbo_ReserveType.TabIndex = 37
         '
         'Label16
@@ -201,7 +204,7 @@ Partial Class Frm_Reservation
         Me.Label16.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label16.Location = New System.Drawing.Point(19, 66)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(139, 27)
+        Me.Label16.Size = New System.Drawing.Size(113, 27)
         Me.Label16.TabIndex = 35
         Me.Label16.Text = "Search Value"
         Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -209,7 +212,7 @@ Partial Class Frm_Reservation
         'Txt_SearchValue
         '
         Me.Txt_SearchValue.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.Txt_SearchValue.Location = New System.Drawing.Point(158, 66)
+        Me.Txt_SearchValue.Location = New System.Drawing.Point(132, 66)
         Me.Txt_SearchValue.Name = "Txt_SearchValue"
         Me.Txt_SearchValue.Size = New System.Drawing.Size(212, 27)
         Me.Txt_SearchValue.TabIndex = 36
@@ -218,6 +221,8 @@ Partial Class Frm_Reservation
         '
         Me.Panel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.Txt_VisitCost)
+        Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.Txt_Num)
         Me.Panel1.Controls.Add(Me.Dgv_Visits)
         Me.Panel1.Controls.Add(Me.SeparatorControl2)
@@ -229,14 +234,14 @@ Partial Class Frm_Reservation
         Me.Panel1.Controls.Add(Me.Dtp_ReserveDate)
         Me.Panel1.Controls.Add(Me.Btn_DeletePatient)
         Me.Panel1.Controls.Add(Me.Txt_PatientName)
-        Me.Panel1.Location = New System.Drawing.Point(526, 1)
+        Me.Panel1.Location = New System.Drawing.Point(495, 1)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(820, 683)
+        Me.Panel1.Size = New System.Drawing.Size(851, 683)
         Me.Panel1.TabIndex = 38
         '
         'Txt_Num
         '
-        Me.Txt_Num.Location = New System.Drawing.Point(444, 42)
+        Me.Txt_Num.Location = New System.Drawing.Point(11, 42)
         Me.Txt_Num.Name = "Txt_Num"
         Me.Txt_Num.Size = New System.Drawing.Size(100, 20)
         Me.Txt_Num.TabIndex = 41
@@ -264,7 +269,7 @@ Partial Class Frm_Reservation
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Dgv_Visits.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.Dgv_Visits.ColumnHeadersHeight = 30
-        Me.Dgv_Visits.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientNum, Me.PatientName, Me.ReserveDate, Me.ReserveType})
+        Me.Dgv_Visits.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientNum, Me.PatientName, Me.ReserveDate, Me.ReserveType, Me.VisitCost})
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -273,38 +278,14 @@ Partial Class Frm_Reservation
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Dgv_Visits.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Dgv_Visits.Location = New System.Drawing.Point(3, 128)
+        Me.Dgv_Visits.Location = New System.Drawing.Point(11, 128)
         Me.Dgv_Visits.Name = "Dgv_Visits"
         Me.Dgv_Visits.ReadOnly = True
         Me.Dgv_Visits.RowHeadersVisible = False
         Me.Dgv_Visits.RowTemplate.Height = 25
         Me.Dgv_Visits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Dgv_Visits.Size = New System.Drawing.Size(806, 548)
+        Me.Dgv_Visits.Size = New System.Drawing.Size(829, 548)
         Me.Dgv_Visits.TabIndex = 39
-        '
-        'PatientNum
-        '
-        Me.PatientNum.HeaderText = "PatientNum"
-        Me.PatientNum.Name = "PatientNum"
-        Me.PatientNum.ReadOnly = True
-        '
-        'PatientName
-        '
-        Me.PatientName.HeaderText = "PatientName"
-        Me.PatientName.Name = "PatientName"
-        Me.PatientName.ReadOnly = True
-        '
-        'ReserveDate
-        '
-        Me.ReserveDate.HeaderText = "ReserveDate"
-        Me.ReserveDate.Name = "ReserveDate"
-        Me.ReserveDate.ReadOnly = True
-        '
-        'ReserveType
-        '
-        Me.ReserveType.HeaderText = "ReserveType"
-        Me.ReserveType.Name = "ReserveType"
-        Me.ReserveType.ReadOnly = True
         '
         'SeparatorControl2
         '
@@ -312,7 +293,7 @@ Partial Class Frm_Reservation
         Me.SeparatorControl2.LineColor = System.Drawing.Color.Maroon
         Me.SeparatorControl2.Location = New System.Drawing.Point(3, 99)
         Me.SeparatorControl2.Name = "SeparatorControl2"
-        Me.SeparatorControl2.Size = New System.Drawing.Size(806, 23)
+        Me.SeparatorControl2.Size = New System.Drawing.Size(837, 23)
         Me.SeparatorControl2.TabIndex = 39
         '
         'Btn_SaveNewPatient
@@ -325,9 +306,9 @@ Partial Class Frm_Reservation
         Me.Btn_SaveNewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_SaveNewPatient.ForeColor = System.Drawing.Color.White
         Me.Btn_SaveNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Save
-        Me.Btn_SaveNewPatient.Location = New System.Drawing.Point(600, 8)
+        Me.Btn_SaveNewPatient.Location = New System.Drawing.Point(725, 9)
         Me.Btn_SaveNewPatient.Name = "Btn_SaveNewPatient"
-        Me.Btn_SaveNewPatient.Size = New System.Drawing.Size(131, 36)
+        Me.Btn_SaveNewPatient.Size = New System.Drawing.Size(101, 36)
         Me.Btn_SaveNewPatient.TabIndex = 13
         Me.Btn_SaveNewPatient.Text = "Save"
         Me.Btn_SaveNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
@@ -343,9 +324,9 @@ Partial Class Frm_Reservation
         Me.Btn_DeletePatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_DeletePatient.ForeColor = System.Drawing.Color.White
         Me.Btn_DeletePatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Delete_24x24
-        Me.Btn_DeletePatient.Location = New System.Drawing.Point(600, 55)
+        Me.Btn_DeletePatient.Location = New System.Drawing.Point(725, 56)
         Me.Btn_DeletePatient.Name = "Btn_DeletePatient"
-        Me.Btn_DeletePatient.Size = New System.Drawing.Size(131, 36)
+        Me.Btn_DeletePatient.Size = New System.Drawing.Size(101, 36)
         Me.Btn_DeletePatient.TabIndex = 15
         Me.Btn_DeletePatient.Text = "Delete"
         Me.Btn_DeletePatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
@@ -368,7 +349,7 @@ Partial Class Frm_Reservation
         Me.Panel2.Controls.Add(Me.Label16)
         Me.Panel2.Location = New System.Drawing.Point(0, 1)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(520, 683)
+        Me.Panel2.Size = New System.Drawing.Size(489, 683)
         Me.Panel2.TabIndex = 39
         '
         'Btn_SelectAll
@@ -381,7 +362,7 @@ Partial Class Frm_Reservation
         Me.Btn_SelectAll.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_SelectAll.ForeColor = System.Drawing.Color.White
         Me.Btn_SelectAll.Image = Global.UpdateNewClinic.My.Resources.Resources.Refresh1
-        Me.Btn_SelectAll.Location = New System.Drawing.Point(450, 66)
+        Me.Btn_SelectAll.Location = New System.Drawing.Point(418, 66)
         Me.Btn_SelectAll.Name = "Btn_SelectAll"
         Me.Btn_SelectAll.Size = New System.Drawing.Size(60, 27)
         Me.Btn_SelectAll.TabIndex = 42
@@ -398,7 +379,7 @@ Partial Class Frm_Reservation
         Me.Btn_NewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_NewPatient.ForeColor = System.Drawing.Color.White
         Me.Btn_NewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources._New
-        Me.Btn_NewPatient.Location = New System.Drawing.Point(382, 66)
+        Me.Btn_NewPatient.Location = New System.Drawing.Point(350, 66)
         Me.Btn_NewPatient.Name = "Btn_NewPatient"
         Me.Btn_NewPatient.Size = New System.Drawing.Size(60, 27)
         Me.Btn_NewPatient.TabIndex = 40
@@ -441,7 +422,7 @@ Partial Class Frm_Reservation
         Me.Dgv_Search.RowHeadersVisible = False
         Me.Dgv_Search.RowTemplate.Height = 25
         Me.Dgv_Search.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Dgv_Search.Size = New System.Drawing.Size(504, 548)
+        Me.Dgv_Search.Size = New System.Drawing.Size(475, 548)
         Me.Dgv_Search.TabIndex = 39
         '
         'SeparatorControl1
@@ -450,7 +431,7 @@ Partial Class Frm_Reservation
         Me.SeparatorControl1.LineColor = System.Drawing.Color.Maroon
         Me.SeparatorControl1.Location = New System.Drawing.Point(10, 99)
         Me.SeparatorControl1.Name = "SeparatorControl1"
-        Me.SeparatorControl1.Size = New System.Drawing.Size(508, 23)
+        Me.SeparatorControl1.Size = New System.Drawing.Size(477, 23)
         Me.SeparatorControl1.TabIndex = 38
         '
         'ClinicDataSet
@@ -466,6 +447,57 @@ Partial Class Frm_Reservation
         'PatientsDetailTableAdapter
         '
         Me.PatientsDetailTableAdapter.ClearBeforeFill = True
+        '
+        'PatientNum
+        '
+        Me.PatientNum.HeaderText = "PatientNum"
+        Me.PatientNum.Name = "PatientNum"
+        Me.PatientNum.ReadOnly = True
+        '
+        'PatientName
+        '
+        Me.PatientName.HeaderText = "PatientName"
+        Me.PatientName.Name = "PatientName"
+        Me.PatientName.ReadOnly = True
+        '
+        'ReserveDate
+        '
+        Me.ReserveDate.HeaderText = "ReserveDate"
+        Me.ReserveDate.Name = "ReserveDate"
+        Me.ReserveDate.ReadOnly = True
+        '
+        'ReserveType
+        '
+        Me.ReserveType.HeaderText = "ReserveType"
+        Me.ReserveType.Name = "ReserveType"
+        Me.ReserveType.ReadOnly = True
+        '
+        'VisitCost
+        '
+        Me.VisitCost.HeaderText = "VisitCost"
+        Me.VisitCost.Name = "VisitCost"
+        Me.VisitCost.ReadOnly = True
+        '
+        'Label1
+        '
+        Me.Label1.BackColor = System.Drawing.Color.SteelBlue
+        Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label1.Location = New System.Drawing.Point(508, 65)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(87, 27)
+        Me.Label1.TabIndex = 42
+        Me.Label1.Text = "Visit Cost"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Txt_VisitCost
+        '
+        Me.Txt_VisitCost.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.Txt_VisitCost.Location = New System.Drawing.Point(595, 65)
+        Me.Txt_VisitCost.Name = "Txt_VisitCost"
+        Me.Txt_VisitCost.Size = New System.Drawing.Size(100, 27)
+        Me.Txt_VisitCost.TabIndex = 43
         '
         'Frm_Reservation
         '
@@ -524,4 +556,7 @@ Partial Class Frm_Reservation
     Friend WithEvents PatientName As DataGridViewTextBoxColumn
     Friend WithEvents ReserveDate As DataGridViewTextBoxColumn
     Friend WithEvents ReserveType As DataGridViewTextBoxColumn
+    Friend WithEvents VisitCost As DataGridViewTextBoxColumn
+    Friend WithEvents Txt_VisitCost As TextBox
+    Friend WithEvents Label1 As Label
 End Class
