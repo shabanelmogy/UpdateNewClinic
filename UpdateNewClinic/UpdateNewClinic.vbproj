@@ -791,6 +791,7 @@
     <None Include="Resources\Visits 32.png" />
     <None Include="Resources\File 32.png" />
     <None Include="Resources\Clinic.jpg" />
+    <None Include="Resources\Search 16.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

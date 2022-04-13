@@ -587,6 +587,10 @@ Public Class Frm_EditPatients
         End Try
     End Sub
 
+    Private Sub Btn_SearchName_Click(sender As Object, e As EventArgs) Handles Btn_SearchName.Click
+        AddHandler Txt_SearchName.KeyDown, AddressOf Txt_SearchName_KeyDown
+    End Sub
+
 #End Region
 
 #End Region

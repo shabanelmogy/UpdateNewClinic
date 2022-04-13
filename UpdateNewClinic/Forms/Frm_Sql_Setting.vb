@@ -135,21 +135,21 @@ Public Class Frm_Sql_Setting
 
     Sub CreateBlankDB()
         Try
-            con = New SqlConnection("Data source=" & cmbServerName.Text & ";Initial Catalog=master;Integrated Security=True") 'MultipleActiveResultSets=True
+            con = New SqlConnection("Data source=" & cmbServerName.Text & ";Initial Catalog=master;Integrated Security=True")
             con.Open()
             Dim sql As String = "Select * from sysdatabases where name='Clinic'"
                 cmd = New SqlCommand(sql)
             cmd.Connection = Con
             rdr = cmd.ExecuteReader()
             If rdr.Read() Then
-                con = New SqlConnection("Data source=" & cmbServerName.Text & ";Initial Catalog=master;Integrated Security=True") 'MultipleActiveResultSets=True
+                con = New SqlConnection("Data source=" & cmbServerName.Text & ";Initial Catalog=master;Integrated Security=True")
                 con.Open()
                 Dim cb1 As String = "Drop Database Clinic"
                 cmd = New SqlCommand(cb1)
                 cmd.Connection = Con
                 cmd.ExecuteNonQuery()
                 Con.Close()
-                con = New SqlConnection("Data source=" & cmbServerName.Text & ";Initial Catalog=master;Integrated Security=True") 'MultipleActiveResultSets=True
+                con = New SqlConnection("Data source=" & cmbServerName.Text & ";Initial Catalog=master;Integrated Security=True")
                 con.Open()
                 Dim sql2 As String = "Create Database Clinic"
                 cmd = New SqlCommand(sql2)
@@ -162,7 +162,7 @@ Public Class Frm_Sql_Setting
                     server.ConnectionContext.ExecuteNonQuery(st)
                 End Using
             Else
-                con = New SqlConnection("Data source=" & cmbServerName.Text & ";Initial Catalog=master;Integrated Security=True") 'MultipleActiveResultSets=True
+                con = New SqlConnection("Data source=" & cmbServerName.Text & ";Initial Catalog=master;Integrated Security=True")
                 con.Open()
                 Dim cb3 As String = "Create Database Clinic"
                 cmd = New SqlCommand(cb3)

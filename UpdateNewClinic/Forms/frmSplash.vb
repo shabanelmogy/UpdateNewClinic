@@ -4,9 +4,10 @@ Public Class frmSplash
 
     Private Sub Timer1_Tick(sender As System.Object, e As System.EventArgs) Handles Timer1.Tick
         Try
-            Dim Con As New SqlClient.SqlConnection("Data source=.\SQLEXPRESS;Initial Catalog = master;Integrated Security=true")
-            Con.Open()
-            Dim cb2 As String = "Select * from sysdatabases where name='Clinic'"
+            'Dim Con As New SqlConnection("Data source=.\SQLEXPRESS;Initial Catalog = master;Integrated Security=true")
+            Dim con As New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("con_master").ConnectionString)
+            con.Open()
+            Dim cb2 As String = "Select * From Sysdatabases Where name='Clinic'"
             Dim cmd As New SqlCommand(cb2)
             cmd.Connection = Con
             Dim rdr As SqlDataReader
@@ -15,15 +16,15 @@ Public Class frmSplash
                 ProgressBar1.Visible = True
                 ProgressBar1.Value = ProgressBar1.Value + 2
                 If (ProgressBar1.Value = 10) Then
-                    lblSet.Text = "تحميل ملفات التشغيل ....."
+                    lblSet.Text = "Download System Files ....."
                 ElseIf (ProgressBar1.Value = 20) Then
-                    lblSet.Text = "تهيئة ملفات التشغيل ...."
+                    lblSet.Text = "Initialization System Files ...."
                 ElseIf (ProgressBar1.Value = 40) Then
-                    lblSet.Text = "ضبط الاعدادات ...."
+                    lblSet.Text = "Adjust Settings ...."
                 ElseIf (ProgressBar1.Value = 60) Then
-                    lblSet.Text = "اعداد الملفات ..."
+                    lblSet.Text = "Preparation Files ..."
                 ElseIf (ProgressBar1.Value = 80) Then
-                    lblSet.Text = "نهاية فحص النظام ..."
+                    lblSet.Text = "System Check End ..."
                 ElseIf (ProgressBar1.Value = 100) Then
                     ProgressBar1.Value = 0
                     Home.Show()
@@ -34,15 +35,15 @@ Public Class frmSplash
                 ProgressBar1.Visible = True
                 ProgressBar1.Value = ProgressBar1.Value + 2
                 If (ProgressBar1.Value = 10) Then
-                    lblSet.Text = "تحميل ملفات التشغيل.."
+                    lblSet.Text = "Download System Files ....."
                 ElseIf (ProgressBar1.Value = 20) Then
-                    lblSet.Text = "تهيئة ملفات التشغيل."
+                    lblSet.Text = "Initialization System Files ...."
                 ElseIf (ProgressBar1.Value = 40) Then
-                    lblSet.Text = "ضبط الاعدادات.."
+                    lblSet.Text = "Adjust Settings ...."
                 ElseIf (ProgressBar1.Value = 60) Then
-                    lblSet.Text = "اعداد الملفات.."
+                    lblSet.Text = "Preparation Files ..."
                 ElseIf (ProgressBar1.Value = 80) Then
-                    lblSet.Text = "نهاية فحص النظام.."
+                    lblSet.Text = "System Check End ..."
                 ElseIf (ProgressBar1.Value = 100) Then
                     Frm_Sql_Setting.Reset()
                     Frm_Sql_Setting.Show()
