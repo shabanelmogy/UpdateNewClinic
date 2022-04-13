@@ -9,15 +9,6 @@ Public Class Frm_PatientVisit
     Dim DtVisits As New DataTable
 #End Region
 
-    Sub LoadCost()
-        cmd = New SqlCommand("Select Amount From VisitsTypes Where Num=" & Cbo_VisitType.SelectedValue, con)
-        con.Open()
-        Dim dr As SqlDataReader = cmd.ExecuteReader
-        dr.Read()
-        Txt_VisitCost.Text = dr(0)
-        con.Close()
-    End Sub
-
     Sub FillGrdVisitDetails(Query As String)
 
         Fill_DataTableVisitDetails(Query, Me)
@@ -105,7 +96,7 @@ Public Class Frm_PatientVisit
     End Sub
 
     Private Sub Cbo_VisitType_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles Cbo_VisitType.SelectionChangeCommitted
-        LoadCost()
+        TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_VisitType)
     End Sub
 
     Private Sub BtnStrip_Save_Click(sender As Object, e As EventArgs) Handles BtnStrip_Save.Click

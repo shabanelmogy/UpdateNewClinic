@@ -14,7 +14,7 @@ Public Class Frm_Reservation
 
     Sub FormatDgv_Search()
         Dgv_Search.Columns(0).Width = 100
-        Dgv_Search.Columns(1).Width = 300
+        Dgv_Search.Columns(1).Width = 280
         Dgv_Search.Columns(2).Width = 170
     End Sub
 
@@ -33,6 +33,7 @@ Public Class Frm_Reservation
             Cbo_SortAndSearch.SelectedIndex = 0
             GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
             GetAllReservation("Select PatientID,PatientName,ReserveDate,ReserveName From Reservation")
+            TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType)
             Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information)
@@ -176,6 +177,10 @@ Public Class Frm_Reservation
         ElseIf Cbo_SortAndSearch.Text = "Phone" And Char.IsControl(e.KeyChar) = False And Char.IsDigit(e.KeyChar) = False Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub Cbo_ReserveType_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles Cbo_ReserveType.SelectionChangeCommitted
+        TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType)
     End Sub
 
     Private Sub Btn_SortAsec_Click(sender As Object, e As EventArgs) Handles Btn_SortAsec.Click

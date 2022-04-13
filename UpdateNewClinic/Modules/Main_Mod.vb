@@ -206,4 +206,13 @@ Module Main_Mod
         f.StartPosition = FormStartPosition.CenterScreen
     End Sub
 
+    Sub TextBoxDepndOnCombobox(txt As TextBox, cbo As ComboBox)
+        Cmd = New SqlCommand("Select Amount From VisitsTypes Where Num=" & cbo.SelectedValue, con)
+        con.Open()
+        Dim dr As SqlDataReader = Cmd.ExecuteReader
+        dr.Read()
+        txt.Text = dr(0)
+        con.Close()
+    End Sub
+
 End Module
