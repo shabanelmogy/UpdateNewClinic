@@ -162,6 +162,7 @@ Public Class Frm_Reservation
     End Sub
 
     Private Sub Btn_SaveNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_SaveNewPatient.Click
+
         If Not String.IsNullOrWhiteSpace(Txt_Num.Text) And Not String.IsNullOrWhiteSpace(Cbo_ReserveType.Text) Then
             If check = False Then
 
@@ -219,6 +220,27 @@ Public Class Frm_Reservation
 
     Private Sub Cbo_SortAndSearch_TextChanged(sender As Object, e As EventArgs) Handles Cbo_SortAndSearch.TextChanged
         Txt_SearchValue.Text = ""
+    End Sub
+
+    Private Sub Btn_DeletePatient_Click(sender As Object, e As EventArgs) Handles Btn_DeletePatient.Click
+        Try
+            If MsgBox("Do You Want To Delete This Record ?", MsgBoxStyle.Information + vbYesNo + MsgBoxStyle.DefaultButton2, "Attention") = vbYes Then
+
+                cmd = New SqlCommand("Delete From Reservation Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
+                cmd.Parameters.AddWithValue("@PatientID", Val(Txt_Num.Text))
+                cmd.Parameters.AddWithValue("@ReserveDate", Dtp_ReserveDate.Value)
+
+                con.Open()
+                cmd.ExecuteNonQuery()
+
+                GetAllReservation()
+                Dgv_Visits.CurrentCell = Dgv_Visits.Rows(Dgv_Visits.Rows.Count - 1).Cells(0)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Information, "Delete")
+        Finally
+            If con.State = 1 Then con.Close()
+        End Try
     End Sub
 
     Private Sub Cbo_ReserveType_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles Cbo_ReserveType.SelectionChangeCommitted

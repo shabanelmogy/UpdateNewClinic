@@ -48,6 +48,8 @@ Partial Class Home
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage1 = New DevExpress.XtraTab.XtraTabPage()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.lbl_Time = New System.Windows.Forms.Label()
+        Me.lbl_Date = New System.Windows.Forms.Label()
         Me.LBLnetavailable = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.lblsystem = New System.Windows.Forms.Label()
@@ -55,8 +57,6 @@ Partial Class Home
         Me.LblComputerName = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.lbl_Date = New System.Windows.Forms.Label()
-        Me.lbl_Time = New System.Windows.Forms.Label()
         Me.Pnl_Home.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -332,6 +332,34 @@ Partial Class Home
         Me.Panel5.Size = New System.Drawing.Size(1275, 35)
         Me.Panel5.TabIndex = 196
         '
+        'lbl_Time
+        '
+        Me.lbl_Time.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_Time.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_Time.Font = New System.Drawing.Font("Segoe UI Symbol", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Time.ForeColor = System.Drawing.Color.White
+        Me.lbl_Time.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_Time.Location = New System.Drawing.Point(1108, 2)
+        Me.lbl_Time.Name = "lbl_Time"
+        Me.lbl_Time.Size = New System.Drawing.Size(164, 33)
+        Me.lbl_Time.TabIndex = 27
+        Me.lbl_Time.Text = "الوقت"
+        Me.lbl_Time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lbl_Date
+        '
+        Me.lbl_Date.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_Date.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_Date.Font = New System.Drawing.Font("Segoe UI Symbol", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Date.ForeColor = System.Drawing.Color.White
+        Me.lbl_Date.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_Date.Location = New System.Drawing.Point(878, 2)
+        Me.lbl_Date.Name = "lbl_Date"
+        Me.lbl_Date.Size = New System.Drawing.Size(249, 33)
+        Me.lbl_Date.TabIndex = 26
+        Me.lbl_Date.Text = "التاريخ"
+        Me.lbl_Date.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'LBLnetavailable
         '
         Me.LBLnetavailable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -400,34 +428,6 @@ Partial Class Home
         '
         'Timer1
         '
-        '
-        'lbl_Date
-        '
-        Me.lbl_Date.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_Date.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_Date.Font = New System.Drawing.Font("Segoe UI Symbol", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_Date.ForeColor = System.Drawing.Color.White
-        Me.lbl_Date.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lbl_Date.Location = New System.Drawing.Point(878, 2)
-        Me.lbl_Date.Name = "lbl_Date"
-        Me.lbl_Date.Size = New System.Drawing.Size(249, 33)
-        Me.lbl_Date.TabIndex = 26
-        Me.lbl_Date.Text = "التاريخ"
-        Me.lbl_Date.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lbl_Time
-        '
-        Me.lbl_Time.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_Time.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_Time.Font = New System.Drawing.Font("Segoe UI Symbol", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_Time.ForeColor = System.Drawing.Color.White
-        Me.lbl_Time.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lbl_Time.Location = New System.Drawing.Point(1108, 2)
-        Me.lbl_Time.Name = "lbl_Time"
-        Me.lbl_Time.Size = New System.Drawing.Size(164, 33)
-        Me.lbl_Time.TabIndex = 27
-        Me.lbl_Time.Text = "الوقت"
-        Me.lbl_Time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Home
         '
