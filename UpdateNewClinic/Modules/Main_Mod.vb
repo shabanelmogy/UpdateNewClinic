@@ -207,12 +207,19 @@ Module Main_Mod
     End Sub
 
     Sub TextBoxDepndOnCombobox(txt As TextBox, cbo As ComboBox)
-        Cmd = New SqlCommand("Select Amount From VisitsTypes Where Num=" & cbo.SelectedValue, con)
-        con.Open()
-        Dim dr As SqlDataReader = Cmd.ExecuteReader
-        dr.Read()
-        txt.Text = dr(0)
-        con.Close()
+
+        If cbo.SelectedValue > 0 Then
+            Cmd = New SqlCommand("Select Amount From VisitsTypes Where Num =" & cbo.SelectedValue, con)
+            con.Open()
+            Dim dr As SqlDataReader = Cmd.ExecuteReader
+
+            If dr.HasRows Then
+                dr.Read()
+                txt.Text = dr(0)
+            End If
+            con.Close()
+        End If
+
     End Sub
 
 End Module
