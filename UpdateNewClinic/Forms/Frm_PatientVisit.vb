@@ -3,7 +3,7 @@
 Public Class Frm_PatientVisit
 
 #Region "Declaration"
-    Dim cmd As New SqlCommand
+    Dim cmd, cmd1 As New SqlCommand
     Dim da As New SqlDataAdapter
     Dim dr As SqlDataAdapter
     Dim DtVisits As New DataTable
@@ -129,6 +129,7 @@ Public Class Frm_PatientVisit
         If Not dr.HasRows Then
             cmd = New SqlCommand("Insert Into ClinicDays (VisitDate,PatientID,PatientName,VisitType,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes)
                                    Values(@VisitDate,@PatientID,@PatientName,@VisitType,@VisitCost,@NewWeight,@NewWaist,@PlanOfTreatment,@EatingHabits,@Notes)", con)
+
         Else
             cmd = New SqlCommand("Update ClinicDays Set VisitType=@VisitType,VisitCost=@VisitCost,NewWeight=@NewWeight,NewWaist=@NewWaist,
                                   PlanOfTreatment=@PlanOfTreatment,EatingHabits=@EatingHabits,Notes=@Notes Where PatientName=@PatientName And VisitDate=@VisitDate ", con)
@@ -149,8 +150,14 @@ Public Class Frm_PatientVisit
             .AddWithValue("@Notes", Txt_Notes.Text).DbType = DbType.String
         End With
 
+        'تحديث حالة المرضى الذين تم الكشف عليهم 
+        cmd1 = New SqlCommand("Update Reservation Set Checkok = 1 Where EXISTS
+                              (Select * From [dbo].[ClinicDays] Inner Join [dbo].[Reservation] on ClinicDays.PatientID=Reservation.PatientID And
+                              ClinicDays.VisitDate=Reservation.ReserveDate)", con)
+
         con.Open()
         cmd.ExecuteNonQuery()
+        cmd1.ExecuteNonQuery()
         con.Close()
 
         MsgBox("Done")
