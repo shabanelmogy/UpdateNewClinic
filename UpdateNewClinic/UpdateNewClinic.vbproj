@@ -266,10 +266,10 @@
     <Compile Include="Forms\RegisterForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frm_ManageVisits.Designer.vb">
-      <DependentUpon>frm_ManageVisits.vb</DependentUpon>
+    <Compile Include="Forms\frm_ManageReservation.Designer.vb">
+      <DependentUpon>frm_ManageReservation.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frm_ManageVisits.vb">
+    <Compile Include="Forms\frm_ManageReservation.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modules\Main_Mod.vb" />
@@ -333,8 +333,8 @@
     <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frm_ManageVisits.resx">
-      <DependentUpon>frm_ManageVisits.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\frm_ManageReservation.resx">
+      <DependentUpon>frm_ManageReservation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -801,6 +801,8 @@
     <None Include="Resources\File 32.png" />
     <None Include="Resources\Search 16.png" />
     <None Include="Resources\Clinic.jpg" />
+    <None Include="Resources\Doctor 32.png" />
+    <None Include="Resources\Doctor 64.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

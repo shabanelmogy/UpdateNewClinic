@@ -34,6 +34,8 @@ Partial Class Home
         Me.BtnStrp_PatientDetail = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnStrp_ManagePatient = New System.Windows.Forms.ToolStripMenuItem()
         Me.Btn_OpenManageVisits = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DoctorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PatientDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PatientVisitsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -81,11 +83,11 @@ Partial Class Home
         'MenuStrip1
         '
         Me.MenuStrip1.AutoSize = False
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnStrp_File, Me.ToolStripMenuItem1, Me.BtnStrp_PatientDetail, Me.ReportsToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnStrp_File, Me.ToolStripMenuItem1, Me.BtnStrp_PatientDetail, Me.DoctorToolStripMenuItem, Me.ReportsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 36)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.MenuStrip1.Size = New System.Drawing.Size(1277, 69)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1277, 60)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -118,34 +120,34 @@ Partial Class Home
         Me.ToolStripMenuItem1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(85, 64)
-        Me.ToolStripMenuItem1.Text = "Visits"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(95, 64)
+        Me.ToolStripMenuItem1.Text = "Basic Data"
         Me.ToolStripMenuItem1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolStripMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'BtnStrp_VisitTypes
         '
         Me.BtnStrp_VisitTypes.Name = "BtnStrp_VisitTypes"
-        Me.BtnStrp_VisitTypes.Size = New System.Drawing.Size(175, 28)
+        Me.BtnStrp_VisitTypes.Size = New System.Drawing.Size(180, 28)
         Me.BtnStrp_VisitTypes.Text = "Visits Types"
         '
         'ReservationToolStripMenuItem
         '
         Me.ReservationToolStripMenuItem.Name = "ReservationToolStripMenuItem"
-        Me.ReservationToolStripMenuItem.Size = New System.Drawing.Size(175, 28)
+        Me.ReservationToolStripMenuItem.Size = New System.Drawing.Size(180, 28)
         Me.ReservationToolStripMenuItem.Text = "Reservation"
         '
         'BtnStrp_PatientDetail
         '
         Me.BtnStrp_PatientDetail.AutoSize = False
-        Me.BtnStrp_PatientDetail.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnStrp_ManagePatient, Me.Btn_OpenManageVisits})
+        Me.BtnStrp_PatientDetail.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnStrp_ManagePatient, Me.Btn_OpenManageVisits, Me.ToolStripMenuItem2})
         Me.BtnStrp_PatientDetail.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnStrp_PatientDetail.Image = Global.UpdateNewClinic.My.Resources.Resources.Patient_32
         Me.BtnStrp_PatientDetail.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnStrp_PatientDetail.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.BtnStrp_PatientDetail.Name = "BtnStrp_PatientDetail"
-        Me.BtnStrp_PatientDetail.Size = New System.Drawing.Size(85, 64)
-        Me.BtnStrp_PatientDetail.Text = "Patients"
+        Me.BtnStrp_PatientDetail.Size = New System.Drawing.Size(90, 64)
+        Me.BtnStrp_PatientDetail.Text = "Secretary"
         Me.BtnStrp_PatientDetail.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnStrp_PatientDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
@@ -161,6 +163,24 @@ Partial Class Home
         Me.Btn_OpenManageVisits.Size = New System.Drawing.Size(213, 28)
         Me.Btn_OpenManageVisits.Text = "Manage Visits"
         '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(213, 28)
+        Me.ToolStripMenuItem2.Text = "Reservation"
+        '
+        'DoctorToolStripMenuItem
+        '
+        Me.DoctorToolStripMenuItem.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DoctorToolStripMenuItem.Image = Global.UpdateNewClinic.My.Resources.Resources.Doctor_32
+        Me.DoctorToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.DoctorToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.DoctorToolStripMenuItem.Name = "DoctorToolStripMenuItem"
+        Me.DoctorToolStripMenuItem.Size = New System.Drawing.Size(76, 56)
+        Me.DoctorToolStripMenuItem.Text = "Doctor"
+        Me.DoctorToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.DoctorToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
         'ReportsToolStripMenuItem
         '
         Me.ReportsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PatientDataToolStripMenuItem, Me.PatientVisitsToolStripMenuItem})
@@ -169,7 +189,7 @@ Partial Class Home
         Me.ReportsToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ReportsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(85, 65)
+        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(85, 56)
         Me.ReportsToolStripMenuItem.Text = "Reports"
         Me.ReportsToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ReportsToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -494,4 +514,6 @@ Partial Class Home
     Friend WithEvents Timer1 As Timer
     Friend WithEvents lbl_Date As Label
     Friend WithEvents lbl_Time As Label
+    Friend WithEvents DoctorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
 End Class

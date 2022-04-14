@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 
-Public Class frm_ManageVisits
+Public Class frm_ManageReservation
 
     Dim dt_AllVisits As New DataTable
 

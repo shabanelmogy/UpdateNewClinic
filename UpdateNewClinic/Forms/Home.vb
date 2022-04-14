@@ -129,7 +129,7 @@ Public Class Home
     End Sub
 
     Private Sub ReservationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReservationToolStripMenuItem.Click
-        openFormInTab(Frm_Reservation)
+
     End Sub
 
     Private Sub Btn_ExitApp_Click(sender As Object, e As EventArgs) Handles Btn_ExitApp.Click
@@ -163,5 +163,9 @@ Public Class Home
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         lbl_Date.Text = Now.Date.ToString("dddd d/MMMM/yyyy")
         lbl_Time.Text = TimeOfDay.ToString("T")
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
+        openFormInTab(Frm_Reservation)
     End Sub
 End Class
