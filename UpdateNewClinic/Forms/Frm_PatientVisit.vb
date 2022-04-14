@@ -90,13 +90,13 @@ Public Class Frm_PatientVisit
 
     Private Sub Frm_PatientVisit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dgvColumnWidth()
-        FillCmb(Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
+        Fill_Combobox(Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
         Cbo_VisitType.SelectedIndex = -1
         Dtp_VisitDate.Value = Date.Now.ToString("dd-MM-yyyy")
     End Sub
 
     Private Sub Cbo_VisitType_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles Cbo_VisitType.SelectionChangeCommitted
-        TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_VisitType)
+        TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_VisitType, "Select Amount From VisitsTypes", "Num")
     End Sub
 
     Private Sub BtnStrip_Save_Click(sender As Object, e As EventArgs) Handles BtnStrip_Save.Click

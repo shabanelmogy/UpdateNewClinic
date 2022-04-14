@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports Microsoft.Reporting.WinForms
 
-Public Class Btn_ShowReport
+Public Class Frm_ReportPatientDetails
 
     Dim SQL As String = ""
     Dim ParaDateFrom As New ReportParameter

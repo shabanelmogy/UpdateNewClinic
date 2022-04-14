@@ -34,6 +34,14 @@ Public Class Frm_Reservation
         End Try
     End Sub
 
+    'تحديث شاشة الحجز باى إضافة جديدة
+    Sub load_FrmManageReservation()
+        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,FirstDate,Code,ReserveDate,VisitName,VisitCost From Reservation
+                        Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                        Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'")
+        frm_ManageReservation.FormatDgv_Search()
+    End Sub
+
     Sub GetAllReservation()
         Try
             Dgv_Visits.Rows.Clear()
@@ -171,6 +179,8 @@ Public Class Frm_Reservation
                 Update_Reservation()
             End If
 
+            load_FrmManageReservation()
+
             Txt_Num.Text = ""
             Txt_PatientName.Text = ""
             Cbo_ReserveType.Text = ""
@@ -244,7 +254,7 @@ Public Class Frm_Reservation
     End Sub
 
     Private Sub Cbo_ReserveType_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles Cbo_ReserveType.SelectionChangeCommitted
-        TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType)
+        TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType, "Select Amount From VisitsTypes", "Num")
     End Sub
 
 #End Region
@@ -252,13 +262,12 @@ Public Class Frm_Reservation
 #Region "Forms"
 
     Private Sub Frm_Reservation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         Try
-            FillCmb(Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
+            Fill_Combobox(Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
             Cbo_SortAndSearch.SelectedIndex = 0
             GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
             GetAllReservation()
-            TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType)
+            TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType, "Select Amount From VisitsTypes", "Num")
             Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
             check = False
         Catch ex As Exception

@@ -11,7 +11,7 @@ Module Main_Mod
     Public Query As String
     Public Da As New SqlDataAdapter
     Public Dr As SqlDataReader
-    Public DtEditPatient, dtvisitDetail As New DataTable
+    Public DtEditPatient, dtvisitDetail, dtsearch As New DataTable
     Public Dv As New DataView
     Public Cur As CurrencyManager
     'Public con As New SqlConnection("Data Source=.\SQLEXPRESS;AttachDbFilename=" & newdir & "\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
@@ -68,10 +68,10 @@ Module Main_Mod
         fh.Show()
     End Sub
 
-    Sub TextBoxDepndOnCombobox(txt As TextBox, cbo As ComboBox)
+    Sub TextBoxDepndOnCombobox(txt As TextBox, cbo As ComboBox, Query As String, SeacrhValue As String)
 
         If cbo.SelectedValue > 0 Then
-            Cmd = New SqlCommand("Select Amount From VisitsTypes Where Num =" & cbo.SelectedValue, con)
+            Cmd = New SqlCommand("" & Query & " Where " & SeacrhValue & " =" & cbo.SelectedValue, con)
             con.Open()
             Dim dr As SqlDataReader = Cmd.ExecuteReader
 
@@ -80,6 +80,17 @@ Module Main_Mod
                 txt.Text = dr(0)
             End If
             con.Close()
+        End If
+    End Sub
+
+    Sub FilterDatagridview_Combobox(dgv As DataGridView, cbo As ComboBox, Query As String)
+
+        If cbo.SelectedValue > 0 Then
+            Cmd = New SqlCommand(Query, con)
+            Da = New SqlDataAdapter(Cmd)
+            dtsearch = New DataTable
+            Da.Fill(dtsearch)
+            dgv.DataSource = dtsearch
         End If
 
     End Sub
@@ -130,6 +141,34 @@ Module Main_Mod
                     frm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
                     frm.StartPosition = Windows.Forms.FormStartPosition.CenterScreen
                     frm.Dock = DockStyle.Fill
+                    Home.XtraTabControl1.SelectedTabPage = tab
+                    frm.Show()
+                End If
+            Next
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        End Try
+    End Sub
+
+    Sub openFormInTab_DockNone(F As Form)
+
+        Try
+            Dim frm As Form = TryCast(F, Form)
+            frm.TopLevel = False
+            For Each tab As XtraTabPage In Home.XtraTabControl1.TabPages
+                'لمنع فتح الفورم أكثر من مرة
+                If tab.Name = frm.Name Then
+                    Exit Sub
+                End If
+            Next
+            Home.XtraTabControl1.TabPages.Add(New XtraTabPage With {.Text = frm.Text, .Name = frm.Name})
+            For Each tab As XtraTabPage In Home.XtraTabControl1.TabPages
+                If tab.Name = frm.Name Then
+                    tab.ImageOptions.Image = frm.Icon.ToBitmap
+                    tab.Controls.Add(frm)
+                    frm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+                    frm.StartPosition = Windows.Forms.FormStartPosition.CenterScreen
+
                     Home.XtraTabControl1.SelectedTabPage = tab
                     frm.Show()
                 End If
@@ -210,7 +249,7 @@ Module Main_Mod
         End Try
     End Function
 
-    Public Sub FillCmb(ByVal cmb As ComboBox, TableName As String, Display As String, Value As Object)
+    Public Sub Fill_Combobox(ByVal cmb As ComboBox, TableName As String, Display As String, Value As Object)
         Try
             Dim DT As New DataTable
             Dim DA As New SqlDataAdapter

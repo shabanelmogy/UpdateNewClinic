@@ -71,25 +71,7 @@ Public Class Home
     End Sub
 
     Private Sub BtnStrp_VisitTypes_Click(sender As Object, e As EventArgs) Handles BtnStrp_VisitTypes.Click
-        Dim frm As New Frm_VisitTypes
-        frm.TopLevel = False
-        For Each tab As XtraTabPage In XtraTabControl1.TabPages
-            If tab.Name = frm.Name Then
-                Exit Sub
-            End If
-        Next
-        XtraTabControl1.TabPages.Add(New XtraTabPage With {.Text = frm.Text, .Name = frm.Name})
-        For Each tab As XtraTabPage In XtraTabControl1.TabPages
-            If tab.Name = frm.Name Then
-                tab.ImageOptions.Image = frm.Icon.ToBitmap
-                tab.Controls.Add(frm)
-                frm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-                frm.StartPosition = Windows.Forms.FormStartPosition.CenterScreen
-                'frm.Dock = DockStyle.Fill
-                XtraTabControl1.SelectedTabPage = tab
-                frm.Show()
-            End If
-        Next
+        openFormInTab_DockNone(Frm_VisitTypes)
     End Sub
 
     Private Sub BtnStrp_Exit_Click(sender As Object, e As EventArgs) Handles BtnStrp_Exit.Click
@@ -121,7 +103,7 @@ Public Class Home
     End Sub
 
     Private Sub PatientDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PatientDataToolStripMenuItem.Click
-        openFormInTab(Btn_ShowReport)
+        openFormInTab(Frm_ReportPatientDetails)
     End Sub
 
     Private Sub PatientVisitsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PatientVisitsToolStripMenuItem.Click
@@ -167,5 +149,13 @@ Public Class Home
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
         openFormInTab(Frm_Reservation)
+    End Sub
+
+    Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
+        openFormInTab(frm_ManageReservation)
+    End Sub
+
+    Private Sub ManageReservationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManageReservationsToolStripMenuItem.Click
+        openFormInTab_DockNone(frm_ManageReservation)
     End Sub
 End Class

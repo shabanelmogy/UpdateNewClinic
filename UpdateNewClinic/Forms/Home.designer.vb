@@ -36,6 +36,7 @@ Partial Class Home
         Me.Btn_OpenManageVisits = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoctorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PatientDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PatientVisitsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -59,6 +60,7 @@ Partial Class Home
         Me.LblComputerName = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.ManageReservationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Pnl_Home.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -171,6 +173,7 @@ Partial Class Home
         '
         'DoctorToolStripMenuItem
         '
+        Me.DoctorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManageReservationsToolStripMenuItem, Me.ToolStripMenuItem4})
         Me.DoctorToolStripMenuItem.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DoctorToolStripMenuItem.Image = Global.UpdateNewClinic.My.Resources.Resources.Doctor_32
         Me.DoctorToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopCenter
@@ -180,6 +183,12 @@ Partial Class Home
         Me.DoctorToolStripMenuItem.Text = "Doctor"
         Me.DoctorToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.DoctorToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(251, 28)
+        Me.ToolStripMenuItem4.Text = "Manage Visits"
         '
         'ReportsToolStripMenuItem
         '
@@ -449,6 +458,12 @@ Partial Class Home
         'Timer1
         '
         '
+        'ManageReservationsToolStripMenuItem
+        '
+        Me.ManageReservationsToolStripMenuItem.Name = "ManageReservationsToolStripMenuItem"
+        Me.ManageReservationsToolStripMenuItem.Size = New System.Drawing.Size(251, 28)
+        Me.ManageReservationsToolStripMenuItem.Text = "Manage Reservations"
+        '
         'Home
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -494,7 +509,6 @@ Partial Class Home
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents XtraTabControl1 As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents XtraTabPage1 As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents Btn_OpenManageVisits As ToolStripMenuItem
     Friend WithEvents ReportsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PatientDataToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PatientVisitsToolStripMenuItem As ToolStripMenuItem
@@ -515,5 +529,8 @@ Partial Class Home
     Friend WithEvents lbl_Date As Label
     Friend WithEvents lbl_Time As Label
     Friend WithEvents DoctorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Btn_OpenManageVisits As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
+    Friend WithEvents ManageReservationsToolStripMenuItem As ToolStripMenuItem
 End Class
