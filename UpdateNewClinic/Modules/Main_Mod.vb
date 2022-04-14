@@ -14,6 +14,7 @@ Module Main_Mod
     Public DtEditPatient, dtvisitDetail, dtsearch As New DataTable
     Public Dv As New DataView
     Public Cur As CurrencyManager
+    Public FillCombobox As Boolean = False
     'Public con As New SqlConnection("Data Source=.\SQLEXPRESS;AttachDbFilename=" & newdir & "\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
     Public con As New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("con").ConnectionString)
 

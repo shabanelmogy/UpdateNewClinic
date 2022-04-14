@@ -5,6 +5,8 @@ Public Class frm_ManageReservation
 
     Dim dt_AllVisits As New DataTable
     Dim Query As String
+    'لتحميل الكومبوبوكس بعد إكتمال تحميل العناصر 
+    Dim FillCombobox As Boolean = False
 
     Sub GetAllPatient(Query As String)
         Try
@@ -23,12 +25,12 @@ Public Class frm_ManageReservation
     End Sub
 
     Sub FormatDgv_Search()
-
         Dgv_Reservation.Columns("PatientName").Width = 300
         Dgv_Reservation.Columns("Code").Width = 75
         Dgv_Reservation.Columns("PatientID").Width = 80
         Dgv_Reservation.Columns("ReserveDate").Width = 140
         Dgv_Reservation.Columns("VisitName").Width = 150
+        Dgv_Reservation.Columns("VisitCost").Width = 95
     End Sub
 
     Private Sub ManageVisits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -37,8 +39,10 @@ Public Class frm_ManageReservation
                         Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'")
         Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
         FormatDgv_Search()
+        '===================ملء الكومبوكس
+        FillCombobox = False
         Fill_Combobox(Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
-        Cbo_VisitType.Text = "All"
+        FillCombobox = True
         Cbo_VisitType.SelectedIndex = -1
     End Sub
 
@@ -57,15 +61,31 @@ Public Class frm_ManageReservation
         End Try
     End Sub
 
-    Private Sub Cbo_VisitType_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles Cbo_VisitType.SelectionChangeCommitted
+    Private Sub Cbo_VisitType_SelectedValueChanged(sender As Object, e As EventArgs) Handles Cbo_VisitType.SelectedValueChanged
 
-        Query = "Select PatientID,Reservation.PatientName,FirstDate,Code,ReserveDate,VisitName,VisitCost From Reservation
+        If FillCombobox = True Then
+            Query = "Select PatientID,Reservation.PatientName,FirstDate,Code,ReserveDate,VisitName,VisitCost From Reservation
                         Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
                         Where CheckOk = 0 And VisitType=" & Cbo_VisitType.SelectedValue & " 
                         And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'"
 
-        FilterDatagridview_Combobox(Dgv_Reservation, Cbo_VisitType, Query)
-        FormatDgv_Search()
+            FilterDatagridview_Combobox(Dgv_Reservation, Cbo_VisitType, Query)
+            FormatDgv_Search()
+        End If
+    End Sub
+
+    Private Sub Cbo_VisitType_KeyDown(sender As Object, e As KeyEventArgs) Handles Cbo_VisitType.KeyDown
+
+        If e.KeyCode = Keys.Delete Or e.KeyCode = Keys.Back Then
+            If FillCombobox = True Then
+                Query = "Select PatientID,Reservation.PatientName,FirstDate,Code,ReserveDate,VisitName,VisitCost From Reservation
+                        Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                        Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'"
+
+                FilterDatagridview_Combobox(Dgv_Reservation, Cbo_VisitType, Query)
+                FormatDgv_Search()
+            End If
+        End If
 
     End Sub
 End Class
