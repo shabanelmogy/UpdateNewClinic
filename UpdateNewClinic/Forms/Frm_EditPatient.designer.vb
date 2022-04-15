@@ -22,9 +22,10 @@ Partial Class Frm_EditPatients
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Dgv_EditPatient = New System.Windows.Forms.DataGridView()
         Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -45,12 +46,6 @@ Partial Class Frm_EditPatients
         Me.Txt_Telephone = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Btn_ShowAllPatients = New System.Windows.Forms.Button()
-        Me.Btn_AddNewPatient = New System.Windows.Forms.Button()
-        Me.Btn_ExportExcel = New System.Windows.Forms.Button()
-        Me.Btn_SavePatient = New System.Windows.Forms.Button()
-        Me.Btn_DelPatient = New System.Windows.Forms.Button()
-        Me.Btn_Exit = New System.Windows.Forms.Button()
         Me.Dtp_SearchVisit = New System.Windows.Forms.DateTimePicker()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -62,10 +57,13 @@ Partial Class Frm_EditPatients
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Btn_SearchName = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Info = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Btn_ShowAllPatients = New System.Windows.Forms.Button()
+        Me.Btn_AddNewPatient = New System.Windows.Forms.Button()
+        Me.Btn_ExportExcel = New System.Windows.Forms.Button()
+        Me.Btn_SavePatient = New System.Windows.Forms.Button()
+        Me.Btn_DelPatient = New System.Windows.Forms.Button()
+        Me.Btn_Exit = New System.Windows.Forms.Button()
         Me.Btn_Reset = New System.Windows.Forms.Button()
         CType(Me.Dgv_EditPatient, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -78,33 +76,33 @@ Partial Class Frm_EditPatients
         Me.Dgv_EditPatient.AllowUserToDeleteRows = False
         Me.Dgv_EditPatient.AllowUserToResizeColumns = False
         Me.Dgv_EditPatient.AllowUserToResizeRows = False
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.AliceBlue
-        Me.Dgv_EditPatient.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.AliceBlue
+        Me.Dgv_EditPatient.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
         Me.Dgv_EditPatient.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Dgv_EditPatient.BackgroundColor = System.Drawing.Color.White
         Me.Dgv_EditPatient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_EditPatient.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_EditPatient.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
         Me.Dgv_EditPatient.ColumnHeadersHeight = 30
         Me.Dgv_EditPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.Dgv_EditPatient.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientNum, Me.PatientName, Me.Code, Me.Age, Me.Occupation, Me.PhoneNumber, Me.FirstDate, Me.Height, Me.StartWeight, Me.Open})
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.NullValue = Nothing
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Snow
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Dgv_EditPatient.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle15.NullValue = Nothing
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Snow
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_EditPatient.DefaultCellStyle = DataGridViewCellStyle15
         Me.Dgv_EditPatient.EnableHeadersVisualStyles = False
         Me.Dgv_EditPatient.GridColor = System.Drawing.Color.Gainsboro
         Me.Dgv_EditPatient.Location = New System.Drawing.Point(3, 0)
@@ -170,21 +168,22 @@ Partial Class Frm_EditPatients
         'Txt_SearchNum
         '
         Me.Txt_SearchNum.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_SearchNum.Location = New System.Drawing.Point(523, 9)
+        Me.Txt_SearchNum.Location = New System.Drawing.Point(571, 9)
         Me.Txt_SearchNum.Name = "Txt_SearchNum"
         Me.Txt_SearchNum.Size = New System.Drawing.Size(177, 24)
         Me.Txt_SearchNum.TabIndex = 2
+        Me.Info.SetToolTip(Me.Txt_SearchNum, "Search By PatientID")
         '
         'Label1
         '
         Me.Label1.BackColor = System.Drawing.Color.SteelBlue
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(405, 9)
+        Me.Label1.Location = New System.Drawing.Point(453, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(118, 24)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "PatientNum"
+        Me.Label1.Text = "PatientID"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label2
@@ -207,13 +206,14 @@ Partial Class Frm_EditPatients
         Me.Txt_SearchName.Name = "Txt_SearchName"
         Me.Txt_SearchName.Size = New System.Drawing.Size(216, 24)
         Me.Txt_SearchName.TabIndex = 0
+        Me.Info.SetToolTip(Me.Txt_SearchName, "Type You Search And Press Enter")
         '
         'Label3
         '
         Me.Label3.BackColor = System.Drawing.Color.SteelBlue
         Me.Label3.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(405, 45)
+        Me.Label3.Location = New System.Drawing.Point(453, 45)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(118, 24)
         Me.Label3.TabIndex = 6
@@ -239,6 +239,7 @@ Partial Class Frm_EditPatients
         Me.Txt_Telephone.Name = "Txt_Telephone"
         Me.Txt_Telephone.Size = New System.Drawing.Size(216, 24)
         Me.Txt_Telephone.TabIndex = 1
+        Me.Info.SetToolTip(Me.Txt_Telephone, "Search By Phone")
         '
         'Panel1
         '
@@ -265,128 +266,15 @@ Partial Class Frm_EditPatients
         Me.Panel2.Size = New System.Drawing.Size(1103, 59)
         Me.Panel2.TabIndex = 5
         '
-        'Btn_ShowAllPatients
-        '
-        Me.Btn_ShowAllPatients.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Btn_ShowAllPatients.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_ShowAllPatients.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_ShowAllPatients.FlatAppearance.BorderSize = 0
-        Me.Btn_ShowAllPatients.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_ShowAllPatients.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_ShowAllPatients.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_ShowAllPatients.ForeColor = System.Drawing.Color.White
-        Me.Btn_ShowAllPatients.Image = Global.UpdateNewClinic.My.Resources.Resources.ShowAll
-        Me.Btn_ShowAllPatients.Location = New System.Drawing.Point(3, 10)
-        Me.Btn_ShowAllPatients.Name = "Btn_ShowAllPatients"
-        Me.Btn_ShowAllPatients.Size = New System.Drawing.Size(176, 39)
-        Me.Btn_ShowAllPatients.TabIndex = 0
-        Me.Btn_ShowAllPatients.Text = "Show Today   F2"
-        Me.Btn_ShowAllPatients.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.Btn_ShowAllPatients.UseVisualStyleBackColor = False
-        '
-        'Btn_AddNewPatient
-        '
-        Me.Btn_AddNewPatient.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Btn_AddNewPatient.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_AddNewPatient.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_AddNewPatient.FlatAppearance.BorderSize = 0
-        Me.Btn_AddNewPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_AddNewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_AddNewPatient.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_AddNewPatient.ForeColor = System.Drawing.Color.White
-        Me.Btn_AddNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.AddNew
-        Me.Btn_AddNewPatient.Location = New System.Drawing.Point(264, 10)
-        Me.Btn_AddNewPatient.Name = "Btn_AddNewPatient"
-        Me.Btn_AddNewPatient.Size = New System.Drawing.Size(126, 39)
-        Me.Btn_AddNewPatient.TabIndex = 1
-        Me.Btn_AddNewPatient.Text = "New       F3"
-        Me.Btn_AddNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.Btn_AddNewPatient.UseVisualStyleBackColor = False
-        '
-        'Btn_ExportExcel
-        '
-        Me.Btn_ExportExcel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Btn_ExportExcel.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_ExportExcel.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_ExportExcel.FlatAppearance.BorderSize = 0
-        Me.Btn_ExportExcel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_ExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_ExportExcel.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_ExportExcel.ForeColor = System.Drawing.Color.White
-        Me.Btn_ExportExcel.Image = Global.UpdateNewClinic.My.Resources.Resources.ExportToExcel
-        Me.Btn_ExportExcel.Location = New System.Drawing.Point(728, 10)
-        Me.Btn_ExportExcel.Name = "Btn_ExportExcel"
-        Me.Btn_ExportExcel.Size = New System.Drawing.Size(126, 39)
-        Me.Btn_ExportExcel.TabIndex = 4
-        Me.Btn_ExportExcel.Text = "Export Excel"
-        Me.Btn_ExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.Btn_ExportExcel.UseVisualStyleBackColor = False
-        '
-        'Btn_SavePatient
-        '
-        Me.Btn_SavePatient.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.Btn_SavePatient.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_SavePatient.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_SavePatient.FlatAppearance.BorderSize = 0
-        Me.Btn_SavePatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_SavePatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_SavePatient.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_SavePatient.ForeColor = System.Drawing.Color.White
-        Me.Btn_SavePatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Save
-        Me.Btn_SavePatient.Location = New System.Drawing.Point(365, 10)
-        Me.Btn_SavePatient.Name = "Btn_SavePatient"
-        Me.Btn_SavePatient.Size = New System.Drawing.Size(126, 39)
-        Me.Btn_SavePatient.TabIndex = 2
-        Me.Btn_SavePatient.Text = "Save        F4"
-        Me.Btn_SavePatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.Btn_SavePatient.UseVisualStyleBackColor = False
-        '
-        'Btn_DelPatient
-        '
-        Me.Btn_DelPatient.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.Btn_DelPatient.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_DelPatient.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_DelPatient.FlatAppearance.BorderSize = 0
-        Me.Btn_DelPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_DelPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_DelPatient.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_DelPatient.ForeColor = System.Drawing.Color.White
-        Me.Btn_DelPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Delete
-        Me.Btn_DelPatient.Location = New System.Drawing.Point(637, 10)
-        Me.Btn_DelPatient.Name = "Btn_DelPatient"
-        Me.Btn_DelPatient.Size = New System.Drawing.Size(126, 39)
-        Me.Btn_DelPatient.TabIndex = 3
-        Me.Btn_DelPatient.Text = "Delete "
-        Me.Btn_DelPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.Btn_DelPatient.UseVisualStyleBackColor = False
-        '
-        'Btn_Exit
-        '
-        Me.Btn_Exit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Btn_Exit.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_Exit.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_Exit.FlatAppearance.BorderSize = 0
-        Me.Btn_Exit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_Exit.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_Exit.ForeColor = System.Drawing.Color.White
-        Me.Btn_Exit.Image = Global.UpdateNewClinic.My.Resources.Resources.ExitFrm
-        Me.Btn_Exit.Location = New System.Drawing.Point(970, 10)
-        Me.Btn_Exit.Name = "Btn_Exit"
-        Me.Btn_Exit.Size = New System.Drawing.Size(122, 39)
-        Me.Btn_Exit.TabIndex = 5
-        Me.Btn_Exit.Text = "Exit"
-        Me.Btn_Exit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.Btn_Exit.UseVisualStyleBackColor = False
-        '
         'Dtp_SearchVisit
         '
         Me.Dtp_SearchVisit.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.Dtp_SearchVisit.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.Dtp_SearchVisit.Location = New System.Drawing.Point(523, 45)
+        Me.Dtp_SearchVisit.Location = New System.Drawing.Point(571, 45)
         Me.Dtp_SearchVisit.Name = "Dtp_SearchVisit"
         Me.Dtp_SearchVisit.Size = New System.Drawing.Size(177, 24)
         Me.Dtp_SearchVisit.TabIndex = 3
+        Me.Info.SetToolTip(Me.Dtp_SearchVisit, "Choose Date And Press Enter")
         Me.Dtp_SearchVisit.Value = New Date(2001, 1, 1, 0, 0, 0, 0)
         '
         'DataGridViewTextBoxColumn1
@@ -441,53 +329,125 @@ Partial Class Frm_EditPatients
         Me.DataGridViewTextBoxColumn10.HeaderText = "StartWeight"
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
         '
-        'Btn_SearchName
+        'Btn_ShowAllPatients
         '
-        Me.Btn_SearchName.BackColor = System.Drawing.Color.White
-        Me.Btn_SearchName.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_SearchName.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_SearchName.Image = Global.UpdateNewClinic.My.Resources.Resources.Search_16
-        Me.Btn_SearchName.Location = New System.Drawing.Point(358, 9)
-        Me.Btn_SearchName.Name = "Btn_SearchName"
-        Me.Btn_SearchName.Size = New System.Drawing.Size(32, 24)
-        Me.Btn_SearchName.TabIndex = 22
-        Me.Btn_SearchName.UseVisualStyleBackColor = False
+        Me.Btn_ShowAllPatients.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Btn_ShowAllPatients.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_ShowAllPatients.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_ShowAllPatients.FlatAppearance.BorderSize = 0
+        Me.Btn_ShowAllPatients.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_ShowAllPatients.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_ShowAllPatients.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_ShowAllPatients.ForeColor = System.Drawing.Color.White
+        Me.Btn_ShowAllPatients.Image = Global.UpdateNewClinic.My.Resources.Resources.ShowAll
+        Me.Btn_ShowAllPatients.Location = New System.Drawing.Point(3, 10)
+        Me.Btn_ShowAllPatients.Name = "Btn_ShowAllPatients"
+        Me.Btn_ShowAllPatients.Size = New System.Drawing.Size(176, 39)
+        Me.Btn_ShowAllPatients.TabIndex = 0
+        Me.Btn_ShowAllPatients.Text = "Show Today   F2"
+        Me.Btn_ShowAllPatients.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.Info.SetToolTip(Me.Btn_ShowAllPatients, "Show Patient Register Today")
+        Me.Btn_ShowAllPatients.UseVisualStyleBackColor = False
         '
-        'Button2
+        'Btn_AddNewPatient
         '
-        Me.Button2.BackColor = System.Drawing.Color.White
-        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Image = Global.UpdateNewClinic.My.Resources.Resources.Search_16
-        Me.Button2.Location = New System.Drawing.Point(358, 44)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(32, 24)
-        Me.Button2.TabIndex = 23
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.Btn_AddNewPatient.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Btn_AddNewPatient.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_AddNewPatient.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_AddNewPatient.FlatAppearance.BorderSize = 0
+        Me.Btn_AddNewPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_AddNewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_AddNewPatient.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_AddNewPatient.ForeColor = System.Drawing.Color.White
+        Me.Btn_AddNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.AddNew
+        Me.Btn_AddNewPatient.Location = New System.Drawing.Point(264, 10)
+        Me.Btn_AddNewPatient.Name = "Btn_AddNewPatient"
+        Me.Btn_AddNewPatient.Size = New System.Drawing.Size(126, 39)
+        Me.Btn_AddNewPatient.TabIndex = 1
+        Me.Btn_AddNewPatient.Text = "New       F3"
+        Me.Btn_AddNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.Info.SetToolTip(Me.Btn_AddNewPatient, "Add New Patient")
+        Me.Btn_AddNewPatient.UseVisualStyleBackColor = False
         '
-        'Button3
+        'Btn_ExportExcel
         '
-        Me.Button3.BackColor = System.Drawing.Color.White
-        Me.Button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Image = Global.UpdateNewClinic.My.Resources.Resources.Search_16
-        Me.Button3.Location = New System.Drawing.Point(706, 9)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(32, 24)
-        Me.Button3.TabIndex = 24
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.Btn_ExportExcel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_ExportExcel.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_ExportExcel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_ExportExcel.FlatAppearance.BorderSize = 0
+        Me.Btn_ExportExcel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_ExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_ExportExcel.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_ExportExcel.ForeColor = System.Drawing.Color.White
+        Me.Btn_ExportExcel.Image = Global.UpdateNewClinic.My.Resources.Resources.ExportToExcel
+        Me.Btn_ExportExcel.Location = New System.Drawing.Point(728, 10)
+        Me.Btn_ExportExcel.Name = "Btn_ExportExcel"
+        Me.Btn_ExportExcel.Size = New System.Drawing.Size(126, 39)
+        Me.Btn_ExportExcel.TabIndex = 4
+        Me.Btn_ExportExcel.Text = "Export Excel"
+        Me.Btn_ExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.Info.SetToolTip(Me.Btn_ExportExcel, "Export Excel")
+        Me.Btn_ExportExcel.UseVisualStyleBackColor = False
         '
-        'Button4
+        'Btn_SavePatient
         '
-        Me.Button4.BackColor = System.Drawing.Color.White
-        Me.Button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Image = Global.UpdateNewClinic.My.Resources.Resources.Search_16
-        Me.Button4.Location = New System.Drawing.Point(706, 44)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(32, 24)
-        Me.Button4.TabIndex = 25
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.Btn_SavePatient.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Btn_SavePatient.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_SavePatient.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_SavePatient.FlatAppearance.BorderSize = 0
+        Me.Btn_SavePatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_SavePatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_SavePatient.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_SavePatient.ForeColor = System.Drawing.Color.White
+        Me.Btn_SavePatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Save
+        Me.Btn_SavePatient.Location = New System.Drawing.Point(365, 10)
+        Me.Btn_SavePatient.Name = "Btn_SavePatient"
+        Me.Btn_SavePatient.Size = New System.Drawing.Size(126, 39)
+        Me.Btn_SavePatient.TabIndex = 2
+        Me.Btn_SavePatient.Text = "Save        F4"
+        Me.Btn_SavePatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.Info.SetToolTip(Me.Btn_SavePatient, "Save Patient data")
+        Me.Btn_SavePatient.UseVisualStyleBackColor = False
+        '
+        'Btn_DelPatient
+        '
+        Me.Btn_DelPatient.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Btn_DelPatient.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_DelPatient.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_DelPatient.FlatAppearance.BorderSize = 0
+        Me.Btn_DelPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_DelPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_DelPatient.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_DelPatient.ForeColor = System.Drawing.Color.White
+        Me.Btn_DelPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Delete
+        Me.Btn_DelPatient.Location = New System.Drawing.Point(637, 10)
+        Me.Btn_DelPatient.Name = "Btn_DelPatient"
+        Me.Btn_DelPatient.Size = New System.Drawing.Size(126, 39)
+        Me.Btn_DelPatient.TabIndex = 3
+        Me.Btn_DelPatient.Text = "Delete "
+        Me.Btn_DelPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.Info.SetToolTip(Me.Btn_DelPatient, "Delete patient")
+        Me.Btn_DelPatient.UseVisualStyleBackColor = False
+        '
+        'Btn_Exit
+        '
+        Me.Btn_Exit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_Exit.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_Exit.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_Exit.FlatAppearance.BorderSize = 0
+        Me.Btn_Exit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_Exit.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_Exit.ForeColor = System.Drawing.Color.White
+        Me.Btn_Exit.Image = Global.UpdateNewClinic.My.Resources.Resources.ExitFrm
+        Me.Btn_Exit.Location = New System.Drawing.Point(970, 10)
+        Me.Btn_Exit.Name = "Btn_Exit"
+        Me.Btn_Exit.Size = New System.Drawing.Size(122, 39)
+        Me.Btn_Exit.TabIndex = 5
+        Me.Btn_Exit.Text = "Exit"
+        Me.Btn_Exit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.Info.SetToolTip(Me.Btn_Exit, "Exit")
+        Me.Btn_Exit.UseVisualStyleBackColor = False
         '
         'Btn_Reset
         '
@@ -499,7 +459,7 @@ Partial Class Frm_EditPatients
         Me.Btn_Reset.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_Reset.ForeColor = System.Drawing.Color.White
         Me.Btn_Reset.Image = Global.UpdateNewClinic.My.Resources.Resources.Undo
-        Me.Btn_Reset.Location = New System.Drawing.Point(754, 9)
+        Me.Btn_Reset.Location = New System.Drawing.Point(869, 9)
         Me.Btn_Reset.Name = "Btn_Reset"
         Me.Btn_Reset.Size = New System.Drawing.Size(108, 60)
         Me.Btn_Reset.TabIndex = 4
@@ -513,10 +473,6 @@ Partial Class Frm_EditPatients
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.ClientSize = New System.Drawing.Size(1103, 617)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Btn_SearchName)
         Me.Controls.Add(Me.Dtp_SearchVisit)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
@@ -580,8 +536,5 @@ Partial Class Frm_EditPatients
     Friend WithEvents Height As DataGridViewTextBoxColumn
     Friend WithEvents StartWeight As DataGridViewTextBoxColumn
     Friend WithEvents Open As DataGridViewButtonColumn
-    Friend WithEvents Btn_SearchName As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents Info As ToolTip
 End Class

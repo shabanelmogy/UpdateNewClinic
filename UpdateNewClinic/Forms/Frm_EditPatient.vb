@@ -31,6 +31,8 @@ Public Class Frm_EditPatients
             Dgv_EditPatient.Columns("Height").Width = 90
             Dgv_EditPatient.Columns("StartWeight").Width = 100
             Dgv_EditPatient.Columns(8).DefaultCellStyle.Format = "dd/MM/yyyy"
+            Dgv_EditPatient.Columns("PatientNum").HeaderText = "PatientID"
+
         Catch ex As Exception
             MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
@@ -581,8 +583,12 @@ Public Class Frm_EditPatients
         End Try
     End Sub
 
-    Private Sub Btn_SearchName_Click(sender As Object, e As EventArgs) Handles Btn_SearchName.Click
+    Private Sub Btn_SearchName_Click(sender As Object, e As EventArgs)
         AddHandler Txt_SearchName.KeyDown, AddressOf Txt_SearchName_KeyDown
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
+        Txt_SearchName.Text = "Type You Search And Press Enter"
     End Sub
 
 #End Region
