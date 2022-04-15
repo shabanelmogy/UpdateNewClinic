@@ -2,13 +2,24 @@
 
 Public Class frm_ManageReservation
 
-
+#Region "Declaration"
     Dim dt_AllVisits As New DataTable
     Dim Query As String
     'لتحميل الكومبوبوكس بعد إكتمال تحميل العناصر 
     Dim FillCombobox As Boolean = False
     Dim CurId As Integer
     Dim CurDate As Date
+    Dim rdr As SqlDataReader
+#End Region
+
+    Sub AddDatagridviewButton()
+        Dim btn As New DataGridViewButtonColumn
+        btn.HeaderText = "Visit Detail"
+        btn.Text = "Click Here"
+        btn.Name = "btn"
+        btn.UseColumnTextForButtonValue = True
+        Dgv_Reservation.Columns.Insert(7, btn)
+    End Sub
 
     Sub CountVisits()
         Dim Count As Integer = Dgv_Reservation.Rows.Count
@@ -17,7 +28,6 @@ Public Class frm_ManageReservation
         Else
             Lbl_Count.Text = "No Reservations"
         End If
-
     End Sub
 
     Sub GetAllPatient(Query As String)
@@ -36,6 +46,22 @@ Public Class frm_ManageReservation
         End Try
     End Sub
 
+    Sub GetAllPatient_Test(Query As String)
+        Try
+            Dim cmd As New SqlCommand(Query, con)
+            con.Open()
+            rdr = cmd.ExecuteReader
+            While rdr.Read
+                Dgv_Reservation.Rows.Add(rdr("PatientID"), rdr("PatientName"), rdr("PhoneNumber"), rdr("Code"),
+                                              Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("VisitName"), rdr("VisitCost"))
+            End While
+            rdr.Close()
+            con.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Information)
+        End Try
+    End Sub
+
     Sub FormatDgv_Search()
         Dgv_Reservation.Columns("PatientName").Width = 300
         Dgv_Reservation.Columns("Code").Width = 75
@@ -47,9 +73,10 @@ Public Class frm_ManageReservation
 
     Private Sub Frm_ManageVisits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost From Reservation
+        GetAllPatient_Test("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost From Reservation
                         Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
                         Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'")
+
         Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
         FormatDgv_Search()
         CountVisits()
@@ -58,7 +85,8 @@ Public Class frm_ManageReservation
         Fill_Combobox(Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
         FillCombobox = True
         Cbo_VisitType.SelectedIndex = -1
-
+        '==================================================================
+        'AddDatagridviewButton()
     End Sub
 
     Private Sub Dtp_ReserveDate_KeyDown(sender As Object, e As KeyEventArgs) Handles Dtp_ReserveDate.KeyDown
@@ -69,6 +97,7 @@ Public Class frm_ManageReservation
                         Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'")
                 FormatDgv_Search()
                 CountVisits()
+                AddDatagridviewButton()
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
@@ -135,5 +164,19 @@ Public Class frm_ManageReservation
         Finally
             If con.State = 1 Then con.Close()
         End Try
+    End Sub
+
+    Private Sub Dgv_Reservation_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles Dgv_Reservation.CellPainting
+        If e.ColumnIndex = 7 AndAlso e.RowIndex >= 0 Then
+            e.Paint(e.CellBounds, DataGridViewPaintParts.All)
+            Dim img As Image = My.Resources.Open_16_16
+            e.Graphics.DrawImage(img, e.CellBounds.Left + 45, e.CellBounds.Top + 7, 10, 10)
+            e.Handled = True
+        ElseIf e.ColumnIndex = 8 AndAlso e.RowIndex >= 0 Then
+            e.Paint(e.CellBounds, DataGridViewPaintParts.All)
+            Dim img As Image = My.Resources.Delete_16x16
+            e.Graphics.DrawImage(img, e.CellBounds.Left + 45, e.CellBounds.Top + 7, 10, 10)
+            e.Handled = True
+        End If
     End Sub
 End Class

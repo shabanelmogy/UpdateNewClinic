@@ -574,7 +574,7 @@ Public Class Frm_EditPatients
             If e.KeyCode = Keys.Enter And Dtp_SearchVisit.Value.Date <> "2001-1-1" Then
                 FillDataGRidview("Select * From PatientsDetail Where FirstDate='" & Format(Dtp_SearchVisit.Value, "yyyy-MM-dd") & "'")
             ElseIf Dtp_SearchVisit.Value.Date = "2001-1-1" And e.KeyCode = Keys.Enter Then
-                FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
+                FillDataGRidview("Select  * From PatientsDetail Where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MessageBoxIcon.Error, "Error")

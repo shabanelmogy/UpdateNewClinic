@@ -33,6 +33,15 @@ Partial Class frm_ManageReservation
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Lbl_Count = New System.Windows.Forms.Label()
         Me.Btn_Delete = New System.Windows.Forms.Button()
+        Me.PatientID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PhoneNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Code = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OpenVisit = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
         CType(Me.Dgv_Reservation, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -47,18 +56,19 @@ Partial Class frm_ManageReservation
         Me.Dgv_Reservation.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Dgv_Reservation.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.Dgv_Reservation.ColumnHeadersHeight = 30
+        Me.Dgv_Reservation.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientID, Me.PatientName, Me.PhoneNumber, Me.Code, Me.ReserveDate, Me.VisitName, Me.VisitCost, Me.OpenVisit, Me.Delete})
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightCyan
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Linen
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Dgv_Reservation.DefaultCellStyle = DataGridViewCellStyle3
@@ -68,7 +78,7 @@ Partial Class frm_ManageReservation
         Me.Dgv_Reservation.RowHeadersVisible = False
         Me.Dgv_Reservation.RowTemplate.Height = 25
         Me.Dgv_Reservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Dgv_Reservation.Size = New System.Drawing.Size(945, 625)
+        Me.Dgv_Reservation.Size = New System.Drawing.Size(1144, 625)
         Me.Dgv_Reservation.TabIndex = 0
         '
         'Label1
@@ -85,7 +95,7 @@ Partial Class frm_ManageReservation
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(272, 23)
+        Me.Label2.Location = New System.Drawing.Point(284, 23)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(90, 19)
         Me.Label2.TabIndex = 2
@@ -105,7 +115,7 @@ Partial Class frm_ManageReservation
         Me.Cbo_VisitType.Font = New System.Drawing.Font("Tahoma", 11.0!)
         Me.Cbo_VisitType.FormattingEnabled = True
         Me.Cbo_VisitType.Items.AddRange(New Object() {" "})
-        Me.Cbo_VisitType.Location = New System.Drawing.Point(368, 20)
+        Me.Cbo_VisitType.Location = New System.Drawing.Point(380, 20)
         Me.Cbo_VisitType.Name = "Cbo_VisitType"
         Me.Cbo_VisitType.Size = New System.Drawing.Size(156, 26)
         Me.Cbo_VisitType.TabIndex = 4
@@ -114,7 +124,7 @@ Partial Class frm_ManageReservation
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(549, 24)
+        Me.Label3.Location = New System.Drawing.Point(573, 24)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(98, 19)
         Me.Label3.TabIndex = 5
@@ -125,7 +135,7 @@ Partial Class frm_ManageReservation
         Me.Lbl_Count.BackColor = System.Drawing.Color.Maroon
         Me.Lbl_Count.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Lbl_Count.ForeColor = System.Drawing.Color.White
-        Me.Lbl_Count.Location = New System.Drawing.Point(653, 16)
+        Me.Lbl_Count.Location = New System.Drawing.Point(677, 16)
         Me.Lbl_Count.Name = "Lbl_Count"
         Me.Lbl_Count.Size = New System.Drawing.Size(148, 33)
         Me.Lbl_Count.TabIndex = 6
@@ -139,7 +149,7 @@ Partial Class frm_ManageReservation
         Me.Btn_Delete.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_Delete.ForeColor = System.Drawing.Color.White
         Me.Btn_Delete.Image = Global.UpdateNewClinic.My.Resources.Resources.Delete
-        Me.Btn_Delete.Location = New System.Drawing.Point(824, 16)
+        Me.Btn_Delete.Location = New System.Drawing.Point(1026, 16)
         Me.Btn_Delete.Name = "Btn_Delete"
         Me.Btn_Delete.Size = New System.Drawing.Size(114, 33)
         Me.Btn_Delete.TabIndex = 7
@@ -147,12 +157,61 @@ Partial Class frm_ManageReservation
         Me.Btn_Delete.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_Delete.UseVisualStyleBackColor = False
         '
+        'PatientID
+        '
+        Me.PatientID.HeaderText = "PatientID"
+        Me.PatientID.Name = "PatientID"
+        '
+        'PatientName
+        '
+        Me.PatientName.HeaderText = "PatientName"
+        Me.PatientName.Name = "PatientName"
+        '
+        'PhoneNumber
+        '
+        Me.PhoneNumber.HeaderText = "PhoneNumber"
+        Me.PhoneNumber.Name = "PhoneNumber"
+        '
+        'Code
+        '
+        Me.Code.HeaderText = "Code"
+        Me.Code.Name = "Code"
+        '
+        'ReserveDate
+        '
+        Me.ReserveDate.HeaderText = "ReserveDate"
+        Me.ReserveDate.Name = "ReserveDate"
+        '
+        'VisitName
+        '
+        Me.VisitName.HeaderText = "VisitName"
+        Me.VisitName.Name = "VisitName"
+        '
+        'VisitCost
+        '
+        Me.VisitCost.HeaderText = "VisitCost"
+        Me.VisitCost.Name = "VisitCost"
+        '
+        'OpenVisit
+        '
+        Me.OpenVisit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.OpenVisit.HeaderText = "Open Visit"
+        Me.OpenVisit.Name = "OpenVisit"
+        Me.OpenVisit.Text = ""
+        '
+        'Delete
+        '
+        Me.Delete.HeaderText = "Delete"
+        Me.Delete.Name = "Delete"
+        Me.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
         'frm_ManageReservation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(945, 708)
+        Me.ClientSize = New System.Drawing.Size(1144, 708)
         Me.Controls.Add(Me.Btn_Delete)
         Me.Controls.Add(Me.Lbl_Count)
         Me.Controls.Add(Me.Label3)
@@ -178,4 +237,13 @@ Partial Class frm_ManageReservation
     Friend WithEvents Label3 As Label
     Friend WithEvents Lbl_Count As Label
     Friend WithEvents Btn_Delete As Button
+    Friend WithEvents PatientID As DataGridViewTextBoxColumn
+    Friend WithEvents PatientName As DataGridViewTextBoxColumn
+    Friend WithEvents PhoneNumber As DataGridViewTextBoxColumn
+    Friend WithEvents Code As DataGridViewTextBoxColumn
+    Friend WithEvents ReserveDate As DataGridViewTextBoxColumn
+    Friend WithEvents VisitName As DataGridViewTextBoxColumn
+    Friend WithEvents VisitCost As DataGridViewTextBoxColumn
+    Friend WithEvents OpenVisit As DataGridViewButtonColumn
+    Friend WithEvents Delete As DataGridViewButtonColumn
 End Class
