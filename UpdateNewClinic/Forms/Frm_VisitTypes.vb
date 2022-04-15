@@ -5,6 +5,7 @@ Imports System.IO
 Public Class Frm_VisitTypes
 
     Dim Dt_VisitType As DataTable
+    Dim curid As Integer
 
     Sub FillDgvVisits()
         Try
@@ -60,7 +61,7 @@ Public Class Frm_VisitTypes
 
     Private Sub Frm_VisitTypes_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         If e.KeyCode = Keys.Delete Then
-            Btn_DeletePatient_Click(Nothing, Nothing)
+            Btn_DeleteVisitType_Click(Nothing, Nothing)
             Frm_VisitTypes_Load(Nothing, Nothing)
         End If
     End Sub
@@ -162,28 +163,33 @@ Public Class Frm_VisitTypes
         End Try
     End Sub
 
-    Private Sub Btn_DeletePatient_Click(sender As Object, e As EventArgs) Handles Btn_DeletePatient.Click
+    Private Sub Btn_DeleteVisitType_Click(sender As Object, e As EventArgs) Handles Btn_DeleteVisitType.Click
         Try
             If con.State = 1 Then con.Close()
 
             If Dgv_VisitType.Rows.Count > 0 Then
-
+                curid = Dgv_VisitType.CurrentRow.Cells(0).Value
                 If MsgBox("Do You Want To Delete This Record ?", MsgBoxStyle.Information + vbYesNo, "Attention") = vbYes Then
 
-                    cmd = New SqlCommand("Delete From VisitsTypes Where Num=@Num", con)
-                    cmd.Parameters.AddWithValue("Num", Dgv_VisitType.CurrentRow.Cells(0).Value)
+                    If Check("Select VisitType From ClinicDays Where VisitType=" & curid & " ") = 0 Then
+                        Cmd = New SqlCommand("Delete From VisitsTypes Where Num=@Num", con)
+                        'Cmd.Parameters.AddWithValue("Num", Dgv_VisitType.CurrentRow.Cells(0).Value)
+                        Cmd.Parameters.AddWithValue("Num", curid)
 
-                    con.Open()
-                    cmd.ExecuteNonQuery()
+                        con.Open()
+                        Cmd.ExecuteNonQuery()
 
+                        Dgv_VisitType.CurrentCell = Dgv_VisitType.Rows(Dgv_VisitType.Rows.Count - 1).Cells(0)
+                        Dgv_VisitType.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+                        Dgv_VisitType.DefaultCellStyle.SelectionBackColor = Color.OldLace
+                    Else
+                        MsgBox("eroor")
+                    End If
 
-                    Dgv_VisitType.CurrentCell = Dgv_VisitType.Rows(Dgv_VisitType.Rows.Count - 1).Cells(0)
-                    Dgv_VisitType.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-                    Dgv_VisitType.DefaultCellStyle.SelectionBackColor = Color.OldLace
+                    Frm_VisitTypes_Load(Nothing, Nothing)
                 End If
-
-                Frm_VisitTypes_Load(Nothing, Nothing)
             End If
+
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information, "Deleted")
         Finally

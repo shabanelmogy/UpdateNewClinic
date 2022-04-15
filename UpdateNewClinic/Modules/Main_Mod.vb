@@ -40,6 +40,19 @@ Module Main_Mod
         End Try
         Return Maxid
     End Function
+
+    Function Check(Query As String) As Integer
+
+        Dim cmd As New SqlCommand(Query, con)
+        Dim dt As New DataTable
+        Dim da As New SqlDataAdapter(cmd)
+        da.fill(dt)
+        If dt.Rows.Count < 0 Then
+            Return 0
+        Else
+            Return 1
+        End If
+    End Function
 #End Region
 
 #Region "General Subs"
