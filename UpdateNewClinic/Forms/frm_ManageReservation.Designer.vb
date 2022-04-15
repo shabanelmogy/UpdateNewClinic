@@ -31,7 +31,7 @@ Partial Class frm_ManageReservation
         Me.Dtp_ReserveDate = New System.Windows.Forms.DateTimePicker()
         Me.Cbo_VisitType = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Lbl_Count = New System.Windows.Forms.Label()
         Me.Btn_Delete = New System.Windows.Forms.Button()
         CType(Me.Dgv_Reservation, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -85,7 +85,7 @@ Partial Class frm_ManageReservation
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(310, 23)
+        Me.Label2.Location = New System.Drawing.Point(272, 23)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(90, 19)
         Me.Label2.TabIndex = 2
@@ -97,7 +97,7 @@ Partial Class frm_ManageReservation
         Me.Dtp_ReserveDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.Dtp_ReserveDate.Location = New System.Drawing.Point(137, 20)
         Me.Dtp_ReserveDate.Name = "Dtp_ReserveDate"
-        Me.Dtp_ReserveDate.Size = New System.Drawing.Size(156, 25)
+        Me.Dtp_ReserveDate.Size = New System.Drawing.Size(118, 25)
         Me.Dtp_ReserveDate.TabIndex = 3
         '
         'Cbo_VisitType
@@ -105,7 +105,7 @@ Partial Class frm_ManageReservation
         Me.Cbo_VisitType.Font = New System.Drawing.Font("Tahoma", 11.0!)
         Me.Cbo_VisitType.FormattingEnabled = True
         Me.Cbo_VisitType.Items.AddRange(New Object() {" "})
-        Me.Cbo_VisitType.Location = New System.Drawing.Point(406, 20)
+        Me.Cbo_VisitType.Location = New System.Drawing.Point(368, 20)
         Me.Cbo_VisitType.Name = "Cbo_VisitType"
         Me.Cbo_VisitType.Size = New System.Drawing.Size(156, 26)
         Me.Cbo_VisitType.TabIndex = 4
@@ -114,20 +114,22 @@ Partial Class frm_ManageReservation
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(576, 24)
+        Me.Label3.Location = New System.Drawing.Point(549, 24)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(98, 19)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Visit Count"
         '
-        'Label4
+        'Lbl_Count
         '
-        Me.Label4.BackColor = System.Drawing.Color.Maroon
-        Me.Label4.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.Label4.Location = New System.Drawing.Point(680, 16)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(116, 33)
-        Me.Label4.TabIndex = 6
+        Me.Lbl_Count.BackColor = System.Drawing.Color.Maroon
+        Me.Lbl_Count.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Lbl_Count.ForeColor = System.Drawing.Color.White
+        Me.Lbl_Count.Location = New System.Drawing.Point(653, 16)
+        Me.Lbl_Count.Name = "Lbl_Count"
+        Me.Lbl_Count.Size = New System.Drawing.Size(148, 33)
+        Me.Lbl_Count.TabIndex = 6
+        Me.Lbl_Count.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Btn_Delete
         '
@@ -152,7 +154,7 @@ Partial Class frm_ManageReservation
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.ClientSize = New System.Drawing.Size(945, 708)
         Me.Controls.Add(Me.Btn_Delete)
-        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Lbl_Count)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Cbo_VisitType)
         Me.Controls.Add(Me.Dtp_ReserveDate)
@@ -174,6 +176,6 @@ Partial Class frm_ManageReservation
     Friend WithEvents Dtp_ReserveDate As DateTimePicker
     Friend WithEvents Cbo_VisitType As ComboBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
+    Friend WithEvents Lbl_Count As Label
     Friend WithEvents Btn_Delete As Button
 End Class

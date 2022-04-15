@@ -30,12 +30,11 @@ Partial Class Home
         Me.BtnStrp_Exit = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnStrp_VisitTypes = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReservationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnStrp_PatientDetail = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnStrp_ManagePatient = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Btn_OpenManageVisits = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoctorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ManageReservationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PatientDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -60,7 +59,6 @@ Partial Class Home
         Me.LblComputerName = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.ManageReservationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Pnl_Home.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -116,13 +114,13 @@ Partial Class Home
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.AutoSize = False
-        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnStrp_VisitTypes, Me.ReservationToolStripMenuItem})
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnStrp_VisitTypes})
         Me.ToolStripMenuItem1.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripMenuItem1.Image = Global.UpdateNewClinic.My.Resources.Resources.Visits_32
+        Me.ToolStripMenuItem1.Image = Global.UpdateNewClinic.My.Resources.Resources.Data_32
         Me.ToolStripMenuItem1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(95, 64)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(122, 64)
         Me.ToolStripMenuItem1.Text = "Basic Data"
         Me.ToolStripMenuItem1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolStripMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -133,18 +131,12 @@ Partial Class Home
         Me.BtnStrp_VisitTypes.Size = New System.Drawing.Size(180, 28)
         Me.BtnStrp_VisitTypes.Text = "Visits Types"
         '
-        'ReservationToolStripMenuItem
-        '
-        Me.ReservationToolStripMenuItem.Name = "ReservationToolStripMenuItem"
-        Me.ReservationToolStripMenuItem.Size = New System.Drawing.Size(180, 28)
-        Me.ReservationToolStripMenuItem.Text = "Reservation"
-        '
         'BtnStrp_PatientDetail
         '
         Me.BtnStrp_PatientDetail.AutoSize = False
-        Me.BtnStrp_PatientDetail.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnStrp_ManagePatient, Me.Btn_OpenManageVisits, Me.ToolStripMenuItem2})
+        Me.BtnStrp_PatientDetail.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnStrp_ManagePatient, Me.ToolStripMenuItem2})
         Me.BtnStrp_PatientDetail.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnStrp_PatientDetail.Image = Global.UpdateNewClinic.My.Resources.Resources.Patient_32
+        Me.BtnStrp_PatientDetail.Image = Global.UpdateNewClinic.My.Resources.Resources.CallCenter_32
         Me.BtnStrp_PatientDetail.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnStrp_PatientDetail.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.BtnStrp_PatientDetail.Name = "BtnStrp_PatientDetail"
@@ -158,12 +150,6 @@ Partial Class Home
         Me.BtnStrp_ManagePatient.Name = "BtnStrp_ManagePatient"
         Me.BtnStrp_ManagePatient.Size = New System.Drawing.Size(213, 28)
         Me.BtnStrp_ManagePatient.Text = "Manage Patients"
-        '
-        'Btn_OpenManageVisits
-        '
-        Me.Btn_OpenManageVisits.Name = "Btn_OpenManageVisits"
-        Me.Btn_OpenManageVisits.Size = New System.Drawing.Size(213, 28)
-        Me.Btn_OpenManageVisits.Text = "Manage Visits"
         '
         'ToolStripMenuItem2
         '
@@ -183,6 +169,12 @@ Partial Class Home
         Me.DoctorToolStripMenuItem.Text = "Doctor"
         Me.DoctorToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.DoctorToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'ManageReservationsToolStripMenuItem
+        '
+        Me.ManageReservationsToolStripMenuItem.Name = "ManageReservationsToolStripMenuItem"
+        Me.ManageReservationsToolStripMenuItem.Size = New System.Drawing.Size(251, 28)
+        Me.ManageReservationsToolStripMenuItem.Text = "Manage Reservations"
         '
         'ToolStripMenuItem4
         '
@@ -458,12 +450,6 @@ Partial Class Home
         'Timer1
         '
         '
-        'ManageReservationsToolStripMenuItem
-        '
-        Me.ManageReservationsToolStripMenuItem.Name = "ManageReservationsToolStripMenuItem"
-        Me.ManageReservationsToolStripMenuItem.Size = New System.Drawing.Size(251, 28)
-        Me.ManageReservationsToolStripMenuItem.Text = "Manage Reservations"
-        '
         'Home
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -512,7 +498,6 @@ Partial Class Home
     Friend WithEvents ReportsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PatientDataToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PatientVisitsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ReservationToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Btn_ExitApp As Button
     Friend WithEvents Btn_Maximize As Button
@@ -529,7 +514,6 @@ Partial Class Home
     Friend WithEvents lbl_Date As Label
     Friend WithEvents lbl_Time As Label
     Friend WithEvents DoctorToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Btn_OpenManageVisits As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
     Friend WithEvents ManageReservationsToolStripMenuItem As ToolStripMenuItem

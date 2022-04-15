@@ -62,10 +62,7 @@ Module Main_Mod
 
         Dim fh As Form = TryCast(Form, Form)
         fh.TopLevel = False
-        'fh.FormBorderStyle = FormBorderStyle.None
-        'fh.Dock = DockStyle.Fill
         Pnl.Controls.Add(fh)
-        'Pnl.Tag = fh
         fh.Show()
     End Sub
 

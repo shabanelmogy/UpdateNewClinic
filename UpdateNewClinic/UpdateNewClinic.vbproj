@@ -803,6 +803,8 @@
     <None Include="Resources\Clinic.jpg" />
     <None Include="Resources\Doctor 32.png" />
     <None Include="Resources\Doctor 64.png" />
+    <None Include="Resources\CallCenter 32.png" />
+    <None Include="Resources\Data 32.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

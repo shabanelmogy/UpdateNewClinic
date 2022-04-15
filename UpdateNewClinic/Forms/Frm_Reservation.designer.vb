@@ -23,12 +23,12 @@ Partial Class Frm_Reservation
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Txt_PatientName = New System.Windows.Forms.TextBox()
@@ -45,6 +45,7 @@ Partial Class Frm_Reservation
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Txt_VisitCost = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Txt_Num = New System.Windows.Forms.TextBox()
         Me.Dgv_Visits = New System.Windows.Forms.DataGridView()
         Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -62,7 +63,6 @@ Partial Class Frm_Reservation
         Me.ClinicDataSet = New UpdateNewClinic.ClinicDataSet()
         Me.PatientsDetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PatientsDetailTableAdapter = New UpdateNewClinic.ClinicDataSetTableAdapters.PatientsDetailTableAdapter()
-        Me.Txt_Num = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         CType(Me.Dgv_Visits, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SeparatorControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,9 +79,9 @@ Partial Class Frm_Reservation
         Me.Label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Location = New System.Drawing.Point(11, 9)
+        Me.Label2.Location = New System.Drawing.Point(6, 9)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(117, 27)
+        Me.Label2.Size = New System.Drawing.Size(111, 27)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "PatientName"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -92,9 +92,9 @@ Partial Class Frm_Reservation
         Me.Label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label7.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label7.Location = New System.Drawing.Point(11, 65)
+        Me.Label7.Location = New System.Drawing.Point(7, 65)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(117, 27)
+        Me.Label7.Size = New System.Drawing.Size(110, 27)
         Me.Label7.TabIndex = 4
         Me.Label7.Text = "Reserve Date"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -103,10 +103,10 @@ Partial Class Frm_Reservation
         '
         Me.Txt_PatientName.BackColor = System.Drawing.Color.White
         Me.Txt_PatientName.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.Txt_PatientName.Location = New System.Drawing.Point(127, 9)
+        Me.Txt_PatientName.Location = New System.Drawing.Point(116, 9)
         Me.Txt_PatientName.Name = "Txt_PatientName"
         Me.Txt_PatientName.ReadOnly = True
-        Me.Txt_PatientName.Size = New System.Drawing.Size(410, 27)
+        Me.Txt_PatientName.Size = New System.Drawing.Size(409, 27)
         Me.Txt_PatientName.TabIndex = 4
         Me.Txt_PatientName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -115,7 +115,7 @@ Partial Class Frm_Reservation
         Me.Dtp_ReserveDate.CustomFormat = "dd/MM/yyyy"
         Me.Dtp_ReserveDate.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.Dtp_ReserveDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.Dtp_ReserveDate.Location = New System.Drawing.Point(127, 65)
+        Me.Dtp_ReserveDate.Location = New System.Drawing.Point(116, 65)
         Me.Dtp_ReserveDate.Name = "Dtp_ReserveDate"
         Me.Dtp_ReserveDate.Size = New System.Drawing.Size(122, 27)
         Me.Dtp_ReserveDate.TabIndex = 12
@@ -123,13 +123,14 @@ Partial Class Frm_Reservation
         '
         'Btn_SortAsec
         '
+        Me.Btn_SortAsec.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Btn_SortAsec.BackColor = System.Drawing.Color.White
         Me.Btn_SortAsec.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Btn_SortAsec.FlatAppearance.BorderSize = 0
         Me.Btn_SortAsec.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaShell
         Me.Btn_SortAsec.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_SortAsec.Image = Global.UpdateNewClinic.My.Resources.Resources.SortAscending_24
-        Me.Btn_SortAsec.Location = New System.Drawing.Point(350, 8)
+        Me.Btn_SortAsec.Location = New System.Drawing.Point(307, 8)
         Me.Btn_SortAsec.Name = "Btn_SortAsec"
         Me.Btn_SortAsec.Size = New System.Drawing.Size(60, 27)
         Me.Btn_SortAsec.TabIndex = 30
@@ -138,13 +139,14 @@ Partial Class Frm_Reservation
         '
         'Btn_SortDesc
         '
+        Me.Btn_SortDesc.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Btn_SortDesc.BackColor = System.Drawing.Color.White
         Me.Btn_SortDesc.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Btn_SortDesc.FlatAppearance.BorderSize = 0
         Me.Btn_SortDesc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaShell
         Me.Btn_SortDesc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_SortDesc.Image = Global.UpdateNewClinic.My.Resources.Resources.SortDesc_24
-        Me.Btn_SortDesc.Location = New System.Drawing.Point(421, 8)
+        Me.Btn_SortDesc.Location = New System.Drawing.Point(378, 8)
         Me.Btn_SortDesc.Name = "Btn_SortDesc"
         Me.Btn_SortDesc.Size = New System.Drawing.Size(57, 27)
         Me.Btn_SortDesc.TabIndex = 31
@@ -180,9 +182,9 @@ Partial Class Frm_Reservation
         Me.Label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label4.Location = New System.Drawing.Point(264, 65)
+        Me.Label4.Location = New System.Drawing.Point(249, 65)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(114, 27)
+        Me.Label4.Size = New System.Drawing.Size(85, 27)
         Me.Label4.TabIndex = 36
         Me.Label4.Text = "Visit Type"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -191,9 +193,9 @@ Partial Class Frm_Reservation
         '
         Me.Cbo_ReserveType.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.Cbo_ReserveType.FormattingEnabled = True
-        Me.Cbo_ReserveType.Location = New System.Drawing.Point(378, 65)
+        Me.Cbo_ReserveType.Location = New System.Drawing.Point(334, 65)
         Me.Cbo_ReserveType.Name = "Cbo_ReserveType"
-        Me.Cbo_ReserveType.Size = New System.Drawing.Size(159, 27)
+        Me.Cbo_ReserveType.Size = New System.Drawing.Size(152, 27)
         Me.Cbo_ReserveType.TabIndex = 37
         '
         'Label16
@@ -242,7 +244,7 @@ Partial Class Frm_Reservation
         'Txt_VisitCost
         '
         Me.Txt_VisitCost.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.Txt_VisitCost.Location = New System.Drawing.Point(636, 65)
+        Me.Txt_VisitCost.Location = New System.Drawing.Point(585, 65)
         Me.Txt_VisitCost.Name = "Txt_VisitCost"
         Me.Txt_VisitCost.Size = New System.Drawing.Size(63, 27)
         Me.Txt_VisitCost.TabIndex = 43
@@ -253,44 +255,52 @@ Partial Class Frm_Reservation
         Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label1.Location = New System.Drawing.Point(549, 65)
+        Me.Label1.Location = New System.Drawing.Point(498, 65)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(87, 27)
         Me.Label1.TabIndex = 42
         Me.Label1.Text = "Visit Cost"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'Txt_Num
+        '
+        Me.Txt_Num.Location = New System.Drawing.Point(7, 42)
+        Me.Txt_Num.Name = "Txt_Num"
+        Me.Txt_Num.Size = New System.Drawing.Size(100, 20)
+        Me.Txt_Num.TabIndex = 41
+        Me.Txt_Num.Visible = False
+        '
         'Dgv_Visits
         '
         Me.Dgv_Visits.AllowUserToAddRows = False
         Me.Dgv_Visits.AllowUserToDeleteRows = False
         Me.Dgv_Visits.AllowUserToResizeRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black
-        Me.Dgv_Visits.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black
+        Me.Dgv_Visits.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle19
         Me.Dgv_Visits.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Dgv_Visits.BackgroundColor = System.Drawing.Color.White
         Me.Dgv_Visits.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_Visits.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle20.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_Visits.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle20
         Me.Dgv_Visits.ColumnHeadersHeight = 30
         Me.Dgv_Visits.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientNum, Me.PatientName, Me.ReserveDate, Me.VisitType, Me.VisitCost})
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.LightCyan
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Dgv_Visits.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle21.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.LightCyan
+        DataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_Visits.DefaultCellStyle = DataGridViewCellStyle21
         Me.Dgv_Visits.Location = New System.Drawing.Point(11, 128)
         Me.Dgv_Visits.Name = "Dgv_Visits"
         Me.Dgv_Visits.ReadOnly = True
@@ -349,11 +359,10 @@ Partial Class Frm_Reservation
         Me.Btn_SaveNewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_SaveNewPatient.ForeColor = System.Drawing.Color.White
         Me.Btn_SaveNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Save
-        Me.Btn_SaveNewPatient.Location = New System.Drawing.Point(725, 9)
+        Me.Btn_SaveNewPatient.Location = New System.Drawing.Point(539, 5)
         Me.Btn_SaveNewPatient.Name = "Btn_SaveNewPatient"
-        Me.Btn_SaveNewPatient.Size = New System.Drawing.Size(101, 36)
+        Me.Btn_SaveNewPatient.Size = New System.Drawing.Size(46, 36)
         Me.Btn_SaveNewPatient.TabIndex = 13
-        Me.Btn_SaveNewPatient.Text = "Save"
         Me.Btn_SaveNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_SaveNewPatient.UseVisualStyleBackColor = False
         '
@@ -367,11 +376,10 @@ Partial Class Frm_Reservation
         Me.Btn_DeletePatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_DeletePatient.ForeColor = System.Drawing.Color.White
         Me.Btn_DeletePatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Delete_24x24
-        Me.Btn_DeletePatient.Location = New System.Drawing.Point(725, 56)
+        Me.Btn_DeletePatient.Location = New System.Drawing.Point(601, 5)
         Me.Btn_DeletePatient.Name = "Btn_DeletePatient"
-        Me.Btn_DeletePatient.Size = New System.Drawing.Size(101, 36)
+        Me.Btn_DeletePatient.Size = New System.Drawing.Size(47, 36)
         Me.Btn_DeletePatient.TabIndex = 15
-        Me.Btn_DeletePatient.Text = "Delete"
         Me.Btn_DeletePatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.Btn_DeletePatient.UseVisualStyleBackColor = False
         '
@@ -397,6 +405,7 @@ Partial Class Frm_Reservation
         '
         'Btn_SelectAll
         '
+        Me.Btn_SelectAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Btn_SelectAll.BackColor = System.Drawing.Color.SteelBlue
         Me.Btn_SelectAll.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Btn_SelectAll.FlatAppearance.BorderSize = 0
@@ -405,7 +414,7 @@ Partial Class Frm_Reservation
         Me.Btn_SelectAll.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_SelectAll.ForeColor = System.Drawing.Color.White
         Me.Btn_SelectAll.Image = Global.UpdateNewClinic.My.Resources.Resources.Refresh1
-        Me.Btn_SelectAll.Location = New System.Drawing.Point(418, 66)
+        Me.Btn_SelectAll.Location = New System.Drawing.Point(375, 66)
         Me.Btn_SelectAll.Name = "Btn_SelectAll"
         Me.Btn_SelectAll.Size = New System.Drawing.Size(60, 27)
         Me.Btn_SelectAll.TabIndex = 42
@@ -414,6 +423,7 @@ Partial Class Frm_Reservation
         '
         'Btn_NewPatient
         '
+        Me.Btn_NewPatient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Btn_NewPatient.BackColor = System.Drawing.Color.SteelBlue
         Me.Btn_NewPatient.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Btn_NewPatient.FlatAppearance.BorderSize = 0
@@ -422,7 +432,7 @@ Partial Class Frm_Reservation
         Me.Btn_NewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_NewPatient.ForeColor = System.Drawing.Color.White
         Me.Btn_NewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources._New
-        Me.Btn_NewPatient.Location = New System.Drawing.Point(350, 66)
+        Me.Btn_NewPatient.Location = New System.Drawing.Point(307, 66)
         Me.Btn_NewPatient.Name = "Btn_NewPatient"
         Me.Btn_NewPatient.Size = New System.Drawing.Size(60, 27)
         Me.Btn_NewPatient.TabIndex = 40
@@ -434,31 +444,31 @@ Partial Class Frm_Reservation
         Me.Dgv_Search.AllowUserToAddRows = False
         Me.Dgv_Search.AllowUserToDeleteRows = False
         Me.Dgv_Search.AllowUserToResizeRows = False
-        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black
-        Me.Dgv_Search.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle22.ForeColor = System.Drawing.Color.Black
+        Me.Dgv_Search.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle22
         Me.Dgv_Search.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Dgv_Search.BackgroundColor = System.Drawing.Color.White
         Me.Dgv_Search.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_Search.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle23.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle23.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle23.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_Search.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle23
         Me.Dgv_Search.ColumnHeadersHeight = 30
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.LightCyan
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Dgv_Search.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle24.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.LightCyan
+        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_Search.DefaultCellStyle = DataGridViewCellStyle24
         Me.Dgv_Search.Location = New System.Drawing.Point(3, 128)
         Me.Dgv_Search.Name = "Dgv_Search"
         Me.Dgv_Search.ReadOnly = True
@@ -490,14 +500,6 @@ Partial Class Frm_Reservation
         'PatientsDetailTableAdapter
         '
         Me.PatientsDetailTableAdapter.ClearBeforeFill = True
-        '
-        'Txt_Num
-        '
-        Me.Txt_Num.Location = New System.Drawing.Point(11, 42)
-        Me.Txt_Num.Name = "Txt_Num"
-        Me.Txt_Num.Size = New System.Drawing.Size(100, 20)
-        Me.Txt_Num.TabIndex = 41
-        Me.Txt_Num.Visible = False
         '
         'Frm_Reservation
         '

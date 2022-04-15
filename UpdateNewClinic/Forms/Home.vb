@@ -84,7 +84,7 @@ Public Class Home
         XtraTabControl1.SelectedTabPage = XtraTabControl1.TabPages(XtraTabControl1.TabPages.Count - 1)
     End Sub
 
-    Private Sub Btn_OpenManageVisits_Click(sender As Object, e As EventArgs) Handles Btn_OpenManageVisits.Click
+    Private Sub Btn_OpenManageVisits_Click(sender As Object, e As EventArgs)
         Dim frm As New Frm_PatientVisit
         frm.TopLevel = False
         XtraTabControl1.TabPages.Add(New XtraTabPage With {.Text = frm.Text, .Name = frm.Name})
@@ -110,7 +110,7 @@ Public Class Home
         openFormInTab(DailyTotals)
     End Sub
 
-    Private Sub ReservationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReservationToolStripMenuItem.Click
+    Private Sub ReservationToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -152,7 +152,7 @@ Public Class Home
     End Sub
 
     Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
-        openFormInTab(frm_ManageReservation)
+        openFormInTab(Frm_PatientVisit)
     End Sub
 
     Private Sub ManageReservationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManageReservationsToolStripMenuItem.Click
