@@ -47,10 +47,10 @@ Module Main_Mod
         Dim dt As New DataTable
         Dim da As New SqlDataAdapter(cmd)
         da.fill(dt)
-        If dt.Rows.Count < 0 Then
-            Return 0
-        Else
+        If dt.Rows.Count > 0 Then
             Return 1
+        Else
+            Return 0
         End If
     End Function
 #End Region
@@ -189,6 +189,16 @@ Module Main_Mod
         End Try
     End Sub
 
+    Sub closeTabPage(frm As Form)
+        Try
+            Home.XtraTabControl1.TabPages.Remove(Home.XtraTabControl1.SelectedTabPage)
+            Home.XtraTabControl1.SelectedTabPage = Home.XtraTabControl1.TabPages(Home.XtraTabControl1.TabPages.Count - 1)
+            frm.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        End Try
+    End Sub
+
 #End Region
 
 #Region "Fill Functions And Subs"
@@ -282,6 +292,7 @@ Module Main_Mod
             MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
+
 #End Region
 
 End Module

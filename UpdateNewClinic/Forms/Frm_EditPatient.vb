@@ -472,13 +472,7 @@ Public Class Frm_EditPatients
     End Sub
 
     Private Sub Btn_Exit_Click(sender As Object, e As EventArgs) Handles Btn_Exit.Click
-        Try
-            Home.XtraTabControl1.TabPages.Remove(Home.XtraTabControl1.SelectedTabPage)
-            Home.XtraTabControl1.SelectedTabPage = Home.XtraTabControl1.TabPages(Home.XtraTabControl1.TabPages.Count - 1)
-            Me.Close()
-        Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
-        End Try
+        closeTabPage(Me)
     End Sub
 
     Private Sub Btn_ExportExcel_Click(sender As Object, e As EventArgs) Handles Btn_ExportExcel.Click

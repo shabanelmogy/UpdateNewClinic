@@ -13,7 +13,7 @@ Public Class Frm_VisitTypes
             Dt_VisitType = SelectWithDataTable("Select * From VisitsTypes", "VisitType")
 
             With Dgv_VisitType
-                .Columns.Add("Num", "Num")
+                .Columns.Add("Num", "VisitNum")
                 .Columns.Add("VisitKind", "VisitKind")
                 .Columns.Add("Amount", "Amount")
             End With
@@ -67,7 +67,7 @@ Public Class Frm_VisitTypes
     End Sub
 
     Private Sub Btn_ExitNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_ExitNewPatient.Click
-        Me.Close()
+        closeTabPage(Me)
     End Sub
 
     Private Sub Btn_ExportExcel_Click(sender As Object, e As EventArgs) Handles Btn_ExportExcel.Click
@@ -168,14 +168,14 @@ Public Class Frm_VisitTypes
             If con.State = 1 Then con.Close()
 
             If Dgv_VisitType.Rows.Count > 0 Then
-                curid = Dgv_VisitType.CurrentRow.Cells(0).Value
+
                 If MsgBox("Do You Want To Delete This Record ?", MsgBoxStyle.Information + vbYesNo, "Attention") = vbYes Then
 
-                    If Check("Select VisitType From ClinicDays Where VisitType=" & curid & " ") = 0 Then
-                        Cmd = New SqlCommand("Delete From VisitsTypes Where Num=@Num", con)
-                        'Cmd.Parameters.AddWithValue("Num", Dgv_VisitType.CurrentRow.Cells(0).Value)
-                        Cmd.Parameters.AddWithValue("Num", curid)
+                    curid = Dgv_VisitType.CurrentRow.Cells(0).Value
+                    Dim checkdel As Integer = Check("Select VisitType From ClinicDays Where VisitType=" & curid & " ")
 
+                    If checkdel = 0 Then
+                        Cmd = New SqlCommand("Delete From VisitsTypes Where Num=" & curid & "", con)
                         con.Open()
                         Cmd.ExecuteNonQuery()
 
@@ -183,10 +183,11 @@ Public Class Frm_VisitTypes
                         Dgv_VisitType.SelectionMode = DataGridViewSelectionMode.FullRowSelect
                         Dgv_VisitType.DefaultCellStyle.SelectionBackColor = Color.OldLace
                     Else
-                        MsgBox("eroor")
+                        MsgBox("You Canot Delete Visit Type " & Environment.NewLine & "Visit Type Used In PatientVisits", MsgBoxStyle.Information, "Info")
                     End If
 
                     Frm_VisitTypes_Load(Nothing, Nothing)
+                    Btn_AddNewVisit.Enabled = True
                 End If
             End If
 
