@@ -36,7 +36,7 @@ Public Class Frm_Reservation
 
     'تحديث شاشة الحجز باى إضافة جديدة
     Sub load_FrmManageReservation()
-        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,FirstDate,Code,ReserveDate,VisitName,VisitCost From Reservation
+        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost From Reservation
                         Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
                         Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'")
         frm_ManageReservation.FormatDgv_Search()
@@ -240,7 +240,7 @@ Public Class Frm_Reservation
             dv = Dt_Search.DefaultView
             If Cbo_SortAndSearch.Text = "PatientName" Then
                 dv.RowFilter = "PatientName like '" & Txt_SearchValue.Text & "%'"
-            ElseIf Cbo_SortAndSearch.Text = "PhoneNumber" Then
+            ElseIf Cbo_SortAndSearch.Text = "Phone" Then
                 dv.RowFilter = "PhoneNumber = '" & Txt_SearchValue.Text & "'"
             End If
         End If
@@ -253,8 +253,6 @@ Public Class Frm_Reservation
     Private Sub Cbo_SortAndSearch_TextChanged(sender As Object, e As EventArgs) Handles Cbo_SortAndSearch.TextChanged
         Txt_SearchValue.Text = ""
     End Sub
-
-
 
     Private Sub Cbo_ReserveType_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles Cbo_ReserveType.SelectionChangeCommitted
         TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType, "Select Amount From VisitsTypes", "Num")
