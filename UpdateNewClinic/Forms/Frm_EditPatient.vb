@@ -223,7 +223,7 @@ Public Class Frm_EditPatients
                         frm.Txt_Code.Text = Dgv_EditPatient.Rows(e.RowIndex).Cells(2).Value
                         frm.Txt_Age.Text = Dgv_EditPatient.Rows(e.RowIndex).Cells(3).Value
                         frm.Txt_Occupation.Text = Dgv_EditPatient.Rows(e.RowIndex).Cells(4).Value
-                        frm.Txt_Phone1.Text = Dgv_EditPatient.Rows(e.RowIndex).Cells(5).Value
+                        frm.Txt_Phone.Text = Dgv_EditPatient.Rows(e.RowIndex).Cells(5).Value
                         frm.Txt_FirstVisit.Text = Dgv_EditPatient.Rows(e.RowIndex).Cells(6).Value
                         frm.Txt_Height.Text = Dgv_EditPatient.Rows(e.RowIndex).Cells(7).Value
                         frm.Txt_StartWeight.Text = Dgv_EditPatient.Rows(e.RowIndex).Cells(8).Value

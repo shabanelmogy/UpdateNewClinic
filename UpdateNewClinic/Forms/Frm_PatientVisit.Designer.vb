@@ -22,9 +22,9 @@ Partial Class Frm_PatientVisit
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Dgv_VisitDetail = New System.Windows.Forms.DataGridView()
         Me.VisitDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -41,7 +41,7 @@ Partial Class Frm_PatientVisit
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Txt_PatientNum = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Txt_Phone1 = New System.Windows.Forms.TextBox()
+        Me.Txt_Phone = New System.Windows.Forms.TextBox()
         Me.Lbl_Phone1 = New System.Windows.Forms.Label()
         Me.Txt_StartWeight = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -111,33 +111,33 @@ Partial Class Frm_PatientVisit
         Me.Dgv_VisitDetail.AllowUserToDeleteRows = False
         Me.Dgv_VisitDetail.AllowUserToResizeColumns = False
         Me.Dgv_VisitDetail.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue
-        Me.Dgv_VisitDetail.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.AliceBlue
+        Me.Dgv_VisitDetail.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.Dgv_VisitDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Dgv_VisitDetail.BackgroundColor = System.Drawing.SystemColors.Control
         Me.Dgv_VisitDetail.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_VisitDetail.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_VisitDetail.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.Dgv_VisitDetail.ColumnHeadersHeight = 30
         Me.Dgv_VisitDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.Dgv_VisitDetail.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VisitDate, Me.VisitType, Me.VisitCost, Me.NewWeight, Me.NewWaist, Me.PlanOfTreatment, Me.EatingHabits, Me.Notes})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.NullValue = Nothing
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Linen
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Dgv_VisitDetail.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.NullValue = Nothing
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Linen
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_VisitDetail.DefaultCellStyle = DataGridViewCellStyle6
         Me.Dgv_VisitDetail.EnableHeadersVisualStyles = False
         Me.Dgv_VisitDetail.GridColor = System.Drawing.Color.Gainsboro
         Me.Dgv_VisitDetail.Location = New System.Drawing.Point(0, 0)
@@ -262,15 +262,15 @@ Partial Class Frm_PatientVisit
         Me.Label5.Text = "PatientNum"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Txt_Phone1
+        'Txt_Phone
         '
-        Me.Txt_Phone1.BackColor = System.Drawing.Color.White
-        Me.Txt_Phone1.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.Txt_Phone1.Location = New System.Drawing.Point(417, 142)
-        Me.Txt_Phone1.Name = "Txt_Phone1"
-        Me.Txt_Phone1.ReadOnly = True
-        Me.Txt_Phone1.Size = New System.Drawing.Size(196, 24)
-        Me.Txt_Phone1.TabIndex = 42
+        Me.Txt_Phone.BackColor = System.Drawing.Color.White
+        Me.Txt_Phone.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.Txt_Phone.Location = New System.Drawing.Point(417, 142)
+        Me.Txt_Phone.Name = "Txt_Phone"
+        Me.Txt_Phone.ReadOnly = True
+        Me.Txt_Phone.Size = New System.Drawing.Size(196, 24)
+        Me.Txt_Phone.TabIndex = 42
         '
         'Lbl_Phone1
         '
@@ -648,7 +648,7 @@ Partial Class Frm_PatientVisit
         Me.Pnl_PatientDetail.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.Pnl_PatientDetail.Controls.Add(Me.Lbl_Phone1)
         Me.Pnl_PatientDetail.Controls.Add(Me.Label4)
-        Me.Pnl_PatientDetail.Controls.Add(Me.Txt_Phone1)
+        Me.Pnl_PatientDetail.Controls.Add(Me.Txt_Phone)
         Me.Pnl_PatientDetail.Controls.Add(Me.Txt_PatientName)
         Me.Pnl_PatientDetail.Controls.Add(Me.Label2)
         Me.Pnl_PatientDetail.Controls.Add(Me.Txt_StartWeight)
@@ -795,7 +795,7 @@ Partial Class Frm_PatientVisit
     Friend WithEvents Txt_Occupation As TextBox
     Friend WithEvents Txt_Age As TextBox
     Friend WithEvents Txt_Code As TextBox
-    Friend WithEvents Txt_Phone1 As TextBox
+    Friend WithEvents Txt_Phone As TextBox
     Friend WithEvents Lbl_Phone1 As Label
     Friend WithEvents Txt_StartWeight As TextBox
     Friend WithEvents Label9 As Label

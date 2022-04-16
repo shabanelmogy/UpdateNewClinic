@@ -55,7 +55,7 @@ Public Class Frm_PatientVisit
                     Txt_Code.Text = dr("Code").ToString
                     Txt_Age.Text = dr("Age").ToString
                     Txt_Occupation.Text = dr("Occupation").ToString
-                    Txt_Phone1.Text = dr("PhoneNumber").ToString
+                    Txt_Phone.Text = dr("PhoneNumber").ToString
                     Txt_FirstVisit.Text = CDate(dr("FirstDate").ToString).ToString("dd/MM/yyyy")
                     Txt_Height.Text = dr("Height").ToString
                     Txt_StartWeight.Text = dr("StartWeight").ToString
@@ -89,10 +89,11 @@ Public Class Frm_PatientVisit
     End Sub
 
     Private Sub Frm_PatientVisit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dgvColumnWidth()
-        Fill_Combobox(Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
-        Cbo_VisitType.SelectedIndex = -1
-        Dtp_VisitDate.Value = Date.Now.ToString("dd-MM-yyyy")
+        DgvColumnWidth()
+        Txt_NewWeight.Select()
+        'Fill_Combobox(Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
+        'Cbo_VisitType.SelectedIndex = -1
+        'Dtp_VisitDate.Value = Date.Now.ToString("dd-MM-yyyy")
     End Sub
 
     Private Sub Cbo_VisitType_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles Cbo_VisitType.SelectionChangeCommitted
@@ -151,9 +152,15 @@ Public Class Frm_PatientVisit
         End With
 
         'تحديث حالة المرضى الذين تم الكشف عليهم 
-        cmd1 = New SqlCommand("Update Reservation Set Checkok = 1 Where EXISTS
-                              (Select * From [dbo].[ClinicDays] Inner Join [dbo].[Reservation] on ClinicDays.PatientID=Reservation.PatientID And
-                              ClinicDays.VisitDate=Reservation.ReserveDate)", con)
+        'cmd1 = New SqlCommand("Update Reservation Set Checkok = 1 Where EXISTS
+        '                      (Select * From ClinicDays Inner Join Reservation on ClinicDays.PatientID=Reservation.PatientID And
+        '                      ClinicDays.VisitDate=Reservation.ReserveDate)", con)
+
+        cmd1 = New SqlCommand("Update Reservation Set Checkok = 1 Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
+        With cmd1.Parameters
+            .AddWithValue("@PatientID", Val(Txt_PatientNum.Text)).DbType = DbType.Int64
+            .AddWithValue("@ReserveDate", Dtp_VisitDate.Value).DbType = DbType.Date
+        End With
 
         con.Open()
         cmd.ExecuteNonQuery()
@@ -212,14 +219,14 @@ Public Class Frm_PatientVisit
     End Sub
 
     Private Sub Dgv_VisitDetail_SelectionChanged(sender As Object, e As EventArgs) Handles Dgv_VisitDetail.SelectionChanged
-        Dtp_VisitDate.Value = Dgv_VisitDetail.CurrentRow.Cells(0).Value
-        Cbo_VisitType.Text = Dgv_VisitDetail.CurrentRow.Cells(1).Value
-        Txt_VisitCost.Text = Dgv_VisitDetail.CurrentRow.Cells(2).Value
-        Txt_NewWeight.Text = Dgv_VisitDetail.CurrentRow.Cells(3).Value
-        Txt_NewWaist.Text = Dgv_VisitDetail.CurrentRow.Cells(4).Value
-        Txt_PlanOfTreatment.Text = Dgv_VisitDetail.CurrentRow.Cells(5).Value
-        Txt_EatingHabits.Text = Dgv_VisitDetail.CurrentRow.Cells(6).Value
-        Txt_Notes.Text = Dgv_VisitDetail.CurrentRow.Cells(7).Value
+        'Dtp_VisitDate.Value = Dgv_VisitDetail.CurrentRow.Cells(0).Value
+        'Cbo_VisitType.Text = Dgv_VisitDetail.CurrentRow.Cells(1).Value
+        'Txt_VisitCost.Text = Dgv_VisitDetail.CurrentRow.Cells(2).Value
+        'Txt_NewWeight.Text = Dgv_VisitDetail.CurrentRow.Cells(3).Value
+        'Txt_NewWaist.Text = Dgv_VisitDetail.CurrentRow.Cells(4).Value
+        'Txt_PlanOfTreatment.Text = Dgv_VisitDetail.CurrentRow.Cells(5).Value
+        'Txt_EatingHabits.Text = Dgv_VisitDetail.CurrentRow.Cells(6).Value
+        'Txt_Notes.Text = Dgv_VisitDetail.CurrentRow.Cells(7).Value
     End Sub
 
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
@@ -253,6 +260,10 @@ Public Class Frm_PatientVisit
         If e.KeyCode = Keys.Enter Then
             Cbo_VisitType.Select()
         End If
+    End Sub
+
+    Private Sub Cbo_VisitType_DropDown(sender As Object, e As EventArgs) Handles Cbo_VisitType.DropDown
+        Fill_Combobox(Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
     End Sub
 
     Private Sub Txt_PatientNum_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_PatientNum.KeyPress

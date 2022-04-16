@@ -26,6 +26,13 @@ Partial Class frm_ManageReservation
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Dgv_Reservation = New System.Windows.Forms.DataGridView()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Dtp_ReserveDate = New System.Windows.Forms.DateTimePicker()
+        Me.Cbo_VisitType = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Lbl_Count = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.PatientID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PhoneNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -35,12 +42,12 @@ Partial Class frm_ManageReservation
         Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OpenVisit = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Dtp_ReserveDate = New System.Windows.Forms.DateTimePicker()
-        Me.Cbo_VisitType = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Lbl_Count = New System.Windows.Forms.Label()
+        Me.FirstDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Age = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Occupation = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Height = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StartWeight = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.Dgv_Reservation, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -62,7 +69,7 @@ Partial Class frm_ManageReservation
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Dgv_Reservation.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.Dgv_Reservation.ColumnHeadersHeight = 30
-        Me.Dgv_Reservation.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientID, Me.PatientName, Me.PhoneNumber, Me.Code, Me.ReserveDate, Me.VisitName, Me.VisitCost, Me.OpenVisit, Me.Delete})
+        Me.Dgv_Reservation.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientID, Me.PatientName, Me.PhoneNumber, Me.Code, Me.ReserveDate, Me.VisitName, Me.VisitCost, Me.OpenVisit, Me.Delete, Me.FirstDate, Me.Age, Me.Occupation, Me.Height, Me.StartWeight, Me.VisitType})
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -79,55 +86,6 @@ Partial Class frm_ManageReservation
         Me.Dgv_Reservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.Dgv_Reservation.Size = New System.Drawing.Size(1159, 640)
         Me.Dgv_Reservation.TabIndex = 0
-        '
-        'PatientID
-        '
-        Me.PatientID.HeaderText = "PatientID"
-        Me.PatientID.Name = "PatientID"
-        '
-        'PatientName
-        '
-        Me.PatientName.HeaderText = "PatientName"
-        Me.PatientName.Name = "PatientName"
-        '
-        'PhoneNumber
-        '
-        Me.PhoneNumber.HeaderText = "PhoneNumber"
-        Me.PhoneNumber.Name = "PhoneNumber"
-        '
-        'Code
-        '
-        Me.Code.HeaderText = "Code"
-        Me.Code.Name = "Code"
-        '
-        'ReserveDate
-        '
-        Me.ReserveDate.HeaderText = "ReserveDate"
-        Me.ReserveDate.Name = "ReserveDate"
-        '
-        'VisitName
-        '
-        Me.VisitName.HeaderText = "VisitName"
-        Me.VisitName.Name = "VisitName"
-        '
-        'VisitCost
-        '
-        Me.VisitCost.HeaderText = "VisitCost"
-        Me.VisitCost.Name = "VisitCost"
-        '
-        'OpenVisit
-        '
-        Me.OpenVisit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.OpenVisit.HeaderText = "Open Visit"
-        Me.OpenVisit.Name = "OpenVisit"
-        Me.OpenVisit.Text = ""
-        '
-        'Delete
-        '
-        Me.Delete.HeaderText = "Delete"
-        Me.Delete.Name = "Delete"
-        Me.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'Label1
         '
@@ -189,12 +147,101 @@ Partial Class frm_ManageReservation
         Me.Lbl_Count.TabIndex = 6
         Me.Lbl_Count.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(783, 23)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 7
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'PatientID
+        '
+        Me.PatientID.HeaderText = "PatientID"
+        Me.PatientID.Name = "PatientID"
+        '
+        'PatientName
+        '
+        Me.PatientName.HeaderText = "PatientName"
+        Me.PatientName.Name = "PatientName"
+        '
+        'PhoneNumber
+        '
+        Me.PhoneNumber.HeaderText = "PhoneNumber"
+        Me.PhoneNumber.Name = "PhoneNumber"
+        '
+        'Code
+        '
+        Me.Code.HeaderText = "Code"
+        Me.Code.Name = "Code"
+        '
+        'ReserveDate
+        '
+        Me.ReserveDate.HeaderText = "ReserveDate"
+        Me.ReserveDate.Name = "ReserveDate"
+        '
+        'VisitName
+        '
+        Me.VisitName.HeaderText = "VisitName"
+        Me.VisitName.Name = "VisitName"
+        '
+        'VisitCost
+        '
+        Me.VisitCost.HeaderText = "VisitCost"
+        Me.VisitCost.Name = "VisitCost"
+        '
+        'OpenVisit
+        '
+        Me.OpenVisit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.OpenVisit.HeaderText = "Open Visit"
+        Me.OpenVisit.Name = "OpenVisit"
+        Me.OpenVisit.Text = ""
+        '
+        'Delete
+        '
+        Me.Delete.HeaderText = "Delete"
+        Me.Delete.Name = "Delete"
+        Me.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'FirstDate
+        '
+        Me.FirstDate.HeaderText = "FirstDate"
+        Me.FirstDate.Name = "FirstDate"
+        '
+        'Age
+        '
+        Me.Age.HeaderText = "Age"
+        Me.Age.Name = "Age"
+        '
+        'Occupation
+        '
+        Me.Occupation.HeaderText = "Occupation"
+        Me.Occupation.Name = "Occupation"
+        '
+        'Height
+        '
+        Me.Height.HeaderText = "Height"
+        Me.Height.Name = "Height"
+        '
+        'StartWeight
+        '
+        Me.StartWeight.HeaderText = "StartWeight"
+        Me.StartWeight.Name = "StartWeight"
+        '
+        'VisitType
+        '
+        Me.VisitType.HeaderText = "VisitType"
+        Me.VisitType.Name = "VisitType"
+        '
         'frm_ManageReservation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.ClientSize = New System.Drawing.Size(1159, 708)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Lbl_Count)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Cbo_VisitType)
@@ -218,6 +265,7 @@ Partial Class frm_ManageReservation
     Friend WithEvents Cbo_VisitType As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Lbl_Count As Label
+    Friend WithEvents Button1 As Button
     Friend WithEvents PatientID As DataGridViewTextBoxColumn
     Friend WithEvents PatientName As DataGridViewTextBoxColumn
     Friend WithEvents PhoneNumber As DataGridViewTextBoxColumn
@@ -227,4 +275,10 @@ Partial Class frm_ManageReservation
     Friend WithEvents VisitCost As DataGridViewTextBoxColumn
     Friend WithEvents OpenVisit As DataGridViewButtonColumn
     Friend WithEvents Delete As DataGridViewButtonColumn
+    Friend WithEvents FirstDate As DataGridViewTextBoxColumn
+    Friend WithEvents Age As DataGridViewTextBoxColumn
+    Friend WithEvents Occupation As DataGridViewTextBoxColumn
+    Friend WithEvents Height As DataGridViewTextBoxColumn
+    Friend WithEvents StartWeight As DataGridViewTextBoxColumn
+    Friend WithEvents VisitType As DataGridViewTextBoxColumn
 End Class
