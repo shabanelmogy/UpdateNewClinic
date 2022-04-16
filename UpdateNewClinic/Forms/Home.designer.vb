@@ -148,13 +148,13 @@ Partial Class Home
         'BtnStrp_ManagePatient
         '
         Me.BtnStrp_ManagePatient.Name = "BtnStrp_ManagePatient"
-        Me.BtnStrp_ManagePatient.Size = New System.Drawing.Size(213, 28)
-        Me.BtnStrp_ManagePatient.Text = "Manage Patients"
+        Me.BtnStrp_ManagePatient.Size = New System.Drawing.Size(186, 28)
+        Me.BtnStrp_ManagePatient.Text = "Patients Data"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(213, 28)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(186, 28)
         Me.ToolStripMenuItem2.Text = "Reservation"
         '
         'DoctorToolStripMenuItem

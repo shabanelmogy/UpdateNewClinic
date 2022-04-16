@@ -13,7 +13,7 @@ Public Class Home
         ' This call is required by the designer.
         InitializeComponent()
         AdjustFormSize(0, 40, Me)
-        DataStructure()
+        'DataStructure()
     End Sub
 
     Sub AddColumn(TableName As String, ColumnName As String, DataType As String, Constraint As String, Defaultvalue As String)

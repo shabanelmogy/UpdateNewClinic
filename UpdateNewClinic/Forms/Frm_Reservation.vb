@@ -12,6 +12,8 @@ Public Class Frm_Reservation
     Dim rdr As SqlDataReader
     Dim Query As String
     Dim check As Boolean = False
+    Dim curid As Integer
+    Dim curdate As Date
 
 #End Region
 
@@ -131,8 +133,8 @@ Public Class Frm_Reservation
         Dgv_Visits.Columns(0).Width = 100
         Dgv_Visits.Columns(1).Width = 300
         Dgv_Visits.Columns(2).Width = 120
-        Dgv_Visits.Columns(3).Width = 100
-        Dgv_Visits.Columns(4).Width = 100
+        Dgv_Visits.Columns(3).Width = 123
+        Dgv_Visits.Columns(4).Width = 80
         Dgv_Visits.Columns(3).HeaderText = "ReserveType"
         Dgv_Visits.Columns(0).HeaderText = "PatientNum"
     End Sub
@@ -192,28 +194,6 @@ Public Class Frm_Reservation
 
     End Sub
 
-    Private Sub Btn_DeletePatient_Click(sender As Object, e As EventArgs) Handles Btn_DeletePatient.Click
-        Try
-            If MsgBox("Do You Want To Delete This Record ?", MsgBoxStyle.Information + vbYesNo + MsgBoxStyle.DefaultButton2, "Attention") = vbYes Then
-
-                cmd = New SqlCommand("Delete From Reservation Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
-                cmd.Parameters.AddWithValue("@PatientID", Val(Txt_Num.Text))
-                cmd.Parameters.AddWithValue("@ReserveDate", Dtp_ReserveDate.Value)
-
-                con.Open()
-                cmd.ExecuteNonQuery()
-
-                GetAllReservation()
-                load_FrmManageReservation()
-                Dgv_Visits.CurrentCell = Dgv_Visits.Rows(Dgv_Visits.Rows.Count - 1).Cells(0)
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information, "Delete")
-        Finally
-            If con.State = 1 Then con.Close()
-        End Try
-    End Sub
-
     Private Sub Btn_SortDesc_Click(sender As Object, e As EventArgs) Handles Btn_SortDesc.Click
         Dgv_Search.Sort(Dgv_Search.Columns(Cbo_SortAndSearch.Text), System.ComponentModel.ListSortDirection.Descending)
     End Sub
@@ -254,6 +234,50 @@ Public Class Frm_Reservation
         Txt_SearchValue.Text = ""
     End Sub
 
+    Private Sub Dgv_Visits_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Visits.CellContentClick
+
+        If e.ColumnIndex = 5 And e.RowIndex >= 0 Then
+            Try
+                If Dgv_Visits.Rows.Count > 0 Then
+                    curid = Dgv_Visits.CurrentRow.Cells(0).Value
+                    curdate = Dgv_Visits.CurrentRow.Cells(2).Value
+                Else Exit Sub
+                End If
+
+                If MsgBox("Do You Want To Delete This Record ?", MsgBoxStyle.Information + vbYesNo + MsgBoxStyle.DefaultButton2, "Attention") = vbYes Then
+
+
+                    cmd = New SqlCommand("Delete From Reservation Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
+                    cmd.Parameters.AddWithValue("@PatientID", curid)
+                    cmd.Parameters.AddWithValue("@ReserveDate", curdate)
+
+                    If con.State = 1 Then con.Close()
+                    con.Open()
+                    cmd.ExecuteNonQuery()
+                End If
+
+                Frm_Reservation_Load(Nothing, Nothing)
+                frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost From Reservation
+                        Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                        Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
+                con.Close()
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Information, "Delete")
+            Finally
+                If con.State = 1 Then con.Close()
+            End Try
+        End If
+    End Sub
+
+    Private Sub Dgv_Visits_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles Dgv_Visits.CellPainting
+        If e.ColumnIndex = 5 AndAlso e.RowIndex >= 0 Then
+            e.Paint(e.CellBounds, DataGridViewPaintParts.All)
+            Dim img As Image = My.Resources.Delete_16x16
+            e.Graphics.DrawImage(img, e.CellBounds.Left + 45, e.CellBounds.Top + 7, 10, 10)
+            e.Handled = True
+        End If
+    End Sub
+
     Private Sub Cbo_ReserveType_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles Cbo_ReserveType.SelectionChangeCommitted
         TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType, "Select Amount From VisitsTypes", "Num")
     End Sub
@@ -274,15 +298,6 @@ Public Class Frm_Reservation
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information)
         End Try
-    End Sub
-
-    Private Sub Frm_NewClient_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp
-        Select Case e.KeyCode
-            Case Keys.F3
-                Btn_SaveNewPatient.PerformClick()
-            Case Keys.Delete
-                Btn_DeletePatient.PerformClick()
-        End Select
     End Sub
 
 #End Region

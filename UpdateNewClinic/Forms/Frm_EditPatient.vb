@@ -11,6 +11,7 @@ Public Class Frm_EditPatients
     Dim CurNum As Integer
     Dim CurName As String
     Dim currow As Integer
+    Dim curid As Integer
     Dim rdr As SqlDataReader
 
 #End Region
@@ -422,6 +423,7 @@ Public Class Frm_EditPatients
 
             Btn_AddNewPatient.Enabled = True
             Btn_ShowAllPatients.Enabled = True
+            Frm_Reservation.GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
 
             If Dgv_EditPatient.Rows.Count - 1 > 0 Then
                 Dgv_EditPatient.CurrentCell = Dgv_EditPatient.Rows(Dgv_EditPatient.Rows.Count - 1).Cells(9)
@@ -446,24 +448,34 @@ Public Class Frm_EditPatients
             Else Exit Sub
             End If
 
+            curid = Dgv_EditPatient.CurrentRow.Cells(0).Value
+
             If MsgBox("Do You Want To Delete This Record ?" & Environment.NewLine & CurNum & " \ " & CurName, MsgBoxStyle.Information + vbYesNo +
                           MsgBoxStyle.DefaultButton2, "Attention") = vbYes Then
 
-                Cmd = New SqlCommand("Delete From PatientsDetail Where PatientNum=@PatientNum", con)
-                Cmd.Parameters.AddWithValue("PatientNum", Dgv_EditPatient.CurrentRow.Cells(0).Value)
+                Dim checkPatient_Visit As Integer = Check("Select PatientID From ClinicDays Where PatientID=" & curid & " ")
+                Dim checkPatient_Reservation As Integer = Check("Select PatientID From Reservation Where PatientID=" & curid & " ")
 
-                con.Open()
-                Cmd.ExecuteNonQuery()
+                If checkPatient_Visit = 0 And checkPatient_Reservation = 0 Then
+                    Cmd = New SqlCommand("Delete From PatientsDetail Where PatientNum=@PatientNum", con)
+                    Cmd.Parameters.AddWithValue("PatientNum", Dgv_EditPatient.CurrentRow.Cells(0).Value)
 
-                FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
+                    con.Open()
+                    Cmd.ExecuteNonQuery()
 
-                Btn_AddNewPatient.Enabled = True
-                Btn_ShowAllPatients.Enabled = True
+                    FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
+                    Frm_Reservation.GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
 
-                If Dgv_EditPatient.Rows.Count > 0 Then
-                    Dgv_EditPatient.CurrentCell = Dgv_EditPatient.Rows(Dgv_EditPatient.Rows.Count - 1).Cells(1)
-                    Me.Dgv_EditPatient.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-                    Me.Dgv_EditPatient.DefaultCellStyle.SelectionBackColor = Color.OldLace
+                    Btn_AddNewPatient.Enabled = True
+                    Btn_ShowAllPatients.Enabled = True
+
+                    If Dgv_EditPatient.Rows.Count > 0 Then
+                        Dgv_EditPatient.CurrentCell = Dgv_EditPatient.Rows(Dgv_EditPatient.Rows.Count - 1).Cells(1)
+                        Me.Dgv_EditPatient.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+                        Me.Dgv_EditPatient.DefaultCellStyle.SelectionBackColor = Color.OldLace
+                    End If
+                Else
+                    MsgBox("You Canot Delete PatientData " & Environment.NewLine & "Patient Exists In Visits And Reservation", MsgBoxStyle.Information, "Info")
                 End If
             End If
         Catch ex As Exception
