@@ -7,14 +7,29 @@ Imports System.Runtime.InteropServices
 Imports Microsoft.Win32
 
 Public Class Home
+    Dim cmd1 As New SqlCommand
 
     Sub New()
-
         ' This call is required by the designer.
         InitializeComponent()
-
         AdjustFormSize(0, 40, Me)
+        DataStructure()
+    End Sub
 
+    Sub AddColumn(TableName As String, ColumnName As String, DataType As String, Constraint As String, Defaultvalue As String)
+        On Error Resume Next
+        Dim Query As String
+        Query = "Alter Table " & TableName & " Add " & ColumnName & " " & DataType & " Not Null CONSTRAINT " & Constraint & " Default " & Defaultvalue & ""
+        Cmd = New SqlCommand(Query, con)
+        con.Open()
+        Cmd.ExecuteNonQuery()
+        cmd1.ExecuteNonQuery()
+        con.Close()
+    End Sub
+
+    Sub DataStructure()
+        AddColumn("ClinicDays", "test", "Nvarchar(100)", "DF_Test", "''")
+        AddColumn("ClinicDays", "test2", "Nvarchar(100)", "DF_Test2", "''")
     End Sub
 
     Private Sub Home_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -158,4 +173,5 @@ Public Class Home
     Private Sub ManageReservationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManageReservationsToolStripMenuItem.Click
         openFormInTab_DockNone(frm_ManageReservation)
     End Sub
+
 End Class

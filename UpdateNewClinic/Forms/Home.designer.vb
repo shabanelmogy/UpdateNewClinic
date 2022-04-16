@@ -128,7 +128,7 @@ Partial Class Home
         'BtnStrp_VisitTypes
         '
         Me.BtnStrp_VisitTypes.Name = "BtnStrp_VisitTypes"
-        Me.BtnStrp_VisitTypes.Size = New System.Drawing.Size(180, 28)
+        Me.BtnStrp_VisitTypes.Size = New System.Drawing.Size(173, 28)
         Me.BtnStrp_VisitTypes.Text = "Visits Types"
         '
         'BtnStrp_PatientDetail
