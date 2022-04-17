@@ -236,10 +236,10 @@
     <Compile Include="Forms\Frm_NewClient.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Frm_Reservation.designer.vb">
-      <DependentUpon>Frm_Reservation.vb</DependentUpon>
+    <Compile Include="Forms\Frm_Booking.designer.vb">
+      <DependentUpon>Frm_Booking.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Frm_Reservation.vb">
+    <Compile Include="Forms\Frm_Booking.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Frm_Sql_Setting.designer.vb">
@@ -318,8 +318,8 @@
     <EmbeddedResource Include="Forms\Frm_NewClient.resx">
       <DependentUpon>Frm_NewClient.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Frm_Reservation.resx">
-      <DependentUpon>Frm_Reservation.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\Frm_Booking.resx">
+      <DependentUpon>Frm_Booking.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Sql_Setting.resx">
       <DependentUpon>Frm_Sql_Setting.vb</DependentUpon>
@@ -807,6 +807,7 @@
     <None Include="Resources\Data 32.png" />
     <None Include="Resources\Info 24.png" />
     <None Include="Resources\Patients 48.png" />
+    <None Include="Resources\Undo 24.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

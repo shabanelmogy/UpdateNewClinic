@@ -148,14 +148,14 @@ Partial Class Home
         'BtnStrp_ManagePatient
         '
         Me.BtnStrp_ManagePatient.Name = "BtnStrp_ManagePatient"
-        Me.BtnStrp_ManagePatient.Size = New System.Drawing.Size(186, 28)
+        Me.BtnStrp_ManagePatient.Size = New System.Drawing.Size(254, 28)
         Me.BtnStrp_ManagePatient.Text = "Patients Data"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(186, 28)
-        Me.ToolStripMenuItem2.Text = "Reservation"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(254, 28)
+        Me.ToolStripMenuItem2.Text = "Appointment Booking"
         '
         'DoctorToolStripMenuItem
         '
@@ -173,13 +173,13 @@ Partial Class Home
         'ManageReservationsToolStripMenuItem
         '
         Me.ManageReservationsToolStripMenuItem.Name = "ManageReservationsToolStripMenuItem"
-        Me.ManageReservationsToolStripMenuItem.Size = New System.Drawing.Size(251, 28)
-        Me.ManageReservationsToolStripMenuItem.Text = "Manage Reservations"
+        Me.ManageReservationsToolStripMenuItem.Size = New System.Drawing.Size(220, 28)
+        Me.ManageReservationsToolStripMenuItem.Text = "Manage Bookings"
         '
         'ToolStripMenuItem4
         '
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(251, 28)
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(220, 28)
         Me.ToolStripMenuItem4.Text = "Manage Visits"
         '
         'ReportsToolStripMenuItem

@@ -65,7 +65,8 @@ Public Class Frm_PatientVisit
                 Dtp_VisitDate.Focus()
 
                 FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes from ClinicDays 
-                                inner join VisitsTypes on ClinicDays.VisitType = VisitsTypes.Num Where PatientID=" & Val(Txt_PatientNum.Text))
+                                     Inner Join VisitsTypes on ClinicDays.VisitType = VisitsTypes.Num 
+                                     Where PatientID=" & Val(Txt_PatientNum.Text) & " order By VisitDate Desc ")
             Else
                 Dgv_VisitDetail.Rows.Clear()
                 ResetControls(Pnl_VisitDetails)
@@ -164,15 +165,18 @@ Public Class Frm_PatientVisit
         con.Close()
 
         MsgBox("Visit Added", MsgBoxStyle.Information, "Info")
+        '======================================================================================================================================================
         'تحديث شاشة من أتم الكشف
         FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes From ClinicDays 
-                             Inner Join VisitsTypes On ClinicDays.VisitType = VisitsTypes.Num Where PatientID=" & Val(Txt_PatientNum.Text))
+                             Inner Join VisitsTypes On ClinicDays.VisitType = VisitsTypes.Num 
+                             Where PatientID=" & Val(Txt_PatientNum.Text) & " Order By VisitDate Desc")
         'تحديث شاشة حجز الدكتور
-        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,StartWeight,
-                       VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                       Where CheckOk = 0 And ReserveDate='" & Format(frm_ManageReservation.Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
+        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,
+                                             Occupation,Height,StartWeight,VisitType From Reservation 
+                                             Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                                             Where CheckOk = 0 And ReserveDate='" & Format(frm_ManageReservation.Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
         'تحديث شاشة حجز السكرتارية
-        Frm_Reservation.GetAllReservation()
+        Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0")
 
         Txt_PatientNum.Select()
     End Sub

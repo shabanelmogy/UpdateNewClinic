@@ -163,7 +163,7 @@ Public Class Home
     End Sub
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
-        openFormInTab(Frm_Reservation)
+        openFormInTab(Frm_Booking)
     End Sub
 
     Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click

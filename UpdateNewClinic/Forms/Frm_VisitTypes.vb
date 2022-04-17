@@ -79,7 +79,7 @@ Public Class Frm_VisitTypes
             Dgv_VisitType.Sort(Dgv_VisitType.Columns("Num"), System.ComponentModel.ListSortDirection.Ascending)
             Btn_AddNewVisit.Enabled = True
             '==============تحديث محتويات الكومبوبوكس فى كل الشاشات==========================
-            Fill_Combobox(Frm_Reservation.Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
+            Fill_Combobox(Frm_Booking.Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
             Fill_Combobox(frm_ManageReservation.Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
             Fill_Combobox(Frm_PatientVisit.Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
             '==================================================================================
@@ -119,7 +119,7 @@ Public Class Frm_VisitTypes
                     Frm_VisitTypes_Load(Nothing, Nothing)
                     Btn_AddNewVisit.Enabled = True
                     '==============تحديث محتويات الكومبوبوكس فى كل الشاشات==========================
-                    Fill_Combobox(Frm_Reservation.Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
+                    Fill_Combobox(Frm_Booking.Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
                     Fill_Combobox(frm_ManageReservation.Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
                     Fill_Combobox(Frm_PatientVisit.Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
                     '==================================================================================

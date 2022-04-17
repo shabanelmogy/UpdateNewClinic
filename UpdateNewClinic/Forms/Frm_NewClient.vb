@@ -113,7 +113,7 @@ Public Class Frm_NewClient
 
     Private Sub Btn_SaveNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_SaveNewPatient.Click
         InsertNewPatient()
-        Frm_Reservation.GetAllPatient("Select Top 20 PatientNum,PatientName,PhoneNumber From PatientsDetail Order By PatientNum Desc")
+        Frm_Booking.GetAllPatient("Select Top 20 PatientNum,PatientName,PhoneNumber From PatientsDetail Order By PatientNum Desc")
     End Sub
 
     Private Sub Txt_PhoneNumber_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_PhoneNumber.KeyDown

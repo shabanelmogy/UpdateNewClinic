@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing
 
-Public Class Frm_Reservation
+Public Class Frm_Booking
 
 #Region "Declaration"
     Dim cmd, cmd1 As New SqlCommand
@@ -44,13 +44,12 @@ Public Class Frm_Reservation
         frm_ManageReservation.FormatDgv_Search()
     End Sub
 
-    Sub GetAllReservation()
+    Sub GetAllReservation(Query As String)
         Try
             Dgv_Visits.Rows.Clear()
             If con.State = 1 Then con.Close()
             con.Open()
-            Dim cmd As New SqlCommand("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0 
-                                       And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'", con)
+            Dim cmd As New SqlCommand(Query, con)
             rdr = cmd.ExecuteReader
             While rdr.Read
                 Dgv_Visits.Rows.Add(rdr("PatientID"), rdr("PatientName"), Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("VisitName"),
@@ -95,6 +94,8 @@ Public Class Frm_Reservation
             con.Open()
             cmd.ExecuteNonQuery()
             con.Close()
+        Else
+            MsgBox("The Patient Is Already Checked", MsgBoxStyle.Information, "Info")
         End If
     End Sub
 
@@ -125,34 +126,27 @@ Public Class Frm_Reservation
 #Region "Datagridview"
 
     Sub FormatDgv_Search()
-        Dgv_Search.Columns(0).Width = 100
-        Dgv_Search.Columns(1).Width = 290
-        Dgv_Search.Columns(2).Width = 170
+        Dgv_Search.Columns("PatientNum").Width = 100
+        Dgv_Search.Columns("PatientName").Width = 290
+        Dgv_Search.Columns("PhoneNumber").Width = 159
+
+        Dgv_Search.Columns("PatientNum").HeaderText = "Patient ID"
+        Dgv_Search.Columns("PatientName").HeaderText = "Patient Name"
+        Dgv_Search.Columns("PhoneNumber").HeaderText = "Phone Number"
     End Sub
 
     Sub FormatDgv_Visits()
         Dgv_Visits.Columns(0).Width = 100
         Dgv_Visits.Columns(1).Width = 300
         Dgv_Visits.Columns(2).Width = 120
-        Dgv_Visits.Columns(3).Width = 123
+        Dgv_Visits.Columns(3).Width = 156
         Dgv_Visits.Columns(4).Width = 80
-        Dgv_Visits.Columns(3).HeaderText = "ReserveType"
-        Dgv_Visits.Columns(0).HeaderText = "PatientNum"
     End Sub
 
     Private Sub Dgv_Search_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Search.CellClick
         Txt_PatientName.Text = Dgv_Search.CurrentRow.Cells(1).Value.ToString
         Txt_Num.Text = Dgv_Search.CurrentRow.Cells(0).Value.ToString
         check = False
-    End Sub
-
-    Private Sub Dgv_Visits_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Visits.CellClick
-        Txt_Num.Text = Dgv_Visits.CurrentRow.Cells(0).Value
-        Txt_PatientName.Text = Dgv_Visits.CurrentRow.Cells(1).Value
-        Dtp_ReserveDate.Text = Dgv_Visits.CurrentRow.Cells(2).Value
-        Cbo_ReserveType.Text = Dgv_Visits.CurrentRow.Cells(3).Value
-        Txt_VisitCost.Text = Dgv_Visits.CurrentRow.Cells(4).Value
-        check = True
     End Sub
 
 #End Region
@@ -169,30 +163,40 @@ Public Class Frm_Reservation
     End Sub
 
     Private Sub Btn_SelectAll_Click(sender As Object, e As EventArgs) Handles Btn_SelectAll.Click
-        Frm_Reservation_Load(Nothing, Nothing)
+        'Frm_Reservation_Load(Nothing, Nothing)
+        GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
+        Txt_SearchValue.Text = ""
     End Sub
 
     Private Sub Btn_SaveNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_SaveNewPatient.Click
 
-        If Not String.IsNullOrWhiteSpace(Txt_Num.Text) And Not String.IsNullOrWhiteSpace(Cbo_ReserveType.Text) Then
-            If check = False Then
-
-                Insert_Reservation()
-            Else
-                Update_Reservation()
-            End If
-
-            load_FrmManageReservation()
-
-            Txt_Num.Text = ""
-            Txt_PatientName.Text = ""
-            Cbo_ReserveType.Text = ""
-            Txt_VisitCost.Text = ""
-            Txt_SearchValue.Select()
-
-            GetAllReservation()
+        If Txt_Num.Text = "" Then
+            MsgBox("You Must Select Patient", MsgBoxStyle.Information, "Info")
+            Exit Sub
         End If
 
+        If Cbo_ReserveType.Text = "" Then
+            MsgBox("You Must Select Visit Type", MsgBoxStyle.Information, "Info")
+            Exit Sub
+        End If
+
+        If check = False Then
+
+            Insert_Reservation()
+        Else
+            Update_Reservation()
+        End If
+
+        load_FrmManageReservation()
+
+        Txt_Num.Text = ""
+        Txt_PatientName.Text = ""
+        Cbo_ReserveType.Text = ""
+        Txt_VisitCost.Text = ""
+        Txt_SearchValue.Select()
+
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0 
+                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'")
     End Sub
 
     Private Sub Btn_SortDesc_Click(sender As Object, e As EventArgs) Handles Btn_SortDesc.Click
@@ -270,6 +274,36 @@ Public Class Frm_Reservation
         End If
     End Sub
 
+    Private Sub Btn_Reset_Click(sender As Object, e As EventArgs) Handles Btn_Reset.Click
+        Txt_Num.Text = ""
+        Txt_PatientName.Text = ""
+        Cbo_ReserveType.SelectedIndex = -1
+        check = False
+    End Sub
+
+    Private Sub Btn_ShowToday_Click(sender As Object, e As EventArgs) Handles Btn_ShowToday.Click
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0 
+                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'")
+    End Sub
+
+    Private Sub Btn_ShowAll_Click(sender As Object, e As EventArgs) Handles Btn_ShowAll.Click
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0")
+    End Sub
+
+    Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles Btn_Search.Click
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0 
+                           And ReserveDate='" & Format(Dtp_Search.Value, "yyyy-MM-dd") & "'")
+    End Sub
+
+    Private Sub Dgv_Visits_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Visits.CellDoubleClick
+        Txt_Num.Text = Dgv_Visits.CurrentRow.Cells(0).Value
+        Txt_PatientName.Text = Dgv_Visits.CurrentRow.Cells(1).Value
+        Dtp_ReserveDate.Text = Dgv_Visits.CurrentRow.Cells(2).Value
+        Cbo_ReserveType.Text = Dgv_Visits.CurrentRow.Cells(3).Value
+        Txt_VisitCost.Text = Dgv_Visits.CurrentRow.Cells(4).Value
+        check = True
+    End Sub
+
     Private Sub Dgv_Visits_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles Dgv_Visits.CellPainting
         If e.ColumnIndex = 5 AndAlso e.RowIndex >= 0 Then
             e.Paint(e.CellBounds, DataGridViewPaintParts.All)
@@ -292,9 +326,11 @@ Public Class Frm_Reservation
             Fill_Combobox(Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
             Cbo_SortAndSearch.SelectedIndex = 0
             GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
-            GetAllReservation()
+            GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0 
+                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'")
             TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType, "Select Amount From VisitsTypes", "Num")
             Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
+            Dtp_Search.Value = Date.Now.ToString("dd-MM-yyyy")
             check = False
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information)
