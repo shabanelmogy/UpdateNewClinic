@@ -26,13 +26,6 @@ Partial Class frm_ManageReservation
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Dgv_Reservation = New System.Windows.Forms.DataGridView()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Dtp_ReserveDate = New System.Windows.Forms.DateTimePicker()
-        Me.Cbo_VisitType = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Lbl_Count = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.PatientID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PhoneNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -48,6 +41,12 @@ Partial Class frm_ManageReservation
         Me.Height = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StartWeight = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VisitType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Dtp_ReserveDate = New System.Windows.Forms.DateTimePicker()
+        Me.Cbo_VisitType = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Lbl_Count = New System.Windows.Forms.Label()
         CType(Me.Dgv_Reservation, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -86,75 +85,6 @@ Partial Class frm_ManageReservation
         Me.Dgv_Reservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.Dgv_Reservation.Size = New System.Drawing.Size(1159, 640)
         Me.Dgv_Reservation.TabIndex = 0
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(12, 23)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(119, 19)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Reserve Date"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(460, 24)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(90, 19)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Visit Type"
-        '
-        'Dtp_ReserveDate
-        '
-        Me.Dtp_ReserveDate.Font = New System.Drawing.Font("Tahoma", 11.0!)
-        Me.Dtp_ReserveDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.Dtp_ReserveDate.Location = New System.Drawing.Point(137, 20)
-        Me.Dtp_ReserveDate.Name = "Dtp_ReserveDate"
-        Me.Dtp_ReserveDate.Size = New System.Drawing.Size(171, 25)
-        Me.Dtp_ReserveDate.TabIndex = 3
-        '
-        'Cbo_VisitType
-        '
-        Me.Cbo_VisitType.Font = New System.Drawing.Font("Tahoma", 11.0!)
-        Me.Cbo_VisitType.FormattingEnabled = True
-        Me.Cbo_VisitType.Items.AddRange(New Object() {" "})
-        Me.Cbo_VisitType.Location = New System.Drawing.Point(554, 20)
-        Me.Cbo_VisitType.Name = "Cbo_VisitType"
-        Me.Cbo_VisitType.Size = New System.Drawing.Size(209, 26)
-        Me.Cbo_VisitType.TabIndex = 4
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(895, 25)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(98, 19)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Visit Count"
-        '
-        'Lbl_Count
-        '
-        Me.Lbl_Count.BackColor = System.Drawing.Color.Maroon
-        Me.Lbl_Count.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Lbl_Count.ForeColor = System.Drawing.Color.White
-        Me.Lbl_Count.Location = New System.Drawing.Point(999, 17)
-        Me.Lbl_Count.Name = "Lbl_Count"
-        Me.Lbl_Count.Size = New System.Drawing.Size(148, 33)
-        Me.Lbl_Count.TabIndex = 6
-        Me.Lbl_Count.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(783, 23)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 7
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'PatientID
         '
@@ -235,13 +165,72 @@ Partial Class frm_ManageReservation
         Me.VisitType.HeaderText = "VisitType"
         Me.VisitType.Name = "VisitType"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label1.Location = New System.Drawing.Point(12, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(119, 19)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Reserve Date"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.Location = New System.Drawing.Point(460, 24)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(90, 19)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "Visit Type"
+        '
+        'Dtp_ReserveDate
+        '
+        Me.Dtp_ReserveDate.Font = New System.Drawing.Font("Tahoma", 11.0!)
+        Me.Dtp_ReserveDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.Dtp_ReserveDate.Location = New System.Drawing.Point(137, 20)
+        Me.Dtp_ReserveDate.Name = "Dtp_ReserveDate"
+        Me.Dtp_ReserveDate.Size = New System.Drawing.Size(171, 25)
+        Me.Dtp_ReserveDate.TabIndex = 3
+        '
+        'Cbo_VisitType
+        '
+        Me.Cbo_VisitType.Font = New System.Drawing.Font("Tahoma", 11.0!)
+        Me.Cbo_VisitType.FormattingEnabled = True
+        Me.Cbo_VisitType.Items.AddRange(New Object() {" "})
+        Me.Cbo_VisitType.Location = New System.Drawing.Point(554, 20)
+        Me.Cbo_VisitType.Name = "Cbo_VisitType"
+        Me.Cbo_VisitType.Size = New System.Drawing.Size(209, 26)
+        Me.Cbo_VisitType.TabIndex = 4
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label3.Location = New System.Drawing.Point(895, 25)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(98, 19)
+        Me.Label3.TabIndex = 5
+        Me.Label3.Text = "Visit Count"
+        '
+        'Lbl_Count
+        '
+        Me.Lbl_Count.BackColor = System.Drawing.Color.Maroon
+        Me.Lbl_Count.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Lbl_Count.ForeColor = System.Drawing.Color.White
+        Me.Lbl_Count.Location = New System.Drawing.Point(999, 17)
+        Me.Lbl_Count.Name = "Lbl_Count"
+        Me.Lbl_Count.Size = New System.Drawing.Size(148, 33)
+        Me.Lbl_Count.TabIndex = 6
+        Me.Lbl_Count.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'frm_ManageReservation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.ClientSize = New System.Drawing.Size(1159, 708)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Lbl_Count)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Cbo_VisitType)
@@ -265,7 +254,6 @@ Partial Class frm_ManageReservation
     Friend WithEvents Cbo_VisitType As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Lbl_Count As Label
-    Friend WithEvents Button1 As Button
     Friend WithEvents PatientID As DataGridViewTextBoxColumn
     Friend WithEvents PatientName As DataGridViewTextBoxColumn
     Friend WithEvents PhoneNumber As DataGridViewTextBoxColumn

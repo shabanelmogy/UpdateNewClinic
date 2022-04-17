@@ -38,9 +38,9 @@ Public Class Frm_Reservation
 
     'تحديث شاشة الحجز باى إضافة جديدة
     Sub load_FrmManageReservation()
-        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost From Reservation
-                        Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                        Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'")
+        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,StartWeight,
+                               VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                               Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'")
         frm_ManageReservation.FormatDgv_Search()
     End Sub
 
@@ -257,9 +257,9 @@ Public Class Frm_Reservation
                 End If
 
                 Frm_Reservation_Load(Nothing, Nothing)
-                frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost From Reservation
-                        Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                        Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
+                frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,
+                                                     Occupation,Height,StartWeight,VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                                                     Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
                 con.Close()
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Information, "Delete")

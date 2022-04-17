@@ -152,10 +152,6 @@ Public Class Frm_PatientVisit
         End With
 
         'تحديث حالة المرضى الذين تم الكشف عليهم 
-        'cmd1 = New SqlCommand("Update Reservation Set Checkok = 1 Where EXISTS
-        '                      (Select * From ClinicDays Inner Join Reservation on ClinicDays.PatientID=Reservation.PatientID And
-        '                      ClinicDays.VisitDate=Reservation.ReserveDate)", con)
-
         cmd1 = New SqlCommand("Update Reservation Set Checkok = 1 Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
         With cmd1.Parameters
             .AddWithValue("@PatientID", Val(Txt_PatientNum.Text)).DbType = DbType.Int64
@@ -168,8 +164,13 @@ Public Class Frm_PatientVisit
         con.Close()
 
         MsgBox("Done")
+        'تحديث شاشة من أتم الكشف
         FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes From ClinicDays 
                              Inner Join VisitsTypes On ClinicDays.VisitType = VisitsTypes.Num Where PatientID=" & Val(Txt_PatientNum.Text))
+        'تحديث شاشة حجز الدكتور
+        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,StartWeight,
+                       VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                       Where CheckOk = 0 And ReserveDate='" & Format(frm_ManageReservation.Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
         Txt_PatientNum.Select()
     End Sub
 
