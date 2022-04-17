@@ -57,7 +57,7 @@ Public Class frm_ManageReservation
         Dgv_Reservation.Columns("Occupation").Visible = False
         Dgv_Reservation.Columns("Height").Visible = False
         Dgv_Reservation.Columns("StartWeight").Visible = False
-        'Dgv_Reservation.Columns("VisitType").Visible = False
+        Dgv_Reservation.Columns("VisitType").Visible = False
     End Sub
 
     Private Sub Frm_ManageVisits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -204,5 +204,4 @@ Public Class frm_ManageReservation
             frm.Show()
         End If
     End Sub
-
 End Class

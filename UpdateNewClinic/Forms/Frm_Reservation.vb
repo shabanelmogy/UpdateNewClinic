@@ -49,7 +49,8 @@ Public Class Frm_Reservation
             Dgv_Visits.Rows.Clear()
             If con.State = 1 Then con.Close()
             con.Open()
-            Dim cmd As New SqlCommand("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation", con)
+            Dim cmd As New SqlCommand("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0 
+                                       And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'", con)
             rdr = cmd.ExecuteReader
             While rdr.Read
                 Dgv_Visits.Rows.Add(rdr("PatientID"), rdr("PatientName"), Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("VisitName"),

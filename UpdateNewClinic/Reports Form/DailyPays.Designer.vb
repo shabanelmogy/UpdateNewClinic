@@ -27,7 +27,7 @@ Partial Class Frm_ReportPatientDetails
         Me.DateTo = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Btn_ShowReport = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.DateTimeChartRangeControlClient1 = New DevExpress.XtraEditors.DateTimeChartRangeControlClient()
         Me.Panel1.SuspendLayout()
@@ -88,28 +88,28 @@ Partial Class Frm_ReportPatientDetails
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "To"
         '
-        'Button1
+        'Btn_ShowReport
         '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.BackColor = System.Drawing.Color.SteelBlue
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Image = Global.UpdateNewClinic.My.Resources.Resources.ShowReport2
-        Me.Button1.Location = New System.Drawing.Point(15, 97)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(195, 48)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "Show Report"
-        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.Btn_ShowReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_ShowReport.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_ShowReport.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_ShowReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_ShowReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_ShowReport.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_ShowReport.ForeColor = System.Drawing.Color.White
+        Me.Btn_ShowReport.Image = Global.UpdateNewClinic.My.Resources.Resources.ShowReport2
+        Me.Btn_ShowReport.Location = New System.Drawing.Point(15, 97)
+        Me.Btn_ShowReport.Name = "Btn_ShowReport"
+        Me.Btn_ShowReport.Size = New System.Drawing.Size(195, 48)
+        Me.Btn_ShowReport.TabIndex = 3
+        Me.Btn_ShowReport.Text = "Show Report"
+        Me.Btn_ShowReport.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.Btn_ShowReport.UseVisualStyleBackColor = False
         '
         'Panel1
         '
         Me.Panel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.Btn_ShowReport)
         Me.Panel1.Controls.Add(Me.DateFrom)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.DateTo)
@@ -141,7 +141,7 @@ Partial Class Frm_ReportPatientDetails
     Friend WithEvents DateTo As DateTimePicker
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Btn_ShowReport As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents DateTimeChartRangeControlClient1 As DevExpress.XtraEditors.DateTimeChartRangeControlClient
 End Class

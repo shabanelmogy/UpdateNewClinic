@@ -7,7 +7,7 @@ Public Class Frm_ReportPatientDetails
     Dim ParaDateFrom As New ReportParameter
     Dim ParaDateTo As New ReportParameter
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Btn_ShowReport_Click(sender As Object, e As EventArgs) Handles Btn_ShowReport.Click
 
         If DateFrom.CustomFormat <> " " And DateTo.CustomFormat <> " " Then
             SQL = "SELECT ClinicDays.VisitDate, ClinicDays.PatientID, ClinicDays.PatientName, ClinicDays.VisitCost, ClinicDays.NewWeight,
@@ -20,7 +20,7 @@ Public Class Frm_ReportPatientDetails
                                  VisitsTypes.VisitKind FROM ClinicDays INNER JOIN VisitsTypes ON ClinicDays.VisitType = VisitsTypes.Num"
         End If
 
-        Dim cmd As New SqlCommand(SQL, Con)
+        Dim cmd As New SqlCommand(SQL, con)
         With cmd.Parameters
             If Not String.IsNullOrWhiteSpace(DateFrom.Value) Then
                 .AddWithValue("@VisitFrom", DateFrom.Value).DbType = DbType.Date

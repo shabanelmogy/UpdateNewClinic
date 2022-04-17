@@ -163,7 +163,7 @@ Public Class Frm_PatientVisit
         cmd1.ExecuteNonQuery()
         con.Close()
 
-        MsgBox("Done")
+        MsgBox("Visit Added", MsgBoxStyle.Information, "Info")
         'تحديث شاشة من أتم الكشف
         FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes From ClinicDays 
                              Inner Join VisitsTypes On ClinicDays.VisitType = VisitsTypes.Num Where PatientID=" & Val(Txt_PatientNum.Text))
@@ -171,6 +171,9 @@ Public Class Frm_PatientVisit
         frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,StartWeight,
                        VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
                        Where CheckOk = 0 And ReserveDate='" & Format(frm_ManageReservation.Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
+        'تحديث شاشة حجز السكرتارية
+        Frm_Reservation.GetAllReservation()
+
         Txt_PatientNum.Select()
     End Sub
 
