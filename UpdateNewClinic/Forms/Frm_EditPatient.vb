@@ -229,7 +229,7 @@ Public Class Frm_EditPatients
                         frm.Txt_Height.Text = Dgv_EditPatient.Rows(e.RowIndex).Cells(7).Value
                         frm.Txt_StartWeight.Text = Dgv_EditPatient.Rows(e.RowIndex).Cells(8).Value
                         'ملئ بيانات الزيارات الخاصة بالمريض
-                        frm.FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes from ClinicDays
+                        frm.FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewBmi,PlanOfTreatment,EatingHabits,Notes from ClinicDays
                                                 inner join VisitsTypes on ClinicDays.VisitType = VisitsTypes.Num Where PatientID = " & PatientNum)
                         frm.Dgv_VisitDetail.ClearSelection()
                     End If

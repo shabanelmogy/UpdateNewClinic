@@ -30,9 +30,10 @@ Public Class frm_ManageReservation
             rdr = cmd.ExecuteReader
             Dgv_Reservation.Rows.Clear()
             While rdr.Read
-                Dgv_Reservation.Rows.Add(rdr("PatientID"), rdr("PatientName"), rdr("PhoneNumber"), rdr("Code"), Format(rdr("ReserveDate"), "dd/MM/yyyy"),
-                                             rdr("VisitName"), rdr("VisitCost"), "", "", Format(rdr("Firstdate"), "dd/MM/yyyy"), rdr("Age"), rdr("Occupation"),
-                                             rdr("Height"), rdr("StartWeight"), rdr("VisitType"))
+                Dgv_Reservation.Rows.Add(rdr("PatientID").ToString, rdr("PatientName").ToString, rdr("PhoneNumber").ToString, rdr("Code").ToString,
+                                             Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("VisitName").ToString, rdr("VisitCost").ToString, "", "",
+                                             Format(rdr("Firstdate"), "dd/MM/yyyy"), rdr("Age").ToString, rdr("Occupation").ToString,
+                                             rdr("Height").ToString, rdr("StartWeight").ToString, rdr("VisitType").ToString)
 
             End While
             rdr.Close()
@@ -196,7 +197,7 @@ Public Class frm_ManageReservation
                     frm.Txt_VisitCost.Text = Dgv_Reservation.Rows(e.RowIndex).Cells("VisitCost").Value
 
                     '=======================================================================================================================
-                    frm.FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes from ClinicDays
+                    frm.FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewBmi,PlanOfTreatment,EatingHabits,Notes from ClinicDays
                                              Inner Join VisitsTypes on ClinicDays.VisitType = VisitsTypes.Num Where PatientID = " & PatientNum)
 
                 End If

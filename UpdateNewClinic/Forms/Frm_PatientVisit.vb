@@ -16,9 +16,9 @@ Public Class Frm_PatientVisit
 
         Dgv_VisitDetail.Rows.Clear()
         For i = 0 To cur.Count - 1
-            Dgv_VisitDetail.Rows.Add(New String() {cur.Current("VisitDate"), cur.Current("VisitKind"), cur.Current("VisitCost"), cur.Current("NewWeight"),
-                                     cur.Current("NewWaist"), cur.Current("PlanOfTreatment"), cur.Current("EatingHabits"), cur.Current("Notes")})
-            cur.Position += 1
+            Dgv_VisitDetail.Rows.Add(New String() {Cur.Current("VisitDate"), Cur.Current("VisitKind"), Cur.Current("VisitCost"), Cur.Current("NewWeight"),
+                                     Cur.Current("NewBmi"), Cur.Current("PlanOfTreatment"), Cur.Current("EatingHabits"), Cur.Current("Notes")})
+            Cur.Position += 1
         Next
     End Sub
 
@@ -28,7 +28,7 @@ Public Class Frm_PatientVisit
             Dgv_VisitDetail.Columns("VisitType").Width = 130
             Dgv_VisitDetail.Columns("VisitCost").Width = 80
             Dgv_VisitDetail.Columns("NewWeight").Width = 100
-            Dgv_VisitDetail.Columns("NewWaist").Width = 100
+            Dgv_VisitDetail.Columns("NewBmi").Width = 100
             Dgv_VisitDetail.Columns("PlanOfTreatment").Width = 235
             Dgv_VisitDetail.Columns("EatingHabits").Width = 235
             Dgv_VisitDetail.Columns("Notes").Width = 450
@@ -64,7 +64,7 @@ Public Class Frm_PatientVisit
                 con.Close()
                 Dtp_VisitDate.Focus()
 
-                FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes from ClinicDays 
+                FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewBmi,PlanOfTreatment,EatingHabits,Notes from ClinicDays 
                                      Inner Join VisitsTypes on ClinicDays.VisitType = VisitsTypes.Num 
                                      Where PatientID=" & Val(Txt_PatientNum.Text) & " order By VisitDate Desc ")
             Else
@@ -129,11 +129,11 @@ Public Class Frm_PatientVisit
         dr.Read()
 
         If Not dr.HasRows Then
-            cmd = New SqlCommand("Insert Into ClinicDays (VisitDate,PatientID,PatientName,VisitType,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes)
+            cmd = New SqlCommand("Insert Into ClinicDays (VisitDate,PatientID,PatientName,VisitType,VisitCost,NewWeight,NewBmi,PlanOfTreatment,EatingHabits,Notes)
                                    Values(@VisitDate,@PatientID,@PatientName,@VisitType,@VisitCost,@NewWeight,@NewWaist,@PlanOfTreatment,@EatingHabits,@Notes)", con)
 
         Else
-            cmd = New SqlCommand("Update ClinicDays Set VisitType=@VisitType,VisitCost=@VisitCost,NewWeight=@NewWeight,NewWaist=@NewWaist,
+            cmd = New SqlCommand("Update ClinicDays Set VisitType=@VisitType,VisitCost=@VisitCost,NewWeight=@NewWeight,NewBmi=@NewBmi,
                                   PlanOfTreatment=@PlanOfTreatment,EatingHabits=@EatingHabits,Notes=@Notes Where PatientName=@PatientName And VisitDate=@VisitDate ", con)
         End If
 
@@ -146,7 +146,7 @@ Public Class Frm_PatientVisit
             .AddWithValue("@VisitType", Cbo_VisitType.SelectedValue).DbType = DbType.Int16
             .AddWithValue("@VisitCost", Val(Txt_VisitCost.Text)).DbType = DbType.Double
             .AddWithValue("@NewWeight", Val(Txt_NewWeight.Text)).DbType = DbType.Int16
-            .AddWithValue("@NewWaist", Val(Txt_NewWaist.Text)).DbType = DbType.Int16
+            .AddWithValue("@NewBmi", Val(Txt_NewWaist.Text)).DbType = DbType.Int16
             .AddWithValue("@PlanOfTreatment", Txt_PlanOfTreatment.Text).DbType = DbType.String
             .AddWithValue("@EatingHabits", Txt_EatingHabits.Text).DbType = DbType.String
             .AddWithValue("@Notes", Txt_Notes.Text).DbType = DbType.String
@@ -167,7 +167,7 @@ Public Class Frm_PatientVisit
         MsgBox("Visit Added", MsgBoxStyle.Information, "Info")
         '======================================================================================================================================================
         'تحديث شاشة من أتم الكشف
-        FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes From ClinicDays 
+        FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewBmi,PlanOfTreatment,EatingHabits,Notes From ClinicDays 
                              Inner Join VisitsTypes On ClinicDays.VisitType = VisitsTypes.Num 
                              Where PatientID=" & Val(Txt_PatientNum.Text) & " Order By VisitDate Desc")
         'تحديث شاشة حجز الدكتور
@@ -246,7 +246,7 @@ Public Class Frm_PatientVisit
                 con.Open()
                 cmd.ExecuteNonQuery()
 
-                FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewWaist,PlanOfTreatment,EatingHabits,Notes From ClinicDays 
+                FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewBmi,PlanOfTreatment,EatingHabits,Notes From ClinicDays 
                                  Inner Join VisitsTypes On ClinicDays.VisitType = VisitsTypes.Num Where PatientID=" & Val(Txt_PatientNum.Text))
 
             End If
