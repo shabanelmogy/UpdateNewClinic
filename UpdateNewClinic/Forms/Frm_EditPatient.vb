@@ -3,6 +3,7 @@ Imports System
 Imports System.Windows.Forms
 Imports DevExpress.XtraTab
 Imports DevExpress.XtraTab.ViewInfo
+Imports System.Text.RegularExpressions
 
 Public Class Frm_EditPatients
 
@@ -566,8 +567,9 @@ Public Class Frm_EditPatients
     End Sub
 
     Private Sub Txt_SearchName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_SearchName.KeyPress
-        If (Char.IsControl(e.KeyChar) = False And Char.IsLetter(e.KeyChar) = False) Then
+        If Not ((Asc(e.KeyChar) = 8 OrElse e.KeyChar = " ") OrElse (e.KeyChar >= "A" AndAlso e.KeyChar <= "z")) Then
             e.Handled = True
+            CType(sender, TextBox).Clear()
         End If
     End Sub
 
@@ -602,6 +604,8 @@ Public Class Frm_EditPatients
     Private Sub Button1_Click(sender As Object, e As EventArgs)
         Txt_SearchName.Text = "Type You Search And Press Enter"
     End Sub
+
+
 
 #End Region
 

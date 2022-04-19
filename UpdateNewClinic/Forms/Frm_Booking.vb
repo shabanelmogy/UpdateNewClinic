@@ -212,8 +212,9 @@ Public Class Frm_Booking
 #Region "TextBox"
 
     Private Sub Txt_SearchValue_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_SearchValue.KeyPress
-        If Cbo_SortAndSearch.Text = "PatientName" And Char.IsControl(e.KeyChar) = False And Char.IsLetter(e.KeyChar) = False Then
+        If Cbo_SortAndSearch.Text = "PatientName" And Not ((Asc(e.KeyChar) = 8 OrElse e.KeyChar = " ") OrElse (e.KeyChar >= "A" AndAlso e.KeyChar <= "z")) Then
             e.Handled = True
+            CType(sender, TextBox).Clear()
 
         ElseIf Cbo_SortAndSearch.Text = "Phone" And Char.IsControl(e.KeyChar) = False And Char.IsDigit(e.KeyChar) = False Then
             e.Handled = True
