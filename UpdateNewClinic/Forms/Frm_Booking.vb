@@ -13,6 +13,7 @@ Public Class Frm_Booking
     Dim Query As String
     Dim check As Boolean = False
     Dim curid As Integer
+    Dim curstate As String
     Dim curdate As Date
 
 #End Region
@@ -54,7 +55,7 @@ Public Class Frm_Booking
 
             While rdr.Read
                 Dgv_Visits.Rows.Add(rdr("PatientID"), rdr("PatientName"), Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("VisitName"),
-                                     rdr("VisitCost"))
+                                     rdr("VisitCost"), rdr("State"))
                 'State.Items.Clear()
                 'State.Items.Add("PatientID")
             End While
@@ -199,7 +200,7 @@ Public Class Frm_Booking
         Txt_VisitCost.Text = ""
         Txt_SearchValue.Select()
 
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0 
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,State From Reservation Where Checkok=0 
                            And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'")
     End Sub
 
@@ -277,6 +278,30 @@ Public Class Frm_Booking
                 If con.State = 1 Then con.Close()
             End Try
         End If
+
+        If e.ColumnIndex = 7 Then
+            If Dgv_Visits.Rows.Count > 0 Then
+                curid = Dgv_Visits.CurrentRow.Cells(0).Value
+                curstate = Dgv_Visits.CurrentRow.Cells(5).Value
+            Else Exit Sub
+            End If
+
+            cmd = New SqlCommand("Update Reservation Set State=@State Where PatientID=@PatientID", con)
+            cmd.Parameters.AddWithValue("@PatientID", curid)
+            cmd.Parameters.AddWithValue("@State", curstate)
+
+            If con.State = 1 Then con.Close()
+            con.Open()
+            cmd.ExecuteNonQuery()
+        End If
+
+        Frm_Reservation_Load(Nothing, Nothing)
+        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,
+                                             FirstDate,Age,Occupation,Height,StartWeight,VisitType,state From Reservation 
+                                             Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                                             Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
+        con.Close()
+
     End Sub
 
     Private Sub Btn_Reset_Click(sender As Object, e As EventArgs) Handles Btn_Reset.Click
@@ -287,16 +312,16 @@ Public Class Frm_Booking
     End Sub
 
     Private Sub Btn_ShowToday_Click(sender As Object, e As EventArgs) Handles Btn_ShowToday.Click
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0 
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,State From Reservation Where Checkok=0 
                            And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'")
     End Sub
 
     Private Sub Btn_ShowAll_Click(sender As Object, e As EventArgs) Handles Btn_ShowAll.Click
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0")
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,State From Reservation Where Checkok=0")
     End Sub
 
     Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles Btn_Search.Click
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0 
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,State From Reservation Where Checkok=0 
                            And ReserveDate='" & Format(Dtp_Search.Value, "yyyy-MM-dd") & "'")
     End Sub
 
@@ -311,6 +336,10 @@ Public Class Frm_Booking
 
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        curstate = Dgv_Visits.CurrentRow.Cells(5).Value.ToString
     End Sub
 
     Private Sub Dgv_Visits_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles Dgv_Visits.CellPainting
@@ -335,7 +364,7 @@ Public Class Frm_Booking
             Fill_Combobox(Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
             Cbo_SortAndSearch.SelectedIndex = 0
             GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
-            GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0 
+            GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,State From Reservation Where Checkok=0 
                            And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'")
             TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType, "Select Amount From VisitsTypes", "Num")
             Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")

@@ -57,13 +57,6 @@ Partial Class Frm_Booking
         Me.Txt_VisitCost = New System.Windows.Forms.TextBox()
         Me.Txt_Num = New System.Windows.Forms.TextBox()
         Me.Dgv_Visits = New System.Windows.Forms.DataGridView()
-        Me.SeparatorControl2 = New DevExpress.XtraEditors.SeparatorControl()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Dgv_Search = New System.Windows.Forms.DataGridView()
-        Me.SeparatorControl1 = New DevExpress.XtraEditors.SeparatorControl()
-        Me.ClinicDataSet = New UpdateNewClinic.ClinicDataSet()
-        Me.PatientsDetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PatientsDetailTableAdapter = New UpdateNewClinic.ClinicDataSetTableAdapters.PatientsDetailTableAdapter()
         Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -72,6 +65,14 @@ Partial Class Frm_Booking
         Me.State = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.Update = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.SeparatorControl2 = New DevExpress.XtraEditors.SeparatorControl()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Dgv_Search = New System.Windows.Forms.DataGridView()
+        Me.SeparatorControl1 = New DevExpress.XtraEditors.SeparatorControl()
+        Me.ClinicDataSet = New UpdateNewClinic.ClinicDataSet()
+        Me.PatientsDetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PatientsDetailTableAdapter = New UpdateNewClinic.ClinicDataSetTableAdapters.PatientsDetailTableAdapter()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -366,6 +367,7 @@ Partial Class Frm_Booking
         '
         Me.Panel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.GroupBox1)
         Me.Panel1.Controls.Add(Me.GroupBox2)
         Me.Panel1.Controls.Add(Me.Grp_Buttons)
@@ -481,6 +483,48 @@ Partial Class Frm_Booking
         Me.Dgv_Visits.Size = New System.Drawing.Size(953, 551)
         Me.Dgv_Visits.TabIndex = 39
         '
+        'PatientNum
+        '
+        Me.PatientNum.HeaderText = "Patient ID"
+        Me.PatientNum.Name = "PatientNum"
+        '
+        'PatientName
+        '
+        Me.PatientName.HeaderText = "Patient Name"
+        Me.PatientName.Name = "PatientName"
+        '
+        'ReserveDate
+        '
+        Me.ReserveDate.HeaderText = "Booking Date"
+        Me.ReserveDate.Name = "ReserveDate"
+        '
+        'VisitType
+        '
+        Me.VisitType.HeaderText = "Visit Type"
+        Me.VisitType.Name = "VisitType"
+        '
+        'VisitCost
+        '
+        Me.VisitCost.HeaderText = "Visit Cost"
+        Me.VisitCost.Name = "VisitCost"
+        '
+        'State
+        '
+        Me.State.HeaderText = "State"
+        Me.State.Items.AddRange(New Object() {"حجز", "حاضر", "دخول", "خروج"})
+        Me.State.Name = "State"
+        '
+        'Update
+        '
+        Me.Update.HeaderText = "Update"
+        Me.Update.Name = "Update"
+        '
+        'Delete
+        '
+        Me.Delete.HeaderText = "Delete "
+        Me.Delete.Name = "Delete"
+        Me.Delete.UseColumnTextForButtonValue = True
+        '
         'SeparatorControl2
         '
         Me.SeparatorControl2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -572,47 +616,14 @@ Partial Class Frm_Booking
         '
         Me.PatientsDetailTableAdapter.ClearBeforeFill = True
         '
-        'PatientNum
+        'Button1
         '
-        Me.PatientNum.HeaderText = "Patient ID"
-        Me.PatientNum.Name = "PatientNum"
-        '
-        'PatientName
-        '
-        Me.PatientName.HeaderText = "Patient Name"
-        Me.PatientName.Name = "PatientName"
-        '
-        'ReserveDate
-        '
-        Me.ReserveDate.HeaderText = "Booking Date"
-        Me.ReserveDate.Name = "ReserveDate"
-        '
-        'VisitType
-        '
-        Me.VisitType.HeaderText = "Visit Type"
-        Me.VisitType.Name = "VisitType"
-        '
-        'VisitCost
-        '
-        Me.VisitCost.HeaderText = "Visit Cost"
-        Me.VisitCost.Name = "VisitCost"
-        '
-        'State
-        '
-        Me.State.HeaderText = "State"
-        Me.State.Items.AddRange(New Object() {"حجز", "حاضر", "دخول", "خروج"})
-        Me.State.Name = "State"
-        '
-        'Update
-        '
-        Me.Update.HeaderText = "Update"
-        Me.Update.Name = "Update"
-        '
-        'Delete
-        '
-        Me.Delete.HeaderText = "Delete "
-        Me.Delete.Name = "Delete"
-        Me.Delete.UseColumnTextForButtonValue = True
+        Me.Button1.Location = New System.Drawing.Point(884, 40)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 47
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Frm_Booking
         '
@@ -686,4 +697,5 @@ Partial Class Frm_Booking
     Friend WithEvents State As DataGridViewComboBoxColumn
     Friend WithEvents Update As DataGridViewButtonColumn
     Friend WithEvents Delete As DataGridViewButtonColumn
+    Friend WithEvents Button1 As Button
 End Class

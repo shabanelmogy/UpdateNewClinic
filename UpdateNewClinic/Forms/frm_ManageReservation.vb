@@ -152,7 +152,7 @@ Public Class frm_ManageReservation
                     Cmd.ExecuteNonQuery()
                 End If
                 Frm_ManageVisits_Load(Nothing, Nothing)
-                Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost From Reservation Where Checkok=0")
+                Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,State From Reservation Where Checkok=0")
                 con.Close()
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Information, "Delete")
