@@ -13,8 +13,9 @@ Public Class Frm_Booking
     Dim Query As String
     Dim check As Boolean = False
     Dim curid As Integer
-    Dim curstate As String
+    Dim curstatus As String = ""
     Dim curdate As Date
+    Dim maxrow As Integer
 
 #End Region
 
@@ -55,9 +56,9 @@ Public Class Frm_Booking
 
             While rdr.Read
                 Dgv_Visits.Rows.Add(rdr("PatientID"), rdr("PatientName"), Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("VisitName"),
-                                     rdr("VisitCost"), rdr("State"))
-                'State.Items.Clear()
-                'State.Items.Add("PatientID")
+                                     rdr("VisitCost"), rdr("status"))
+                'status.Items.Clear()
+                'status.Items.Add("PatientID")
             End While
             rdr.Close()
             con.Close()
@@ -82,8 +83,8 @@ Public Class Frm_Booking
 
         If dt.Rows.Count = 0 Then
 
-            cmd = New SqlCommand("Insert Into Reservation(PatientID,PatientName,ReserveDate,VisitType,VisitName,VisitCost)
-                                 Values(@PatientID,@PatientName,@ReserveDate,@VisitType,@VisitName,@VisitCost)", con)
+            cmd = New SqlCommand("Insert Into Reservation(PatientID,PatientName,ReserveDate,VisitType,VisitName,VisitCost,status)
+                                 Values(@PatientID,@PatientName,@ReserveDate,@VisitType,@VisitName,@VisitCost,'حاضر')", con)
             With cmd
                 .Parameters.AddWithValue("@PatientID", Val(Txt_Num.Text)).DbType = DbType.Int32
                 .Parameters.AddWithValue("@PatientName", Txt_PatientName.Text).DbType = DbType.String
@@ -200,7 +201,7 @@ Public Class Frm_Booking
         Txt_VisitCost.Text = ""
         Txt_SearchValue.Select()
 
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,State From Reservation Where Checkok=0 
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
                            And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'")
     End Sub
 
@@ -269,39 +270,15 @@ Public Class Frm_Booking
 
                 Frm_Reservation_Load(Nothing, Nothing)
                 frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,
-                                                     Occupation,Height,StartWeight,VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                                                     Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
+                                                         Occupation,Height,StartWeight,VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                                                         Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
                 con.Close()
             Catch ex As Exception
-                MsgBox(ex.Message, MsgBoxStyle.Information, "Delete")
+
             Finally
                 If con.State = 1 Then con.Close()
             End Try
         End If
-
-        If e.ColumnIndex = 7 Then
-            If Dgv_Visits.Rows.Count > 0 Then
-                curid = Dgv_Visits.CurrentRow.Cells(0).Value
-                curstate = Dgv_Visits.CurrentRow.Cells(5).Value
-            Else Exit Sub
-            End If
-
-            cmd = New SqlCommand("Update Reservation Set State=@State Where PatientID=@PatientID", con)
-            cmd.Parameters.AddWithValue("@PatientID", curid)
-            cmd.Parameters.AddWithValue("@State", curstate)
-
-            If con.State = 1 Then con.Close()
-            con.Open()
-            cmd.ExecuteNonQuery()
-        End If
-
-        Frm_Reservation_Load(Nothing, Nothing)
-        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,
-                                             FirstDate,Age,Occupation,Height,StartWeight,VisitType,state From Reservation 
-                                             Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                                             Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
-        con.Close()
-
     End Sub
 
     Private Sub Btn_Reset_Click(sender As Object, e As EventArgs) Handles Btn_Reset.Click
@@ -312,20 +289,39 @@ Public Class Frm_Booking
     End Sub
 
     Private Sub Btn_ShowToday_Click(sender As Object, e As EventArgs) Handles Btn_ShowToday.Click
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,State From Reservation Where Checkok=0 
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
                            And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'")
     End Sub
 
     Private Sub Btn_ShowAll_Click(sender As Object, e As EventArgs) Handles Btn_ShowAll.Click
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,State From Reservation Where Checkok=0")
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0")
     End Sub
 
     Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles Btn_Search.Click
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,State From Reservation Where Checkok=0 
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
                            And ReserveDate='" & Format(Dtp_Search.Value, "yyyy-MM-dd") & "'")
     End Sub
 
-    Private Sub Dgv_Visits_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Visits.CellDoubleClick
+
+    Private Sub Dgv_Visits_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles Dgv_Visits.CellFormatting
+        For Each row As DataGridViewRow In Dgv_Visits.Rows
+            If Not row.IsNewRow Then
+                Select Case row.Cells(5).Value.ToString
+                    Case "حاضر"
+                        row.DefaultCellStyle.BackColor = Color.LightGreen
+                    Case "حجز"
+                        row.DefaultCellStyle.BackColor = Color.LightSteelBlue
+                    Case "دخول"
+                        row.DefaultCellStyle.BackColor = Color.LightYellow
+                    Case "خروج"
+                        row.DefaultCellStyle.BackColor = Color.LightCoral
+
+                End Select
+            End If
+        Next
+    End Sub
+
+    Private Sub Dgv_Visits_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Visits.CellClick
         Txt_Num.Text = Dgv_Visits.CurrentRow.Cells(0).Value
         Txt_PatientName.Text = Dgv_Visits.CurrentRow.Cells(1).Value
         Dtp_ReserveDate.Text = Dgv_Visits.CurrentRow.Cells(2).Value
@@ -334,16 +330,8 @@ Public Class Frm_Booking
         check = True
     End Sub
 
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        curstate = Dgv_Visits.CurrentRow.Cells(5).Value.ToString
-    End Sub
-
     Private Sub Dgv_Visits_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles Dgv_Visits.CellPainting
-        If e.ColumnIndex = 6 AndAlso e.RowIndex >= 0 Then
+        If e.ColumnIndex = 7 AndAlso e.RowIndex >= 0 Then
             e.Paint(e.CellBounds, DataGridViewPaintParts.All)
             Dim img As Image = My.Resources.Delete_16x16
             e.Graphics.DrawImage(img, e.CellBounds.Left + 45, e.CellBounds.Top + 7, 10, 10)
@@ -364,8 +352,8 @@ Public Class Frm_Booking
             Fill_Combobox(Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
             Cbo_SortAndSearch.SelectedIndex = 0
             GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
-            GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,State From Reservation Where Checkok=0 
-                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'")
+            GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
+                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' Order By Status Desc ")
             TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType, "Select Amount From VisitsTypes", "Num")
             Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
             Dtp_Search.Value = Date.Now.ToString("dd-MM-yyyy")
@@ -378,5 +366,67 @@ Public Class Frm_Booking
 #End Region
 
 #End Region
+
+    Private Sub Auto_Save(sql As String)
+        Try
+            con.Open()
+            cmd = New SqlCommand
+            With cmd
+                .Connection = con
+                .CommandText = sql
+                .ExecuteNonQuery()
+            End With
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            con.Close()
+        End Try
+    End Sub
+
+    Private Function numrows(sql)
+        Try
+            con.Open()
+            cmd = New SqlCommand
+            da = New SqlDataAdapter
+            dt = New DataTable
+
+            With cmd
+                .Connection = con
+                .CommandText = sql
+            End With
+
+            da.SelectCommand = cmd
+            da.Fill(dt)
+
+            maxrow = dt.Rows.Count
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            con.Close()
+            da.Dispose()
+        End Try
+
+        Return maxrow
+    End Function
+
+    Private Sub Dgv_Visits_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Visits.CellEndEdit
+        Dim sql As String
+        maxrow = Dgv_Visits.RowCount
+        Dgv_Visits.Rows(Dgv_Visits.RowCount - 1).Cells(0).Value = maxrow
+
+        For i As Integer = 0 To Dgv_Visits.Rows.Count - 2
+            With Dgv_Visits.Rows(i)
+                sql = "SELECT * FROM Reservation WHERE PatientID=" & .Cells(0).Value
+                maxrow = numrows(sql)
+
+                If maxrow >= 0 Then
+                    sql = "UPDATE Reservation SET Status='" & .Cells(5).Value & "' WHERE PatientID=" & .Cells(0).FormattedValue
+                    Auto_Save(sql)
+                End If
+            End With
+        Next
+
+    End Sub
 
 End Class

@@ -17,6 +17,7 @@ Module Main_Mod
     Public FillCombobox As Boolean = False
     'Public con As New SqlConnection("Data Source=.\SQLEXPRESS;AttachDbFilename=" & newdir & "\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
     Public con As New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("con").ConnectionString)
+    Public build As SqlCommandBuilder
 
 #End Region
 
@@ -225,6 +226,18 @@ Module Main_Mod
         Dv = New DataView(DtEditPatient)
         Cur = CType(frm.BindingContext(Dv), CurrencyManager)
     End Sub
+
+    Public Function GetDatatable(Query As String) As DataTable
+
+        Cmd = New SqlCommand(Query, con)
+        Dim dt As New DataTable
+        Da = New SqlDataAdapter(Cmd)
+
+        dt.Clear()
+        Da.Fill(dt)
+
+        Return dt
+    End Function
 
     Sub Fill_DataTableVisitDetails(Query As String, frm As Form)
 

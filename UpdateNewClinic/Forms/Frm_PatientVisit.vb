@@ -176,7 +176,7 @@ Public Class Frm_PatientVisit
                                              Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
                                              Where CheckOk = 0 And ReserveDate='" & Format(frm_ManageReservation.Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
         'تحديث شاشة حجز السكرتارية
-        Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,state From Reservation Where Checkok=0")
+        Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0")
 
         Txt_PatientNum.Select()
     End Sub
