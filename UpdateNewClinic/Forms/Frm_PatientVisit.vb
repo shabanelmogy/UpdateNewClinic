@@ -130,7 +130,7 @@ Public Class Frm_PatientVisit
 
         If Not dr.HasRows Then
             cmd = New SqlCommand("Insert Into ClinicDays (VisitDate,PatientID,PatientName,VisitType,VisitCost,NewWeight,NewBmi,PlanOfTreatment,EatingHabits,Notes)
-                                   Values(@VisitDate,@PatientID,@PatientName,@VisitType,@VisitCost,@NewWeight,@NewWaist,@PlanOfTreatment,@EatingHabits,@Notes)", con)
+                                   Values(@VisitDate,@PatientID,@PatientName,@VisitType,@VisitCost,@NewWeight,@NewBmi,@PlanOfTreatment,@EatingHabits,@Notes)", con)
 
         Else
             cmd = New SqlCommand("Update ClinicDays Set VisitType=@VisitType,VisitCost=@VisitCost,NewWeight=@NewWeight,NewBmi=@NewBmi,

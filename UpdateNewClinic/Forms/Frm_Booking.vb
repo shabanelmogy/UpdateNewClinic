@@ -51,9 +51,12 @@ Public Class Frm_Booking
             con.Open()
             Dim cmd As New SqlCommand(Query, con)
             rdr = cmd.ExecuteReader
+
             While rdr.Read
                 Dgv_Visits.Rows.Add(rdr("PatientID"), rdr("PatientName"), Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("VisitName"),
                                      rdr("VisitCost"))
+                'State.Items.Clear()
+                'State.Items.Add("PatientID")
             End While
             rdr.Close()
             con.Close()
@@ -87,6 +90,7 @@ Public Class Frm_Booking
                 .Parameters.AddWithValue("@VisitType", Cbo_ReserveType.SelectedValue).DbType = DbType.Int32
                 .Parameters.AddWithValue("@VisitName", Cbo_ReserveType.Text).DbType = DbType.String
                 .Parameters.AddWithValue("@VisitCost", Val(Txt_VisitCost.Text)).DbType = DbType.Decimal
+
             End With
 
             If con.State = 1 Then con.Close()
@@ -127,8 +131,8 @@ Public Class Frm_Booking
 
     Sub FormatDgv_Search()
         Dgv_Search.Columns("PatientNum").Width = 100
-        Dgv_Search.Columns("PatientName").Width = 290
-        Dgv_Search.Columns("PhoneNumber").Width = 159
+        Dgv_Search.Columns("PatientName").Width = 200
+        Dgv_Search.Columns("PhoneNumber").Width = 132
 
         Dgv_Search.Columns("PatientNum").HeaderText = "Patient ID"
         Dgv_Search.Columns("PatientName").HeaderText = "Patient Name"
@@ -136,11 +140,11 @@ Public Class Frm_Booking
     End Sub
 
     Sub FormatDgv_Visits()
-        Dgv_Visits.Columns(0).Width = 100
-        Dgv_Visits.Columns(1).Width = 300
-        Dgv_Visits.Columns(2).Width = 120
-        Dgv_Visits.Columns(3).Width = 156
-        Dgv_Visits.Columns(4).Width = 80
+        Dgv_Visits.Columns("PatientNum").Width = 100
+        Dgv_Visits.Columns("PatientName").Width = 200
+        Dgv_Visits.Columns("ReserveDate").Width = 100
+        Dgv_Visits.Columns("VisitType").Width = 120
+        Dgv_Visits.Columns("VisitCost").Width = 80
     End Sub
 
     Private Sub Dgv_Search_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Search.CellClick
@@ -242,7 +246,7 @@ Public Class Frm_Booking
 
     Private Sub Dgv_Visits_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Visits.CellContentClick
 
-        If e.ColumnIndex = 5 And e.RowIndex >= 0 Then
+        If e.ColumnIndex = 6 And e.RowIndex >= 0 Then
             Try
                 If Dgv_Visits.Rows.Count > 0 Then
                     curid = Dgv_Visits.CurrentRow.Cells(0).Value
@@ -305,8 +309,12 @@ Public Class Frm_Booking
         check = True
     End Sub
 
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
+
     Private Sub Dgv_Visits_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles Dgv_Visits.CellPainting
-        If e.ColumnIndex = 5 AndAlso e.RowIndex >= 0 Then
+        If e.ColumnIndex = 6 AndAlso e.RowIndex >= 0 Then
             e.Paint(e.CellBounds, DataGridViewPaintParts.All)
             Dim img As Image = My.Resources.Delete_16x16
             e.Graphics.DrawImage(img, e.CellBounds.Left + 45, e.CellBounds.Top + 7, 10, 10)

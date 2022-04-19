@@ -11,12 +11,12 @@ Public Class Frm_ReportPatientDetails
 
         If DateFrom.CustomFormat <> " " And DateTo.CustomFormat <> " " Then
             SQL = "SELECT ClinicDays.VisitDate, ClinicDays.PatientID, ClinicDays.PatientName, ClinicDays.VisitCost, ClinicDays.NewWeight,
-                                 ClinicDays.NewWaist, ClinicDays.PlanOfTreatment, ClinicDays.EatingHabits, ClinicDays.Notes, 
+                                 ClinicDays.NewBmi, ClinicDays.PlanOfTreatment, ClinicDays.EatingHabits, ClinicDays.Notes, 
                                  VisitsTypes.VisitKind FROM ClinicDays INNER JOIN VisitsTypes ON ClinicDays.VisitType = VisitsTypes.Num
                                  Where ClinicDays.VisitDate Between @VisitFrom And @VisitTo"
         Else
             SQL = "SELECT ClinicDays.VisitDate, ClinicDays.PatientID, ClinicDays.PatientName, ClinicDays.VisitCost, ClinicDays.NewWeight,
-                                 ClinicDays.NewWaist, ClinicDays.PlanOfTreatment, ClinicDays.EatingHabits, ClinicDays.Notes, 
+                                 ClinicDays.NewBmi,ClinicDays.PlanOfTreatment, ClinicDays.EatingHabits, ClinicDays.Notes, 
                                  VisitsTypes.VisitKind FROM ClinicDays INNER JOIN VisitsTypes ON ClinicDays.VisitType = VisitsTypes.Num"
         End If
 

@@ -57,12 +57,6 @@ Partial Class Frm_Booking
         Me.Txt_VisitCost = New System.Windows.Forms.TextBox()
         Me.Txt_Num = New System.Windows.Forms.TextBox()
         Me.Dgv_Visits = New System.Windows.Forms.DataGridView()
-        Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VisitType = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.SeparatorControl2 = New DevExpress.XtraEditors.SeparatorControl()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Dgv_Search = New System.Windows.Forms.DataGridView()
@@ -70,6 +64,14 @@ Partial Class Frm_Booking
         Me.ClinicDataSet = New UpdateNewClinic.ClinicDataSet()
         Me.PatientsDetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PatientsDetailTableAdapter = New UpdateNewClinic.ClinicDataSetTableAdapters.PatientsDetailTableAdapter()
+        Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.State = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Update = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -140,9 +142,9 @@ Partial Class Frm_Booking
         Me.Btn_SortAsec.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaShell
         Me.Btn_SortAsec.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_SortAsec.Image = Global.UpdateNewClinic.My.Resources.Resources.SortAscending_24
-        Me.Btn_SortAsec.Location = New System.Drawing.Point(303, 8)
+        Me.Btn_SortAsec.Location = New System.Drawing.Point(216, 8)
         Me.Btn_SortAsec.Name = "Btn_SortAsec"
-        Me.Btn_SortAsec.Size = New System.Drawing.Size(71, 27)
+        Me.Btn_SortAsec.Size = New System.Drawing.Size(60, 27)
         Me.Btn_SortAsec.TabIndex = 30
         Me.ToolTip1.SetToolTip(Me.Btn_SortAsec, "Sort Asc")
         Me.Btn_SortAsec.UseVisualStyleBackColor = False
@@ -156,9 +158,9 @@ Partial Class Frm_Booking
         Me.Btn_SortDesc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaShell
         Me.Btn_SortDesc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_SortDesc.Image = Global.UpdateNewClinic.My.Resources.Resources.SortDesc_24
-        Me.Btn_SortDesc.Location = New System.Drawing.Point(391, 8)
+        Me.Btn_SortDesc.Location = New System.Drawing.Point(288, 8)
         Me.Btn_SortDesc.Name = "Btn_SortDesc"
-        Me.Btn_SortDesc.Size = New System.Drawing.Size(68, 27)
+        Me.Btn_SortDesc.Size = New System.Drawing.Size(60, 27)
         Me.Btn_SortDesc.TabIndex = 31
         Me.ToolTip1.SetToolTip(Me.Btn_SortDesc, "Sort Desc")
         Me.Btn_SortDesc.UseVisualStyleBackColor = False
@@ -168,18 +170,18 @@ Partial Class Frm_Booking
         Me.Cbo_SortAndSearch.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.Cbo_SortAndSearch.FormattingEnabled = True
         Me.Cbo_SortAndSearch.Items.AddRange(New Object() {"PatientName", "Phone"})
-        Me.Cbo_SortAndSearch.Location = New System.Drawing.Point(129, 8)
+        Me.Cbo_SortAndSearch.Location = New System.Drawing.Point(122, 8)
         Me.Cbo_SortAndSearch.Name = "Cbo_SortAndSearch"
-        Me.Cbo_SortAndSearch.Size = New System.Drawing.Size(212, 27)
+        Me.Cbo_SortAndSearch.Size = New System.Drawing.Size(175, 27)
         Me.Cbo_SortAndSearch.TabIndex = 32
         Me.ToolTip1.SetToolTip(Me.Cbo_SortAndSearch, "Select Search Item")
         '
         'Txt_SearchValue
         '
         Me.Txt_SearchValue.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.Txt_SearchValue.Location = New System.Drawing.Point(129, 66)
+        Me.Txt_SearchValue.Location = New System.Drawing.Point(122, 66)
         Me.Txt_SearchValue.Name = "Txt_SearchValue"
-        Me.Txt_SearchValue.Size = New System.Drawing.Size(212, 27)
+        Me.Txt_SearchValue.Size = New System.Drawing.Size(175, 27)
         Me.Txt_SearchValue.TabIndex = 36
         Me.ToolTip1.SetToolTip(Me.Txt_SearchValue, "Select Search Item And Then Enter Search Value")
         '
@@ -266,9 +268,9 @@ Partial Class Frm_Booking
         Me.Btn_SelectAll.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_SelectAll.ForeColor = System.Drawing.Color.White
         Me.Btn_SelectAll.Image = Global.UpdateNewClinic.My.Resources.Resources.Refresh1
-        Me.Btn_SelectAll.Location = New System.Drawing.Point(391, 66)
+        Me.Btn_SelectAll.Location = New System.Drawing.Point(288, 66)
         Me.Btn_SelectAll.Name = "Btn_SelectAll"
-        Me.Btn_SelectAll.Size = New System.Drawing.Size(68, 27)
+        Me.Btn_SelectAll.Size = New System.Drawing.Size(60, 27)
         Me.Btn_SelectAll.TabIndex = 42
         Me.Btn_SelectAll.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.ToolTip1.SetToolTip(Me.Btn_SelectAll, "Show All Patients")
@@ -285,9 +287,9 @@ Partial Class Frm_Booking
         Me.Btn_NewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_NewPatient.ForeColor = System.Drawing.Color.White
         Me.Btn_NewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources._New
-        Me.Btn_NewPatient.Location = New System.Drawing.Point(303, 66)
+        Me.Btn_NewPatient.Location = New System.Drawing.Point(216, 66)
         Me.Btn_NewPatient.Name = "Btn_NewPatient"
-        Me.Btn_NewPatient.Size = New System.Drawing.Size(71, 27)
+        Me.Btn_NewPatient.Size = New System.Drawing.Size(60, 27)
         Me.Btn_NewPatient.TabIndex = 40
         Me.Btn_NewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.ToolTip1.SetToolTip(Me.Btn_NewPatient, "Add New Patient")
@@ -325,11 +327,11 @@ Partial Class Frm_Booking
         '
         Me.Label15.BackColor = System.Drawing.Color.SteelBlue
         Me.Label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label15.Font = New System.Drawing.Font("Segoe UI Semibold", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label15.Location = New System.Drawing.Point(3, 8)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(127, 27)
+        Me.Label15.Size = New System.Drawing.Size(120, 27)
         Me.Label15.TabIndex = 8
         Me.Label15.Text = "Sort / Search By"
         Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -351,11 +353,11 @@ Partial Class Frm_Booking
         '
         Me.Label16.BackColor = System.Drawing.Color.SteelBlue
         Me.Label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label16.Font = New System.Drawing.Font("Segoe UI Semibold", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label16.Location = New System.Drawing.Point(3, 66)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(127, 27)
+        Me.Label16.Size = New System.Drawing.Size(120, 27)
         Me.Label16.TabIndex = 35
         Me.Label16.Text = "Search Value"
         Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -377,9 +379,9 @@ Partial Class Frm_Booking
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.Dtp_ReserveDate)
         Me.Panel1.Controls.Add(Me.Txt_PatientName)
-        Me.Panel1.Location = New System.Drawing.Point(476, 1)
+        Me.Panel1.Location = New System.Drawing.Point(378, 1)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(870, 683)
+        Me.Panel1.Size = New System.Drawing.Size(968, 683)
         Me.Panel1.TabIndex = 38
         '
         'GroupBox1
@@ -462,7 +464,7 @@ Partial Class Frm_Booking
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Dgv_Visits.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.Dgv_Visits.ColumnHeadersHeight = 30
-        Me.Dgv_Visits.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientNum, Me.PatientName, Me.ReserveDate, Me.VisitType, Me.VisitCost, Me.Delete})
+        Me.Dgv_Visits.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientNum, Me.PatientName, Me.ReserveDate, Me.VisitType, Me.VisitCost, Me.State, Me.Update, Me.Delete})
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -471,51 +473,13 @@ Partial Class Frm_Booking
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Dgv_Visits.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Dgv_Visits.Location = New System.Drawing.Point(4, 133)
+        Me.Dgv_Visits.Location = New System.Drawing.Point(7, 126)
         Me.Dgv_Visits.Name = "Dgv_Visits"
-        Me.Dgv_Visits.ReadOnly = True
         Me.Dgv_Visits.RowHeadersVisible = False
         Me.Dgv_Visits.RowTemplate.Height = 25
         Me.Dgv_Visits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Dgv_Visits.Size = New System.Drawing.Size(858, 548)
+        Me.Dgv_Visits.Size = New System.Drawing.Size(953, 551)
         Me.Dgv_Visits.TabIndex = 39
-        '
-        'PatientNum
-        '
-        Me.PatientNum.HeaderText = "Patient ID"
-        Me.PatientNum.Name = "PatientNum"
-        Me.PatientNum.ReadOnly = True
-        '
-        'PatientName
-        '
-        Me.PatientName.HeaderText = "Patient Name"
-        Me.PatientName.Name = "PatientName"
-        Me.PatientName.ReadOnly = True
-        '
-        'ReserveDate
-        '
-        Me.ReserveDate.HeaderText = "Booking Date"
-        Me.ReserveDate.Name = "ReserveDate"
-        Me.ReserveDate.ReadOnly = True
-        '
-        'VisitType
-        '
-        Me.VisitType.HeaderText = "Visit Type"
-        Me.VisitType.Name = "VisitType"
-        Me.VisitType.ReadOnly = True
-        '
-        'VisitCost
-        '
-        Me.VisitCost.HeaderText = "Visit Cost"
-        Me.VisitCost.Name = "VisitCost"
-        Me.VisitCost.ReadOnly = True
-        '
-        'Delete
-        '
-        Me.Delete.HeaderText = "Delete "
-        Me.Delete.Name = "Delete"
-        Me.Delete.ReadOnly = True
-        Me.Delete.UseColumnTextForButtonValue = True
         '
         'SeparatorControl2
         '
@@ -523,7 +487,7 @@ Partial Class Frm_Booking
         Me.SeparatorControl2.LineColor = System.Drawing.Color.Maroon
         Me.SeparatorControl2.Location = New System.Drawing.Point(-1, 99)
         Me.SeparatorControl2.Name = "SeparatorControl2"
-        Me.SeparatorControl2.Size = New System.Drawing.Size(869, 23)
+        Me.SeparatorControl2.Size = New System.Drawing.Size(967, 23)
         Me.SeparatorControl2.TabIndex = 39
         '
         'Panel2
@@ -543,7 +507,7 @@ Partial Class Frm_Booking
         Me.Panel2.Controls.Add(Me.Label16)
         Me.Panel2.Location = New System.Drawing.Point(0, 1)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(470, 683)
+        Me.Panel2.Size = New System.Drawing.Size(372, 683)
         Me.Panel2.TabIndex = 39
         '
         'Dgv_Search
@@ -576,13 +540,13 @@ Partial Class Frm_Booking
         DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Maroon
         DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Dgv_Search.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Dgv_Search.Location = New System.Drawing.Point(3, 133)
+        Me.Dgv_Search.Location = New System.Drawing.Point(3, 126)
         Me.Dgv_Search.Name = "Dgv_Search"
         Me.Dgv_Search.ReadOnly = True
         Me.Dgv_Search.RowHeadersVisible = False
         Me.Dgv_Search.RowTemplate.Height = 25
         Me.Dgv_Search.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Dgv_Search.Size = New System.Drawing.Size(461, 548)
+        Me.Dgv_Search.Size = New System.Drawing.Size(362, 551)
         Me.Dgv_Search.TabIndex = 39
         '
         'SeparatorControl1
@@ -591,7 +555,7 @@ Partial Class Frm_Booking
         Me.SeparatorControl1.LineColor = System.Drawing.Color.Maroon
         Me.SeparatorControl1.Location = New System.Drawing.Point(-2, 99)
         Me.SeparatorControl1.Name = "SeparatorControl1"
-        Me.SeparatorControl1.Size = New System.Drawing.Size(470, 23)
+        Me.SeparatorControl1.Size = New System.Drawing.Size(372, 23)
         Me.SeparatorControl1.TabIndex = 38
         '
         'ClinicDataSet
@@ -607,6 +571,48 @@ Partial Class Frm_Booking
         'PatientsDetailTableAdapter
         '
         Me.PatientsDetailTableAdapter.ClearBeforeFill = True
+        '
+        'PatientNum
+        '
+        Me.PatientNum.HeaderText = "Patient ID"
+        Me.PatientNum.Name = "PatientNum"
+        '
+        'PatientName
+        '
+        Me.PatientName.HeaderText = "Patient Name"
+        Me.PatientName.Name = "PatientName"
+        '
+        'ReserveDate
+        '
+        Me.ReserveDate.HeaderText = "Booking Date"
+        Me.ReserveDate.Name = "ReserveDate"
+        '
+        'VisitType
+        '
+        Me.VisitType.HeaderText = "Visit Type"
+        Me.VisitType.Name = "VisitType"
+        '
+        'VisitCost
+        '
+        Me.VisitCost.HeaderText = "Visit Cost"
+        Me.VisitCost.Name = "VisitCost"
+        '
+        'State
+        '
+        Me.State.HeaderText = "State"
+        Me.State.Items.AddRange(New Object() {"حجز", "حاضر", "دخول", "خروج"})
+        Me.State.Name = "State"
+        '
+        'Update
+        '
+        Me.Update.HeaderText = "Update"
+        Me.Update.Name = "Update"
+        '
+        'Delete
+        '
+        Me.Delete.HeaderText = "Delete "
+        Me.Delete.Name = "Delete"
+        Me.Delete.UseColumnTextForButtonValue = True
         '
         'Frm_Booking
         '
@@ -677,5 +683,7 @@ Partial Class Frm_Booking
     Friend WithEvents ReserveDate As DataGridViewTextBoxColumn
     Friend WithEvents VisitType As DataGridViewTextBoxColumn
     Friend WithEvents VisitCost As DataGridViewTextBoxColumn
+    Friend WithEvents State As DataGridViewComboBoxColumn
+    Friend WithEvents Update As DataGridViewButtonColumn
     Friend WithEvents Delete As DataGridViewButtonColumn
 End Class
