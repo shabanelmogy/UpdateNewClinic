@@ -3,7 +3,7 @@ Imports System.Drawing
 
 Public Class Frm_Booking
 
-#Region "Declaration"
+#Region "Declaration1"
     Dim cmd, cmd1 As New SqlCommand
     Dim dv As New DataView
     Dim cur As CurrencyManager
