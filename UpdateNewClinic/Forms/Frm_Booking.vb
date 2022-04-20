@@ -89,8 +89,6 @@ Public Class Frm_Booking
         Return maxrow
     End Function
 
-
-
     Sub GetAllReservation(Query As String)
         Try
             Dgv_Visits.Rows.Clear()
@@ -102,8 +100,6 @@ Public Class Frm_Booking
             While rdr.Read
                 Dgv_Visits.Rows.Add(rdr("PatientID"), rdr("PatientName"), Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("VisitName"),
                                      rdr("VisitCost"), rdr("status"))
-                'status.Items.Clear()
-                'status.Items.Add("PatientID")
             End While
             rdr.Close()
             con.Close()
