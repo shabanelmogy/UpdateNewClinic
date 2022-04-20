@@ -174,9 +174,11 @@ Public Class Frm_PatientVisit
         frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,
                                              Occupation,Height,StartWeight,VisitType From Reservation 
                                              Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                                             Where CheckOk = 0 And ReserveDate='" & Format(frm_ManageReservation.Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
+                                             Where CheckOk = 0 And ReserveDate='" & Format(frm_ManageReservation.Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' 
+                                             Order By Status Asc ")
         'تحديث شاشة حجز السكرتارية
-        Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0")
+        Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation 
+                                       Where Checkok=0 Order By Status Asc")
 
         Txt_PatientNum.Select()
     End Sub

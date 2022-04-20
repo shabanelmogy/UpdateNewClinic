@@ -567,9 +567,8 @@ Public Class Frm_EditPatients
     End Sub
 
     Private Sub Txt_SearchName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_SearchName.KeyPress
-        If Not ((Asc(e.KeyChar) = 8 OrElse e.KeyChar = " ") OrElse (e.KeyChar >= "A" AndAlso e.KeyChar <= "z")) Then
+        If (Char.IsControl(e.KeyChar) = False And Char.IsLetter(e.KeyChar) = False And Not e.KeyChar = " ") Then
             e.Handled = True
-            CType(sender, TextBox).Clear()
         End If
     End Sub
 

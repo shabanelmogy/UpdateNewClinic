@@ -32,6 +32,7 @@ Partial Class frm_ManageReservation
         Me.Code = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VisitName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OpenVisit = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
@@ -47,7 +48,22 @@ Partial Class frm_ManageReservation
         Me.Cbo_VisitType = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Lbl_Count = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lbl_CountInside = New System.Windows.Forms.Label()
+        Me.Lbl_CountEntry = New System.Windows.Forms.Label()
+        Me.Lbl_CountPresent = New System.Windows.Forms.Label()
+        Me.Lbl_Booking = New System.Windows.Forms.Label()
+        Me.Lbl_Exit = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
         CType(Me.Dgv_Reservation, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Dgv_Reservation
@@ -68,7 +84,7 @@ Partial Class frm_ManageReservation
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Dgv_Reservation.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.Dgv_Reservation.ColumnHeadersHeight = 30
-        Me.Dgv_Reservation.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientID, Me.PatientName, Me.PhoneNumber, Me.Code, Me.ReserveDate, Me.VisitName, Me.VisitCost, Me.OpenVisit, Me.Delete, Me.FirstDate, Me.Age, Me.Occupation, Me.Height, Me.StartWeight, Me.VisitType})
+        Me.Dgv_Reservation.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientID, Me.PatientName, Me.PhoneNumber, Me.Code, Me.ReserveDate, Me.VisitName, Me.Status, Me.VisitCost, Me.OpenVisit, Me.Delete, Me.FirstDate, Me.Age, Me.Occupation, Me.Height, Me.StartWeight, Me.VisitType})
         DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle6.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -78,12 +94,12 @@ Partial Class frm_ManageReservation
         DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Dgv_Reservation.DefaultCellStyle = DataGridViewCellStyle6
         Me.Dgv_Reservation.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Dgv_Reservation.Location = New System.Drawing.Point(0, 68)
+        Me.Dgv_Reservation.Location = New System.Drawing.Point(0, 79)
         Me.Dgv_Reservation.Name = "Dgv_Reservation"
         Me.Dgv_Reservation.RowHeadersVisible = False
         Me.Dgv_Reservation.RowTemplate.Height = 25
         Me.Dgv_Reservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Dgv_Reservation.Size = New System.Drawing.Size(1159, 640)
+        Me.Dgv_Reservation.Size = New System.Drawing.Size(1258, 629)
         Me.Dgv_Reservation.TabIndex = 0
         '
         'PatientID
@@ -115,6 +131,11 @@ Partial Class frm_ManageReservation
         '
         Me.VisitName.HeaderText = "VisitName"
         Me.VisitName.Name = "VisitName"
+        '
+        'Status
+        '
+        Me.Status.HeaderText = "Status"
+        Me.Status.Name = "Status"
         '
         'VisitCost
         '
@@ -169,7 +190,7 @@ Partial Class frm_ManageReservation
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(12, 23)
+        Me.Label1.Location = New System.Drawing.Point(12, 13)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(119, 19)
         Me.Label1.TabIndex = 1
@@ -179,7 +200,7 @@ Partial Class frm_ManageReservation
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(406, 23)
+        Me.Label2.Location = New System.Drawing.Point(12, 49)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(90, 19)
         Me.Label2.TabIndex = 2
@@ -189,9 +210,9 @@ Partial Class frm_ManageReservation
         '
         Me.Dtp_ReserveDate.Font = New System.Drawing.Font("Tahoma", 11.0!)
         Me.Dtp_ReserveDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.Dtp_ReserveDate.Location = New System.Drawing.Point(137, 20)
+        Me.Dtp_ReserveDate.Location = New System.Drawing.Point(137, 10)
         Me.Dtp_ReserveDate.Name = "Dtp_ReserveDate"
-        Me.Dtp_ReserveDate.Size = New System.Drawing.Size(171, 25)
+        Me.Dtp_ReserveDate.Size = New System.Drawing.Size(167, 25)
         Me.Dtp_ReserveDate.TabIndex = 3
         '
         'Cbo_VisitType
@@ -199,40 +220,226 @@ Partial Class frm_ManageReservation
         Me.Cbo_VisitType.Font = New System.Drawing.Font("Tahoma", 11.0!)
         Me.Cbo_VisitType.FormattingEnabled = True
         Me.Cbo_VisitType.Items.AddRange(New Object() {" "})
-        Me.Cbo_VisitType.Location = New System.Drawing.Point(500, 21)
+        Me.Cbo_VisitType.Location = New System.Drawing.Point(137, 47)
         Me.Cbo_VisitType.Name = "Cbo_VisitType"
-        Me.Cbo_VisitType.Size = New System.Drawing.Size(209, 26)
+        Me.Cbo_VisitType.Size = New System.Drawing.Size(167, 26)
         Me.Cbo_VisitType.TabIndex = 4
         '
         'Label3
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(895, 25)
+        Me.Label3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label3.BackColor = System.Drawing.Color.Maroon
+        Me.Label3.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(34, 19)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(98, 19)
         Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Visit Count"
+        Me.Label3.Text = "Total"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Lbl_Count
         '
+        Me.Lbl_Count.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Lbl_Count.BackColor = System.Drawing.Color.Maroon
         Me.Lbl_Count.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Lbl_Count.ForeColor = System.Drawing.Color.White
-        Me.Lbl_Count.Location = New System.Drawing.Point(999, 17)
+        Me.Lbl_Count.ForeColor = System.Drawing.Color.Black
+        Me.Lbl_Count.Location = New System.Drawing.Point(16, 17)
         Me.Lbl_Count.Name = "Lbl_Count"
-        Me.Lbl_Count.Size = New System.Drawing.Size(148, 33)
+        Me.Lbl_Count.Size = New System.Drawing.Size(133, 49)
         Me.Lbl_Count.TabIndex = 6
         Me.Lbl_Count.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.Label15)
+        Me.GroupBox1.Controls.Add(Me.Label14)
+        Me.GroupBox1.Controls.Add(Me.Label13)
+        Me.GroupBox1.Controls.Add(Me.Label12)
+        Me.GroupBox1.Controls.Add(Me.Lbl_Exit)
+        Me.GroupBox1.Controls.Add(Me.Lbl_Booking)
+        Me.GroupBox1.Controls.Add(Me.Lbl_CountPresent)
+        Me.GroupBox1.Controls.Add(Me.Lbl_CountEntry)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.lbl_CountInside)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.Lbl_Count)
+        Me.GroupBox1.Location = New System.Drawing.Point(333, -1)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(925, 74)
+        Me.GroupBox1.TabIndex = 7
+        Me.GroupBox1.TabStop = False
+        '
+        'Label7
+        '
+        Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label7.BackColor = System.Drawing.Color.LightCoral
+        Me.Label7.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label7.ForeColor = System.Drawing.Color.Black
+        Me.Label7.Location = New System.Drawing.Point(769, 17)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(144, 49)
+        Me.Label7.TabIndex = 11
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label6
+        '
+        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label6.BackColor = System.Drawing.Color.LightYellow
+        Me.Label6.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label6.ForeColor = System.Drawing.Color.Black
+        Me.Label6.Location = New System.Drawing.Point(196, 17)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(144, 49)
+        Me.Label6.TabIndex = 10
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label5.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.Label5.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label5.ForeColor = System.Drawing.Color.Black
+        Me.Label5.Location = New System.Drawing.Point(578, 17)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(144, 49)
+        Me.Label5.TabIndex = 9
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label4.BackColor = System.Drawing.Color.Linen
+        Me.Label4.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(387, 17)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(144, 49)
+        Me.Label4.TabIndex = 8
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lbl_CountInside
+        '
+        Me.lbl_CountInside.BackColor = System.Drawing.Color.White
+        Me.lbl_CountInside.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lbl_CountInside.Location = New System.Drawing.Point(52, 44)
+        Me.lbl_CountInside.Name = "lbl_CountInside"
+        Me.lbl_CountInside.Size = New System.Drawing.Size(59, 19)
+        Me.lbl_CountInside.TabIndex = 7
+        Me.lbl_CountInside.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Lbl_CountEntry
+        '
+        Me.Lbl_CountEntry.BackColor = System.Drawing.Color.White
+        Me.Lbl_CountEntry.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Lbl_CountEntry.Location = New System.Drawing.Point(237, 44)
+        Me.Lbl_CountEntry.Name = "Lbl_CountEntry"
+        Me.Lbl_CountEntry.Size = New System.Drawing.Size(59, 19)
+        Me.Lbl_CountEntry.TabIndex = 12
+        Me.Lbl_CountEntry.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Lbl_CountPresent
+        '
+        Me.Lbl_CountPresent.BackColor = System.Drawing.Color.White
+        Me.Lbl_CountPresent.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Lbl_CountPresent.Location = New System.Drawing.Point(430, 44)
+        Me.Lbl_CountPresent.Name = "Lbl_CountPresent"
+        Me.Lbl_CountPresent.Size = New System.Drawing.Size(59, 19)
+        Me.Lbl_CountPresent.TabIndex = 13
+        Me.Lbl_CountPresent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Lbl_Booking
+        '
+        Me.Lbl_Booking.BackColor = System.Drawing.Color.White
+        Me.Lbl_Booking.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Lbl_Booking.Location = New System.Drawing.Point(621, 44)
+        Me.Lbl_Booking.Name = "Lbl_Booking"
+        Me.Lbl_Booking.Size = New System.Drawing.Size(59, 19)
+        Me.Lbl_Booking.TabIndex = 14
+        Me.Lbl_Booking.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Lbl_Exit
+        '
+        Me.Lbl_Exit.BackColor = System.Drawing.Color.White
+        Me.Lbl_Exit.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Lbl_Exit.Location = New System.Drawing.Point(813, 44)
+        Me.Lbl_Exit.Name = "Lbl_Exit"
+        Me.Lbl_Exit.Size = New System.Drawing.Size(59, 19)
+        Me.Lbl_Exit.TabIndex = 15
+        Me.Lbl_Exit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label12
+        '
+        Me.Label12.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label12.BackColor = System.Drawing.Color.LightYellow
+        Me.Label12.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Label12.ForeColor = System.Drawing.Color.Black
+        Me.Label12.Location = New System.Drawing.Point(219, 19)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(98, 19)
+        Me.Label12.TabIndex = 16
+        Me.Label12.Text = "Entry"
+        Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label13
+        '
+        Me.Label13.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label13.BackColor = System.Drawing.Color.Linen
+        Me.Label13.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Label13.ForeColor = System.Drawing.Color.Black
+        Me.Label13.Location = New System.Drawing.Point(412, 19)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(98, 19)
+        Me.Label13.TabIndex = 16
+        Me.Label13.Text = "Present"
+        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label14
+        '
+        Me.Label14.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label14.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.Label14.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Label14.ForeColor = System.Drawing.Color.Black
+        Me.Label14.Location = New System.Drawing.Point(602, 20)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(98, 19)
+        Me.Label14.TabIndex = 17
+        Me.Label14.Text = "Booking"
+        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label15
+        '
+        Me.Label15.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label15.BackColor = System.Drawing.Color.LightCoral
+        Me.Label15.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Label15.ForeColor = System.Drawing.Color.Black
+        Me.Label15.Location = New System.Drawing.Point(795, 20)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(98, 19)
+        Me.Label15.TabIndex = 18
+        Me.Label15.Text = "Exit"
+        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'frm_ManageReservation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(1159, 708)
-        Me.Controls.Add(Me.Lbl_Count)
-        Me.Controls.Add(Me.Label3)
+        Me.ClientSize = New System.Drawing.Size(1258, 708)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Cbo_VisitType)
         Me.Controls.Add(Me.Dtp_ReserveDate)
         Me.Controls.Add(Me.Label2)
@@ -242,6 +449,7 @@ Partial Class frm_ManageReservation
         Me.Name = "frm_ManageReservation"
         Me.Text = "Manage Reservation"
         CType(Me.Dgv_Reservation, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -260,6 +468,7 @@ Partial Class frm_ManageReservation
     Friend WithEvents Code As DataGridViewTextBoxColumn
     Friend WithEvents ReserveDate As DataGridViewTextBoxColumn
     Friend WithEvents VisitName As DataGridViewTextBoxColumn
+    Friend WithEvents Status As DataGridViewTextBoxColumn
     Friend WithEvents VisitCost As DataGridViewTextBoxColumn
     Friend WithEvents OpenVisit As DataGridViewButtonColumn
     Friend WithEvents Delete As DataGridViewButtonColumn
@@ -269,4 +478,18 @@ Partial Class frm_ManageReservation
     Friend WithEvents Height As DataGridViewTextBoxColumn
     Friend WithEvents StartWeight As DataGridViewTextBoxColumn
     Friend WithEvents VisitType As DataGridViewTextBoxColumn
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents lbl_CountInside As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Lbl_Exit As Label
+    Friend WithEvents Lbl_Booking As Label
+    Friend WithEvents Lbl_CountPresent As Label
+    Friend WithEvents Lbl_CountEntry As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label15 As Label
 End Class

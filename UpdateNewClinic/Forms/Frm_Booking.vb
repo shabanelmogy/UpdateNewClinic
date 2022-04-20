@@ -258,13 +258,13 @@ Public Class Frm_Booking
         For Each row As DataGridViewRow In Dgv_Visits.Rows
             If Not row.IsNewRow Then
                 Select Case row.Cells(5).Value.ToString
-                    Case "حاضر"
+                    Case "Present"
                         row.DefaultCellStyle.BackColor = Color.Linen
-                    Case "حجز"
+                    Case "Booking"
                         row.DefaultCellStyle.BackColor = Color.LightSteelBlue
-                    Case "دخول"
+                    Case "Entry"
                         row.DefaultCellStyle.BackColor = Color.LightYellow
-                    Case "خروج"
+                    Case "Out"
                         row.DefaultCellStyle.BackColor = Color.LightCoral
                 End Select
             End If
@@ -338,7 +338,7 @@ Public Class Frm_Booking
         Txt_SearchValue.Select()
 
         GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
-                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'")
+                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' Order By Status Asc")
     End Sub
 
     Private Sub Btn_SortDesc_Click(sender As Object, e As EventArgs) Handles Btn_SortDesc.Click
@@ -358,16 +358,17 @@ Public Class Frm_Booking
 
     Private Sub Btn_ShowToday_Click(sender As Object, e As EventArgs) Handles Btn_ShowToday.Click
         GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
-                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "'")
+                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' Order By Status Asc")
     End Sub
 
     Private Sub Btn_ShowAll_Click(sender As Object, e As EventArgs) Handles Btn_ShowAll.Click
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0")
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation 
+                           Where Checkok=0 Order By Status Asc")
     End Sub
 
     Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles Btn_Search.Click
         GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
-                           And ReserveDate='" & Format(Dtp_Search.Value, "yyyy-MM-dd") & "'")
+                           And ReserveDate='" & Format(Dtp_Search.Value, "yyyy-MM-dd") & "' Order By Status Asc")
     End Sub
 
 #End Region
@@ -375,10 +376,8 @@ Public Class Frm_Booking
 #Region "TextBox"
 
     Private Sub Txt_SearchValue_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_SearchValue.KeyPress
-        If Cbo_SortAndSearch.Text = "PatientName" And Not ((Asc(e.KeyChar) = 8 OrElse e.KeyChar = " ") OrElse (e.KeyChar >= "A" AndAlso e.KeyChar <= "z")) Then
+        If Cbo_SortAndSearch.Text = "PatientName" And (Char.IsControl(e.KeyChar) = False And Char.IsLetter(e.KeyChar) = False And Not e.KeyChar = " ") Then
             e.Handled = True
-            CType(sender, TextBox).Clear()
-
         ElseIf Cbo_SortAndSearch.Text = "Phone" And Char.IsControl(e.KeyChar) = False And Char.IsDigit(e.KeyChar) = False Then
             e.Handled = True
         End If
@@ -410,14 +409,13 @@ Public Class Frm_Booking
 #End Region
 
 #Region "Forms"
-
     Private Sub Frm_Reservation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Fill_Combobox(Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
             Cbo_SortAndSearch.SelectedIndex = 0
             GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
             GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
-                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' Order By Status Desc ")
+                               And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' Order By Status Asc ")
             TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType, "Select Amount From VisitsTypes", "Num")
             Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
             Dtp_Search.Value = Date.Now.ToString("dd-MM-yyyy")

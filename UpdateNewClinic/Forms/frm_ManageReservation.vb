@@ -16,9 +16,9 @@ Public Class frm_ManageReservation
     Sub CountVisits()
         Dim Count As Integer = Dgv_Reservation.Rows.Count
         If Count > 0 Then
-            Lbl_Count.Text = Count
+            lbl_CountInside.Text = Count
         Else
-            Lbl_Count.Text = "No Reservations"
+            lbl_CountInside.Text = "No Reservations"
         End If
     End Sub
 
@@ -31,7 +31,7 @@ Public Class frm_ManageReservation
             Dgv_Reservation.Rows.Clear()
             While rdr.Read
                 Dgv_Reservation.Rows.Add(rdr("PatientID").ToString, rdr("PatientName").ToString, rdr("PhoneNumber").ToString, rdr("Code").ToString,
-                                             Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("VisitName").ToString, rdr("VisitCost").ToString, "", "",
+                                             Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("VisitName").ToString, rdr("Status").ToString, rdr("VisitCost").ToString, "", "",
                                              Format(rdr("Firstdate"), "dd/MM/yyyy"), rdr("Age").ToString, rdr("Occupation").ToString,
                                              rdr("Height").ToString, rdr("StartWeight").ToString, rdr("VisitType").ToString)
 
@@ -63,9 +63,11 @@ Public Class frm_ManageReservation
 
     Private Sub Frm_ManageVisits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,StartWeight,
-                       VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                       Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
+        GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,
+                       Height,StartWeight,VisitType,Status
+                       From Reservation Inner Join PatientsDetail 
+                       On Reservation.PatientID=PatientsDetail.PatientNum
+                       Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' Order By Status Asc ")
 
         Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
         CountVisits()
@@ -83,7 +85,7 @@ Public Class frm_ManageReservation
             If e.KeyCode = Keys.Enter Then
                 GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,
                                StartWeight,VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                               Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'")
+                               Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' Order By Status Asc")
                 FormatDgv_Search()
                 CountVisits()
             End If
@@ -99,7 +101,8 @@ Public Class frm_ManageReservation
         If FillCombobox = True Then
             GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,StartWeight,
                            VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum Where CheckOk = 0 
-                           And VisitType=" & Cbo_VisitType.SelectedValue & " And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'")
+                           And VisitType=" & Cbo_VisitType.SelectedValue & " And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'
+                           Order By Status Asc")
             FormatDgv_Search()
             CountVisits()
         End If
@@ -110,7 +113,7 @@ Public Class frm_ManageReservation
             If FillCombobox = True Then
                 GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,StartWeight,
                                VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                               Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
+                               Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' Order By Status Asc")
                 FormatDgv_Search()
                 CountVisits()
             End If
@@ -118,12 +121,12 @@ Public Class frm_ManageReservation
     End Sub
 
     Private Sub Dgv_Reservation_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles Dgv_Reservation.CellPainting
-        If e.ColumnIndex = 7 AndAlso e.RowIndex >= 0 Then
+        If e.ColumnIndex = 8 AndAlso e.RowIndex >= 0 Then
             e.Paint(e.CellBounds, DataGridViewPaintParts.All)
             Dim img As Image = My.Resources.Open_16_16
             e.Graphics.DrawImage(img, e.CellBounds.Left + 45, e.CellBounds.Top + 7, 10, 10)
             e.Handled = True
-        ElseIf e.ColumnIndex = 8 AndAlso e.RowIndex >= 0 Then
+        ElseIf e.ColumnIndex = 9 AndAlso e.RowIndex >= 0 Then
             e.Paint(e.CellBounds, DataGridViewPaintParts.All)
             Dim img As Image = My.Resources.Delete_16x16
             e.Graphics.DrawImage(img, e.CellBounds.Left + 45, e.CellBounds.Top + 7, 10, 10)
@@ -134,7 +137,7 @@ Public Class frm_ManageReservation
     Private Sub Dgv_Reservation_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Reservation.CellContentClick
 
 #Region "Delete Button"
-        If e.ColumnIndex = 8 And e.RowIndex >= 0 Then
+        If e.ColumnIndex = 9 And e.RowIndex >= 0 Then
             Try
                 If Dgv_Reservation.Rows.Count > 0 Then
                     CurId = Dgv_Reservation.CurrentRow.Cells(0).Value
@@ -152,7 +155,8 @@ Public Class frm_ManageReservation
                     Cmd.ExecuteNonQuery()
                 End If
                 Frm_ManageVisits_Load(Nothing, Nothing)
-                Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,State From Reservation Where Checkok=0")
+                Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,Status From Reservation 
+                                               Where Checkok=0 Order By Status Asc")
                 con.Close()
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Information, "Delete")
@@ -160,7 +164,7 @@ Public Class frm_ManageReservation
                 If con.State = 1 Then con.Close()
             End Try
 #End Region
-        ElseIf e.ColumnIndex = 7 And e.RowIndex >= 0 Then
+        ElseIf e.ColumnIndex = 8 And e.RowIndex >= 0 Then
             Dim PatientName As String = Dgv_Reservation.Rows(e.RowIndex).Cells(1).Value.ToString
             Dim PatientNum As String = Dgv_Reservation.Rows(e.RowIndex).Cells(0).Value
 
