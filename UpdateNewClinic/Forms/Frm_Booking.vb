@@ -38,6 +38,17 @@ Public Class Frm_Booking
         End Try
     End Sub
 
+    Sub FilldatagridviewComboBox_DataReader()
+        cmd = New SqlCommand("Select StatusID,StatusName From Status", con)
+        con.Open()
+        rdr = cmd.ExecuteReader
+        Status1.Items.Clear()
+        While rdr.Read
+            Status1.Items.Add(rdr("StatusName").ToString)
+        End While
+        con.Close()
+    End Sub
+
     'تحديث شاشة الحجز باى إضافة جديدة
     Sub load_FrmManageReservation()
         frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,StartWeight,
@@ -409,8 +420,10 @@ Public Class Frm_Booking
 #End Region
 
 #Region "Forms"
+
     Private Sub Frm_Reservation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            FilldatagridviewComboBox_DataReader()
             Fill_Combobox(Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
             Cbo_SortAndSearch.SelectedIndex = 0
             GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
@@ -429,6 +442,17 @@ Public Class Frm_Booking
 #End Region
 
 #End Region
+
+    'Sub FilldatagridviewComboBox_DataTable()
+    '    cmd = New SqlCommand("Select * From Status", con)
+    '    da = New SqlDataAdapter(cmd)
+    '    dt = New DataTable
+    '    da.Fill(dt)
+
+    '    Status1.DataSource = dt
+    '    Status1.ValueMember = "StatusId"
+    '    Status1.DisplayMember = "StatusName"
+    'End Sub
 
 
 End Class

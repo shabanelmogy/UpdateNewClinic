@@ -71,7 +71,7 @@ Partial Class Frm_Booking
         Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VisitType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Status = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Status1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -455,6 +455,7 @@ Partial Class Frm_Booking
         '
         'Dgv_Visits
         '
+        Me.Dgv_Visits.AllowUserToAddRows = False
         Me.Dgv_Visits.AllowUserToDeleteRows = False
         Me.Dgv_Visits.AllowUserToResizeRows = False
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
@@ -473,7 +474,7 @@ Partial Class Frm_Booking
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Dgv_Visits.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.Dgv_Visits.ColumnHeadersHeight = 30
-        Me.Dgv_Visits.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientNum, Me.PatientName, Me.ReserveDate, Me.VisitType, Me.VisitCost, Me.Status, Me.Delete})
+        Me.Dgv_Visits.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientNum, Me.PatientName, Me.ReserveDate, Me.VisitType, Me.VisitCost, Me.Status1, Me.Delete})
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -615,14 +616,12 @@ Partial Class Frm_Booking
         Me.VisitCost.Name = "VisitCost"
         Me.VisitCost.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
-        'Status
+        'Status1
         '
-        Me.Status.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.Status.HeaderText = "Status"
-        Me.Status.Items.AddRange(New Object() {"Booking", "Entry", "Out", "Present"})
-        Me.Status.Name = "Status"
-        Me.Status.Sorted = True
-        Me.Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Status1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.Status1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Status1.HeaderText = "Status"
+        Me.Status1.Name = "Status1"
         '
         'Delete
         '
@@ -702,6 +701,6 @@ Partial Class Frm_Booking
     Friend WithEvents ReserveDate As DataGridViewTextBoxColumn
     Friend WithEvents VisitType As DataGridViewTextBoxColumn
     Friend WithEvents VisitCost As DataGridViewTextBoxColumn
-    Friend WithEvents Status As DataGridViewComboBoxColumn
+    Friend WithEvents Status1 As DataGridViewComboBoxColumn
     Friend WithEvents Delete As DataGridViewButtonColumn
 End Class
