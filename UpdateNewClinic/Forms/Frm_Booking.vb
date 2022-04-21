@@ -62,21 +62,6 @@ Public Class Frm_Booking
         End Try
     End Sub
 
-    'تحديث شاشة حجز الطبيب باى إضافة جديدة
-    'Sub load_FrmManageReservation()
-    '    frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,
-    '                                        FirstDate,Age,Occupation,Height,StartWeight,VisitType,Status From Reservation 
-    '                                        Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-    '                                        Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'
-    '                                        Order By Case 
-    '                                        When status='Entry' then 1 
-    '                                        When status='Present' then 2
-    '                                        When status='Booking' then 3
-    '                                        When status='Out' then 4
-    '                                        End")
-    '    'frm_ManageReservation.FormatDgv_Search()
-    'End Sub
-
     Private Sub Auto_Save(sql As String)
         Try
             con.Open()
@@ -156,7 +141,7 @@ Public Class Frm_Booking
         If dt.Rows.Count = 0 Then
 
             cmd = New SqlCommand("Insert Into Reservation(PatientID,PatientName,ReserveDate,VisitType,VisitName,VisitCost,status)
-                                 Values(@PatientID,@PatientName,@ReserveDate,@VisitType,@VisitName,@VisitCost,'Present')", con)
+                                 Values(@PatientID,@PatientName,@ReserveDate,@VisitType,@VisitName,@VisitCost,'Waiting')", con)
             With cmd
                 .Parameters.AddWithValue("@PatientID", Val(Txt_Num.Text)).DbType = DbType.Int32
                 .Parameters.AddWithValue("@PatientName", Txt_PatientName.Text).DbType = DbType.String
@@ -225,10 +210,10 @@ Public Class Frm_Booking
 
     Sub FormatDgv_Visits()
         Dgv_Visits.Columns("PatientNum").Width = 100
-        Dgv_Visits.Columns("PatientName").Width = 200
-        Dgv_Visits.Columns("ReserveDate").Width = 100
-        Dgv_Visits.Columns("VisitType").Width = 120
-        Dgv_Visits.Columns("VisitCost").Width = 80
+        Dgv_Visits.Columns("PatientName").Width = 250
+        Dgv_Visits.Columns("ReserveDate").Width = 120
+        Dgv_Visits.Columns("VisitType").Width = 150
+        Dgv_Visits.Columns("VisitCost").Width = 100
     End Sub
 
     Private Sub Dgv_Visits_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Visits.CellContentClick
@@ -289,12 +274,12 @@ Public Class Frm_Booking
         For Each row As DataGridViewRow In Dgv_Visits.Rows
             If Not row.IsNewRow Then
                 Select Case row.Cells(5).Value.ToString
-                    Case "Present"
-                        row.DefaultCellStyle.BackColor = Color.Linen
+                    Case "Waiting"
+                        row.DefaultCellStyle.BackColor = Color.Wheat
                     Case "Booking"
                         row.DefaultCellStyle.BackColor = Color.LightSteelBlue
                     Case "Entry"
-                        row.DefaultCellStyle.BackColor = Color.LightYellow
+                        row.DefaultCellStyle.BackColor = Color.LightGreen
                     Case "Out"
                         row.DefaultCellStyle.BackColor = Color.LightCoral
                 End Select
@@ -373,7 +358,7 @@ Public Class Frm_Booking
                            And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' 
                            Order By Case 
                            When status='Entry' then 1 
-                           When status='Present' then 2
+                           When status='Waiting' then 2
                            When status='Booking' then 3
                            When status='Out' then 4
                            End")
@@ -399,7 +384,7 @@ Public Class Frm_Booking
                            And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' 
                            Order By Case 
                            When status='Entry' then 1 
-                           When status='Present' then 2
+                           When status='Waiting' then 2
                            When status='Booking' then 3
                            When status='Out' then 4
                            End")
@@ -410,7 +395,7 @@ Public Class Frm_Booking
                            Where Checkok=0
                            Order By Case 
                            When status='Entry' then 1 
-                           When status='Present' then 2
+                           When status='Waiting' then 2
                            When status='Booking' then 3
                            When status='Out' then 4
                            End")
@@ -469,7 +454,7 @@ Public Class Frm_Booking
                                And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' 
                                Order By Case 
                                When status='Entry' then 1 
-                               When status='Present' then 2
+                               When status='Waiting' then 2
                                When status='Booking' then 3
                                When status='Out' then 4
                                End")
@@ -493,11 +478,13 @@ Public Class Frm_Booking
                                              Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'
                                              Order By Case 
                                              When status='Entry' then 1 
-                                             When status='Present' then 2
+                                             When status='Waiting' then 2
                                              When status='Booking' then 3
                                              When status='Out' then 4
                                              End")
     End Sub
+
+
 #End Region
 
 #End Region

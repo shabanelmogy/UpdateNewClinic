@@ -70,7 +70,7 @@ Public Class frm_ManageReservation
                        Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'
                        Order By Case 
                        When status='Entry' then 1 
-                       When status='Present' then 2
+                       When status='Waiting' then 2
                        When status='Booking' then 3
                        When status='Out' then 4
                        End")
@@ -164,7 +164,7 @@ Public Class frm_ManageReservation
                 Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,Status From Reservation Where Checkok=0 
                                                Order By Case 
                                                When status='Entry' then 1 
-                                               When status='Present' then 2
+                                               When status='Waiting' then 2
                                                When status='Booking' then 3
                                                When status='Out' then 4
                                                End")
@@ -214,7 +214,6 @@ Public Class frm_ManageReservation
                     '=======================================================================================================================
                     frm.FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewBmi,PlanOfTreatment,EatingHabits,Notes from ClinicDays
                                              Inner Join VisitsTypes on ClinicDays.VisitType = VisitsTypes.Num Where PatientID = " & PatientNum)
-
                 End If
             Next
             frm.Show()
@@ -225,12 +224,12 @@ Public Class frm_ManageReservation
         For Each row As DataGridViewRow In Dgv_MangeReservation.Rows
             If Not row.IsNewRow Then
                 Select Case row.Cells("Status").Value.ToString
-                    Case "Present"
-                        row.DefaultCellStyle.BackColor = Color.Linen
+                    Case "Waiting"
+                        row.DefaultCellStyle.BackColor = Color.Wheat
                     Case "Booking"
                         row.DefaultCellStyle.BackColor = Color.LightSteelBlue
                     Case "Entry"
-                        row.DefaultCellStyle.BackColor = Color.LightYellow
+                        row.DefaultCellStyle.BackColor = Color.LightGreen
                     Case "Out"
                         row.DefaultCellStyle.BackColor = Color.LightCoral
                 End Select

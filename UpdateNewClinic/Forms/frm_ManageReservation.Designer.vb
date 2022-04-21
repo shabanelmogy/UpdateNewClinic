@@ -22,9 +22,9 @@ Partial Class frm_ManageReservation
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Dgv_MangeReservation = New System.Windows.Forms.DataGridView()
         Me.PatientID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -55,7 +55,7 @@ Partial Class frm_ManageReservation
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Lbl_Exit = New System.Windows.Forms.Label()
         Me.Lbl_Booking = New System.Windows.Forms.Label()
-        Me.Lbl_CountPresent = New System.Windows.Forms.Label()
+        Me.Lbl_CountWaiting = New System.Windows.Forms.Label()
         Me.Lbl_CountEntry = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -71,28 +71,28 @@ Partial Class frm_ManageReservation
         Me.Dgv_MangeReservation.AllowUserToAddRows = False
         Me.Dgv_MangeReservation.AllowUserToDeleteRows = False
         Me.Dgv_MangeReservation.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.Dgv_MangeReservation.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Dgv_MangeReservation.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
         Me.Dgv_MangeReservation.BackgroundColor = System.Drawing.Color.White
         Me.Dgv_MangeReservation.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_MangeReservation.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_MangeReservation.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.Dgv_MangeReservation.ColumnHeadersHeight = 30
         Me.Dgv_MangeReservation.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientID, Me.PatientName, Me.PhoneNumber, Me.Code, Me.ReserveDate, Me.VisitName, Me.Status, Me.VisitCost, Me.OpenVisit, Me.Delete, Me.FirstDate, Me.Age, Me.Occupation, Me.Height, Me.StartWeight, Me.VisitType})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Linen
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Dgv_MangeReservation.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Linen
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_MangeReservation.DefaultCellStyle = DataGridViewCellStyle9
         Me.Dgv_MangeReservation.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Dgv_MangeReservation.Location = New System.Drawing.Point(0, 79)
         Me.Dgv_MangeReservation.Name = "Dgv_MangeReservation"
@@ -260,7 +260,7 @@ Partial Class frm_ManageReservation
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Controls.Add(Me.Lbl_Exit)
         Me.GroupBox1.Controls.Add(Me.Lbl_Booking)
-        Me.GroupBox1.Controls.Add(Me.Lbl_CountPresent)
+        Me.GroupBox1.Controls.Add(Me.Lbl_CountWaiting)
         Me.GroupBox1.Controls.Add(Me.Lbl_CountEntry)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.Label6)
@@ -310,14 +310,14 @@ Partial Class frm_ManageReservation
         Me.Label13.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label13.BackColor = System.Drawing.Color.Linen
+        Me.Label13.BackColor = System.Drawing.Color.Wheat
         Me.Label13.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
         Me.Label13.ForeColor = System.Drawing.Color.Black
         Me.Label13.Location = New System.Drawing.Point(412, 19)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(98, 19)
         Me.Label13.TabIndex = 16
-        Me.Label13.Text = "Present"
+        Me.Label13.Text = "Waiting"
         Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label12
@@ -325,7 +325,7 @@ Partial Class frm_ManageReservation
         Me.Label12.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label12.BackColor = System.Drawing.Color.LightYellow
+        Me.Label12.BackColor = System.Drawing.Color.LightGreen
         Me.Label12.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
         Me.Label12.ForeColor = System.Drawing.Color.Black
         Me.Label12.Location = New System.Drawing.Point(219, 19)
@@ -355,15 +355,15 @@ Partial Class frm_ManageReservation
         Me.Lbl_Booking.TabIndex = 14
         Me.Lbl_Booking.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Lbl_CountPresent
+        'Lbl_CountWaiting
         '
-        Me.Lbl_CountPresent.BackColor = System.Drawing.Color.White
-        Me.Lbl_CountPresent.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.Lbl_CountPresent.Location = New System.Drawing.Point(430, 44)
-        Me.Lbl_CountPresent.Name = "Lbl_CountPresent"
-        Me.Lbl_CountPresent.Size = New System.Drawing.Size(59, 19)
-        Me.Lbl_CountPresent.TabIndex = 13
-        Me.Lbl_CountPresent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Lbl_CountWaiting.BackColor = System.Drawing.Color.White
+        Me.Lbl_CountWaiting.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Lbl_CountWaiting.Location = New System.Drawing.Point(430, 44)
+        Me.Lbl_CountWaiting.Name = "Lbl_CountWaiting"
+        Me.Lbl_CountWaiting.Size = New System.Drawing.Size(59, 19)
+        Me.Lbl_CountWaiting.TabIndex = 13
+        Me.Lbl_CountWaiting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Lbl_CountEntry
         '
@@ -390,7 +390,7 @@ Partial Class frm_ManageReservation
         'Label6
         '
         Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label6.BackColor = System.Drawing.Color.LightYellow
+        Me.Label6.BackColor = System.Drawing.Color.LightGreen
         Me.Label6.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Label6.ForeColor = System.Drawing.Color.Black
         Me.Label6.Location = New System.Drawing.Point(196, 17)
@@ -414,7 +414,7 @@ Partial Class frm_ManageReservation
         'Label4
         '
         Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label4.BackColor = System.Drawing.Color.Linen
+        Me.Label4.BackColor = System.Drawing.Color.Wheat
         Me.Label4.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(387, 17)
@@ -486,7 +486,7 @@ Partial Class frm_ManageReservation
     Friend WithEvents Label5 As Label
     Friend WithEvents Lbl_Exit As Label
     Friend WithEvents Lbl_Booking As Label
-    Friend WithEvents Lbl_CountPresent As Label
+    Friend WithEvents Lbl_CountWaiting As Label
     Friend WithEvents Lbl_CountEntry As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
