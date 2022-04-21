@@ -47,13 +47,15 @@ Public Class Frm_Booking
             Status1.Items.Add(rdr("StatusName").ToString)
         End While
         con.Close()
+        rdr.Close()
     End Sub
 
     'تحديث شاشة الحجز باى إضافة جديدة
     Sub load_FrmManageReservation()
-        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,StartWeight,
-                               VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                               Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'")
+        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,
+                                            FirstDate,Age,Occupation,Height,StartWeight,VisitType,Status From Reservation 
+                                            Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                                            Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'")
         frm_ManageReservation.FormatDgv_Search()
     End Sub
 
@@ -136,7 +138,7 @@ Public Class Frm_Booking
         If dt.Rows.Count = 0 Then
 
             cmd = New SqlCommand("Insert Into Reservation(PatientID,PatientName,ReserveDate,VisitType,VisitName,VisitCost,status)
-                                 Values(@PatientID,@PatientName,@ReserveDate,@VisitType,@VisitName,@VisitCost,'حاضر')", con)
+                                 Values(@PatientID,@PatientName,@ReserveDate,@VisitType,@VisitName,@VisitCost,'Present')", con)
             With cmd
                 .Parameters.AddWithValue("@PatientID", Val(Txt_Num.Text)).DbType = DbType.Int32
                 .Parameters.AddWithValue("@PatientName", Txt_PatientName.Text).DbType = DbType.String

@@ -455,7 +455,6 @@ Partial Class Frm_Booking
         '
         'Dgv_Visits
         '
-        Me.Dgv_Visits.AllowUserToAddRows = False
         Me.Dgv_Visits.AllowUserToDeleteRows = False
         Me.Dgv_Visits.AllowUserToResizeRows = False
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
@@ -622,6 +621,8 @@ Partial Class Frm_Booking
         Me.Status1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Status1.HeaderText = "Status"
         Me.Status1.Name = "Status1"
+        Me.Status1.Sorted = True
+        Me.Status1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'Delete
         '

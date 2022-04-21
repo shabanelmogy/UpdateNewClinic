@@ -158,7 +158,7 @@ Module Main_Mod
                 End If
             Next
         Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
     End Sub
 
