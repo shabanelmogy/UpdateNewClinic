@@ -303,6 +303,8 @@ Module Main_Mod
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
+        Finally
+            If con.State = 1 Then con.Close()
         End Try
     End Sub
 

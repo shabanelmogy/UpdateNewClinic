@@ -32,32 +32,50 @@ Public Class Frm_Booking
             Dgv_Search.DataSource = Nothing
             Dgv_Search.DataSource = Dt_Search
             FormatDgv_Search()
-
+            da.Dispose()
+            dt.Dispose()
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Information)
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation, "Error")
+        Finally
+            If con.State = 1 Then con.Close()
         End Try
     End Sub
 
     Sub FilldatagridviewComboBox_DataReader()
-        cmd = New SqlCommand("Select StatusID,StatusName From Status", con)
-        con.Open()
-        rdr = cmd.ExecuteReader
-        Status1.Items.Clear()
-        While rdr.Read
-            Status1.Items.Add(rdr("StatusName").ToString)
-        End While
-        con.Close()
-        rdr.Close()
+        Try
+            cmd = New SqlCommand("Select StatusID,StatusName From Status", con)
+            con.Open()
+            rdr = cmd.ExecuteReader
+            Status1.Items.Clear()
+
+            While rdr.Read
+                Status1.Items.Add(rdr("StatusName").ToString)
+            End While
+            con.Close()
+            rdr.Close()
+            cmd.Dispose()
+        Catch ex As Exception
+            'تم تجاهل رسالة الخطأ لظهور خطأ أن الإتصال مفتوح
+            'MsgBox(ex.Message, MsgBoxStyle.Exclamation, "1")
+        Finally
+            If con.State = 1 Then con.Close()
+        End Try
     End Sub
 
-    'تحديث شاشة الحجز باى إضافة جديدة
-    Sub load_FrmManageReservation()
-        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,
-                                            FirstDate,Age,Occupation,Height,StartWeight,VisitType,Status From Reservation 
-                                            Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                                            Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'")
-        frm_ManageReservation.FormatDgv_Search()
-    End Sub
+    'تحديث شاشة حجز الطبيب باى إضافة جديدة
+    'Sub load_FrmManageReservation()
+    '    frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,
+    '                                        FirstDate,Age,Occupation,Height,StartWeight,VisitType,Status From Reservation 
+    '                                        Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+    '                                        Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'
+    '                                        Order By Case 
+    '                                        When status='Entry' then 1 
+    '                                        When status='Present' then 2
+    '                                        When status='Booking' then 3
+    '                                        When status='Out' then 4
+    '                                        End")
+    '    'frm_ManageReservation.FormatDgv_Search()
+    'End Sub
 
     Private Sub Auto_Save(sql As String)
         Try
@@ -225,7 +243,6 @@ Public Class Frm_Booking
 
                 If MsgBox("Do You Want To Delete This Record ?", MsgBoxStyle.Information + vbYesNo + MsgBoxStyle.DefaultButton2, "Attention") = vbYes Then
 
-
                     cmd = New SqlCommand("Delete From Reservation Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
                     cmd.Parameters.AddWithValue("@PatientID", curid)
                     cmd.Parameters.AddWithValue("@ReserveDate", curdate)
@@ -237,8 +254,9 @@ Public Class Frm_Booking
 
                 Frm_Reservation_Load(Nothing, Nothing)
                 frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,
-                                                         Occupation,Height,StartWeight,VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                                                         Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
+                                                     Occupation,Height,StartWeight,VisitType,Status From Reservation 
+                                                     Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                                                     Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
                 con.Close()
             Catch ex As Exception
 
@@ -264,7 +282,7 @@ Public Class Frm_Booking
                 End If
             End With
         Next
-
+        LoadFrm_ManageReservation()
     End Sub
 
     Private Sub Dgv_Visits_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles Dgv_Visits.CellFormatting
@@ -342,7 +360,7 @@ Public Class Frm_Booking
             Update_Reservation()
         End If
 
-        load_FrmManageReservation()
+        'load_FrmManageReservation()
 
         Txt_Num.Text = ""
         Txt_PatientName.Text = ""
@@ -350,8 +368,15 @@ Public Class Frm_Booking
         Txt_VisitCost.Text = ""
         Txt_SearchValue.Select()
 
+        LoadFrm_ManageReservation()
         GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
-                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' Order By Status Asc")
+                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' 
+                           Order By Case 
+                           When status='Entry' then 1 
+                           When status='Present' then 2
+                           When status='Booking' then 3
+                           When status='Out' then 4
+                           End")
     End Sub
 
     Private Sub Btn_SortDesc_Click(sender As Object, e As EventArgs) Handles Btn_SortDesc.Click
@@ -371,12 +396,24 @@ Public Class Frm_Booking
 
     Private Sub Btn_ShowToday_Click(sender As Object, e As EventArgs) Handles Btn_ShowToday.Click
         GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
-                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' Order By Status Asc")
+                           And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' 
+                           Order By Case 
+                           When status='Entry' then 1 
+                           When status='Present' then 2
+                           When status='Booking' then 3
+                           When status='Out' then 4
+                           End")
     End Sub
 
     Private Sub Btn_ShowAll_Click(sender As Object, e As EventArgs) Handles Btn_ShowAll.Click
         GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation 
-                           Where Checkok=0 Order By Status Asc")
+                           Where Checkok=0
+                           Order By Case 
+                           When status='Entry' then 1 
+                           When status='Present' then 2
+                           When status='Booking' then 3
+                           When status='Out' then 4
+                           End")
     End Sub
 
     Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles Btn_Search.Click
@@ -422,7 +459,6 @@ Public Class Frm_Booking
 #End Region
 
 #Region "Forms"
-
     Private Sub Frm_Reservation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             FilldatagridviewComboBox_DataReader()
@@ -430,7 +466,13 @@ Public Class Frm_Booking
             Cbo_SortAndSearch.SelectedIndex = 0
             GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
             GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
-                               And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' Order By Status Asc ")
+                               And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' 
+                               Order By Case 
+                               When status='Entry' then 1 
+                               When status='Present' then 2
+                               When status='Booking' then 3
+                               When status='Out' then 4
+                               End")
             TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType, "Select Amount From VisitsTypes", "Num")
             Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
             Dtp_Search.Value = Date.Now.ToString("dd-MM-yyyy")
@@ -438,23 +480,28 @@ Public Class Frm_Booking
             check = False
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information)
+        Finally
+            If con.State = 1 Then con.Close()
         End Try
     End Sub
 
+#Region "LoadOtherForms"
+    Sub LoadFrm_ManageReservation()
+        frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,
+                                             Occupation,Height,StartWeight,VisitType,Status From Reservation 
+                                             Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                                             Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'
+                                             Order By Case 
+                                             When status='Entry' then 1 
+                                             When status='Present' then 2
+                                             When status='Booking' then 3
+                                             When status='Out' then 4
+                                             End")
+    End Sub
 #End Region
 
 #End Region
 
-    'Sub FilldatagridviewComboBox_DataTable()
-    '    cmd = New SqlCommand("Select * From Status", con)
-    '    da = New SqlDataAdapter(cmd)
-    '    dt = New DataTable
-    '    da.Fill(dt)
-
-    '    Status1.DataSource = dt
-    '    Status1.ValueMember = "StatusId"
-    '    Status1.DisplayMember = "StatusName"
-    'End Sub
-
+#End Region
 
 End Class

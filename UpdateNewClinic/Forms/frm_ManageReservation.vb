@@ -14,7 +14,7 @@ Public Class frm_ManageReservation
 #End Region
 
     Sub CountVisits()
-        Dim Count As Integer = Dgv_Reservation.Rows.Count
+        Dim Count As Integer = Dgv_MangeReservation.Rows.Count
         If Count > 0 Then
             lbl_CountInside.Text = Count
         Else
@@ -28,9 +28,9 @@ Public Class frm_ManageReservation
             Dim cmd As New SqlCommand(Query, con)
             con.Open()
             rdr = cmd.ExecuteReader
-            Dgv_Reservation.Rows.Clear()
+            Dgv_MangeReservation.Rows.Clear()
             While rdr.Read
-                Dgv_Reservation.Rows.Add(rdr("PatientID").ToString, rdr("PatientName").ToString, rdr("PhoneNumber").ToString, rdr("Code").ToString,
+                Dgv_MangeReservation.Rows.Add(rdr("PatientID").ToString, rdr("PatientName").ToString, rdr("PhoneNumber").ToString, rdr("Code").ToString,
                                              Format(rdr("ReserveDate"), "dd/MM/yyyy"), rdr("VisitName").ToString, rdr("Status").ToString, rdr("VisitCost").ToString, "", "",
                                              Format(rdr("Firstdate"), "dd/MM/yyyy"), rdr("Age").ToString, rdr("Occupation").ToString,
                                              rdr("Height").ToString, rdr("StartWeight").ToString, rdr("VisitType").ToString)
@@ -45,20 +45,20 @@ Public Class frm_ManageReservation
 
     Sub FormatDgv_Search()
         '===========ضبط مقاسات الاعمدة=============================================================
-        Dgv_Reservation.Columns("PatientID").Width = 77
-        Dgv_Reservation.Columns("PatientName").Width = 300
-        Dgv_Reservation.Columns("PhoneNumber").Width = 120
-        Dgv_Reservation.Columns("Code").Width = 75
-        Dgv_Reservation.Columns("ReserveDate").Width = 140
-        Dgv_Reservation.Columns("VisitName").Width = 150
-        Dgv_Reservation.Columns("VisitCost").Width = 95
+        Dgv_MangeReservation.Columns("PatientID").Width = 77
+        Dgv_MangeReservation.Columns("PatientName").Width = 300
+        Dgv_MangeReservation.Columns("PhoneNumber").Width = 120
+        Dgv_MangeReservation.Columns("Code").Width = 75
+        Dgv_MangeReservation.Columns("ReserveDate").Width = 140
+        Dgv_MangeReservation.Columns("VisitName").Width = 150
+        Dgv_MangeReservation.Columns("VisitCost").Width = 95
         '=================================================
-        Dgv_Reservation.Columns("Firstdate").Visible = False
-        Dgv_Reservation.Columns("Age").Visible = False
-        Dgv_Reservation.Columns("Occupation").Visible = False
-        Dgv_Reservation.Columns("Height").Visible = False
-        Dgv_Reservation.Columns("StartWeight").Visible = False
-        Dgv_Reservation.Columns("VisitType").Visible = False
+        Dgv_MangeReservation.Columns("Firstdate").Visible = False
+        Dgv_MangeReservation.Columns("Age").Visible = False
+        Dgv_MangeReservation.Columns("Occupation").Visible = False
+        Dgv_MangeReservation.Columns("Height").Visible = False
+        Dgv_MangeReservation.Columns("StartWeight").Visible = False
+        Dgv_MangeReservation.Columns("VisitType").Visible = False
     End Sub
 
     Private Sub Frm_ManageVisits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -67,7 +67,13 @@ Public Class frm_ManageReservation
                        Height,StartWeight,VisitType,Status
                        From Reservation Inner Join PatientsDetail 
                        On Reservation.PatientID=PatientsDetail.PatientNum
-                       Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' Order By Status Asc ")
+                       Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'
+                       Order By Case 
+                       When status='Entry' then 1 
+                       When status='Present' then 2
+                       When status='Booking' then 3
+                       When status='Out' then 4
+                       End")
 
         Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
         CountVisits()
@@ -120,7 +126,7 @@ Public Class frm_ManageReservation
         End If
     End Sub
 
-    Private Sub Dgv_Reservation_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles Dgv_Reservation.CellPainting
+    Private Sub Dgv_Reservation_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles Dgv_MangeReservation.CellPainting
         If e.ColumnIndex = 8 AndAlso e.RowIndex >= 0 Then
             e.Paint(e.CellBounds, DataGridViewPaintParts.All)
             Dim img As Image = My.Resources.Open_16_16
@@ -134,14 +140,14 @@ Public Class frm_ManageReservation
         End If
     End Sub
 
-    Private Sub Dgv_Reservation_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Reservation.CellContentClick
+    Private Sub Dgv_Reservation_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_MangeReservation.CellContentClick
 
 #Region "Delete Button"
         If e.ColumnIndex = 9 And e.RowIndex >= 0 Then
             Try
-                If Dgv_Reservation.Rows.Count > 0 Then
-                    CurId = Dgv_Reservation.CurrentRow.Cells(0).Value
-                    CurDate = Dgv_Reservation.CurrentRow.Cells(4).Value
+                If Dgv_MangeReservation.Rows.Count > 0 Then
+                    CurId = Dgv_MangeReservation.CurrentRow.Cells(0).Value
+                    CurDate = Dgv_MangeReservation.CurrentRow.Cells(4).Value
                 Else Exit Sub
                 End If
 
@@ -155,8 +161,13 @@ Public Class frm_ManageReservation
                     Cmd.ExecuteNonQuery()
                 End If
                 Frm_ManageVisits_Load(Nothing, Nothing)
-                Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,Status From Reservation 
-                                               Where Checkok=0 Order By Status Asc")
+                Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,Status From Reservation Where Checkok=0 
+                                               Order By Case 
+                                               When status='Entry' then 1 
+                                               When status='Present' then 2
+                                               When status='Booking' then 3
+                                               When status='Out' then 4
+                                               End")
                 con.Close()
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Information, "Delete")
@@ -165,8 +176,8 @@ Public Class frm_ManageReservation
             End Try
 #End Region
         ElseIf e.ColumnIndex = 8 And e.RowIndex >= 0 Then
-            Dim PatientName As String = Dgv_Reservation.Rows(e.RowIndex).Cells(1).Value.ToString
-            Dim PatientNum As String = Dgv_Reservation.Rows(e.RowIndex).Cells(0).Value
+            Dim PatientName As String = Dgv_MangeReservation.Rows(e.RowIndex).Cells(1).Value.ToString
+            Dim PatientNum As String = Dgv_MangeReservation.Rows(e.RowIndex).Cells(0).Value
 
             Dim frm As New Frm_PatientVisit
             frm.TopLevel = False
@@ -181,24 +192,24 @@ Public Class frm_ManageReservation
                     frm.Dock = DockStyle.Fill
                     Home.XtraTabControl1.SelectedTabPage = tab
 #Region "OldCode"
-                    frm.Txt_PatientNum.Text = Dgv_Reservation.Rows(e.RowIndex).Cells("PatientID").Value
-                    frm.Txt_PatientName.Text = Dgv_Reservation.Rows(e.RowIndex).Cells("PatientName").Value
-                    frm.Txt_Phone.Text = Dgv_Reservation.Rows(e.RowIndex).Cells("PhoneNumber").Value
-                    frm.Txt_Code.Text = Dgv_Reservation.Rows(e.RowIndex).Cells("Code").Value
-                    frm.Txt_Age.Text = Dgv_Reservation.Rows(e.RowIndex).Cells("Age").Value
-                    frm.Txt_Occupation.Text = Dgv_Reservation.Rows(e.RowIndex).Cells("Occupation").Value
-                    frm.Txt_FirstVisit.Text = Dgv_Reservation.Rows(e.RowIndex).Cells("Firstdate").Value
-                    frm.Txt_Height.Text = Dgv_Reservation.Rows(e.RowIndex).Cells("Height").Value
-                    frm.Txt_StartWeight.Text = Dgv_Reservation.Rows(e.RowIndex).Cells("StartWeight").Value
-                    frm.Dtp_VisitDate.Value = Dgv_Reservation.Rows(e.RowIndex).Cells("ReserveDate").Value
+                    frm.Txt_PatientNum.Text = Dgv_MangeReservation.Rows(e.RowIndex).Cells("PatientID").Value
+                    frm.Txt_PatientName.Text = Dgv_MangeReservation.Rows(e.RowIndex).Cells("PatientName").Value
+                    frm.Txt_Phone.Text = Dgv_MangeReservation.Rows(e.RowIndex).Cells("PhoneNumber").Value
+                    frm.Txt_Code.Text = Dgv_MangeReservation.Rows(e.RowIndex).Cells("Code").Value
+                    frm.Txt_Age.Text = Dgv_MangeReservation.Rows(e.RowIndex).Cells("Age").Value
+                    frm.Txt_Occupation.Text = Dgv_MangeReservation.Rows(e.RowIndex).Cells("Occupation").Value
+                    frm.Txt_FirstVisit.Text = Dgv_MangeReservation.Rows(e.RowIndex).Cells("Firstdate").Value
+                    frm.Txt_Height.Text = Dgv_MangeReservation.Rows(e.RowIndex).Cells("Height").Value
+                    frm.Txt_StartWeight.Text = Dgv_MangeReservation.Rows(e.RowIndex).Cells("StartWeight").Value
+                    frm.Dtp_VisitDate.Value = Dgv_MangeReservation.Rows(e.RowIndex).Cells("ReserveDate").Value
 
 #End Region
 
                     frm.Dgv_VisitDetail.ClearSelection()
                     Fill_Combobox(frm.Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
                     frm.Cbo_VisitType.SelectedIndex = -1
-                    frm.Cbo_VisitType.SelectedValue = Dgv_Reservation.Rows(e.RowIndex).Cells("VisitType").Value
-                    frm.Txt_VisitCost.Text = Dgv_Reservation.Rows(e.RowIndex).Cells("VisitCost").Value
+                    frm.Cbo_VisitType.SelectedValue = Dgv_MangeReservation.Rows(e.RowIndex).Cells("VisitType").Value
+                    frm.Txt_VisitCost.Text = Dgv_MangeReservation.Rows(e.RowIndex).Cells("VisitCost").Value
 
                     '=======================================================================================================================
                     frm.FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewBmi,PlanOfTreatment,EatingHabits,Notes from ClinicDays
@@ -208,5 +219,22 @@ Public Class frm_ManageReservation
             Next
             frm.Show()
         End If
+    End Sub
+
+    Private Sub Dgv_Reservation_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles Dgv_MangeReservation.CellFormatting
+        For Each row As DataGridViewRow In Dgv_MangeReservation.Rows
+            If Not row.IsNewRow Then
+                Select Case row.Cells("Status").Value.ToString
+                    Case "Present"
+                        row.DefaultCellStyle.BackColor = Color.Linen
+                    Case "Booking"
+                        row.DefaultCellStyle.BackColor = Color.LightSteelBlue
+                    Case "Entry"
+                        row.DefaultCellStyle.BackColor = Color.LightYellow
+                    Case "Out"
+                        row.DefaultCellStyle.BackColor = Color.LightCoral
+                End Select
+            End If
+        Next
     End Sub
 End Class

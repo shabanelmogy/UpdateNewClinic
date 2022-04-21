@@ -177,8 +177,13 @@ Public Class Frm_PatientVisit
                                              Where CheckOk = 0 And ReserveDate='" & Format(frm_ManageReservation.Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' 
                                              Order By Status Asc ")
         'تحديث شاشة حجز السكرتارية
-        Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation 
-                                       Where Checkok=0 Order By Status Asc")
+        Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
+                                       Order By Case 
+                                       When status='Entry' then 1 
+                                       When status='Present' then 2
+                                       When status='Booking' then 3
+                                       When status='Out' then 4
+                                       End")
 
         Txt_PatientNum.Select()
     End Sub
