@@ -231,6 +231,12 @@
     <Compile Include="Forms\Frm_EditPatient.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frm_ModifyPatient.Designer.vb">
+      <DependentUpon>frm_ModifyPatient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frm_ModifyPatient.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Frm_NewClient.designer.vb">
       <DependentUpon>Frm_NewClient.vb</DependentUpon>
     </Compile>
@@ -315,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_EditPatient.resx">
       <DependentUpon>Frm_EditPatient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frm_ModifyPatient.resx">
+      <DependentUpon>frm_ModifyPatient.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_NewClient.resx">
       <DependentUpon>Frm_NewClient.vb</DependentUpon>
@@ -809,6 +818,7 @@
     <None Include="Resources\Info 24.png" />
     <None Include="Resources\Patients 48.png" />
     <None Include="Resources\Undo 24.png" />
+    <None Include="Resources\Edit 20.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

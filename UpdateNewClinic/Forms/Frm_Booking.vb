@@ -194,6 +194,13 @@ Public Class Frm_Booking
         Dgv_Search.Columns("PatientName").Width = 200
         Dgv_Search.Columns("PhoneNumber").Width = 132
 
+        Dgv_Search.Columns("Code").Visible = False
+        Dgv_Search.Columns("Age").Visible = False
+        Dgv_Search.Columns("Occupation").Visible = False
+        Dgv_Search.Columns("FirstDate").Visible = False
+        Dgv_Search.Columns("Height").Visible = False
+        Dgv_Search.Columns("StartWeight").Visible = False
+
         Dgv_Search.Columns("PatientNum").HeaderText = "Patient ID"
         Dgv_Search.Columns("PatientName").HeaderText = "Patient Name"
         Dgv_Search.Columns("PhoneNumber").HeaderText = "Phone Number"
@@ -238,10 +245,7 @@ Public Class Frm_Booking
                 End If
 
                 Frm_Reservation_Load(Nothing, Nothing)
-                frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,
-                                                     Occupation,Height,StartWeight,VisitType,Status From Reservation 
-                                                     Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                                                     Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' ")
+                LoadFrm_ManageReservation()
                 con.Close()
             Catch ex As Exception
 
@@ -264,10 +268,11 @@ Public Class Frm_Booking
                 If maxrow >= 0 Then
                     sql = "UPDATE Reservation SET Status='" & .Cells(5).Value & "' WHERE PatientID=" & .Cells(0).FormattedValue
                     Auto_Save(sql)
+                    LoadFrm_ManageReservation()
                 End If
             End With
         Next
-        LoadFrm_ManageReservation()
+
     End Sub
 
     Private Sub Dgv_Visits_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles Dgv_Visits.CellFormatting
@@ -279,7 +284,7 @@ Public Class Frm_Booking
                     Case "Booking"
                         row.DefaultCellStyle.BackColor = Color.LightSteelBlue
                     Case "Entry"
-                        row.DefaultCellStyle.BackColor = Color.LightGreen
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(78, 236, 145)
                     Case "Out"
                         row.DefaultCellStyle.BackColor = Color.LightCoral
                 End Select
@@ -317,13 +322,26 @@ Public Class Frm_Booking
         Dim frm As New Frm_NewClient
         frm.StartPosition = FormStartPosition.CenterScreen
         frm.Txt_PatientNum.Text = GetMaxId("PatientNum", "PatientsDetail") + 1
+        frm.Dtp_PatientFirstDate.Value = Date.Now.ToString("dd-MM-yyyy")
         frm.Show()
     End Sub
 
-    Private Sub Btn_SelectAll_Click(sender As Object, e As EventArgs) Handles Btn_SelectAll.Click
-        'Frm_Reservation_Load(Nothing, Nothing)
-        GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
-        Txt_SearchValue.Text = ""
+    Private Sub Btn_EditPatient_Click(sender As Object, e As EventArgs) Handles Btn_EditPatient.Click
+        With frm_ModifyPatient
+            .Txt_PatientNum.Text = Dgv_Search.CurrentRow.Cells("PatientNum").Value
+            .Txt_PatientName.Text = Dgv_Search.CurrentRow.Cells("PatientName").Value
+            .Txt_PhoneNumber.Text = Dgv_Search.CurrentRow.Cells("PhoneNumber").Value.ToString
+            .Txt_Code.Text = Dgv_Search.CurrentRow.Cells("Code").Value.ToString
+            .Txt_Age.Text = Dgv_Search.CurrentRow.Cells("Age").Value
+            .Txt_Occupation.Text = Dgv_Search.CurrentRow.Cells("Occupation").Value
+            .Dtp_PatientFirstDate.Value = Dgv_Search.CurrentRow.Cells("FirstDate").Value
+            .Txt_Height.Text = Dgv_Search.CurrentRow.Cells("Height").Value
+            .Txt_StartWeight.Text = Dgv_Search.CurrentRow.Cells("StartWeight").Value
+
+            .StartPosition = FormStartPosition.CenterScreen
+            .Show()
+        End With
+
     End Sub
 
     Private Sub Btn_SaveNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_SaveNewPatient.Click
@@ -380,7 +398,7 @@ Public Class Frm_Booking
     End Sub
 
     Private Sub Btn_ShowToday_Click(sender As Object, e As EventArgs) Handles Btn_ShowToday.Click
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,Status From Reservation Where Checkok=0 
                            And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' 
                            Order By Case 
                            When status='Entry' then 1 
@@ -391,8 +409,7 @@ Public Class Frm_Booking
     End Sub
 
     Private Sub Btn_ShowAll_Click(sender As Object, e As EventArgs) Handles Btn_ShowAll.Click
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation 
-                           Where Checkok=0
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,Status From Reservation Where Checkok=0
                            Order By Case 
                            When status='Entry' then 1 
                            When status='Waiting' then 2
@@ -402,8 +419,14 @@ Public Class Frm_Booking
     End Sub
 
     Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles Btn_Search.Click
-        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
-                           And ReserveDate='" & Format(Dtp_Search.Value, "yyyy-MM-dd") & "' Order By Status Asc")
+        GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,Status From Reservation Where Checkok=0 
+                           And ReserveDate='" & Format(Dtp_Search.Value, "yyyy-MM-dd") & "' 
+                           Order By Case 
+                           When status='Entry' then 1 
+                           When status='Waiting' then 2
+                           When status='Booking' then 3
+                           When status='Out' then 4
+                           End")
     End Sub
 
 #End Region
@@ -427,6 +450,10 @@ Public Class Frm_Booking
                 dv.RowFilter = "PhoneNumber = '" & Txt_SearchValue.Text & "'"
             End If
         End If
+        If e.KeyCode = Keys.Delete Then
+            GetAllPatient("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight From PatientsDetail")
+            Txt_SearchValue.Text = ""
+        End If
     End Sub
 
 #End Region
@@ -449,7 +476,7 @@ Public Class Frm_Booking
             FilldatagridviewComboBox_DataReader()
             Fill_Combobox(Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
             Cbo_SortAndSearch.SelectedIndex = 0
-            GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
+            GetAllPatient("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight From PatientsDetail")
             GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
                                And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' 
                                Order By Case 
@@ -482,6 +509,7 @@ Public Class Frm_Booking
                                              When status='Booking' then 3
                                              When status='Out' then 4
                                              End")
+        frm_ManageReservation.CountVisits()
     End Sub
 
 

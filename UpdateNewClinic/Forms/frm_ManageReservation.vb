@@ -20,6 +20,29 @@ Public Class frm_ManageReservation
         Else
             lbl_CountInside.Text = "No Reservations"
         End If
+
+        Dim EntryCount, BookingCount, WaitingCount, OutCount As Integer
+        For i As Integer = 0 To Dgv_MangeReservation.Rows.Count - 1
+
+            If Dgv_MangeReservation.Rows(i).Cells("Status").Value = "Entry" Then
+                EntryCount += 1
+
+            ElseIf Dgv_MangeReservation.Rows(i).Cells("Status").Value = "Booking" Then
+                BookingCount += 1
+
+            ElseIf Dgv_MangeReservation.Rows(i).Cells("Status").Value = "Waiting" Then
+                WaitingCount += 1
+
+            ElseIf Dgv_MangeReservation.Rows(i).Cells("Status").Value = "Out" Then
+                OutCount += 1
+            End If
+        Next
+
+        Lbl_CountEntry.Text = EntryCount
+        Lbl_Booking.Text = BookingCount
+        Lbl_CountWaiting.Text = WaitingCount
+        Lbl_Exit.Text = OutCount
+
     End Sub
 
     Sub GetAllPatient(Query As String)
@@ -90,8 +113,14 @@ Public Class frm_ManageReservation
         Try
             If e.KeyCode = Keys.Enter Then
                 GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,
-                               StartWeight,VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                               Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' Order By Status Asc")
+                               StartWeight,VisitType,status From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                               Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' 
+                               Order By Case 
+                               When status='Entry' then 1 
+                               When status='Waiting' then 2
+                               When status='Booking' then 3
+                               When status='Out' then 4
+                               End")
                 FormatDgv_Search()
                 CountVisits()
             End If
@@ -106,9 +135,14 @@ Public Class frm_ManageReservation
 
         If FillCombobox = True Then
             GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,StartWeight,
-                           VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum Where CheckOk = 0 
+                           VisitType,status From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum Where CheckOk = 0 
                            And VisitType=" & Cbo_VisitType.SelectedValue & " And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'
-                           Order By Status Asc")
+                           Order By Case 
+                           When status='Entry' then 1 
+                           When status='Waiting' then 2
+                           When status='Booking' then 3
+                           When status='Out' then 4
+                           End")
             FormatDgv_Search()
             CountVisits()
         End If
@@ -118,8 +152,14 @@ Public Class frm_ManageReservation
         If e.KeyCode = Keys.Delete Or e.KeyCode = Keys.Back Then
             If FillCombobox = True Then
                 GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,Occupation,Height,StartWeight,
-                               VisitType From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
-                               Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' Order By Status Asc")
+                               VisitType,Status From Reservation Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
+                               Where CheckOk = 0 And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' 
+                               Order By Case 
+                               When status='Entry' then 1 
+                               When status='Waiting' then 2
+                               When status='Booking' then 3
+                               When status='Out' then 4
+                               End")
                 FormatDgv_Search()
                 CountVisits()
             End If
@@ -161,13 +201,16 @@ Public Class frm_ManageReservation
                     Cmd.ExecuteNonQuery()
                 End If
                 Frm_ManageVisits_Load(Nothing, Nothing)
-                Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,Status From Reservation Where Checkok=0 
-                                               Order By Case 
-                                               When status='Entry' then 1 
-                                               When status='Waiting' then 2
-                                               When status='Booking' then 3
-                                               When status='Out' then 4
-                                               End")
+
+                'Frm_Booking.FilldatagridviewComboBox_DataReader()
+                Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
+                               And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' 
+                               Order By Case 
+                               When status='Entry' then 1 
+                               When status='Waiting' then 2
+                               When status='Booking' then 3
+                               When status='Out' then 4
+                               End")
                 con.Close()
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Information, "Delete")
@@ -229,7 +272,7 @@ Public Class frm_ManageReservation
                     Case "Booking"
                         row.DefaultCellStyle.BackColor = Color.LightSteelBlue
                     Case "Entry"
-                        row.DefaultCellStyle.BackColor = Color.LightGreen
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(78, 236, 145)
                     Case "Out"
                         row.DefaultCellStyle.BackColor = Color.LightCoral
                 End Select
