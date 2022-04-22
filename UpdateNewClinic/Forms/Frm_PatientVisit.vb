@@ -153,7 +153,7 @@ Public Class Frm_PatientVisit
         End With
 
         'تحديث حالة المرضى الذين تم الكشف عليهم 
-        cmd1 = New SqlCommand("Update Reservation Set Checkok = 1 Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
+        cmd1 = New SqlCommand("Update Reservation Set Checkok = 1,Status='Out' Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
         With cmd1.Parameters
             .AddWithValue("@PatientID", Val(Txt_PatientNum.Text)).DbType = DbType.Int64
             .AddWithValue("@ReserveDate", Dtp_VisitDate.Value).DbType = DbType.Date
@@ -172,10 +172,15 @@ Public Class Frm_PatientVisit
                              Where PatientID=" & Val(Txt_PatientNum.Text) & " Order By VisitDate Desc")
         'تحديث شاشة حجز الدكتور
         frm_ManageReservation.GetAllPatient("Select PatientID,Reservation.PatientName,PhoneNumber,Code,ReserveDate,VisitName,VisitCost,FirstDate,Age,
-                                             Occupation,Height,StartWeight,VisitType From Reservation 
+                                             Occupation,Height,StartWeight,VisitType,status From Reservation 
                                              Inner Join PatientsDetail On Reservation.PatientID=PatientsDetail.PatientNum
                                              Where CheckOk = 0 And ReserveDate='" & Format(frm_ManageReservation.Dtp_ReserveDate.Value, "yyyy-MM-dd") & "' 
-                                             Order By Status Asc ")
+                                             Order By Case 
+                                             When status='Entry' then 1 
+                                             When status='Waiting' then 2
+                                             When status='Booking' then 3
+                                             When status='Out' then 4
+                                             End")
         'تحديث شاشة حجز السكرتارية
         Frm_Booking.GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
                                        Order By Case 
