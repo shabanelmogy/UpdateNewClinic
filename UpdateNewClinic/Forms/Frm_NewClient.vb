@@ -20,7 +20,7 @@ Public Class Frm_NewClient
 
     Private Sub Frm_NewClient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            Txt_PhoneNumber.Select()
+            Txt_PatientName.Select()
         Catch ex As Exception
             MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         End Try
@@ -30,9 +30,10 @@ Public Class Frm_NewClient
         Try
             If con.State = 1 Then con.Close()
             Btn_SaveNewPatient.Enabled = True
+            Btn_AddNewPatient.Enabled = False
             ResetControls(Me)
             Txt_PatientNum.Text = GetMaxId("PatientNum", "PatientsDetail") + 1
-            Txt_PhoneNumber.Select()
+            Txt_PatientName.Select()
         Catch ex As Exception
             MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
         Finally
@@ -86,39 +87,15 @@ Public Class Frm_NewClient
         End Try
     End Sub
 
-    Sub DeletePatient()
-        Try
-            If con.State = 1 Then con.Close()
-            con.Open()
-            Dim cmd As New SqlCommand("Delete From PatientsDetail Where PatientNum=@PatientNum", con)
-            cmd.Parameters.AddWithValue("@PatientNum", SqlDbType.Int).Value = Txt_PatientNum.Text
-            Dim CurNum As Integer = CInt(Txt_PatientNum.Text)
-            Dim CurName As String = Txt_PatientName.Text
-            If MsgBox("سيتم حذف بيانات المريض رقم " & Environment.NewLine & CurNum & "\" & CurName, MsgBoxStyle.Exclamation + vbYesNo, "Delete") = vbNo Then
-                Exit Sub
-            Else
-                cmd.ExecuteNonQuery()
-            End If
-            cmd.ExecuteNonQuery()
-            cmd.Dispose()
-
-            Frm_NewClient_Load(Nothing, Nothing)
-
-        Catch ex As Exception
-            MsgBox(ex.Message, MessageBoxIcon.Error, "Error")
-        Finally
-            If con.State = 1 Then con.Close()
-        End Try
-    End Sub
-
     Private Sub Btn_SaveNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_SaveNewPatient.Click
         InsertNewPatient()
-        Frm_Booking.GetAllPatient("Select Top 20 PatientNum,PatientName,PhoneNumber From PatientsDetail Order By PatientNum Desc")
+        Frm_Booking.GetAllPatient("Select Top 20 PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight 
+                                   From PatientsDetail Order By PatientNum Desc")
     End Sub
 
     Private Sub Txt_PhoneNumber_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_PhoneNumber.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Txt_PatientName.Select()
+            Txt_Age.Select()
         End If
     End Sub
 
@@ -135,7 +112,7 @@ Public Class Frm_NewClient
                 If dt.Rows.Count > 0 Then
                     MsgBox("إسم المريض مكرر")
                 Else
-                    Txt_Code.Select()
+                    Txt_Occupation.Select()
                 End If
                 cmd.Dispose()
                 dt.Dispose()
@@ -150,13 +127,13 @@ Public Class Frm_NewClient
 
     Private Sub Txt_Code_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_Code.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Txt_Occupation.Select()
+            Txt_PhoneNumber.Select()
         End If
     End Sub
 
     Private Sub Txt_Occupation_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_Occupation.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Txt_Age.Select()
+            Txt_Code.Select()
         End If
     End Sub
 
@@ -176,10 +153,6 @@ Public Class Frm_NewClient
         If e.KeyCode = Keys.Enter Then
             Txt_StartWeight.Select()
         End If
-    End Sub
-
-    Private Sub Btn_DeletePatient_Click(sender As Object, e As EventArgs)
-        DeletePatient()
     End Sub
 
     Private Sub Frm_NewClient_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp
@@ -213,7 +186,9 @@ Public Class Frm_NewClient
         If e.KeyCode = Keys.Enter Then
             Btn_SaveNewPatient.PerformClick()
             Txt_PatientNum.Text = GetMaxId("PatientNum", "PatientsDetail") + 1
-            Txt_PhoneNumber.Select()
+            Txt_PatientName.Select()
+            Btn_SaveNewPatient.Enabled = True
+            Btn_AddNewPatient.Enabled = True
         End If
     End Sub
 End Class

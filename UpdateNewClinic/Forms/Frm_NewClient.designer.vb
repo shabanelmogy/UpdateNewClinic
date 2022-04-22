@@ -107,7 +107,7 @@ Partial Class Frm_NewClient
         Me.Label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label6.Location = New System.Drawing.Point(274, 238)
+        Me.Label6.Location = New System.Drawing.Point(274, 146)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(107, 25)
         Me.Label6.TabIndex = 4
@@ -120,7 +120,7 @@ Partial Class Frm_NewClient
         Me.Label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label7.Font = New System.Drawing.Font("Segoe UI Semibold", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label7.Location = New System.Drawing.Point(274, 146)
+        Me.Label7.Location = New System.Drawing.Point(274, 192)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(107, 25)
         Me.Label7.TabIndex = 4
@@ -146,7 +146,7 @@ Partial Class Frm_NewClient
         Me.Txt_PatientName.Location = New System.Drawing.Point(117, 55)
         Me.Txt_PatientName.Name = "Txt_PatientName"
         Me.Txt_PatientName.Size = New System.Drawing.Size(411, 25)
-        Me.Txt_PatientName.TabIndex = 3
+        Me.Txt_PatientName.TabIndex = 1
         Me.Txt_PatientName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt_Code
@@ -155,17 +155,17 @@ Partial Class Frm_NewClient
         Me.Txt_Code.Location = New System.Drawing.Point(118, 146)
         Me.Txt_Code.Name = "Txt_Code"
         Me.Txt_Code.Size = New System.Drawing.Size(140, 25)
-        Me.Txt_Code.TabIndex = 4
+        Me.Txt_Code.TabIndex = 3
         Me.Txt_Code.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt_PhoneNumber
         '
         Me.Txt_PhoneNumber.Font = New System.Drawing.Font("Tahoma", 11.0!)
-        Me.Txt_PhoneNumber.Location = New System.Drawing.Point(378, 238)
+        Me.Txt_PhoneNumber.Location = New System.Drawing.Point(378, 146)
         Me.Txt_PhoneNumber.MaxLength = 11
         Me.Txt_PhoneNumber.Name = "Txt_PhoneNumber"
         Me.Txt_PhoneNumber.Size = New System.Drawing.Size(150, 25)
-        Me.Txt_PhoneNumber.TabIndex = 2
+        Me.Txt_PhoneNumber.TabIndex = 4
         Me.Txt_PhoneNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt_Height
@@ -174,7 +174,7 @@ Partial Class Frm_NewClient
         Me.Txt_Height.Location = New System.Drawing.Point(118, 238)
         Me.Txt_Height.Name = "Txt_Height"
         Me.Txt_Height.Size = New System.Drawing.Size(140, 25)
-        Me.Txt_Height.TabIndex = 8
+        Me.Txt_Height.TabIndex = 7
         Me.Txt_Height.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt_PatientNum
@@ -184,16 +184,16 @@ Partial Class Frm_NewClient
         Me.Txt_PatientNum.Name = "Txt_PatientNum"
         Me.Txt_PatientNum.ReadOnly = True
         Me.Txt_PatientNum.Size = New System.Drawing.Size(141, 25)
-        Me.Txt_PatientNum.TabIndex = 1
+        Me.Txt_PatientNum.TabIndex = 0
         Me.Txt_PatientNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt_StartWeight
         '
         Me.Txt_StartWeight.Font = New System.Drawing.Font("Tahoma", 11.0!)
-        Me.Txt_StartWeight.Location = New System.Drawing.Point(378, 192)
+        Me.Txt_StartWeight.Location = New System.Drawing.Point(378, 238)
         Me.Txt_StartWeight.Name = "Txt_StartWeight"
         Me.Txt_StartWeight.Size = New System.Drawing.Size(150, 25)
-        Me.Txt_StartWeight.TabIndex = 9
+        Me.Txt_StartWeight.TabIndex = 8
         Me.Txt_StartWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label9
@@ -202,7 +202,7 @@ Partial Class Frm_NewClient
         Me.Label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label9.Font = New System.Drawing.Font("Segoe UI Semibold", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label9.Location = New System.Drawing.Point(274, 192)
+        Me.Label9.Location = New System.Drawing.Point(274, 238)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(107, 25)
         Me.Label9.TabIndex = 14
@@ -214,10 +214,10 @@ Partial Class Frm_NewClient
         Me.Dtp_PatientFirstDate.CustomFormat = "dd/MM/yyyy"
         Me.Dtp_PatientFirstDate.Font = New System.Drawing.Font("Tahoma", 11.0!)
         Me.Dtp_PatientFirstDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.Dtp_PatientFirstDate.Location = New System.Drawing.Point(378, 146)
+        Me.Dtp_PatientFirstDate.Location = New System.Drawing.Point(378, 192)
         Me.Dtp_PatientFirstDate.Name = "Dtp_PatientFirstDate"
         Me.Dtp_PatientFirstDate.Size = New System.Drawing.Size(150, 25)
-        Me.Dtp_PatientFirstDate.TabIndex = 7
+        Me.Dtp_PatientFirstDate.TabIndex = 6
         Me.Dtp_PatientFirstDate.Value = New Date(2022, 4, 7, 0, 0, 0, 0)
         '
         'Label14
@@ -239,7 +239,7 @@ Partial Class Frm_NewClient
         Me.Txt_Occupation.Location = New System.Drawing.Point(118, 100)
         Me.Txt_Occupation.Name = "Txt_Occupation"
         Me.Txt_Occupation.Size = New System.Drawing.Size(408, 25)
-        Me.Txt_Occupation.TabIndex = 5
+        Me.Txt_Occupation.TabIndex = 2
         Me.Txt_Occupation.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Panel3
@@ -251,7 +251,7 @@ Partial Class Frm_NewClient
         Me.Panel3.Location = New System.Drawing.Point(1, 276)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(536, 66)
-        Me.Panel3.TabIndex = 26
+        Me.Panel3.TabIndex = 9
         '
         'Txt_Age
         '
@@ -259,7 +259,7 @@ Partial Class Frm_NewClient
         Me.Txt_Age.Location = New System.Drawing.Point(118, 192)
         Me.Txt_Age.Name = "Txt_Age"
         Me.Txt_Age.Size = New System.Drawing.Size(140, 25)
-        Me.Txt_Age.TabIndex = 6
+        Me.Txt_Age.TabIndex = 5
         Me.Txt_Age.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Btn_ExitNewPatient

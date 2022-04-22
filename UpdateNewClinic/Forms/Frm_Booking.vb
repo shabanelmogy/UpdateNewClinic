@@ -382,11 +382,11 @@ Public Class Frm_Booking
                            End")
     End Sub
 
-    Private Sub Btn_SortDesc_Click(sender As Object, e As EventArgs) Handles Btn_SortDesc.Click
+    Private Sub Btn_SortDesc_Click(sender As Object, e As EventArgs)
         Dgv_Search.Sort(Dgv_Search.Columns(Cbo_SortAndSearch.Text), System.ComponentModel.ListSortDirection.Descending)
     End Sub
 
-    Private Sub Btn_SortAsec_Click(sender As Object, e As EventArgs) Handles Btn_SortAsec.Click
+    Private Sub Btn_SortAsec_Click(sender As Object, e As EventArgs)
         Dgv_Search.Sort(Dgv_Search.Columns(Cbo_SortAndSearch.Text), System.ComponentModel.ListSortDirection.Ascending)
     End Sub
 

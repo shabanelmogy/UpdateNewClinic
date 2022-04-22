@@ -26,6 +26,7 @@ Partial Class frm_ModifyPatient
         Me.Txt_Age = New System.Windows.Forms.TextBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Btn_SaveNewPatient = New System.Windows.Forms.Button()
         Me.Txt_StartWeight = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Dtp_PatientFirstDate = New System.Windows.Forms.DateTimePicker()
@@ -43,7 +44,6 @@ Partial Class frm_ModifyPatient
         Me.Lbl_Age = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Btn_SaveNewPatient = New System.Windows.Forms.Button()
         Me.Splitter1 = New System.Windows.Forms.Splitter()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -54,7 +54,7 @@ Partial Class frm_ModifyPatient
         Me.Txt_Age.Location = New System.Drawing.Point(118, 192)
         Me.Txt_Age.Name = "Txt_Age"
         Me.Txt_Age.Size = New System.Drawing.Size(140, 25)
-        Me.Txt_Age.TabIndex = 39
+        Me.Txt_Age.TabIndex = 5
         Me.Txt_Age.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Panel3
@@ -66,13 +66,31 @@ Partial Class frm_ModifyPatient
         Me.Panel3.Size = New System.Drawing.Size(536, 56)
         Me.Panel3.TabIndex = 45
         '
+        'Btn_SaveNewPatient
+        '
+        Me.Btn_SaveNewPatient.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_SaveNewPatient.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_SaveNewPatient.FlatAppearance.BorderSize = 0
+        Me.Btn_SaveNewPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_SaveNewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_SaveNewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_SaveNewPatient.ForeColor = System.Drawing.Color.White
+        Me.Btn_SaveNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Save
+        Me.Btn_SaveNewPatient.Location = New System.Drawing.Point(377, 9)
+        Me.Btn_SaveNewPatient.Name = "Btn_SaveNewPatient"
+        Me.Btn_SaveNewPatient.Size = New System.Drawing.Size(148, 35)
+        Me.Btn_SaveNewPatient.TabIndex = 13
+        Me.Btn_SaveNewPatient.Text = "Save"
+        Me.Btn_SaveNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.Btn_SaveNewPatient.UseVisualStyleBackColor = False
+        '
         'Txt_StartWeight
         '
         Me.Txt_StartWeight.Font = New System.Drawing.Font("Tahoma", 11.0!)
         Me.Txt_StartWeight.Location = New System.Drawing.Point(378, 238)
         Me.Txt_StartWeight.Name = "Txt_StartWeight"
         Me.Txt_StartWeight.Size = New System.Drawing.Size(150, 25)
-        Me.Txt_StartWeight.TabIndex = 43
+        Me.Txt_StartWeight.TabIndex = 8
         Me.Txt_StartWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label9
@@ -96,7 +114,7 @@ Partial Class frm_ModifyPatient
         Me.Dtp_PatientFirstDate.Location = New System.Drawing.Point(378, 192)
         Me.Dtp_PatientFirstDate.Name = "Dtp_PatientFirstDate"
         Me.Dtp_PatientFirstDate.Size = New System.Drawing.Size(150, 25)
-        Me.Dtp_PatientFirstDate.TabIndex = 40
+        Me.Dtp_PatientFirstDate.TabIndex = 6
         Me.Dtp_PatientFirstDate.Value = New Date(2022, 4, 7, 0, 0, 0, 0)
         '
         'Txt_Height
@@ -105,7 +123,7 @@ Partial Class frm_ModifyPatient
         Me.Txt_Height.Location = New System.Drawing.Point(118, 238)
         Me.Txt_Height.Name = "Txt_Height"
         Me.Txt_Height.Size = New System.Drawing.Size(140, 25)
-        Me.Txt_Height.TabIndex = 41
+        Me.Txt_Height.TabIndex = 7
         Me.Txt_Height.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt_PhoneNumber
@@ -115,7 +133,7 @@ Partial Class frm_ModifyPatient
         Me.Txt_PhoneNumber.MaxLength = 11
         Me.Txt_PhoneNumber.Name = "Txt_PhoneNumber"
         Me.Txt_PhoneNumber.Size = New System.Drawing.Size(150, 25)
-        Me.Txt_PhoneNumber.TabIndex = 29
+        Me.Txt_PhoneNumber.TabIndex = 4
         Me.Txt_PhoneNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt_Occupation
@@ -124,7 +142,7 @@ Partial Class frm_ModifyPatient
         Me.Txt_Occupation.Location = New System.Drawing.Point(116, 100)
         Me.Txt_Occupation.Name = "Txt_Occupation"
         Me.Txt_Occupation.Size = New System.Drawing.Size(412, 25)
-        Me.Txt_Occupation.TabIndex = 38
+        Me.Txt_Occupation.TabIndex = 2
         Me.Txt_Occupation.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt_Code
@@ -133,7 +151,7 @@ Partial Class frm_ModifyPatient
         Me.Txt_Code.Location = New System.Drawing.Point(118, 146)
         Me.Txt_Code.Name = "Txt_Code"
         Me.Txt_Code.Size = New System.Drawing.Size(140, 25)
-        Me.Txt_Code.TabIndex = 37
+        Me.Txt_Code.TabIndex = 3
         Me.Txt_Code.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt_PatientNum
@@ -143,7 +161,7 @@ Partial Class frm_ModifyPatient
         Me.Txt_PatientNum.Name = "Txt_PatientNum"
         Me.Txt_PatientNum.ReadOnly = True
         Me.Txt_PatientNum.Size = New System.Drawing.Size(141, 25)
-        Me.Txt_PatientNum.TabIndex = 27
+        Me.Txt_PatientNum.TabIndex = 0
         Me.Txt_PatientNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt_PatientName
@@ -152,7 +170,7 @@ Partial Class frm_ModifyPatient
         Me.Txt_PatientName.Location = New System.Drawing.Point(117, 54)
         Me.Txt_PatientName.Name = "Txt_PatientName"
         Me.Txt_PatientName.Size = New System.Drawing.Size(411, 25)
-        Me.Txt_PatientName.TabIndex = 31
+        Me.Txt_PatientName.TabIndex = 1
         Me.Txt_PatientName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label8
@@ -258,24 +276,6 @@ Partial Class frm_ModifyPatient
         Me.Label2.TabIndex = 30
         Me.Label2.Text = "PatientName"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Btn_SaveNewPatient
-        '
-        Me.Btn_SaveNewPatient.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_SaveNewPatient.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_SaveNewPatient.FlatAppearance.BorderSize = 0
-        Me.Btn_SaveNewPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_SaveNewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_SaveNewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_SaveNewPatient.ForeColor = System.Drawing.Color.White
-        Me.Btn_SaveNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Save
-        Me.Btn_SaveNewPatient.Location = New System.Drawing.Point(377, 9)
-        Me.Btn_SaveNewPatient.Name = "Btn_SaveNewPatient"
-        Me.Btn_SaveNewPatient.Size = New System.Drawing.Size(148, 35)
-        Me.Btn_SaveNewPatient.TabIndex = 13
-        Me.Btn_SaveNewPatient.Text = "Save"
-        Me.Btn_SaveNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.Btn_SaveNewPatient.UseVisualStyleBackColor = False
         '
         'Splitter1
         '

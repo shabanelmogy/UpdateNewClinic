@@ -39,6 +39,11 @@ Partial Class Frm_Booking
         Me.Btn_ShowAll = New System.Windows.Forms.Button()
         Me.Btn_ShowToday = New System.Windows.Forms.Button()
         Me.Cbo_ReserveType = New System.Windows.Forms.ComboBox()
+        Me.Btn_EditPatient = New System.Windows.Forms.Button()
+        Me.Btn_NewPatient = New System.Windows.Forms.Button()
+        Me.Btn_Search = New System.Windows.Forms.Button()
+        Me.Btn_Reset = New System.Windows.Forms.Button()
+        Me.Btn_SaveNewPatient = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -65,13 +70,6 @@ Partial Class Frm_Booking
         Me.PatientsDetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PatientsDetailTableAdapter = New UpdateNewClinic.ClinicDataSetTableAdapters.PatientsDetailTableAdapter()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Btn_EditPatient = New System.Windows.Forms.Button()
-        Me.Btn_NewPatient = New System.Windows.Forms.Button()
-        Me.Btn_SortAsec = New System.Windows.Forms.Button()
-        Me.Btn_SortDesc = New System.Windows.Forms.Button()
-        Me.Btn_Search = New System.Windows.Forms.Button()
-        Me.Btn_Reset = New System.Windows.Forms.Button()
-        Me.Btn_SaveNewPatient = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -198,6 +196,98 @@ Partial Class Frm_Booking
         Me.Cbo_ReserveType.Size = New System.Drawing.Size(155, 27)
         Me.Cbo_ReserveType.TabIndex = 37
         Me.ToolTip1.SetToolTip(Me.Cbo_ReserveType, "Select Visit Type")
+        '
+        'Btn_EditPatient
+        '
+        Me.Btn_EditPatient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_EditPatient.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_EditPatient.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_EditPatient.FlatAppearance.BorderSize = 0
+        Me.Btn_EditPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_EditPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_EditPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_EditPatient.ForeColor = System.Drawing.Color.White
+        Me.Btn_EditPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Edit_20
+        Me.Btn_EditPatient.Location = New System.Drawing.Point(288, 66)
+        Me.Btn_EditPatient.Name = "Btn_EditPatient"
+        Me.Btn_EditPatient.Size = New System.Drawing.Size(60, 27)
+        Me.Btn_EditPatient.TabIndex = 42
+        Me.Btn_EditPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.ToolTip1.SetToolTip(Me.Btn_EditPatient, "Show All Patients")
+        Me.Btn_EditPatient.UseVisualStyleBackColor = False
+        '
+        'Btn_NewPatient
+        '
+        Me.Btn_NewPatient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_NewPatient.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_NewPatient.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_NewPatient.FlatAppearance.BorderSize = 0
+        Me.Btn_NewPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_NewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_NewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_NewPatient.ForeColor = System.Drawing.Color.White
+        Me.Btn_NewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources._New
+        Me.Btn_NewPatient.Location = New System.Drawing.Point(216, 66)
+        Me.Btn_NewPatient.Name = "Btn_NewPatient"
+        Me.Btn_NewPatient.Size = New System.Drawing.Size(60, 27)
+        Me.Btn_NewPatient.TabIndex = 40
+        Me.Btn_NewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.ToolTip1.SetToolTip(Me.Btn_NewPatient, "Add New Patient")
+        Me.Btn_NewPatient.UseVisualStyleBackColor = False
+        '
+        'Btn_Search
+        '
+        Me.Btn_Search.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_Search.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_Search.FlatAppearance.BorderSize = 0
+        Me.Btn_Search.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_Search.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_Search.ForeColor = System.Drawing.Color.White
+        Me.Btn_Search.Image = Global.UpdateNewClinic.My.Resources.Resources.Search_16
+        Me.Btn_Search.Location = New System.Drawing.Point(10, 59)
+        Me.Btn_Search.Name = "Btn_Search"
+        Me.Btn_Search.Size = New System.Drawing.Size(114, 31)
+        Me.Btn_Search.TabIndex = 15
+        Me.Btn_Search.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.ToolTip1.SetToolTip(Me.Btn_Search, "Search By Date")
+        Me.Btn_Search.UseVisualStyleBackColor = False
+        '
+        'Btn_Reset
+        '
+        Me.Btn_Reset.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_Reset.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_Reset.FlatAppearance.BorderSize = 0
+        Me.Btn_Reset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_Reset.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_Reset.ForeColor = System.Drawing.Color.White
+        Me.Btn_Reset.Image = Global.UpdateNewClinic.My.Resources.Resources.Undo_24
+        Me.Btn_Reset.Location = New System.Drawing.Point(13, 60)
+        Me.Btn_Reset.Name = "Btn_Reset"
+        Me.Btn_Reset.Size = New System.Drawing.Size(84, 30)
+        Me.Btn_Reset.TabIndex = 14
+        Me.Btn_Reset.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.ToolTip1.SetToolTip(Me.Btn_Reset, "Reset All Selections")
+        Me.Btn_Reset.UseVisualStyleBackColor = False
+        '
+        'Btn_SaveNewPatient
+        '
+        Me.Btn_SaveNewPatient.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_SaveNewPatient.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_SaveNewPatient.FlatAppearance.BorderSize = 0
+        Me.Btn_SaveNewPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_SaveNewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_SaveNewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_SaveNewPatient.ForeColor = System.Drawing.Color.White
+        Me.Btn_SaveNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Save
+        Me.Btn_SaveNewPatient.Location = New System.Drawing.Point(13, 18)
+        Me.Btn_SaveNewPatient.Name = "Btn_SaveNewPatient"
+        Me.Btn_SaveNewPatient.Size = New System.Drawing.Size(84, 30)
+        Me.Btn_SaveNewPatient.TabIndex = 13
+        Me.Btn_SaveNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.ToolTip1.SetToolTip(Me.Btn_SaveNewPatient, "Save And Edit")
+        Me.Btn_SaveNewPatient.UseVisualStyleBackColor = False
         '
         'Label15
         '
@@ -422,9 +512,7 @@ Partial Class Frm_Booking
         Me.Panel2.Controls.Add(Me.Dgv_Search)
         Me.Panel2.Controls.Add(Me.SeparatorControl1)
         Me.Panel2.Controls.Add(Me.Label15)
-        Me.Panel2.Controls.Add(Me.Btn_SortAsec)
         Me.Panel2.Controls.Add(Me.Txt_SearchValue)
-        Me.Panel2.Controls.Add(Me.Btn_SortDesc)
         Me.Panel2.Controls.Add(Me.Cbo_SortAndSearch)
         Me.Panel2.Controls.Add(Me.Label16)
         Me.Panel2.Location = New System.Drawing.Point(0, 1)
@@ -498,130 +586,6 @@ Partial Class Frm_Booking
         '
         Me.Timer1.Interval = 2000
         '
-        'Btn_EditPatient
-        '
-        Me.Btn_EditPatient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Btn_EditPatient.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_EditPatient.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_EditPatient.FlatAppearance.BorderSize = 0
-        Me.Btn_EditPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_EditPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_EditPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_EditPatient.ForeColor = System.Drawing.Color.White
-        Me.Btn_EditPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Edit_20
-        Me.Btn_EditPatient.Location = New System.Drawing.Point(288, 66)
-        Me.Btn_EditPatient.Name = "Btn_EditPatient"
-        Me.Btn_EditPatient.Size = New System.Drawing.Size(60, 27)
-        Me.Btn_EditPatient.TabIndex = 42
-        Me.Btn_EditPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.ToolTip1.SetToolTip(Me.Btn_EditPatient, "Show All Patients")
-        Me.Btn_EditPatient.UseVisualStyleBackColor = False
-        '
-        'Btn_NewPatient
-        '
-        Me.Btn_NewPatient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Btn_NewPatient.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_NewPatient.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_NewPatient.FlatAppearance.BorderSize = 0
-        Me.Btn_NewPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_NewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_NewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_NewPatient.ForeColor = System.Drawing.Color.White
-        Me.Btn_NewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources._New
-        Me.Btn_NewPatient.Location = New System.Drawing.Point(216, 66)
-        Me.Btn_NewPatient.Name = "Btn_NewPatient"
-        Me.Btn_NewPatient.Size = New System.Drawing.Size(60, 27)
-        Me.Btn_NewPatient.TabIndex = 40
-        Me.Btn_NewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.ToolTip1.SetToolTip(Me.Btn_NewPatient, "Add New Patient")
-        Me.Btn_NewPatient.UseVisualStyleBackColor = False
-        '
-        'Btn_SortAsec
-        '
-        Me.Btn_SortAsec.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Btn_SortAsec.BackColor = System.Drawing.Color.White
-        Me.Btn_SortAsec.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_SortAsec.FlatAppearance.BorderSize = 0
-        Me.Btn_SortAsec.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaShell
-        Me.Btn_SortAsec.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_SortAsec.Image = Global.UpdateNewClinic.My.Resources.Resources.SortAscending_24
-        Me.Btn_SortAsec.Location = New System.Drawing.Point(216, 8)
-        Me.Btn_SortAsec.Name = "Btn_SortAsec"
-        Me.Btn_SortAsec.Size = New System.Drawing.Size(60, 27)
-        Me.Btn_SortAsec.TabIndex = 30
-        Me.ToolTip1.SetToolTip(Me.Btn_SortAsec, "Sort Asc")
-        Me.Btn_SortAsec.UseVisualStyleBackColor = False
-        '
-        'Btn_SortDesc
-        '
-        Me.Btn_SortDesc.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Btn_SortDesc.BackColor = System.Drawing.Color.White
-        Me.Btn_SortDesc.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_SortDesc.FlatAppearance.BorderSize = 0
-        Me.Btn_SortDesc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaShell
-        Me.Btn_SortDesc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_SortDesc.Image = Global.UpdateNewClinic.My.Resources.Resources.SortDesc_24
-        Me.Btn_SortDesc.Location = New System.Drawing.Point(288, 8)
-        Me.Btn_SortDesc.Name = "Btn_SortDesc"
-        Me.Btn_SortDesc.Size = New System.Drawing.Size(60, 27)
-        Me.Btn_SortDesc.TabIndex = 31
-        Me.ToolTip1.SetToolTip(Me.Btn_SortDesc, "Sort Desc")
-        Me.Btn_SortDesc.UseVisualStyleBackColor = False
-        '
-        'Btn_Search
-        '
-        Me.Btn_Search.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_Search.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_Search.FlatAppearance.BorderSize = 0
-        Me.Btn_Search.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_Search.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_Search.ForeColor = System.Drawing.Color.White
-        Me.Btn_Search.Image = Global.UpdateNewClinic.My.Resources.Resources.Search_16
-        Me.Btn_Search.Location = New System.Drawing.Point(10, 59)
-        Me.Btn_Search.Name = "Btn_Search"
-        Me.Btn_Search.Size = New System.Drawing.Size(114, 31)
-        Me.Btn_Search.TabIndex = 15
-        Me.Btn_Search.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.ToolTip1.SetToolTip(Me.Btn_Search, "Search By Date")
-        Me.Btn_Search.UseVisualStyleBackColor = False
-        '
-        'Btn_Reset
-        '
-        Me.Btn_Reset.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_Reset.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_Reset.FlatAppearance.BorderSize = 0
-        Me.Btn_Reset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_Reset.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_Reset.ForeColor = System.Drawing.Color.White
-        Me.Btn_Reset.Image = Global.UpdateNewClinic.My.Resources.Resources.Undo_24
-        Me.Btn_Reset.Location = New System.Drawing.Point(13, 60)
-        Me.Btn_Reset.Name = "Btn_Reset"
-        Me.Btn_Reset.Size = New System.Drawing.Size(84, 30)
-        Me.Btn_Reset.TabIndex = 14
-        Me.Btn_Reset.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.ToolTip1.SetToolTip(Me.Btn_Reset, "Reset All Selections")
-        Me.Btn_Reset.UseVisualStyleBackColor = False
-        '
-        'Btn_SaveNewPatient
-        '
-        Me.Btn_SaveNewPatient.BackColor = System.Drawing.Color.SteelBlue
-        Me.Btn_SaveNewPatient.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_SaveNewPatient.FlatAppearance.BorderSize = 0
-        Me.Btn_SaveNewPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
-        Me.Btn_SaveNewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btn_SaveNewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.Btn_SaveNewPatient.ForeColor = System.Drawing.Color.White
-        Me.Btn_SaveNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Save
-        Me.Btn_SaveNewPatient.Location = New System.Drawing.Point(13, 18)
-        Me.Btn_SaveNewPatient.Name = "Btn_SaveNewPatient"
-        Me.Btn_SaveNewPatient.Size = New System.Drawing.Size(84, 30)
-        Me.Btn_SaveNewPatient.TabIndex = 13
-        Me.Btn_SaveNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.ToolTip1.SetToolTip(Me.Btn_SaveNewPatient, "Save And Edit")
-        Me.Btn_SaveNewPatient.UseVisualStyleBackColor = False
-        '
         'Frm_Booking
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -674,8 +638,6 @@ Partial Class Frm_Booking
     Friend WithEvents PatientsDetailTableAdapter As ClinicDataSetTableAdapters.PatientsDetailTableAdapter
     Friend WithEvents Btn_NewPatient As Button
     Friend WithEvents Btn_EditPatient As Button
-    Friend WithEvents Btn_SortAsec As Button
-    Friend WithEvents Btn_SortDesc As Button
     Friend WithEvents Txt_VisitCost As TextBox
     Friend WithEvents Txt_Num As TextBox
     Friend WithEvents Grp_Buttons As GroupBox
