@@ -189,6 +189,7 @@ Public Class Frm_PatientVisit
                                        When status='Booking' then 3
                                        When status='Out' then 4
                                        End")
+        frm_ManageReservation.CountVisits()
 
         Txt_PatientNum.Select()
     End Sub

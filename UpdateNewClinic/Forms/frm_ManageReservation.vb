@@ -13,6 +13,18 @@ Public Class frm_ManageReservation
     Dim rdr As SqlDataReader
 #End Region
 
+    Public Function count_Out() As Integer
+        Cmd = New SqlCommand("Select Status From Reservation Where Status='Out' And ReserveDate='" & Format(Dtp_ReserveDate.Value, "yyyy-MM-dd") & "'", con)
+        con.Open()
+        rdr = Cmd.ExecuteReader
+        Dim countout As Integer = 0
+        While rdr.Read
+            countout += 1
+        End While
+        con.Close()
+        Return countout
+    End Function
+
     Sub CountVisits()
         Dim Count As Integer = Dgv_MangeReservation.Rows.Count
         If Count > 0 Then
@@ -21,7 +33,7 @@ Public Class frm_ManageReservation
             lbl_CountInside.Text = "No Reservations"
         End If
 
-        Dim EntryCount, BookingCount, WaitingCount, OutCount As Integer
+        Dim EntryCount, BookingCount, WaitingCount As Integer
         For i As Integer = 0 To Dgv_MangeReservation.Rows.Count - 1
 
             If Dgv_MangeReservation.Rows(i).Cells("Status").Value = "Entry" Then
@@ -32,16 +44,13 @@ Public Class frm_ManageReservation
 
             ElseIf Dgv_MangeReservation.Rows(i).Cells("Status").Value = "Waiting" Then
                 WaitingCount += 1
-
-            ElseIf Dgv_MangeReservation.Rows(i).Cells("Status").Value = "Out" Then
-                OutCount += 1
             End If
         Next
 
         Lbl_CountEntry.Text = EntryCount
         Lbl_Booking.Text = BookingCount
         Lbl_CountWaiting.Text = WaitingCount
-        Lbl_Exit.Text = OutCount
+        Lbl_Exit.Text = count_Out()
 
     End Sub
 
