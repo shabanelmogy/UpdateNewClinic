@@ -86,6 +86,7 @@ Public Class RegisterForm
             End If
             MsgBox("Registered Successfuly" & Environment.NewLine & "Open Apllication Again", MsgBoxStyle.Information, "Info")
             Me.Close()
+            Home.Enabled = True
         Else
             MsgBox("Invalid Key Register", MsgBoxStyle.Information, "Info")
             Application.Exit()
