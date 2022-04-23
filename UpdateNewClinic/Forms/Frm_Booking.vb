@@ -32,6 +32,7 @@ Public Class Frm_Booking
             Dgv_Search.DataSource = Nothing
             Dgv_Search.DataSource = Dt_Search
             FormatDgv_Search()
+
             da.Dispose()
             dt.Dispose()
         Catch ex As Exception
@@ -119,6 +120,7 @@ Public Class Frm_Booking
             End While
             rdr.Close()
             con.Close()
+            cmd.Dispose()
             FormatDgv_Visits()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information)
@@ -137,10 +139,10 @@ Public Class Frm_Booking
         da = New SqlDataAdapter(cmd)
         dt = New DataTable
         da.Fill(dt)
-
+        da.Dispose()
         If dt.Rows.Count = 0 Then
 
-            cmd = New SqlCommand("Insert Into Reservation(PatientID,PatientName,ReserveDate,VisitType,VisitName,VisitCost,status)
+            cmd = New SqlCommand("Insert Into Reservation(PatientID,PatientName,ReserveDate,VisitType,VisitName,VisitCost,Status)
                                  Values(@PatientID,@PatientName,@ReserveDate,@VisitType,@VisitName,@VisitCost,'Waiting')", con)
             With cmd
                 .Parameters.AddWithValue("@PatientID", Val(Txt_Num.Text)).DbType = DbType.Int32
@@ -166,8 +168,8 @@ Public Class Frm_Booking
 
         If con.State = 1 Then con.Close()
 
-        cmd = New SqlCommand("Update Reservation set ReserveDate=@ReserveDate,VisitType=@VisitType,VisitName=@VisitName,VisitCost=@VisitCost
-                                Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
+        cmd = New SqlCommand("Update Reservation Set ReserveDate=@ReserveDate,VisitType=@VisitType,VisitName=@VisitName,VisitCost=@VisitCost
+                              Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
         With cmd
             .Parameters.AddWithValue("@PatientID", Val(Txt_Num.Text)).DbType = DbType.Int32
             .Parameters.AddWithValue("@PatientName", Txt_PatientName.Text).DbType = DbType.String
@@ -181,6 +183,7 @@ Public Class Frm_Booking
 
         con.Open()
         cmd.ExecuteNonQuery()
+        cmd.Dispose()
         con.Close()
     End Sub
 
@@ -189,38 +192,45 @@ Public Class Frm_Booking
 #Region "Datagridview"
 
 #Region "Dgv_Search"
+
     Sub FormatDgv_Search()
+
         Dgv_Search.Columns("PatientNum").Width = 100
         Dgv_Search.Columns("PatientName").Width = 200
         Dgv_Search.Columns("PhoneNumber").Width = 132
-
+        '=========================================================
         Dgv_Search.Columns("Code").Visible = False
         Dgv_Search.Columns("Age").Visible = False
         Dgv_Search.Columns("Occupation").Visible = False
         Dgv_Search.Columns("FirstDate").Visible = False
         Dgv_Search.Columns("Height").Visible = False
         Dgv_Search.Columns("StartWeight").Visible = False
-
+        '========================================================
         Dgv_Search.Columns("PatientNum").HeaderText = "Patient ID"
         Dgv_Search.Columns("PatientName").HeaderText = "Patient Name"
         Dgv_Search.Columns("PhoneNumber").HeaderText = "Phone Number"
+
     End Sub
 
     Private Sub Dgv_Search_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Search.CellClick
-        Txt_PatientName.Text = Dgv_Search.CurrentRow.Cells(1).Value.ToString
-        Txt_Num.Text = Dgv_Search.CurrentRow.Cells(0).Value.ToString
+        Txt_PatientName.Text = Dgv_Search.CurrentRow.Cells("PatientName
+").Value.ToString
+        Txt_Num.Text = Dgv_Search.CurrentRow.Cells("PatientNum").Value.ToString
         check = False
     End Sub
+
 #End Region
 
 #Region "Dgv_Visits"
 
     Sub FormatDgv_Visits()
+
         Dgv_Visits.Columns("PatientNum").Width = 100
         Dgv_Visits.Columns("PatientName").Width = 250
         Dgv_Visits.Columns("ReserveDate").Width = 120
         Dgv_Visits.Columns("VisitType").Width = 150
         Dgv_Visits.Columns("VisitCost").Width = 100
+
     End Sub
 
     Private Sub Dgv_Visits_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Visits.CellContentClick
@@ -242,13 +252,15 @@ Public Class Frm_Booking
                     If con.State = 1 Then con.Close()
                     con.Open()
                     cmd.ExecuteNonQuery()
+                    cmd.Dispose()
                 End If
 
                 Frm_Reservation_Load(Nothing, Nothing)
+                'تحديث شاشة الحجز الخاصة بالطبيب
                 LoadFrm_ManageReservation()
                 con.Close()
             Catch ex As Exception
-
+                'تم تجاهل رسالة الخطأ بسبب ظهور رسالة ان الاتصال مفتوح
             Finally
                 If con.State = 1 Then con.Close()
             End Try
@@ -256,6 +268,7 @@ Public Class Frm_Booking
     End Sub
 
     Private Sub Dgv_Visits_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Visits.CellEndEdit
+        'حفظ التغييرات عند تغيير الحالة 
         Dim sql As String
         maxrow = Dgv_Visits.RowCount
         Dgv_Visits.Rows(Dgv_Visits.RowCount - 1).Cells(0).Value = maxrow
@@ -459,6 +472,8 @@ Public Class Frm_Booking
 #End Region
 
 #Region "ComboBox"
+
+
 
     Private Sub Cbo_SortAndSearch_TextChanged(sender As Object, e As EventArgs) Handles Cbo_SortAndSearch.TextChanged
         Txt_SearchValue.Text = ""
