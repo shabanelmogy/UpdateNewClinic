@@ -213,8 +213,7 @@ Public Class Frm_Booking
     End Sub
 
     Private Sub Dgv_Search_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Search.CellClick
-        Txt_PatientName.Text = Dgv_Search.CurrentRow.Cells("PatientName
-").Value.ToString
+        Txt_PatientName.Text = Dgv_Search.CurrentRow.Cells("PatientName").Value.ToString
         Txt_Num.Text = Dgv_Search.CurrentRow.Cells("PatientNum").Value.ToString
         check = False
     End Sub
@@ -340,6 +339,7 @@ Public Class Frm_Booking
     End Sub
 
     Private Sub Btn_EditPatient_Click(sender As Object, e As EventArgs) Handles Btn_EditPatient.Click
+
         With frm_ModifyPatient
             .Txt_PatientNum.Text = Dgv_Search.CurrentRow.Cells("PatientNum").Value
             .Txt_PatientName.Text = Dgv_Search.CurrentRow.Cells("PatientName").Value
