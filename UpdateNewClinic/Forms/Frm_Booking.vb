@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing
+Imports DevExpress.XtraTab
 
 Public Class Frm_Booking
 
@@ -234,36 +235,59 @@ Public Class Frm_Booking
 
     Private Sub Dgv_Visits_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Visits.CellContentClick
 
+        'PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight
+
         If e.ColumnIndex = 6 And e.RowIndex >= 0 Then
-            Try
-                If Dgv_Visits.Rows.Count > 0 Then
-                    curid = Dgv_Visits.CurrentRow.Cells(0).Value
-                    curdate = Dgv_Visits.CurrentRow.Cells(2).Value
-                Else Exit Sub
+
+            Dim PatientNum As String = Dgv_Visits.Rows(e.RowIndex).Cells(0).Value
+            Dim PatientName As String = Dgv_Visits.Rows(e.RowIndex).Cells(1).Value
+            Dim Resrvedate As String = Dgv_Visits.Rows(e.RowIndex).Cells(2).Value
+            Dim VisitType As String = Dgv_Visits.Rows(e.RowIndex).Cells(3).Value
+            Dim VisitCost As String = Dgv_Visits.Rows(e.RowIndex).Cells(4).Value
+
+            Dim dt As DataTable = GetDatatable("Select PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight From PatientsDetail
+                                                Where PatientNum=" & PatientNum & " ")
+
+            Dim frm As New Frm_PatientVisit
+            frm.TopLevel = False
+            Home.XtraTabControl1.TabPages.Add(New XtraTabPage With {.Text = PatientName, .Name = frm.Name})
+
+            For Each tab As XtraTabPage In Home.XtraTabControl1.TabPages
+                If tab.Name = frm.Name Then
+                    tab.ImageOptions.Image = frm.Icon.ToBitmap
+                    tab.Controls.Add(frm)
+                    frm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+                    frm.StartPosition = Windows.Forms.FormStartPosition.CenterScreen
+                    frm.Dock = DockStyle.Fill
+                    Home.XtraTabControl1.SelectedTabPage = tab
+#Region "OldCode"
+                    frm.Txt_PatientNum.Text = PatientNum
+                    frm.Txt_PatientName.Text = dt(0)("PatientName").ToString
+                    frm.Txt_Phone.Text = dt(0)("PhoneNumber").ToString
+                    frm.Txt_Code.Text = dt(0)("Code").ToString
+                    frm.Txt_Age.Text = dt(0)("Age").ToString
+                    frm.Txt_Occupation.Text = dt(0)("Occupation").ToString
+                    frm.Txt_FirstVisit.Text = CDate(dt(0)("FirstDate")).ToString("dd/MM/yyyy")
+                    frm.Txt_Height.Text = dt(0)("Height").ToString
+                    frm.Txt_StartWeight.Text = dt(0)("StartWeight").ToString
+                    frm.Dtp_VisitDate.Value = Resrvedate
+
+#End Region
+
+                    frm.Dgv_VisitDetail.ClearSelection()
+                    Fill_Combobox(frm.Cbo_VisitType, "VisitsTypes", "VisitKind", "Num")
+                    frm.Cbo_VisitType.SelectedIndex = -1
+                    frm.Cbo_VisitType.Text = VisitType
+                    frm.Txt_VisitCost.Text = VisitCost
+
+                    '=======================================================================================================================
+                    frm.FillGrdVisitDetails("Select VisitDate,VisitKind,VisitCost,NewWeight,NewBmi,PlanOfTreatment,EatingHabits,Notes from ClinicDays
+                                             Inner Join VisitsTypes on ClinicDays.VisitType = VisitsTypes.Num Where PatientID = " & PatientNum)
                 End If
-
-                If MsgBox("Do You Want To Delete This Record ?", MsgBoxStyle.Information + vbYesNo + MsgBoxStyle.DefaultButton2, "Attention") = vbYes Then
-
-                    cmd = New SqlCommand("Delete From Reservation Where PatientID=@PatientID And ReserveDate=@ReserveDate", con)
-                    cmd.Parameters.AddWithValue("@PatientID", curid)
-                    cmd.Parameters.AddWithValue("@ReserveDate", curdate)
-
-                    If con.State = 1 Then con.Close()
-                    con.Open()
-                    cmd.ExecuteNonQuery()
-                    cmd.Dispose()
-                End If
-
-                Frm_Reservation_Load(Nothing, Nothing)
-                'تحديث شاشة الحجز الخاصة بالطبيب
-                LoadFrm_ManageReservation()
-                con.Close()
-            Catch ex As Exception
-                'تم تجاهل رسالة الخطأ بسبب ظهور رسالة ان الاتصال مفتوح
-            Finally
-                If con.State = 1 Then con.Close()
-            End Try
+            Next
+            frm.Show()
         End If
+
     End Sub
 
     Private Sub Dgv_Visits_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles Dgv_Visits.CellEndEdit
@@ -314,12 +338,12 @@ Public Class Frm_Booking
     End Sub
 
     Private Sub Dgv_Visits_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles Dgv_Visits.CellPainting
-        If e.ColumnIndex = 7 AndAlso e.RowIndex >= 0 Then
-            e.Paint(e.CellBounds, DataGridViewPaintParts.All)
-            Dim img As Image = My.Resources.Delete_16x16
-            e.Graphics.DrawImage(img, e.CellBounds.Left + 45, e.CellBounds.Top + 7, 10, 10)
-            e.Handled = True
-        End If
+        'If e.ColumnIndex = 6 AndAlso e.RowIndex >= 0 Then
+        '    e.Paint(e.CellBounds, DataGridViewPaintParts.All)
+        '    Dim img As Image = My.Resources.Open2_16x16
+        '    e.Graphics.DrawImage(img, e.CellBounds.Left + 45, e.CellBounds.Top + 7, 10, 10)
+        '    e.Handled = True
+        'End If
     End Sub
 
 #End Region

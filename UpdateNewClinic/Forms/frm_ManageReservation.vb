@@ -78,10 +78,10 @@ Public Class frm_ManageReservation
     Sub FormatDgv_Search()
         '===========ضبط مقاسات الاعمدة=============================================================
         Dgv_MangeReservation.Columns("PatientID").Width = 77
-        Dgv_MangeReservation.Columns("PatientName").Width = 300
-        Dgv_MangeReservation.Columns("PhoneNumber").Width = 120
-        Dgv_MangeReservation.Columns("Code").Width = 75
-        Dgv_MangeReservation.Columns("ReserveDate").Width = 140
+        Dgv_MangeReservation.Columns("PatientName").Width = 220
+        Dgv_MangeReservation.Columns("PhoneNumber").Width = 130
+        Dgv_MangeReservation.Columns("Code").Width = 55
+        Dgv_MangeReservation.Columns("ReserveDate").Width = 100
         Dgv_MangeReservation.Columns("VisitName").Width = 150
         Dgv_MangeReservation.Columns("VisitCost").Width = 95
         '=================================================

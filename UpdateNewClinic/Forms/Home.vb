@@ -171,7 +171,7 @@ Public Class Home
     End Sub
 
     Private Sub ManageReservationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManageReservationsToolStripMenuItem.Click
-        openFormInTab_DockNone(frm_ManageReservation)
+        openFormInTab(frm_ManageReservation)
     End Sub
 
 End Class

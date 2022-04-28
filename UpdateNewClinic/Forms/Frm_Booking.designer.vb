@@ -55,13 +55,6 @@ Partial Class Frm_Booking
         Me.Txt_VisitCost = New System.Windows.Forms.TextBox()
         Me.Txt_Num = New System.Windows.Forms.TextBox()
         Me.Dgv_Visits = New System.Windows.Forms.DataGridView()
-        Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VisitType = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Status1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.SeparatorControl2 = New DevExpress.XtraEditors.SeparatorControl()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Dgv_Search = New System.Windows.Forms.DataGridView()
@@ -70,6 +63,13 @@ Partial Class Frm_Booking
         Me.PatientsDetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PatientsDetailTableAdapter = New UpdateNewClinic.ClinicDataSetTableAdapters.PatientsDetailTableAdapter()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.PatientNum = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Status1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.OpenVisit = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -208,7 +208,7 @@ Partial Class Frm_Booking
         Me.Btn_EditPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_EditPatient.ForeColor = System.Drawing.Color.White
         Me.Btn_EditPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Edit_20
-        Me.Btn_EditPatient.Location = New System.Drawing.Point(288, 66)
+        Me.Btn_EditPatient.Location = New System.Drawing.Point(263, 8)
         Me.Btn_EditPatient.Name = "Btn_EditPatient"
         Me.Btn_EditPatient.Size = New System.Drawing.Size(60, 27)
         Me.Btn_EditPatient.TabIndex = 42
@@ -227,7 +227,7 @@ Partial Class Frm_Booking
         Me.Btn_NewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Btn_NewPatient.ForeColor = System.Drawing.Color.White
         Me.Btn_NewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources._New
-        Me.Btn_NewPatient.Location = New System.Drawing.Point(216, 66)
+        Me.Btn_NewPatient.Location = New System.Drawing.Point(263, 66)
         Me.Btn_NewPatient.Name = "Btn_NewPatient"
         Me.Btn_NewPatient.Size = New System.Drawing.Size(60, 27)
         Me.Btn_NewPatient.TabIndex = 40
@@ -428,7 +428,7 @@ Partial Class Frm_Booking
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Dgv_Visits.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.Dgv_Visits.ColumnHeadersHeight = 30
-        Me.Dgv_Visits.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientNum, Me.PatientName, Me.ReserveDate, Me.VisitType, Me.VisitCost, Me.Status1, Me.Delete})
+        Me.Dgv_Visits.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientNum, Me.PatientName, Me.ReserveDate, Me.VisitType, Me.VisitCost, Me.Status1, Me.OpenVisit})
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -444,54 +444,6 @@ Partial Class Frm_Booking
         Me.Dgv_Visits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.Dgv_Visits.Size = New System.Drawing.Size(953, 551)
         Me.Dgv_Visits.TabIndex = 39
-        '
-        'PatientNum
-        '
-        Me.PatientNum.HeaderText = "Patient ID"
-        Me.PatientNum.Name = "PatientNum"
-        Me.PatientNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'PatientName
-        '
-        Me.PatientName.HeaderText = "Patient Name"
-        Me.PatientName.Name = "PatientName"
-        Me.PatientName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'ReserveDate
-        '
-        Me.ReserveDate.HeaderText = "Booking Date"
-        Me.ReserveDate.Name = "ReserveDate"
-        Me.ReserveDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'VisitType
-        '
-        Me.VisitType.HeaderText = "Visit Type"
-        Me.VisitType.Name = "VisitType"
-        Me.VisitType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'VisitCost
-        '
-        Me.VisitCost.HeaderText = "Visit Cost"
-        Me.VisitCost.Name = "VisitCost"
-        Me.VisitCost.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Status1
-        '
-        Me.Status1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.Status1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Status1.HeaderText = "Status"
-        Me.Status1.Name = "Status1"
-        Me.Status1.Sorted = True
-        Me.Status1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Status1.Width = 120
-        '
-        'Delete
-        '
-        Me.Delete.HeaderText = "Delete "
-        Me.Delete.Name = "Delete"
-        Me.Delete.Text = "Delete "
-        Me.Delete.UseColumnTextForButtonValue = True
-        Me.Delete.Width = 109
         '
         'SeparatorControl2
         '
@@ -586,6 +538,54 @@ Partial Class Frm_Booking
         '
         Me.Timer1.Interval = 2000
         '
+        'PatientNum
+        '
+        Me.PatientNum.HeaderText = "Patient ID"
+        Me.PatientNum.Name = "PatientNum"
+        Me.PatientNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'PatientName
+        '
+        Me.PatientName.HeaderText = "Patient Name"
+        Me.PatientName.Name = "PatientName"
+        Me.PatientName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'ReserveDate
+        '
+        Me.ReserveDate.HeaderText = "Booking Date"
+        Me.ReserveDate.Name = "ReserveDate"
+        Me.ReserveDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'VisitType
+        '
+        Me.VisitType.HeaderText = "Visit Type"
+        Me.VisitType.Name = "VisitType"
+        Me.VisitType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'VisitCost
+        '
+        Me.VisitCost.HeaderText = "Visit Cost"
+        Me.VisitCost.Name = "VisitCost"
+        Me.VisitCost.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Status1
+        '
+        Me.Status1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.Status1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Status1.HeaderText = "Status"
+        Me.Status1.Name = "Status1"
+        Me.Status1.Sorted = True
+        Me.Status1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Status1.Width = 120
+        '
+        'OpenVisit
+        '
+        Me.OpenVisit.HeaderText = "OpenVisit"
+        Me.OpenVisit.Name = "OpenVisit"
+        Me.OpenVisit.Text = "OpenVisit"
+        Me.OpenVisit.UseColumnTextForButtonValue = True
+        Me.OpenVisit.Width = 109
+        '
         'Frm_Booking
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -655,5 +655,5 @@ Partial Class Frm_Booking
     Friend WithEvents VisitType As DataGridViewTextBoxColumn
     Friend WithEvents VisitCost As DataGridViewTextBoxColumn
     Friend WithEvents Status1 As DataGridViewComboBoxColumn
-    Friend WithEvents Delete As DataGridViewButtonColumn
+    Friend WithEvents OpenVisit As DataGridViewButtonColumn
 End Class
