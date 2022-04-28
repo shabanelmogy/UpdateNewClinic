@@ -25,7 +25,26 @@ Partial Class frm_ManageReservation
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Dgv_MangeReservation = New System.Windows.Forms.DataGridView()
+        Me.PatientID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PhoneNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Code = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OpenVisit = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.FirstDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Age = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Occupation = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Height = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StartWeight = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VisitType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Dtp_ReserveDate = New System.Windows.Forms.DateTimePicker()
@@ -47,25 +66,33 @@ Partial Class frm_ManageReservation
         Me.Lbl_Exit = New System.Windows.Forms.Label()
         Me.Lbl_CountOut = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.PatientID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PhoneNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Code = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReserveDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VisitName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VisitCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OpenVisit = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.FirstDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Age = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Occupation = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Height = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StartWeight = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VisitType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Btn_NewPatient = New System.Windows.Forms.Button()
+        Me.Dgv_Search = New System.Windows.Forms.DataGridView()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Txt_SearchValue = New System.Windows.Forms.TextBox()
+        Me.Cbo_SortAndSearch = New System.Windows.Forms.ComboBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Btn_EditPatient = New System.Windows.Forms.Button()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.Txt_PatientName = New System.Windows.Forms.TextBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Btn_Reset = New System.Windows.Forms.Button()
+        Me.Btn_SaveNewPatient = New System.Windows.Forms.Button()
+        Me.Txt_VisitCost = New System.Windows.Forms.TextBox()
+        Me.Txt_Num = New System.Windows.Forms.TextBox()
         CType(Me.Dgv_MangeReservation, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.Dgv_Search, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Dgv_MangeReservation
@@ -97,31 +124,115 @@ Partial Class frm_ManageReservation
         DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Dgv_MangeReservation.DefaultCellStyle = DataGridViewCellStyle9
-        Me.Dgv_MangeReservation.Location = New System.Drawing.Point(309, 79)
+        Me.Dgv_MangeReservation.Location = New System.Drawing.Point(378, 79)
         Me.Dgv_MangeReservation.Name = "Dgv_MangeReservation"
         Me.Dgv_MangeReservation.RowHeadersVisible = False
         Me.Dgv_MangeReservation.RowTemplate.Height = 25
         Me.Dgv_MangeReservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Dgv_MangeReservation.Size = New System.Drawing.Size(1043, 629)
+        Me.Dgv_MangeReservation.Size = New System.Drawing.Size(974, 629)
         Me.Dgv_MangeReservation.TabIndex = 0
+        '
+        'PatientID
+        '
+        Me.PatientID.HeaderText = "PatientID"
+        Me.PatientID.Name = "PatientID"
+        '
+        'PatientName
+        '
+        Me.PatientName.HeaderText = "PatientName"
+        Me.PatientName.Name = "PatientName"
+        '
+        'PhoneNumber
+        '
+        Me.PhoneNumber.HeaderText = "PhoneNumber"
+        Me.PhoneNumber.Name = "PhoneNumber"
+        '
+        'Code
+        '
+        Me.Code.HeaderText = "Code"
+        Me.Code.Name = "Code"
+        '
+        'ReserveDate
+        '
+        Me.ReserveDate.HeaderText = "ReserveDate"
+        Me.ReserveDate.Name = "ReserveDate"
+        '
+        'VisitName
+        '
+        Me.VisitName.HeaderText = "VisitName"
+        Me.VisitName.Name = "VisitName"
+        '
+        'Status
+        '
+        Me.Status.HeaderText = "Status"
+        Me.Status.Name = "Status"
+        '
+        'VisitCost
+        '
+        Me.VisitCost.HeaderText = "VisitCost"
+        Me.VisitCost.Name = "VisitCost"
+        '
+        'OpenVisit
+        '
+        Me.OpenVisit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.OpenVisit.HeaderText = "Open Visit"
+        Me.OpenVisit.Name = "OpenVisit"
+        Me.OpenVisit.Text = ""
+        '
+        'Delete
+        '
+        Me.Delete.HeaderText = "Delete"
+        Me.Delete.Name = "Delete"
+        Me.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'FirstDate
+        '
+        Me.FirstDate.HeaderText = "FirstDate"
+        Me.FirstDate.Name = "FirstDate"
+        '
+        'Age
+        '
+        Me.Age.HeaderText = "Age"
+        Me.Age.Name = "Age"
+        '
+        'Occupation
+        '
+        Me.Occupation.HeaderText = "Occupation"
+        Me.Occupation.Name = "Occupation"
+        '
+        'Height
+        '
+        Me.Height.HeaderText = "Height"
+        Me.Height.Name = "Height"
+        '
+        'StartWeight
+        '
+        Me.StartWeight.HeaderText = "StartWeight"
+        Me.StartWeight.Name = "StartWeight"
+        '
+        'VisitType
+        '
+        Me.VisitType.HeaderText = "VisitType"
+        Me.VisitType.Name = "VisitType"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(305, 13)
+        Me.Label1.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Label1.Location = New System.Drawing.Point(377, 13)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(119, 19)
+        Me.Label1.Size = New System.Drawing.Size(109, 18)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Reserve Date"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(305, 49)
+        Me.Label2.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.Location = New System.Drawing.Point(377, 49)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(90, 19)
+        Me.Label2.Size = New System.Drawing.Size(82, 18)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Visit Type"
         '
@@ -129,9 +240,9 @@ Partial Class frm_ManageReservation
         '
         Me.Dtp_ReserveDate.Font = New System.Drawing.Font("Tahoma", 11.0!)
         Me.Dtp_ReserveDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.Dtp_ReserveDate.Location = New System.Drawing.Point(450, 10)
+        Me.Dtp_ReserveDate.Location = New System.Drawing.Point(489, 10)
         Me.Dtp_ReserveDate.Name = "Dtp_ReserveDate"
-        Me.Dtp_ReserveDate.Size = New System.Drawing.Size(151, 25)
+        Me.Dtp_ReserveDate.Size = New System.Drawing.Size(140, 25)
         Me.Dtp_ReserveDate.TabIndex = 3
         '
         'Cbo_VisitType
@@ -139,9 +250,9 @@ Partial Class frm_ManageReservation
         Me.Cbo_VisitType.Font = New System.Drawing.Font("Tahoma", 11.0!)
         Me.Cbo_VisitType.FormattingEnabled = True
         Me.Cbo_VisitType.Items.AddRange(New Object() {" "})
-        Me.Cbo_VisitType.Location = New System.Drawing.Point(450, 47)
+        Me.Cbo_VisitType.Location = New System.Drawing.Point(489, 47)
         Me.Cbo_VisitType.Name = "Cbo_VisitType"
-        Me.Cbo_VisitType.Size = New System.Drawing.Size(151, 26)
+        Me.Cbo_VisitType.Size = New System.Drawing.Size(140, 26)
         Me.Cbo_VisitType.TabIndex = 4
         '
         'Label3
@@ -183,7 +294,7 @@ Partial Class frm_ManageReservation
         Me.GroupBox1.Controls.Add(Me.lbl_CountInside)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Lbl_Count)
-        Me.GroupBox1.Location = New System.Drawing.Point(607, -1)
+        Me.GroupBox1.Location = New System.Drawing.Point(633, -1)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(646, 74)
         Me.GroupBox1.TabIndex = 7
@@ -356,89 +467,291 @@ Partial Class frm_ManageReservation
         Me.GroupBox2.TabIndex = 19
         Me.GroupBox2.TabStop = False
         '
-        'PatientID
+        'Btn_NewPatient
         '
-        Me.PatientID.HeaderText = "PatientID"
-        Me.PatientID.Name = "PatientID"
+        Me.Btn_NewPatient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_NewPatient.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_NewPatient.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_NewPatient.FlatAppearance.BorderSize = 0
+        Me.Btn_NewPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_NewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_NewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_NewPatient.ForeColor = System.Drawing.Color.White
+        Me.Btn_NewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources._New
+        Me.Btn_NewPatient.Location = New System.Drawing.Point(269, 66)
+        Me.Btn_NewPatient.Name = "Btn_NewPatient"
+        Me.Btn_NewPatient.Size = New System.Drawing.Size(83, 27)
+        Me.Btn_NewPatient.TabIndex = 47
+        Me.Btn_NewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.Btn_NewPatient.UseVisualStyleBackColor = False
         '
-        'PatientName
+        'Dgv_Search
         '
-        Me.PatientName.HeaderText = "PatientName"
-        Me.PatientName.Name = "PatientName"
+        Me.Dgv_Search.AllowUserToAddRows = False
+        Me.Dgv_Search.AllowUserToDeleteRows = False
+        Me.Dgv_Search.AllowUserToResizeRows = False
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black
+        Me.Dgv_Search.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
+        Me.Dgv_Search.BackgroundColor = System.Drawing.Color.White
+        Me.Dgv_Search.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_Search.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        Me.Dgv_Search.ColumnHeadersHeight = 30
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Linen
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Dgv_Search.DefaultCellStyle = DataGridViewCellStyle12
+        Me.Dgv_Search.Location = New System.Drawing.Point(3, 272)
+        Me.Dgv_Search.Name = "Dgv_Search"
+        Me.Dgv_Search.ReadOnly = True
+        Me.Dgv_Search.RowHeadersVisible = False
+        Me.Dgv_Search.RowTemplate.Height = 25
+        Me.Dgv_Search.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.Dgv_Search.Size = New System.Drawing.Size(362, 426)
+        Me.Dgv_Search.TabIndex = 46
         '
-        'PhoneNumber
+        'Label7
         '
-        Me.PhoneNumber.HeaderText = "PhoneNumber"
-        Me.PhoneNumber.Name = "PhoneNumber"
+        Me.Label7.BackColor = System.Drawing.Color.SteelBlue
+        Me.Label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label7.Location = New System.Drawing.Point(6, 28)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(96, 27)
+        Me.Label7.TabIndex = 41
+        Me.Label7.Text = " Search By"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Code
+        'Txt_SearchValue
         '
-        Me.Code.HeaderText = "Code"
-        Me.Code.Name = "Code"
+        Me.Txt_SearchValue.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.Txt_SearchValue.Location = New System.Drawing.Point(102, 66)
+        Me.Txt_SearchValue.Name = "Txt_SearchValue"
+        Me.Txt_SearchValue.Size = New System.Drawing.Size(150, 27)
+        Me.Txt_SearchValue.TabIndex = 44
         '
-        'ReserveDate
+        'Cbo_SortAndSearch
         '
-        Me.ReserveDate.HeaderText = "ReserveDate"
-        Me.ReserveDate.Name = "ReserveDate"
+        Me.Cbo_SortAndSearch.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.Cbo_SortAndSearch.FormattingEnabled = True
+        Me.Cbo_SortAndSearch.Items.AddRange(New Object() {"PatientName", "Phone"})
+        Me.Cbo_SortAndSearch.Location = New System.Drawing.Point(102, 28)
+        Me.Cbo_SortAndSearch.Name = "Cbo_SortAndSearch"
+        Me.Cbo_SortAndSearch.Size = New System.Drawing.Size(150, 27)
+        Me.Cbo_SortAndSearch.TabIndex = 42
         '
-        'VisitName
+        'Label16
         '
-        Me.VisitName.HeaderText = "VisitName"
-        Me.VisitName.Name = "VisitName"
+        Me.Label16.BackColor = System.Drawing.Color.SteelBlue
+        Me.Label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label16.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label16.Location = New System.Drawing.Point(6, 66)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(96, 27)
+        Me.Label16.TabIndex = 43
+        Me.Label16.Text = "Search Value"
+        Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Status
+        'Panel1
         '
-        Me.Status.HeaderText = "Status"
-        Me.Status.Name = "Status"
+        Me.Panel1.Controls.Add(Me.GroupBox4)
+        Me.Panel1.Controls.Add(Me.GroupBox3)
+        Me.Panel1.Controls.Add(Me.Dgv_Search)
+        Me.Panel1.Controls.Add(Me.Txt_VisitCost)
+        Me.Panel1.Controls.Add(Me.Txt_Num)
+        Me.Panel1.Location = New System.Drawing.Point(3, 10)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(368, 698)
+        Me.Panel1.TabIndex = 48
         '
-        'VisitCost
+        'GroupBox3
         '
-        Me.VisitCost.HeaderText = "VisitCost"
-        Me.VisitCost.Name = "VisitCost"
+        Me.GroupBox3.Controls.Add(Me.Btn_EditPatient)
+        Me.GroupBox3.Controls.Add(Me.Label7)
+        Me.GroupBox3.Controls.Add(Me.Txt_SearchValue)
+        Me.GroupBox3.Controls.Add(Me.Cbo_SortAndSearch)
+        Me.GroupBox3.Controls.Add(Me.Btn_NewPatient)
+        Me.GroupBox3.Controls.Add(Me.Label16)
+        Me.GroupBox3.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.GroupBox3.Location = New System.Drawing.Point(3, 154)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(362, 109)
+        Me.GroupBox3.TabIndex = 48
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Search /AddNew"
         '
-        'OpenVisit
+        'Btn_EditPatient
         '
-        Me.OpenVisit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.OpenVisit.HeaderText = "Open Visit"
-        Me.OpenVisit.Name = "OpenVisit"
-        Me.OpenVisit.Text = ""
+        Me.Btn_EditPatient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_EditPatient.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_EditPatient.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_EditPatient.FlatAppearance.BorderSize = 0
+        Me.Btn_EditPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_EditPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_EditPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_EditPatient.ForeColor = System.Drawing.Color.White
+        Me.Btn_EditPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Edit_20
+        Me.Btn_EditPatient.Location = New System.Drawing.Point(269, 28)
+        Me.Btn_EditPatient.Name = "Btn_EditPatient"
+        Me.Btn_EditPatient.Size = New System.Drawing.Size(83, 27)
+        Me.Btn_EditPatient.TabIndex = 48
+        Me.Btn_EditPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.Btn_EditPatient.UseVisualStyleBackColor = False
         '
-        'Delete
+        'GroupBox4
         '
-        Me.Delete.HeaderText = "Delete"
-        Me.Delete.Name = "Delete"
-        Me.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.GroupBox4.Controls.Add(Me.Btn_Reset)
+        Me.GroupBox4.Controls.Add(Me.Btn_SaveNewPatient)
+        Me.GroupBox4.Controls.Add(Me.ComboBox1)
+        Me.GroupBox4.Controls.Add(Me.Label8)
+        Me.GroupBox4.Controls.Add(Me.Label9)
+        Me.GroupBox4.Controls.Add(Me.Label10)
+        Me.GroupBox4.Controls.Add(Me.DateTimePicker1)
+        Me.GroupBox4.Controls.Add(Me.Txt_PatientName)
+        Me.GroupBox4.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.GroupBox4.Location = New System.Drawing.Point(3, -1)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(362, 145)
+        Me.GroupBox4.TabIndex = 49
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "New Booking"
         '
-        'FirstDate
+        'Label8
         '
-        Me.FirstDate.HeaderText = "FirstDate"
-        Me.FirstDate.Name = "FirstDate"
+        Me.Label8.BackColor = System.Drawing.Color.SteelBlue
+        Me.Label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label8.Location = New System.Drawing.Point(6, 24)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(96, 27)
+        Me.Label8.TabIndex = 38
+        Me.Label8.Text = "PatientName"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Age
+        'Label9
         '
-        Me.Age.HeaderText = "Age"
-        Me.Age.Name = "Age"
+        Me.Label9.BackColor = System.Drawing.Color.SteelBlue
+        Me.Label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label9.Location = New System.Drawing.Point(6, 65)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(96, 27)
+        Me.Label9.TabIndex = 39
+        Me.Label9.Text = "Booking Date"
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Occupation
+        'Label10
         '
-        Me.Occupation.HeaderText = "Occupation"
-        Me.Occupation.Name = "Occupation"
+        Me.Label10.BackColor = System.Drawing.Color.SteelBlue
+        Me.Label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label10.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label10.Location = New System.Drawing.Point(6, 107)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(96, 27)
+        Me.Label10.TabIndex = 42
+        Me.Label10.Text = "Visit Type"
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Height
+        'DateTimePicker1
         '
-        Me.Height.HeaderText = "Height"
-        Me.Height.Name = "Height"
+        Me.DateTimePicker1.CustomFormat = "dd/MM/yyyy"
+        Me.DateTimePicker1.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker1.Location = New System.Drawing.Point(102, 65)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(150, 27)
+        Me.DateTimePicker1.TabIndex = 41
+        Me.DateTimePicker1.Value = New Date(2022, 4, 4, 0, 0, 0, 0)
         '
-        'StartWeight
+        'Txt_PatientName
         '
-        Me.StartWeight.HeaderText = "StartWeight"
-        Me.StartWeight.Name = "StartWeight"
+        Me.Txt_PatientName.BackColor = System.Drawing.Color.White
+        Me.Txt_PatientName.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.Txt_PatientName.Location = New System.Drawing.Point(102, 24)
+        Me.Txt_PatientName.Name = "Txt_PatientName"
+        Me.Txt_PatientName.ReadOnly = True
+        Me.Txt_PatientName.Size = New System.Drawing.Size(252, 27)
+        Me.Txt_PatientName.TabIndex = 40
+        Me.Txt_PatientName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'VisitType
+        'ComboBox1
         '
-        Me.VisitType.HeaderText = "VisitType"
-        Me.VisitType.Name = "VisitType"
+        Me.ComboBox1.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(102, 107)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(150, 27)
+        Me.ComboBox1.TabIndex = 44
+        '
+        'Btn_Reset
+        '
+        Me.Btn_Reset.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_Reset.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_Reset.FlatAppearance.BorderSize = 0
+        Me.Btn_Reset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_Reset.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_Reset.ForeColor = System.Drawing.Color.White
+        Me.Btn_Reset.Image = Global.UpdateNewClinic.My.Resources.Resources.Undo_24
+        Me.Btn_Reset.Location = New System.Drawing.Point(269, 108)
+        Me.Btn_Reset.Name = "Btn_Reset"
+        Me.Btn_Reset.Size = New System.Drawing.Size(83, 27)
+        Me.Btn_Reset.TabIndex = 46
+        Me.Btn_Reset.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.Btn_Reset.UseVisualStyleBackColor = False
+        '
+        'Btn_SaveNewPatient
+        '
+        Me.Btn_SaveNewPatient.BackColor = System.Drawing.Color.SteelBlue
+        Me.Btn_SaveNewPatient.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_SaveNewPatient.FlatAppearance.BorderSize = 0
+        Me.Btn_SaveNewPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon
+        Me.Btn_SaveNewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Btn_SaveNewPatient.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Btn_SaveNewPatient.ForeColor = System.Drawing.Color.White
+        Me.Btn_SaveNewPatient.Image = Global.UpdateNewClinic.My.Resources.Resources.Save
+        Me.Btn_SaveNewPatient.Location = New System.Drawing.Point(269, 66)
+        Me.Btn_SaveNewPatient.Name = "Btn_SaveNewPatient"
+        Me.Btn_SaveNewPatient.Size = New System.Drawing.Size(83, 27)
+        Me.Btn_SaveNewPatient.TabIndex = 45
+        Me.Btn_SaveNewPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.Btn_SaveNewPatient.UseVisualStyleBackColor = False
+        '
+        'Txt_VisitCost
+        '
+        Me.Txt_VisitCost.BackColor = System.Drawing.Color.White
+        Me.Txt_VisitCost.Font = New System.Drawing.Font("Tahoma", 5.0!)
+        Me.Txt_VisitCost.Location = New System.Drawing.Point(74, 108)
+        Me.Txt_VisitCost.Name = "Txt_VisitCost"
+        Me.Txt_VisitCost.ReadOnly = True
+        Me.Txt_VisitCost.Size = New System.Drawing.Size(63, 16)
+        Me.Txt_VisitCost.TabIndex = 48
+        Me.Txt_VisitCost.Visible = False
+        '
+        'Txt_Num
+        '
+        Me.Txt_Num.Font = New System.Drawing.Font("Tahoma", 5.0!)
+        Me.Txt_Num.Location = New System.Drawing.Point(143, 109)
+        Me.Txt_Num.Name = "Txt_Num"
+        Me.Txt_Num.Size = New System.Drawing.Size(100, 16)
+        Me.Txt_Num.TabIndex = 47
+        Me.Txt_Num.Visible = False
         '
         'frm_ManageReservation
         '
@@ -446,6 +759,7 @@ Partial Class frm_ManageReservation
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.ClientSize = New System.Drawing.Size(1352, 708)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Cbo_VisitType)
@@ -459,6 +773,13 @@ Partial Class frm_ManageReservation
         CType(Me.Dgv_MangeReservation, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
+        CType(Me.Dgv_Search, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -502,4 +823,24 @@ Partial Class frm_ManageReservation
     Friend WithEvents Height As DataGridViewTextBoxColumn
     Friend WithEvents StartWeight As DataGridViewTextBoxColumn
     Friend WithEvents VisitType As DataGridViewTextBoxColumn
+    Friend WithEvents Btn_NewPatient As Button
+    Friend WithEvents Dgv_Search As DataGridView
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Txt_SearchValue As TextBox
+    Friend WithEvents Cbo_SortAndSearch As ComboBox
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Btn_EditPatient As Button
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents Txt_PatientName As TextBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Btn_Reset As Button
+    Friend WithEvents Btn_SaveNewPatient As Button
+    Friend WithEvents Txt_VisitCost As TextBox
+    Friend WithEvents Txt_Num As TextBox
 End Class

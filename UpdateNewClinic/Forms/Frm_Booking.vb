@@ -22,7 +22,7 @@ Public Class Frm_Booking
 
 #Region "Sub Procedures"
 
-    Sub GetAllPatient(Query As String)
+    Sub FillDataGridviewWithDataSource(Query As String)
         Try
             Dim cmd As New SqlCommand(Query, con)
 
@@ -35,7 +35,7 @@ Public Class Frm_Booking
             FormatDgv_Search()
 
             da.Dispose()
-            dt.Dispose()
+            Dt_Search.Dispose()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Exclamation, "Error")
         Finally
@@ -488,7 +488,7 @@ Public Class Frm_Booking
             End If
         End If
         If e.KeyCode = Keys.Delete Then
-            GetAllPatient("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight From PatientsDetail")
+            FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight From PatientsDetail")
             Txt_SearchValue.Text = ""
         End If
     End Sub
@@ -515,7 +515,10 @@ Public Class Frm_Booking
             FilldatagridviewComboBox_DataReader()
             Fill_Combobox(Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
             Cbo_SortAndSearch.SelectedIndex = 0
-            GetAllPatient("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight From PatientsDetail")
+
+            FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight
+                                            From PatientsDetail")
+
             GetAllReservation("Select PatientID,PatientName,ReserveDate,VisitName,VisitCost,status From Reservation Where Checkok=0 
                                And ReserveDate='" & Format(Today, "yyyy-MM-dd") & "' 
                                Order By Case 
@@ -524,6 +527,7 @@ Public Class Frm_Booking
                                When status='Booking' then 3
                                When status='Out' then 4
                                End")
+
             TextBoxDepndOnCombobox(Txt_VisitCost, Cbo_ReserveType, "Select Amount From VisitsTypes", "Num")
             Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
             Dtp_Search.Value = Date.Now.ToString("dd-MM-yyyy")

@@ -11,6 +11,8 @@ Public Class frm_ManageReservation
     Dim CurId As Integer
     Dim CurDate As Date
     Dim rdr As SqlDataReader
+    Dim Dt_Search As DataTable
+
 #End Region
 
     Public Function count_Out() As Integer
@@ -75,14 +77,15 @@ Public Class frm_ManageReservation
         End Try
     End Sub
 
-    Sub FormatDgv_Search()
+    Sub FormatDgv_SearchVisit()
         '===========ضبط مقاسات الاعمدة=============================================================
         Dgv_MangeReservation.Columns("PatientID").Width = 77
-        Dgv_MangeReservation.Columns("PatientName").Width = 220
-        Dgv_MangeReservation.Columns("PhoneNumber").Width = 130
+        Dgv_MangeReservation.Columns("PatientName").Width = 215
+        Dgv_MangeReservation.Columns("PhoneNumber").Width = 120
         Dgv_MangeReservation.Columns("Code").Width = 55
+        Dgv_MangeReservation.Columns("VisitCost").Width = 40
         Dgv_MangeReservation.Columns("ReserveDate").Width = 100
-        Dgv_MangeReservation.Columns("VisitName").Width = 150
+        Dgv_MangeReservation.Columns("VisitName").Width = 100
         Dgv_MangeReservation.Columns("VisitCost").Width = 95
         '=================================================
         Dgv_MangeReservation.Columns("Firstdate").Visible = False
@@ -91,6 +94,48 @@ Public Class frm_ManageReservation
         Dgv_MangeReservation.Columns("Height").Visible = False
         Dgv_MangeReservation.Columns("StartWeight").Visible = False
         Dgv_MangeReservation.Columns("VisitType").Visible = False
+    End Sub
+
+    Sub FormatDgv_Search()
+
+        Dgv_Search.Columns("PatientNum").Width = 70
+        Dgv_Search.Columns("PatientName").Width = 170
+        Dgv_Search.Columns("PhoneNumber").Width = 100
+        '=========================================================
+        Dgv_Search.Columns("Code").Visible = False
+        Dgv_Search.Columns("Age").Visible = False
+        Dgv_Search.Columns("Occupation").Visible = False
+        Dgv_Search.Columns("FirstDate").Visible = False
+        Dgv_Search.Columns("Height").Visible = False
+        Dgv_Search.Columns("StartWeight").Visible = False
+        '========================================================
+        Dgv_Search.Columns("PatientNum").HeaderText = "Patient ID"
+        Dgv_Search.Columns("PatientName").HeaderText = "Patient Name"
+        Dgv_Search.Columns("PhoneNumber").HeaderText = "Phone Number"
+
+    End Sub
+
+
+    Sub FillDataGridviewWithDataSource(Query As String)
+        Try
+            Dim cmd As New SqlCommand(Query, con)
+
+            Dt_Search = New DataTable
+            Da = New SqlDataAdapter(cmd)
+            Da.Fill(Dt_Search)
+
+            Dgv_Search.DataSource = Nothing
+            Dgv_Search.DataSource = Dt_Search
+            FormatDgv_Search()
+
+            Da.Dispose()
+            Dtsearch.Dispose()
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation, "Error")
+        Finally
+            If con.State = 1 Then con.Close()
+        End Try
     End Sub
 
     Private Sub Frm_ManageVisits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -107,6 +152,9 @@ Public Class frm_ManageReservation
                        When status='Out' then 4
                        End")
 
+        FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight
+                                        From PatientsDetail")
+
         Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
         CountVisits()
         '===================ملء الكومبوكس
@@ -115,7 +163,7 @@ Public Class frm_ManageReservation
         Cbo_VisitType.SelectedIndex = -1
         FillCombobox = True
         '==================================================================
-        FormatDgv_Search()
+        FormatDgv_SearchVisit()
     End Sub
 
     Private Sub Dtp_ReserveDate_KeyDown(sender As Object, e As KeyEventArgs) Handles Dtp_ReserveDate.KeyDown
@@ -130,7 +178,7 @@ Public Class frm_ManageReservation
                                When status='Booking' then 3
                                When status='Out' then 4
                                End")
-                FormatDgv_Search()
+                FormatDgv_SearchVisit()
                 CountVisits()
             End If
         Catch ex As Exception
@@ -152,7 +200,7 @@ Public Class frm_ManageReservation
                            When status='Booking' then 3
                            When status='Out' then 4
                            End")
-            FormatDgv_Search()
+            FormatDgv_SearchVisit()
             CountVisits()
         End If
     End Sub
@@ -169,7 +217,7 @@ Public Class frm_ManageReservation
                                When status='Booking' then 3
                                When status='Out' then 4
                                End")
-                FormatDgv_Search()
+                FormatDgv_SearchVisit()
                 CountVisits()
             End If
         End If
@@ -287,5 +335,27 @@ Public Class frm_ManageReservation
                 End Select
             End If
         Next
+    End Sub
+
+    Private Sub Btn_EditPatient_Click(sender As Object, e As EventArgs) Handles Btn_EditPatient.Click
+
+        With frm_ModifyPatient
+            .Txt_PatientNum.Text = Dgv_Search.CurrentRow.Cells("PatientNum").Value
+            .Txt_PatientName.Text = Dgv_Search.CurrentRow.Cells("PatientName").Value
+            .Txt_PhoneNumber.Text = Dgv_Search.CurrentRow.Cells("PhoneNumber").Value.ToString
+            .Txt_Code.Text = Dgv_Search.CurrentRow.Cells("Code").Value.ToString
+            .Txt_Age.Text = Dgv_Search.CurrentRow.Cells("Age").Value
+            .Txt_Occupation.Text = Dgv_Search.CurrentRow.Cells("Occupation").Value
+            .Dtp_PatientFirstDate.Value = Dgv_Search.CurrentRow.Cells("FirstDate").Value
+            .Txt_Height.Text = Dgv_Search.CurrentRow.Cells("Height").Value
+            .Txt_StartWeight.Text = Dgv_Search.CurrentRow.Cells("StartWeight").Value
+
+            .StartPosition = FormStartPosition.CenterScreen
+            .Show()
+        End With
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
     End Sub
 End Class

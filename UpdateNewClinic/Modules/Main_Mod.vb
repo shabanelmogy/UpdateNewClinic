@@ -11,7 +11,7 @@ Module Main_Mod
     Public Query As String
     Public Da As New SqlDataAdapter
     Public Dr As SqlDataReader
-    Public DtEditPatient, dtvisitDetail, dtsearch As New DataTable
+    Public DtEditPatient, dtvisitDetail, Dtsearch As New DataTable
     Public Dv As New DataView
     Public Cur As CurrencyManager
     Public FillCombobox As Boolean = False

@@ -27,6 +27,7 @@ Partial Class Home
         Me.Pnl_Home = New System.Windows.Forms.Panel()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.BtnStrp_File = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BtnStrp_Backup = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnStrp_Exit = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnStrp_VisitTypes = New System.Windows.Forms.ToolStripMenuItem()
@@ -59,6 +60,8 @@ Partial Class Home
         Me.LblComputerName = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.BtnStrp_RestoreData = New System.Windows.Forms.ToolStripMenuItem()
         Me.Pnl_Home.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -94,7 +97,7 @@ Partial Class Home
         'BtnStrp_File
         '
         Me.BtnStrp_File.AutoSize = False
-        Me.BtnStrp_File.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnStrp_Exit})
+        Me.BtnStrp_File.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnStrp_Backup, Me.BtnStrp_RestoreData, Me.BtnStrp_Exit})
         Me.BtnStrp_File.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnStrp_File.Image = Global.UpdateNewClinic.My.Resources.Resources.File_32
         Me.BtnStrp_File.ImageAlign = System.Drawing.ContentAlignment.TopCenter
@@ -105,10 +108,16 @@ Partial Class Home
         Me.BtnStrp_File.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnStrp_File.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
+        'BtnStrp_Backup
+        '
+        Me.BtnStrp_Backup.Name = "BtnStrp_Backup"
+        Me.BtnStrp_Backup.Size = New System.Drawing.Size(222, 28)
+        Me.BtnStrp_Backup.Text = "Backup DataBase"
+        '
         'BtnStrp_Exit
         '
         Me.BtnStrp_Exit.Name = "BtnStrp_Exit"
-        Me.BtnStrp_Exit.Size = New System.Drawing.Size(110, 28)
+        Me.BtnStrp_Exit.Size = New System.Drawing.Size(222, 28)
         Me.BtnStrp_Exit.Text = "Exit"
         '
         'ToolStripMenuItem1
@@ -450,6 +459,12 @@ Partial Class Home
         'Timer1
         '
         '
+        'BtnStrp_RestoreData
+        '
+        Me.BtnStrp_RestoreData.Name = "BtnStrp_RestoreData"
+        Me.BtnStrp_RestoreData.Size = New System.Drawing.Size(222, 28)
+        Me.BtnStrp_RestoreData.Text = "Restore DataBase"
+        '
         'Home
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -517,4 +532,7 @@ Partial Class Home
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
     Friend WithEvents ManageReservationsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BtnStrp_Backup As ToolStripMenuItem
+    Friend WithEvents Timer2 As Timer
+    Friend WithEvents BtnStrp_RestoreData As ToolStripMenuItem
 End Class

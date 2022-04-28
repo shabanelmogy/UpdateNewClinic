@@ -7,13 +7,72 @@ Imports System.Runtime.InteropServices
 Imports Microsoft.Win32
 
 Public Class Home
+
     Dim cmd1 As New SqlCommand
+    Dim Filename As String
+    Dim i1, i2 As Integer
 
     Sub New()
         ' This call is required by the designer.
         InitializeComponent()
         AdjustFormSize(0, 40, Me)
         'DataStructure()
+    End Sub
+
+    Sub Backup()
+        Try
+            Dim dt As DateTime = Today
+            Dim destdir As String = "My_Clinic " & System.DateTime.Now.ToString("dd-MM-yyyy_h-mm-ss") & ".bak"
+            Dim objdlg As New SaveFileDialog
+            objdlg.FileName = destdir
+
+            If objdlg.ShowDialog() = DialogResult.OK Then
+                Filename = objdlg.FileName
+                Cursor = Cursors.WaitCursor
+                Timer2.Enabled = True
+
+                con.Open()
+                Dim sql As String = "Backup Database Clinic To Disk='" & Filename & "'With init,Stats=10"
+                Dim cmd As New SqlCommand(sql)
+                cmd.Connection = con
+                cmd.ExecuteReader()
+                con.Close()
+
+                MsgBox("تم حفظ النسخة الاحتياطية من قاعدة البيانات", MsgBoxStyle.Information, "Backup")
+                Cursor = Cursors.Arrow
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Public Sub RestoreDatabase()
+        Try
+            With OpenFileDialog1
+                .Filter = ("DB Backup File|*.bak;")
+                .FilterIndex = 4
+            End With
+            'Clear the file name
+            OpenFileDialog1.FileName = ""
+            If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
+                Cursor = Cursors.WaitCursor
+                Timer2.Enabled = True
+                SqlConnection.ClearAllPools()
+                con.Open()
+                Dim sql As String = "USE Master ALTER DATABASE Clinic SET Single_User WITH Rollback Immediate 
+                                     Restore Database Clinic FROM Disk='" & OpenFileDialog1.FileName & "' 
+                                     WITH Replace ALTER DATABASE Clinic SET Multi_User "
+                Dim cmd As New SqlCommand(sql)
+                cmd.Connection = con
+                cmd.ExecuteReader()
+                con.Close()
+                MessageBox.Show("تمت استعادة قاعدة البيانات بنجاح", "استعادة القاعدة ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Cursor = Cursors.Arrow
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
 
     Sub AddColumn(TableName As String, ColumnName As String, DataType As String, Constraint As String, Defaultvalue As String)
@@ -174,4 +233,11 @@ Public Class Home
         openFormInTab(frm_ManageReservation)
     End Sub
 
+    Private Sub BtnStrp_RestoreData_Click(sender As Object, e As EventArgs) Handles BtnStrp_RestoreData.Click
+        RestoreDatabase()
+    End Sub
+
+    Private Sub BtnStrp_Backup_Click(sender As Object, e As EventArgs) Handles BtnStrp_Backup.Click
+        Backup()
+    End Sub
 End Class

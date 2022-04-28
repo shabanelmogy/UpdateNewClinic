@@ -424,7 +424,7 @@ Public Class Frm_EditPatients
 
             Btn_AddNewPatient.Enabled = True
             Btn_ShowAllPatients.Enabled = True
-            Frm_Booking.GetAllPatient("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight From PatientsDetail")
+            Frm_Booking.FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight From PatientsDetail")
 
             If Dgv_EditPatient.Rows.Count - 1 > 0 Then
                 Dgv_EditPatient.CurrentCell = Dgv_EditPatient.Rows(Dgv_EditPatient.Rows.Count - 1).Cells(9)
@@ -465,7 +465,7 @@ Public Class Frm_EditPatients
                     Cmd.ExecuteNonQuery()
 
                     FillDataGRidview("Select  * From PatientsDetail where FirstDate='" & Format(Today, "yyyy-MM-dd") & "'")
-                    Frm_Booking.GetAllPatient("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
+                    Frm_Booking.FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber From PatientsDetail")
 
                     Btn_AddNewPatient.Enabled = True
                     Btn_ShowAllPatients.Enabled = True

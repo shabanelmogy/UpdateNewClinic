@@ -68,7 +68,7 @@ Public Class frm_ModifyPatient
             'للوقوف على نفس الصف بعد التعديل
             CurRow = Frm_Booking.Dgv_Search.CurrentRow.Index
             Me.Close()
-            Frm_Booking.GetAllPatient("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight From PatientsDetail")
+            Frm_Booking.FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight From PatientsDetail")
             Frm_Booking.Dgv_Search.CurrentCell = Frm_Booking.Dgv_Search.Rows(CurRow).Cells(0)
 
         Catch ex As Exception
@@ -80,7 +80,7 @@ Public Class frm_ModifyPatient
 
     Private Sub Btn_SaveNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_SaveNewPatient.Click
         UpdateNewPatient()
-        'Frm_Booking.GetAllPatient("Select Top 20 PatientNum,PatientName,PhoneNumber From PatientsDetail Order By PatientNum Desc")
+        'Frm_Booking.FillDataGridviewWithDataSource("Select Top 20 PatientNum,PatientName,PhoneNumber From PatientsDetail Order By PatientNum Desc")
     End Sub
 
     Private Sub Txt_PatientName_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_PatientName.KeyDown

@@ -89,7 +89,7 @@ Public Class Frm_NewClient
 
     Private Sub Btn_SaveNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_SaveNewPatient.Click
         InsertNewPatient()
-        Frm_Booking.GetAllPatient("Select Top 20 PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight 
+        Frm_Booking.FillDataGridviewWithDataSource("Select Top 20 PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight 
                                    From PatientsDetail Order By PatientNum Desc")
     End Sub
 
