@@ -155,6 +155,9 @@ Public Class frm_ManageReservation
         FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight
                                         From PatientsDetail")
 
+        Fill_Combobox(Cbo_ReserveType, "VisitsTypes", "VisitKind", "Num")
+        Cbo_SortAndSearch.SelectedIndex = 0
+
         Dtp_ReserveDate.Value = Date.Now.ToString("dd-MM-yyyy")
         CountVisits()
         '===================ملء الكومبوكس
@@ -339,6 +342,8 @@ Public Class frm_ManageReservation
 
     Private Sub Btn_EditPatient_Click(sender As Object, e As EventArgs) Handles Btn_EditPatient.Click
 
+        Checkfrm = 1
+
         With frm_ModifyPatient
             .Txt_PatientNum.Text = Dgv_Search.CurrentRow.Cells("PatientNum").Value
             .Txt_PatientName.Text = Dgv_Search.CurrentRow.Cells("PatientName").Value
@@ -357,5 +362,37 @@ Public Class frm_ManageReservation
 
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
+    End Sub
+
+    Private Sub Txt_SearchValue_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_SearchValue.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Dv = Dt_Search.DefaultView
+            If Cbo_SortAndSearch.Text = "PatientName" Then
+                Dv.RowFilter = "PatientName like '" & Txt_SearchValue.Text & "%'"
+            ElseIf Cbo_SortAndSearch.Text = "Phone" Then
+                Dv.RowFilter = "PhoneNumber = '" & Txt_SearchValue.Text & "'"
+            End If
+        End If
+        If e.KeyCode = Keys.Delete Then
+            FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight
+                                            From PatientsDetail")
+            Txt_SearchValue.Text = ""
+        End If
+    End Sub
+
+    Private Sub Txt_SearchValue_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt_SearchValue.KeyPress
+        If Cbo_SortAndSearch.Text = "PatientName" And (Char.IsControl(e.KeyChar) = False And Char.IsLetter(e.KeyChar) = False And Not e.KeyChar = " ") Then
+            e.Handled = True
+        ElseIf Cbo_SortAndSearch.Text = "Phone" And Char.IsControl(e.KeyChar) = False And Char.IsDigit(e.KeyChar) = False Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub Btn_NewPatient_Click(sender As Object, e As EventArgs) Handles Btn_NewPatient.Click
+        Dim frm As New Frm_NewClient
+        frm.StartPosition = FormStartPosition.CenterScreen
+        frm.Txt_PatientNum.Text = GetMaxId("PatientNum", "PatientsDetail") + 1
+        frm.Dtp_PatientFirstDate.Value = Date.Now.ToString("dd-MM-yyyy")
+        frm.Show()
     End Sub
 End Class

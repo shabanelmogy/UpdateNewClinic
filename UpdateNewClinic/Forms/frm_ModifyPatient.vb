@@ -11,6 +11,7 @@ Public Class frm_ModifyPatient
     Dim da As New SqlDataAdapter
     Dim CurRow As Integer
 
+
     Private Sub Btn_ExitNewPatient_Click(sender As Object, e As EventArgs)
         Try
             Me.Close()
@@ -65,11 +66,21 @@ Public Class frm_ModifyPatient
             cmd.Dispose()
             ResetControls(Me)
 
-            'للوقوف على نفس الصف بعد التعديل
-            CurRow = Frm_Booking.Dgv_Search.CurrentRow.Index
-            Me.Close()
-            Frm_Booking.FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight From PatientsDetail")
-            Frm_Booking.Dgv_Search.CurrentCell = Frm_Booking.Dgv_Search.Rows(CurRow).Cells(0)
+            '===================فى حالة التعديل من شاشة الدكتور=======================================
+            If Checkfrm = 1 Then
+                CurRow = frm_ManageReservation.Dgv_Search.CurrentRow.Index
+                frm_ManageReservation.FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,
+                                                                      FirstDate,Height,StartWeight From PatientsDetail")
+                frm_ManageReservation.Dgv_Search.CurrentCell = frm_ManageReservation.Dgv_Search.Rows(CurRow).Cells(0)
+                Me.Close()
+                '===================فى حالة التعديل من شاشة السكرتارية================================
+            ElseIf Checkfrm = 2 Then
+                CurRow = Frm_Booking.Dgv_Search.CurrentRow.Index
+                Frm_Booking.FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,
+                                                            FirstDate,Height,StartWeight From PatientsDetail")
+                Frm_Booking.Dgv_Search.CurrentCell = Frm_Booking.Dgv_Search.Rows(CurRow).Cells(0)
+                Me.Close()
+            End If
 
         Catch ex As Exception
             MsgBox(ex.Message, MessageBoxIcon.Error, "Error")

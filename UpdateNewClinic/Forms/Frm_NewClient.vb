@@ -88,9 +88,13 @@ Public Class Frm_NewClient
     End Sub
 
     Private Sub Btn_SaveNewPatient_Click(sender As Object, e As EventArgs) Handles Btn_SaveNewPatient.Click
+
         InsertNewPatient()
+
         Frm_Booking.FillDataGridviewWithDataSource("Select Top 20 PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight 
-                                   From PatientsDetail Order By PatientNum Desc")
+                                                    From PatientsDetail Order By PatientNum Desc")
+        frm_ManageReservation.FillDataGridviewWithDataSource("Select Top 20 PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight 
+                                                    From PatientsDetail Order By PatientNum Desc")
     End Sub
 
     Private Sub Txt_PhoneNumber_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_PhoneNumber.KeyDown

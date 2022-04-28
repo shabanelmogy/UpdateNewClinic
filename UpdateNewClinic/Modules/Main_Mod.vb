@@ -18,6 +18,7 @@ Module Main_Mod
     'Public con As New SqlConnection("Data Source=.\SQLEXPRESS;AttachDbFilename=" & newdir & "\NewClinic.mdf;Integrated Security=True;Connect Timeout=30")
     Public con As New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("con").ConnectionString)
     Public build As SqlCommandBuilder
+    Public Checkfrm As Integer = 0
 
 #End Region
 

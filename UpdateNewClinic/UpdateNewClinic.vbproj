@@ -833,6 +833,7 @@
     <None Include="Resources\Patients 48.png" />
     <None Include="Resources\Undo 24.png" />
     <None Include="Resources\Edit 20.png" />
+    <None Include="Resources\Calculator 32.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

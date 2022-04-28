@@ -364,6 +364,8 @@ Public Class Frm_Booking
 
     Private Sub Btn_EditPatient_Click(sender As Object, e As EventArgs) Handles Btn_EditPatient.Click
 
+        Checkfrm = 2
+
         With frm_ModifyPatient
             .Txt_PatientNum.Text = Dgv_Search.CurrentRow.Cells("PatientNum").Value
             .Txt_PatientName.Text = Dgv_Search.CurrentRow.Cells("PatientName").Value
@@ -488,7 +490,8 @@ Public Class Frm_Booking
             End If
         End If
         If e.KeyCode = Keys.Delete Then
-            FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight From PatientsDetail")
+            FillDataGridviewWithDataSource("Select PatientNum,PatientName,PhoneNumber,Code,Age,Occupation,FirstDate,Height,StartWeight
+                                            From PatientsDetail")
             Txt_SearchValue.Text = ""
         End If
     End Sub

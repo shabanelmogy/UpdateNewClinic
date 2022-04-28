@@ -233,11 +233,15 @@ Public Class Home
         openFormInTab(frm_ManageReservation)
     End Sub
 
-    Private Sub BtnStrp_RestoreData_Click(sender As Object, e As EventArgs) Handles BtnStrp_RestoreData.Click
+    Private Sub BtnStrp_RestoreData_Click_1(sender As Object, e As EventArgs) Handles BtnStrp_RestoreData.Click
         RestoreDatabase()
     End Sub
 
-    Private Sub BtnStrp_Backup_Click(sender As Object, e As EventArgs) Handles BtnStrp_Backup.Click
+    Private Sub CalculatorToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CalculatorToolStripMenuItem1.Click
+        System.Diagnostics.Process.Start("C:\Windows\system32\calc.exe")
+    End Sub
+
+    Private Sub BtnStrp_Backup_Click_1(sender As Object, e As EventArgs) Handles BtnStrp_Backup.Click
         Backup()
     End Sub
 End Class
